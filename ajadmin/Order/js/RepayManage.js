@@ -103,7 +103,7 @@ $(function () {
             html.push('<td>' + d.applicantIdentity + '</td>');
             html.push('<td>' + d.packageMoney + '元</td>');
             html.push('<td>' + d.fenQiTimes + '期</td>');
-            html.push('<td>' + (d.noRepaymentTimes==0?0:(d.fenQiTimes - d.noRepaymentTimes + 1) )+ '期</td>');
+            html.push('<td>' + (d.noRepaymentTimes == 0 ? 0 : (d.fenQiTimes - d.noRepaymentTimes + 1) ) + '期</td>');
 
             //订单状态
             if (d.status == "100507") {
@@ -114,10 +114,13 @@ $(function () {
                 aStr = '';
             } else if (d.status == "100510") {
                 html.push('<td id="F_Status' + d.orderId + '">已逾期</td>');
-                aStr = '<a href="javascript:void(0)" onclick="DaiHuanKuan(' + d.currentBalance + ',\'' + d.orderId + '\')">代还款</a>';
+                aStr = '<a href="javascript:void(0)" onclick="DaiHuanKuan(' + d.currentBalance + ',\'' + d.orderId + '\')">代还款</a>&nbsp;&nbsp; <a href="javascript:void(0)" onclick="popHuoMianWin(' + d.orderId + ')">豁免</a>';
+            } else if (d.status == "100512") {
+                html.push('<td id="F_Status' + d.orderId + '">逾期已还清</td>');
+            } else if (d.status == "100513") {
+                html.push('<td id="F_Status' + d.orderId + '">违约已还清</td>');
             } else {
                 html.push('<td id="F_Status' + d.orderId + '">未知状态</td>');
-                console.log(d.status);
             }
 
             html.push('<td>' + d.applicantPhone + '</td>');
@@ -127,6 +130,8 @@ $(function () {
             //操作列
             if (d.status == "100508") {
                 html.push('<td>' + aStr + '</td>');
+            } else if (d.status == "100512" || d.status == "100513") {
+                html.push('<td></td>');
             } else {
                 html.push('<td><a href="javascript:void(0)" onclick="popZhhzWin(' + d.orderId + ')">终止合同</a> &nbsp;&nbsp;' + aStr + '</td>');
             }
@@ -203,6 +208,7 @@ $(function () {
                     }
                     SubHtml.push('<th>逾期管理费</th>');
                     SubHtml.push('<th>逾期罚息</th>');
+                    SubHtml.push('<th>豁免</th>');
                     SubHtml.push('<th>应还金额</th>');
                     SubHtml.push('<th width="140px">实还时间</th>');
                     SubHtml.push('<th>实还金额</th>');
@@ -221,6 +227,7 @@ $(function () {
                         }
                         SubHtml.push('<td>' + (row.managementFee || "") + '</td>');
                         SubHtml.push('<td>' + (row.overdueInterest || "") + '</td>');
+                        SubHtml.push('<td>' + (row.exemptMoney || "") + '</td>');
                         SubHtml.push('<td>' + row.currentBalance + '</td>');
                         SubHtml.push('<td>' + (row.realRepaymentTime || "") + '</td>');
                         SubHtml.push('<td>' + row.realRepaymentMoney + '</td>');
@@ -248,6 +255,8 @@ $(function () {
                             } else {
                                 SubHtml.push('<td>未知状态</td>');
                             }
+                        }else{
+                            SubHtml.push('<td></td>');
                         }
                         SubHtml.push('</tr>');
                     }
@@ -324,6 +333,7 @@ $(function () {
             }
         });
     };
+
     //订单状态=还款中 一次还清
     window.YiCiHuanQing = function (Amount, OrderId) {
         if (confirm('是否确定执行一次还清? ') == false) {
@@ -364,6 +374,7 @@ $(function () {
             }
         });
     };
+
     //终止合同
     window.popZhhzWin = function (OrderId) {
         $("#reason").attr("OrderId", OrderId);
@@ -401,6 +412,7 @@ $(function () {
             }
         });
     };
+
     //分期列表 - 代还款
     window.popFqlb_dhkWin = function (Amount, repaymentRecordId) {
         if (confirm('是否确定执行代还款? ') == false) {
@@ -441,6 +453,7 @@ $(function () {
             }
         });
     };
+
     //分期列表 - 提醒
     window.SMSTips = function (OrderId, repaymentRecordId) {
         g.httpTip.show();
@@ -463,6 +476,45 @@ $(function () {
         });
     };
 
+    //豁免
+    window.popHuoMianWin = function (OrderId) {
+        if (confirm('是否确定执行豁免操作? ') == false) {
+            return false;
+        }
+        $("#exemptMoney").attr("OrderId", OrderId);
+        $('#HuoMianDiv').modal('show');
+    };
+    window.SaveHuoMian = function () {
+        var OrderId = $("#exemptMoney").attr("OrderId");
+        var exemptMoney = $("#exemptMoney");
+        if (OrderId == "" || typeof(OrderId) == "undefined") {
+            alert("订单号非法！");
+            return false;
+        }
+        if (exemptMoney.val() == "") {
+            alert("请填写豁免金额！");
+            exemptMoney.focus();
+            return false;
+        }
+        g.httpTip.show();
+        var url = Base.serverUrl + "order/exemptOrder";
+        var condi = {};
+        condi.login_token = g.login_token;
+        condi.orderId = OrderId;
+        condi.exemptMoney = exemptMoney.val();
+        $.ajax({
+            url: url, data: condi, type: "POST", dataType: "json", context: this,
+            success: function (data) {
+                var msg = data.message || "豁免失败！!";
+                Utils.alert(msg);
+                g.httpTip.hide();
+                $('#HuoMianDiv').modal('hide');
+            },
+            error: function (data) {
+                g.httpTip.hide();
+            }
+        });
+    };
 
     //*****************************************************处理分页
     function countListPage(data) {

@@ -1,23 +1,11 @@
 /**
  * author:hmgx
- * function:订单统计报表
- * data:2016-3-10
+ * function:订单时间节点
+ * data:2016-3-9
  */
 
 //页面初始化
 $(function () {
-    if(typeof eui !== "undefined"){
-        eui.calendar({
-            startYear: 1900,
-            input: document.getElementById('editCompleteTimeBegin'),
-            id:"createTimeBegin"
-        });
-        eui.calendar({
-            startYear: 1900,
-            input: document.getElementById('editCompleteTimeEnd'),
-            id:"createTimeEnd"
-        });
-    }
     var g = {};
     g.phone = "";
     g.imgCodeId = "";
@@ -35,8 +23,7 @@ $(function () {
     if (!loginStatus) {
         alert("您未登陆！");
     } else {
-        sendGetUserInfoDicHttp();
-        getBranchCompany();
+        //getBranchCompany();
         queryOrderList();
     }
 
@@ -47,58 +34,7 @@ $(function () {
         sendQueryOrderListHttp();
     }
 
-    //获取订单状态
-    function sendGetUserInfoDicHttp(){
-        g.httpTip.show();
-        var url = Base.serverUrl + "baseCodeController/getBaseCodeByParents";
-        var condi = {};
-        condi.parents = "1005";
-        $.ajax({
-            url:url,
-            data:condi,
-            type:"POST",
-            dataType:"json",
-            context:this,
-            success: function(data){
-                //console.log("sendGetUserInfoDicHttp",data);
-                var status = data.success || false;
-                if(status){
-                    var obj = data.obj || {};
-                    changeSelectHtml(obj);
-                }
-                else{
-                    var msg = data.message || "获取用户信息字典数据失败";
-                    Utils.alert(msg);
-                }
-                g.httpTip.hide();
-            },
-            error:function(data){
-                g.httpTip.hide();
-            }
-        });
-    }
-
-    function changeSelectHtml(obj){
-        var parents = ["1005"];
-        var ids = ["status"];
-        for(var i = 0,len = parents.length; i < len; i++){
-            var data = obj[parents[i]] || {};
-            var option = [];
-            option.push('<option value="">全部订单</option>');
-            for(var k in data){
-                var id = k || "";
-                var name = data[k] || "";
-                option.push('<option value="' + id + '">' + name + '</option>');
-            }
-            $("#" + ids[i]).html(option.join(''));
-        }
-        if(g.orderStatus !== ""){
-            $("#orderstatus").val(g.orderStatus);
-        }
-    }
-
-    //获取分公司
-    function getBranchCompany(){
+    function getBranchCompany() {
         g.httpTip.show();
         var url = Base.serverUrl + "subsidiary/getSubsidiarys";
         var condi = {};
@@ -109,7 +45,7 @@ $(function () {
                 var list = data.list || {};
                 var option = [];
                 option.push('<option value="">全部</option>');
-                for(var i = 0;i< list.length;i++){
+                for (var i = 0; i < list.length; i++) {
                     var d = list[i];
                     option.push('<option value="' + d.id + '">' + d.name + '</option>');
                 }
@@ -121,18 +57,19 @@ $(function () {
         });
     }
 
-    //获取订单数据
     function sendQueryOrderListHttp() {
         g.httpTip.show();
-        var url = Base.serverUrl + "order/queryOrdersController";
+        var url = Base.serverUrl + "/oplog/getOperateLogByReportName";
         var condi = {};
         condi.login_token = g.login_token;
         condi.currentPageNum = g.currentPage;
         condi.pageSize = g.pageSize;
-        condi = Hmgx.getQueryParamet("CX",condi);
+        condi.reportName = "selectOrderTimeFrame";
+        condi = Hmgx.getQueryParamet("CX", condi);
         $.ajax({
             url: url, data: condi, type: "POST", dataType: "json", context: this,
             success: function (data) {
+                //console.log("sendQueryOrderListHttp",data);
                 var status = data.success || false;
                 if (status) {
                     changeOrderListHtml(data);
@@ -149,43 +86,36 @@ $(function () {
     }
 
     function changeOrderListHtml(data) {
-
         var html = [];
-
         html.push('<table class="table table-bordered table-hover definewidth m10" ><thead>');
         html.push('<tr>');
-        html.push('<th>申请人</th>');
-        html.push('<th>订单状态</th>');
-        html.push('<th>订单编号</th>');
-        html.push('<th>所属公司</th>');
-        html.push('<th>产品名称</th>');
-        html.push('<th>申请分期金额</th>');
-        html.push('<th>申请分期期数</th>');
-        html.push('<th>审批分期金额</th>');
-        html.push('<th>审批分期期数</th>');
-        html.push('<th>合同总金额</th>');
-        html.push('<th>进件时间</th>');
+        html.push('<th>申请人姓名</th>');
+        html.push('<th> 订单编号</th>');
+        html.push('<th> 进件时间</th>');
+        html.push('<th> 风控初审时间</th>');
+        html.push('<th> 风控复审时间</th>');
+        html.push('<th> 风控终审时间</th>');
+        html.push('<th> 期望缴纳服务费时间</th>');
+        html.push('<th> 缴纳完服务费时间</th>');
+        html.push('<th> 财务放款时间</th>');
+        html.push('<th> 终止合同时间</th>');
+        html.push('<th> 操作</th>');
         html.push('</tr>');
         var obj = data.list || [];
         for (var i = 0, len = obj.length; i < len; i++) {
             var d = obj[i];
-            var deleted = d.deleted - 0 || 0;
-            if (deleted !== 0) {
-                continue;
-            }
-            var orderId = d.orderId || "";
             html.push('<tr>');
-            html.push('<td>' + (d.applicantName||"") + '</td>');
-            html.push('<td>' + (d.statusDes||"") + '</td>');
-            html.push('<td>' + (d.orderId||"") + '</td>');
-            html.push('<td>' +( d.subsidiary||"") + '</td>');
-            html.push('<td>' + (d.packageName||"") + '</td>');
-            html.push('<td>' +( (d.applyPackageMoney||"")==""?"":d.applyPackageMoney + '元') + '</td>');
-            html.push('<td>' +( d.applyFenQiTimes||"") + '期</td>');
-            html.push('<td>' +( (d.packageMoney||"")==""?"":d.packageMoney + '元') + '</td>');
-            html.push('<td>' +( (d.fenQiTimes||"")==""?"":d.fenQiTimes + '期' ) + '</td>');
-            html.push('<td>' +( d.contractMoney||"") + '元</td>');
-            html.push('<td>' + (d.editCompleteTime||"")+ '</td>');
+            html.push('<td>' + (d.applicantName || "") + '</td>');
+            html.push('<td>' + (d.orderId || "") + '</td>');
+            html.push('<td>' + (d.editCompleteTime || "") + '</td>');
+            html.push('<td>' + (d.t1 || "") + '</td>');
+            html.push('<td>' + (d.t2 || "") + '</td>');
+            html.push('<td>' + (d.t3 || "") + '</td>');
+            html.push('<td>' + (d.expectRepaymentTime || "") + '</td>');
+            html.push('<td>' + (d.realRepaymentTime || "") + '</td>');
+            html.push('<td>' + (d.loanTime || "") + '</td>');
+            html.push('<td>' + (d.finishContractTime || "") + '</td>');
+            html.push('<td><button onclick="modal1(' + d.orderId + ')" class="btn btn-success" type="button">用户申请支付</button>&nbsp;&nbsp;<button onclick="modal2(' + d.orderId + ')" class="btn btn-success" type="button">还款时间点</button></td>');
             html.push('</tr>');
         }
         html.push('</table>');
@@ -200,7 +130,6 @@ $(function () {
         $("#orderlistpage a").bind("click", pageClick);
     }
 
-    //分页处理
     function countListPage(data) {
         var html = [];
         g.totalPage = Math.ceil(data.totalRowNum / data.pageSize);
@@ -208,7 +137,7 @@ $(function () {
         //g.currentPage = 1;
         html.push('<div id="orderlistpage" class="inline pull-right page">');
         html.push(data.totalRowNum + ' 条记录' + g.currentPage + '/' + g.totalPage + ' 页');
-		html.push('<a href="javascript:void(0);" class="page-pre">上一页</a>');
+        html.push('<a href="javascript:void(0);" class="page-pre">上一页</a>');
         html.push('<a href="javascript:void(0);" class="page-next">下一页</a>');
 
         if (g.totalPage > 10) {
@@ -312,10 +241,92 @@ $(function () {
         }
     }
 
-    //导出EXCEL
-    window.OutXls = function(){
-        var ParamObj={};
+    //导出
+    window.OutXls = function () {
+        var ParamObj = {};
         ParamObj.login_token = g.login_token;
-        Hmgx.serializeDownload(Base.serverUrl  + "order/queryOrdersControllerExport","CX",ParamObj);
-    }
+        Hmgx.serializeDownload(Base.serverUrl + "order/getUserConsumptionControllerExport", "CX", ParamObj);
+    };
+
+    //用户申请支付
+    window.modal1 = function(orderId){
+        g.httpTip.show();
+        var url = Base.serverUrl + "/oplog/getOperateLogByReportName";
+        var condi = {};
+        condi.login_token = g.login_token;
+        condi.orderId = orderId;
+        condi.reportName = "selectOrderTimeByPayTrade";
+        $.ajax({
+            url: url, data: condi, type: "POST", dataType: "json", context: this,
+            success: function (data) {
+                var status = data.success || false;
+                if (status) {
+                    var html = [];
+                    html.push('<table class="table table-bordered table-hover definewidth" ><thead>');
+                    html.push('<tr>');
+                    html.push('<th>放款顺序</th>');
+                    html.push('<th>放款时间</th>');
+                    html.push('</tr>');
+                    var obj = data.list || [];
+                    for (var i = 0, len = obj.length; i < len; i++) {
+                        var d = obj[i];
+                        html.push('<tr>');
+                        html.push('<td>' + (d.description || "") + '</td>');
+                        html.push('<td>' + (d.realLoanTime || "") + '</td>');
+                        html.push('<tr>');
+                    }
+                    $("#modal1List").html(html.join(''));
+                    $('#modal1').modal('show');
+                } else {
+                    var msg = data.message || "获取用户申请支付数据失败!";
+                    Utils.alert(msg);
+                }
+                g.httpTip.hide();
+            },
+            error: function (data) {
+                g.httpTip.hide();
+            }
+        });
+    };
+
+    //还款时间点
+    window.modal2 = function(orderId){
+        g.httpTip.show();
+        var url = Base.serverUrl + "/oplog/getOperateLogByReportName";
+        var condi = {};
+        condi.login_token = g.login_token;
+        condi.orderId = orderId;
+        condi.reportName = "selectOrderTimeByPayRecord";
+        $.ajax({
+            url: url, data: condi, type: "POST", dataType: "json", context: this,
+            success: function (data) {
+                var status = data.success || false;
+                if (status) {
+                    var html = [];
+                    html.push('<table class="table table-bordered table-hover definewidth" ><thead>');
+                    html.push('<tr>');
+                    html.push('<th>订单期数</th>');
+                    html.push('<th>还款时间点</th>');
+                    html.push('</tr>');
+                    var obj = data.list || [];
+                    for (var i = 0, len = obj.length; i < len; i++) {
+                        var d = obj[i];
+                        html.push('<tr>');
+                        html.push('<td>' + (d.repaymentTimes || "") + '期</td>');
+                        html.push('<td>' + (d.realRepaymentTime || "") + '</td>');
+                        html.push('<tr>');
+                    }
+                    $("#modal2List").html(html.join(''));
+                    $('#modal2').modal('show');
+                } else {
+                    var msg = data.message || "获取用户申请支付数据失败!";
+                    Utils.alert(msg);
+                }
+                g.httpTip.hide();
+            },
+            error: function (data) {
+                g.httpTip.hide();
+            }
+        });
+    };
 });

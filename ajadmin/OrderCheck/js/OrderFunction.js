@@ -5,7 +5,7 @@
  */
 function getOrderStatus(StatusCode){
     switch (StatusCode){
-        case "100501":
+		case "100501":
 			return "未完成";
 		case "100502": 
 			return "商家审核中";
