@@ -25,6 +25,9 @@ $(function () {
     g.currentPage = 1;
     g.pageSize = 10;
 
+    //加载订单方法
+    $.getScript("../OrderCheck/js/OrderFunction.js").done(function() {}).fail(function() {Utils.alert("@_@加载订单状态方法失败<br>请检查！");});
+
     //验证登录状态
     var loginStatus = Utils.getUserInfo();
     if (!loginStatus) {
@@ -160,6 +163,7 @@ $(function () {
         html.push('<th>客户姓名</th>');
         html.push('<th>身份证号</th>');
         html.push('<th>订单状态</th>');
+        html.push('<th>审核结果</th>');
         html.push('<th>合作商家</th>');
         html.push('<th>产品名称</th>');
         html.push('<th>合同金额</th>');
@@ -197,6 +201,7 @@ $(function () {
             html.push('<td>' + ( d.applicantName || "") + '</td>');
             html.push('<td>' + ( d.applicantIdentity || "") + '</td>');
             html.push('<td>' + ( d.status || "") + '</td>');
+            html.push('<td>' + getCheckStatus(d.last_approve_type) + " " + getCheckResult(d.last_approve_result) + '</td>');
             html.push('<td>' + ( d.company || "") + '</td>');
             html.push('<td>' + ( d.packageName || "") + '</td>');
             html.push('<td>' + ( d.contractMoney || "") + '</td>');

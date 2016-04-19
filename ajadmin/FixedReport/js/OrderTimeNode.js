@@ -95,8 +95,8 @@ $(function () {
         html.push('<th> 风控初审时间</th>');
         html.push('<th> 风控复审时间</th>');
         html.push('<th> 风控终审时间</th>');
-        html.push('<th> 期望缴纳服务费时间</th>');
-        html.push('<th> 缴纳完服务费时间</th>');
+        html.push('<th> 用户确认时间</th>');
+        html.push('<th> 缴纳服务费时间</th>');
         html.push('<th> 财务放款时间</th>');
         html.push('<th> 终止合同时间</th>');
         html.push('<th> 操作</th>');
@@ -111,11 +111,11 @@ $(function () {
             html.push('<td>' + (d.t1 || "") + '</td>');
             html.push('<td>' + (d.t2 || "") + '</td>');
             html.push('<td>' + (d.t3 || "") + '</td>');
-            html.push('<td>' + (d.expectRepaymentTime || "") + '</td>');
+            html.push('<td>' + (d.confirmTime || "") + '</td>');
             html.push('<td>' + (d.realRepaymentTime || "") + '</td>');
             html.push('<td>' + (d.loanTime || "") + '</td>');
             html.push('<td>' + (d.finishContractTime || "") + '</td>');
-            html.push('<td><button onclick="modal1(' + d.orderId + ')" class="btn btn-success" type="button">用户申请支付</button>&nbsp;&nbsp;<button onclick="modal2(' + d.orderId + ')" class="btn btn-success" type="button">还款时间点</button></td>');
+            html.push('<td><button onclick="modal1(' + d.orderId + ')" class="btn btn-success" type="button">支付时间点</button>&nbsp;&nbsp;<button onclick="modal2(' + d.orderId + ')" class="btn btn-success" type="button">还款时间点</button></td>');
             html.push('</tr>');
         }
         html.push('</table>');
