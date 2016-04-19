@@ -59,7 +59,7 @@ $(function () {
 
     function sendQueryOrderListHttp() {
         g.httpTip.show();
-        var url = Base.serverUrl + "/oplog/getOperateLogByReportName";
+        var url = Base.serverUrl + "oplog/getOperateLogByReportName";
         var condi = {};
         condi.login_token = g.login_token;
         condi.currentPageNum = g.currentPage;
