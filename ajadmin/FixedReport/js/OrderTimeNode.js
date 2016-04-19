@@ -251,7 +251,7 @@ $(function () {
     //用户申请支付
     window.modal1 = function(orderId){
         g.httpTip.show();
-        var url = Base.serverUrl + "/oplog/getOperateLogByReportName";
+        var url = Base.serverUrl + "oplog/getOperateLogByReportName";
         var condi = {};
         condi.login_token = g.login_token;
         condi.orderId = orderId;
@@ -292,7 +292,7 @@ $(function () {
     //还款时间点
     window.modal2 = function(orderId){
         g.httpTip.show();
-        var url = Base.serverUrl + "/oplog/getOperateLogByReportName";
+        var url = Base.serverUrl + "oplog/getOperateLogByReportName";
         var condi = {};
         condi.login_token = g.login_token;
         condi.orderId = orderId;
