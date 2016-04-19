@@ -37,6 +37,10 @@ function getOrderStatus(StatusCode){
 			return "逾期已还清";
 		case "100513":
 			return "违约已还清";
+		case "100515":
+			return "已取消";
+		case "100515":
+			return "待确认";
         default :
             return "错误状态";
     }
