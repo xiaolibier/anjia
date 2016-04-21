@@ -350,9 +350,11 @@ $(function(){
 	//获取用户信息字典信息
 	function sendGetUserInfoDicHttp(){
 		g.httpTip.show();
-		var url = Base.serverUrl + "baseCodeController/getBaseCodeByParents";
+		//var url = Base.serverUrl + "baseCodeController/getBaseCodeByParents";
+		var url = Base.serverUrl + "order/getOrderStatus";	
 		var condi = {};
 		condi.parents = "1005";
+		condi.login_token = g.login_token;
 		$.ajax({
 			url:url,
 			data:condi,
@@ -363,7 +365,7 @@ $(function(){
 				console.log("sendGetUserInfoDicHttp",data);
 				var status = data.success || false;
 				if(status){
-					var obj = data.obj || {};
+					var obj = data.list || {};
 					changeSelectHtml(obj);
 				}
 				else{
@@ -381,22 +383,16 @@ $(function(){
 	function changeSelectHtml(obj){
 		var parents = ["1005"];
 		var ids = ["orderstatus"];
-		for(var i = 0,len = parents.length; i < len; i++){
-			var data = obj[parents[i]] || {};
-			var option = [],idad="",score=0;
-			option.push('<option value="">全部订单</option>');
-			for(var k in data){
-				var id = k || "";
-				var name = data[k] || "";
-				if(id=="100502"||id=="100503"){
-					idad+=id;score++;
-					if(score==2){option.push('<option value="' + idad + '">审核中</option>');}
-				}else{
-					option.push('<option value="' + id + '">' + name + '</option>');
-				}	
-			}
-			$("#" + ids[i]).html(option.join(''));
+		var option = []
+		option.push('<option value="">全部订单</option>');
+		for(var i = 0,len = obj.length; i < len; i++){
+			var data = obj[i] || {};	
+			var id = data.code || "";
+			var name = data.name || "";
+			option.push('<option value="' + id + '">' + name + '</option>');
+			$("#M"+id).addClass("M_show");
 		}
+		$("#orderstatus").html(option.join(''));
 		if(g.orderStatus !== ""){
 			$("#orderstatus").val(g.orderStatus);
 		}

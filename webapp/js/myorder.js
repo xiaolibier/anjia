@@ -12,7 +12,7 @@ $(function(){
 
 	g.totalPage = 1;
 	g.currentPage = 1;
-	g.pageSize = 5;
+	g.pageSize = 100;
 
 	g.qorderstatus = "";
 	g.orderInfo = {};
@@ -269,7 +269,7 @@ $(function(){
 
 	function sendGetUserOrderListHttp(condi){
 		g.httpTip.show();
-		var url = Base.serverUrl + "order/queryOrderList";//之前是queryOrdersController
+		var url = Base.serverUrl + "order/queryOrderList";//之前是order/queryOrderList
 		$.ajax({
 			url:url,
 			data:condi,
@@ -296,20 +296,32 @@ $(function(){
 
 	function changeOrderListHtml(data){
 
-		var html = [];
-
+		
+		var _status = ["100501","100502_100503","100515_100505_100506","100507","100508_100512_100513","100509","100510","100511","100514"];
 		var obj = data.list || [];
 		for(var i = 0,len = obj.length; i < len; i++){
+			var html = [];
 			var d = obj[i];
 			var orderId = d.orderId || "";
 			var contractNo = d.contractNo || "";
 			var packageName = d.packageName || "";
 			var packageMoney = d.packageMoney || 0;
+			var poundage = d.poundage || 0;
 			var statusDes = d.statusDes || "";
 			var status = d.status || "";
 			var fenQiTimes = d.fenQiTimes || 0;
+			var applyPackageMoney = d.applyPackageMoney || 0;
+			var applyFenQiTimes = d.applyFenQiTimes || 0;
 			var noRepaymentTimes = d.noRepaymentTimes || 0;
-
+			var subsidiary = d.subsidiary || "";
+			var monthRepay = d.monthRepay || 0;
+			var overdueTime = d.overdueTime || 0;
+			var currentBalance = d.currentBalance || 0;//待还金额
+			var totalCurrentBalance = d.totalCurrentBalance || 0;//总共待还金额
+			var finishContractTime = d.finishContractTime || "";
+			var realRepaymentMoney = d.realRepaymentMoney || 0;//实还金额
+			
+			
 			html.push('<li>');
 			html.push('<div class="order-item-top">');
 			if(status == "100510" || status == "100511"){
@@ -318,7 +330,7 @@ $(function(){
 				html.push('<div class="order-state state-grey">' + statusDes + '</div>');	
 			}
 			html.push('<div class="order-type-name">');
-			html.push('<i class="common-ico product-ico"></i>' + packageName);
+			html.push('' + packageName);
 			html.push('</div>');
 			html.push('</div>');
 			if(status == "100510" || status == "100511"){
@@ -326,110 +338,358 @@ $(function(){
 			}else {
 			html.push('<div class="order-item-box">');	
 			}
-			html.push('<div class="box-item">');
-			html.push('<div class="box-item-text">');
-			html.push('<p><i class="common-ico product-tip1"></i>订单编号：<span class="color-green">' + orderId + '</span></p>');
-			html.push('</div>');
-			html.push('</div>');
-			html.push('<div class="box-item">');
-			html.push('<div class="box-item-text">');
-			html.push('<p><i class="common-ico product-tip1"></i>合同编号：<span class="color-green">' + contractNo + '</span></p>');
-			html.push('</div>');
-			html.push('</div>');
-			html.push('<div class="box-item">');
-			html.push('<div class="box-item-text">');
-			html.push('<p><i class="common-ico product-tip2"></i>分期金额：<span class="color-green">' + packageMoney + '</span>元</p>');
-			html.push('</div>');
-			html.push('</div>');
-			html.push('<div class="box-item">');
-			html.push('<div class="box-item-text">');
-			html.push('<p><i class="common-ico product-tip3"></i>最近待还：<span class="color-green">' + noRepaymentTimes + '</span>期</p>');
-			html.push('</div>');
-			html.push('<div class="box-item-text">');
-			html.push('<p><i class="common-ico product-tip3"></i>总期数：<span class="color-green">' + fenQiTimes + '</span>期</p>');
-			html.push('</div>');
-			html.push('</div>');
-			html.push('</div>');
-			html.push('<div class="order-item-btn-box">');
-
-
 			g.orderInfo[orderId] = d;
 
 			if(status == "100501"){
+				//未完成
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>申请分期金额：<span class="color-green">' + applyPackageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>申请分期期数：<span class="color-green">' + applyFenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
 				html.push('<a href="../mystaging/mystaging.html?orderid=' + orderId + '" class="item-btn item-btn-green">编辑</a>');
 				html.push('<a href="javascript:deleteOrderById(\'' + orderId + '\')" class="item-btn item-btn-red">删除</a>');
-				//html.push('<td><a href="/anjia/mystaging.html?orderid=' + orderId + '">编辑</a><a href="javascript:deleteOrderById(\'' + orderId + '\')">删除</a></td>');
 			}
 			else if(status == "100502"){
-				//100502: "商家审核中"
+				//商家审核中
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>申请分期金额：<span class="color-green">' + applyPackageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>申请分期期数：<span class="color-green">' + applyFenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
 				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',3)" class="item-btn item-btn-green">查看</a>');
-				/* html.push('<a href="javascript:deleteOrderById(\'' + orderId + '\')" class="item-btn item-btn-red">删除</a>'); */
-				//html.push('<td><a href="javascript:showOrderDetail(\'' + orderId + '\',1)">查看</a><a href="javascript:deleteOrderById(\'' + orderId + '\')">删除</a></td>');
 			}
 			else if(status == "100503"){
-				//100503: "风控审核中
+				//风控审核中
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>申请分期金额：<span class="color-green">' + applyPackageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>申请分期期数：<span class="color-green">' + applyFenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
 				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',3)" class="item-btn item-btn-green">查看</a>');
-				/* html.push('<a href="javascript:deleteOrderById(\'' + orderId + '\')" class="item-btn item-btn-red">删除</a>'); */
-				//html.push('<td><a href="javascript:showOrderDetail(\'' + orderId + '\',1)">查看</a><a href="javascript:deleteOrderById(\'' + orderId + '\')">删除</a></td>');
 			}
 			else if(status == "100504"){
-				//html.push('<a href="javascript:deleteOrderById(\'' + orderId + '\')" class="item-btn item-btn-red">删除</a>');
-				//html.push('<td><a href="javascript:deleteOrderById(\'' + orderId + '\')">删除</a></td>');
+				//已删除
 			}
 			else if(status == "100505"){
-				//100505: "待缴手续费"showOrderDetail
+				//待缴手续费
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期金额：<span class="color-green">' + packageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期期数：<span class="color-green">' + fenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>应缴服务费：<span class="color-green">' + poundage + '</span>元</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
 				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',1)" class="item-btn item-btn-green">查看</a>');
-				//html.push('<a href="javascript:cancelOrderById(\'' + orderId + '\')" class="item-btn item-btn-red">取消</a>');
+				
 			}
 			else if(status == "100506"){
 				//100506: "待放款"
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期金额：<span class="color-green">' + packageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期期数：<span class="color-green">' + fenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>月还款：<span class="color-green">' + monthRepay + '</span>元</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
 				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',3)" class="item-btn item-btn-green">查看</a>');
-				//html.push('<td><a href="javascript:showOrderDetail(\'' + orderId + '\',0)">查看</a></td>');
+				
 			}
-			else if(status == "100507"){//还款中
-				//100506: "待放款"
+			else if(status == "100507"){
+				//还款中
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期金额：<span class="color-green">' + packageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期期数：<span class="color-green">' + fenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>月还款：<span class="color-green">' + monthRepay + '</span>元</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>待还期数：<span class="color-green">' + noRepaymentTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
 				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',2)" class="item-btn item-btn-green">查看</a>');
-				//html.push('<td><a href="javascript:showOrderDetail(\'' + orderId + '\',0)">查看</a></td>');
+				
 			}
 			else if(status == "100508"){
+				//已还清
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期金额：<span class="color-green">' + packageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期期数：<span class="color-green">' + fenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>月还款：<span class="color-green">' + monthRepay + '</span>元</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
 				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',0)" class="item-btn item-btn-green">查看</a>');
 				html.push('<a href="javascript:deleteOrderById(\'' + orderId + '\')" class="item-btn item-btn-red">删除</a>');
-				//html.push('<td><a href="javascript:showOrderDetail(\'' + orderId + '\',0)">查看</a><a href="javascript:deleteOrderById(\'' + orderId + '\')">删除</a></td>');
+				
 			}
 			else if(status == "100509"){
 				//拒绝
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>申请分期金额：<span class="color-green">' + applyPackageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>申请分期期数：<span class="color-green">' + applyFenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
 				html.push('<a href="../mystaging/mystaging.html?orderid=' + orderId + '" class="item-btn item-btn-green">编辑</a>');
 				html.push('<a href="javascript:deleteOrderById(\'' + orderId + '\')" class="item-btn item-btn-red">删除</a>');
 			}
 			else if(status == "100510"){
 				//已逾期
-				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',2)" class="item-btn item-btn-green">查看</a>');
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期金额：<span class="color-green">' + packageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期期数：<span class="color-green">' + fenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>待还金额：<span class="color-green">' + totalCurrentBalance + '</span>元</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>待还期数：<span class="color-green">' + noRepaymentTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>逾期天数：<span class="color-green">' + overdueTime + '</span>天</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
+				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',4)" class="item-btn item-btn-green">查看</a>');
 			}
 			else if(status == "100511"){
 				//已违约
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期金额：<span class="color-green">' + packageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期期数：<span class="color-green">' + fenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>待还金额：<span class="color-green">' + totalCurrentBalance + '</span>元</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>逾期天数：<span class="color-green">' + overdueTime + '</span>天</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>违约时间：<span class="color-green">' + finishContractTime + '</span></p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
 				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',4)" class="item-btn item-btn-green">查看</a>');
 			}
 			else if(status == "100512"){
 				//逾期已还清
-				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',1)" class="item-btn item-btn-green">查看</a>');
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期金额：<span class="color-green">' + packageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期期数：<span class="color-green">' + fenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>实还金额：<span class="color-green">' + realRepaymentMoney + '</span>元</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>逾期天数：<span class="color-green">' + overdueTime + '</span>天</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
+				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',4)" class="item-btn item-btn-green">查看</a>');
 				html.push('<a href="javascript:deleteOrderById(\'' + orderId + '\')" class="item-btn item-btn-red">删除</a>');
 			}
 			else if(status == "100513"){
 				//违约已还清
-				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',1)" class="item-btn item-btn-green">查看</a>');
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期金额：<span class="color-green">' + packageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期期数：<span class="color-green">' + fenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>实还金额：<span class="color-green">' + realRepaymentMoney + '</span>元</p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>逾期天数：<span class="color-green">' + overdueTime + '</span>天</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
+				html.push('<a href="javascript:showOrderDetail(\'' + orderId + '\',4)" class="item-btn item-btn-green">查看</a>');
 				html.push('<a href="javascript:deleteOrderById(\'' + orderId + '\')" class="item-btn item-btn-red">删除</a>');
 			}
 			else if(status == "100514"){
 				//已取消
-				
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期金额：<span class="color-green">' + packageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期期数：<span class="color-green">' + fenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
 			}
 			else if(status == "100515"){
 				//待确认				
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p>订单编号：<span class="color-green">' + orderId + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>合作商家：<span class="color-green">' + subsidiary + '</span></p>');
+				html.push('</div>');
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期金额：<span class="color-green">' + packageMoney + '</span>元</p>');
+				html.push('</div>');			
+				html.push('<div class="box-item-text">');
+				html.push('<p>审批分期期数：<span class="color-green">' + fenQiTimes + '</span>期</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="order-item-btn-box">');
 				html.push('<a href="javascript:showOrderWait(\'' + packageMoney + '\',\''+fenQiTimes+'\')" class="item-btn item-btn-green">查看</a>');
 				html.push('<a href="javascript:confirmOrder_fun(\'' + orderId + '\')" class="item-btn item-btn-red">接受</a>');
 			}
 			html.push('</div>');
 			html.push('</li>');
+			for(var s = 0;s < _status.length;s++ ){
+				var a = s+1;
+				var str = _status[s].split("_") || [];
+				var con = (status == str[0] || status == str[1] || status == str[2] || status == str[3] || status == str[4]) ? true : false;
+				if(con){
+					$("#orderlist"+a).append(html.join(''));
+					$("#orderlist"+a).parents(".order-list").addClass("show");
+					if(s > 4){$("#orderlist"+a).parents(".M_hidden").addClass("M_show");}
+				}
+			}
+			
 		}
 
 		var pobj = data.obj || {};
@@ -720,7 +980,7 @@ $(function(){
 		if(t == 0){
 			location.href = "repayment-list-item.html?orderId=" + orderId ;
 		}
-		else if(t == 4){//已违约
+		else if(t == 4){//已违约 已逾期 逾期已还清 违约已还清
 			location.href = "repayment-list-item.html?orderId=" + orderId+"&pa=4";
 		}
 		else if(t == 1){//待缴费

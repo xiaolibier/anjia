@@ -1824,3 +1824,6 @@ i.radio_common  input,i.check_common input{display:none;}
 .sign-item.one_pay_div,.one_pay .sign-item.other_pay_div{display:none;}
 .one_pay .sign-item.one_pay_div,.sign-item.other_pay_div{display:block;}
 
+/* 控制个人中心左侧菜单显示 */
+dl.sub-left-sec-nav dd.M_hidden{display:none;}
+dl.sub-left-sec-nav dd.M_hidden.M_show{display:block;}

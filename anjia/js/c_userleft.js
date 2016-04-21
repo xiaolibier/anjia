@@ -57,79 +57,25 @@ __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100501">未完成<
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
 
-if(__ostatus__ == "100502100503"){
+if(__ostatus__ == "100502_10050301_10050302_10050303"){
 	__html__.push('<dd class="selected">');
 }
 else{
 	__html__.push('<dd>');
 }
-__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100502100503">审核中</a>');
+__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100502_10050301_10050302_10050303">审批中</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
 
-/*  */
-if(__ostatus__ == "100515"){
+if(__ostatus__ == "100515_100505_100506"){
 	__html__.push('<dd class="selected">');
 }
 else{
 	__html__.push('<dd>');
 }
-__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100515">待确认</a>');
+__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100515_100505_100506">待放款</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
-
-if(__ostatus__ == "100505"){
-	__html__.push('<dd class="selected">');
-}
-else{
-	__html__.push('<dd>');
-}
-__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100505">待缴费</a>');
-__html__.push('<i class="common-ico ico-selected-flag"></i>');
-__html__.push('</dd>');
-
-
-if(__ostatus__ == "100506"){
-	__html__.push('<dd class="selected">');
-}
-else{
-	__html__.push('<dd>');
-}
-__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100506">待放款</a>');
-__html__.push('<i class="common-ico ico-selected-flag"></i>');
-__html__.push('</dd>');
-/* 
-if(__ostatus__ == "100502"){
-	__html__.push('<dd class="selected">');
-}
-else{
-	__html__.push('<dd>');
-}
-__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100502">商家审核中</a>');
-__html__.push('<i class="common-ico ico-selected-flag"></i>');
-__html__.push('</dd>');
-
-if(__ostatus__ == "100503" ){
-	__html__.push('<dd class="selected">');
-}
-else{
-	__html__.push('<dd>');
-}
-__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100503">风控审核中</a>');
-__html__.push('<i class="common-ico ico-selected-flag"></i>');
-__html__.push('</dd>');
- */
-
-//~ if(__ostatus__ == "100506"){
-	//~ __html__.push('<dd class="selected">');
-//~ }
-//~ else{
-	//~ __html__.push('<dd>');
-//~ }
-//~ __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100506">我的支付</a>');
-//~ __html__.push('<i class="common-ico ico-selected-flag"></i>');
-//~ __html__.push('</dd>');
-
 
 if(__ostatus__ == "100507"){
 	__html__.push('<dd class="selected">');
@@ -141,71 +87,51 @@ __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100507">还款中<
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
 
-if(__ostatus__ == "100508"){
+if(__ostatus__ == "100508_100512_100513"){
 	__html__.push('<dd class="selected">');
 }
 else{
 	__html__.push('<dd>');
 }
-__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100508">已还清</a>');
+__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100508_100512_100513">已还清</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
 
 if(__ostatus__ == "100509" ){
-	__html__.push('<dd class="selected">');
+	__html__.push('<dd id="M100509" class="selected M_hidden">');
 }
 else{
-	__html__.push('<dd>');
+	__html__.push('<dd id="M100509" class="M_hidden">');
 }
 __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100509">拒绝</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
 /*  */
 if(__ostatus__ == "100510"){
-	__html__.push('<dd class="selected">');
+	__html__.push('<dd id="M100510" class="selected M_hidden">');
 }
 else{
-	__html__.push('<dd>');
+	__html__.push('<dd id="M100510" class="M_hidden">');
 }
 __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100510">已逾期</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
 /*  */
 if(__ostatus__ == "100511"){
-	__html__.push('<dd class="selected">');
+	__html__.push('<dd id="M100511" class="selected M_hidden">');
 }
 else{
-	__html__.push('<dd>');
+	__html__.push('<dd id="M100511" class="M_hidden">');
 }
 __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100511">已违约</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
 /*  */
-if(__ostatus__ == "100512"){
-	__html__.push('<dd class="selected">');
-}
-else{
-	__html__.push('<dd>');
-}
-__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100512">逾期已还清</a>');
-__html__.push('<i class="common-ico ico-selected-flag"></i>');
-__html__.push('</dd>');
-/*  */
-if(__ostatus__ == "100513"){
-	__html__.push('<dd class="selected">');
-}
-else{
-	__html__.push('<dd>');
-}
-__html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100513">违约已还清</a>');
-__html__.push('<i class="common-ico ico-selected-flag"></i>');
-__html__.push('</dd>');
-/*  */
 if(__ostatus__ == "100514"){
-	__html__.push('<dd class="selected">');
+	__html__.push('<dd id="M100514" class="selected M_hidden">');
 }
 else{
-	__html__.push('<dd>');
+	__html__.push('<dd id="M100514" class="M_hidden">');
 }
 __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100514">已取消</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
@@ -223,7 +149,7 @@ if(__item__ == 5){
 else{
 	__html__.push('<div class="nav-main-item">');
 }
-__html__.push('<a id="userleft_abtn" href="/anjia/usercenter.html?item=5&ostatus=100500">我的额度</a>');
+__html__.push('<a id="userleft_abtn">我的额度</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</div>');
 __html__.push('</li>');
@@ -265,19 +191,6 @@ __html__.push('</dd>');
 __html__.push('</dl>');
 /*  */
 __html__.push('</li>');
-/* __html__.push('<li>');
-
-if(__item__ == 3){
-	__html__.push('<div class="nav-main-item selected">');
-}
-else{
-	__html__.push('<div class="nav-main-item">');
-}
-
-__html__.push('<a href="/anjia/changephone.html?item=3">换绑手机</a>');
-__html__.push('<i class="common-ico ico-selected-flag"></i>');
-__html__.push('</div>');
-__html__.push('</li>'); */
 __html__.push('<li>');
 
 if(__item__ == 4){
@@ -322,6 +235,3 @@ document.write(__html__.join(''));
 		$(".sub-left-nav ul li .nav-main-item .up_down_a2").addClass("up");	
 		$(".sub-left-nav .sub-left-sec-nav-n").fadeIn(0);
 	}
-
-	
-	

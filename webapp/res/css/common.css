@@ -1107,3 +1107,27 @@ div.shili span.idcard i.i2{font-style:normal;}
 .inp-item.one_pay_div,.one_pay .inp-item.other_pay_div{display:none;}
 .one_pay .inp-item.one_pay_div,.inp-item.other_pay_div{display:-webkit-box;}
 .one_pay .inp-item.one_pay_div,.inp-item.other_pay_div{display:-moz-box;width:100%;}
+
+/* 手机个人中心订单列表改版 */
+.sub-main.index{padding-top:20px;}
+.sub-main.index .order-list{overflow:hidden;}
+.sub-main.index .order-list .common_h4{float:left;display:block;width:100%;height:30px;line-height:30px;position:relative;top:0;}
+.sub-main.index .order-list .common_h4 .common_left_ico{background:url('../images/common_left_ico.png') no-repeat center center;background-size:40% 40%;}
+.sub-main.index .order-list .common_h4 .common_left_ico{position:absolute;left:-14px;margin-left:20%;vertical-align:middle;display:inline-block;width:30px;height:30px;}
+.sub-main.index .order-list1.show .common_h4 .common_left_ico{background:url('../images/common_left_ico1.png') no-repeat center center;background-size:contain;}
+.sub-main.index .order-list2.show .common_h4 .common_left_ico{background:url('../images/common_left_ico2.png') no-repeat center center;background-size:contain;}
+.sub-main.index .order-list3.show .common_h4 .common_left_ico{background:url('../images/common_left_ico3.png') no-repeat center center;background-size:contain;}
+.sub-main.index .order-list4.show .common_h4 .common_left_ico{background:url('../images/common_left_ico4.png') no-repeat center center;background-size:contain;}
+.sub-main.index .order-list5.show .common_h4 .common_left_ico{background:url('../images/common_left_ico5.png') no-repeat center center;background-size:contain;}
+.sub-main.index .order-list6.show .common_h4 .common_left_ico{background:url('../images/common_left_ico6.png') no-repeat center center;background-size:contain;}
+.sub-main.index .order-list7.show .common_h4 .common_left_ico{background:url('../images/common_left_ico7.png') no-repeat center center;background-size:contain;}
+.sub-main.index .order-list8.show .common_h4 .common_left_ico{background:url('../images/common_left_ico8.png') no-repeat center center;background-size:contain;}
+.sub-main.index .order-list9.show .common_h4 .common_left_ico{background:url('../images/common_left_ico9.png') no-repeat center center;background-size:contain;}
+.sub-main.index .content_box{min-height:40px;background:none;border-left:1px solid #4cc51a;margin-left:20%;padding-left:5%;}
+.sub-main.index .order-list1 .content_box{margin-top:20px;}
+.sub-main.index .order-list  ul.order-list-ul{display:inline-block;width:100%;margin-top:-20px;}
+.sub-main.index .order-list .common_h4  span.text{font-size:14px;display:inline-block;width:17%;text-align:center;}
+.sub-main.index div.order-item-box .box-item{display:block;}
+.sub-main.index .order-list.M_hidden{display:none;}
+.sub-main.index .order-list.M_hidden.M_show{display:block;}
+.sub-main.index  div.order-list .order-list-ul li{margin:0;margin-top:10px;}

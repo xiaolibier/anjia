@@ -469,12 +469,13 @@ function OrderLeftProtocolClick(){
 			var expectRepaymentTime = d.expectRepaymentTime || "";
 			var overdueTime = d.overdueTime || 0;
 			var overdueFee = d.overdueFee || 0;
+			var currentBalance = d.currentBalance || 0;
 			var realRepaymentTime = d.realRepaymentTime || "无";
 			var monthPoundage = d.monthPoundage || "";
 			var status = d.status || "";
 			var repaymentType = d.repaymentType || "";
 			var overdueCount = d.overdueCount || "";
-
+			var realRepaymentTime = d.realRepaymentTime || "";
 			html.push('<li>');
 			html.push('<div class="order-item-top">');
 			if(status == "101903"){
@@ -527,14 +528,26 @@ function OrderLeftProtocolClick(){
 			html.push('<p><i class="common-ico product-tip3"></i>应还时间：<span class="color-green">' + expectRepaymentTime + '</span></p>');
 			html.push('</div>');
 			html.push('</div>');
+			if(g.pa == "4"){
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p><i class="common-ico product-tip3"></i>逾期天数：<span class="color-green">' + overdueTime + '</span>天</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p><i class="common-ico product-tip2"></i>逾期费用：<span class="color-green">' + overdueFee + '</span>元</p>');
+				html.push('</div>');
+				html.push('</div>');
+				html.push('<div class="box-item">');
+				html.push('<div class="box-item-text">');
+				html.push('<p><i class="common-ico product-tip3"></i>实还时间：<span class="color-green">' + realRepaymentTime + '</span>天</p>');
+				html.push('</div>');
+				html.push('</div>');
+			}
 			html.push('<div class="box-item">');
 			html.push('<div class="box-item-text">');
-			html.push('<p><i class="common-ico product-tip3"></i>逾期天数：<span class="color-green">' + overdueTime + '</span>天</p>');
-			html.push('</div>');
-			html.push('</div>');
-			html.push('<div class="box-item">');
-			html.push('<div class="box-item-text">');
-			html.push('<p><i class="common-ico product-tip2"></i>逾期费用：<span class="color-green">' + overdueFee + '</span>元</p>');
+			html.push('<p><i class="common-ico product-tip3"></i>应还金额：<span class="color-green">' + currentBalance + '</span></p>');
 			html.push('</div>');
 			html.push('</div>');
 			html.push('</div>');

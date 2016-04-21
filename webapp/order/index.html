@@ -18,212 +18,70 @@
             </a>
         	我的订单
         </div>
-		<div class="sub-main">
-			<div id="orderstatus" class="staging-tab clearfix">
-            	<div class="staging-tab-item selected"><a id="" href="javascript:void(0);">全部订单</a></div>
-                <div class="staging-tab-item"><a id="100506" href="javascript:void(0);">待放款</a></div>
-                <div class="staging-tab-item"><a id="100507" href="javascript:void(0);">还款中</a></div>
-                <div class="staging-tab-item"><a id="100508" href="javascript:void(0);">已还清</a></div>
-                <div class="staging-tab-item" id="otherItem"><div class="other-item">更多<i class="trigger common-select-trigger"></i></div></div>
-                <dl id="allorderstatus" class="other-choose-list">
-                	<dd id="100501">
-                    	<a href="javascript:void(0)">未完成</a>
-                    </dd>
-                    <dd id="100502100503">
-                        <a href="javascript:void(0)">审核中</a>
-                    </dd>
-                    <!-- <dd id="100503">
-                        <a href="javascript:void(0)">风控审核中</a>
-                    </dd> -->
-                    <!-- <dd id="100504">
-                        <a href="javascript:void(0)">已删除</a>
-                    </dd> -->
-                    <dd id="100515">
-                        <a href="javascript:void(0)">待确认</a>
-                    </dd>
-					<dd id="100505">
-                        <a href="javascript:void(0)">待缴费</a>
-                    </dd>
-                    <dd id="100509">
-                        <a href="javascript:void(0)">拒绝</a>
-                    </dd>
-					<dd id="100510">
-                        <a href="javascript:void(0)">已逾期</a>
-                    </dd>
-					<dd id="100511">
-                        <a href="javascript:void(0)">已违约</a>
-                    </dd>
-					<dd id="100512">
-                        <a href="javascript:void(0)">逾期已还清</a>
-                    </dd>
-					<dd id="100513">
-                        <a href="javascript:void(0)">违约已还清</a>
-                    </dd>
-					<dd id="100514">
-                        <a href="javascript:void(0)">已取消</a>
-                    </dd>					
-                </dl>
-            </div>
-            <div class="order-list">
-            	<ul id="orderlist" class="order-list-ul">
-			<!--
-                	<li>
-                    	<div class="order-item-top">
-                        	<div class="order-state state-grey">订单未完成</div>
-                        	<div class="order-type-name">
-                            	<i class="common-ico product-ico"></i>尊享家
-                            </div>
-                        </div>
-                        <div class="order-item-box">
-                        	<div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip1"></i>订单编号：<span class="color-green">35824856</span></p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip1"></i>合同编号：<span class="color-green">35824856</span></p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip2"></i>分期金额：<span class="color-green">23500</span>元</p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip3"></i>最近待还：<span class="color-green">5</span>期</p>
-                                </div>
-                                <div class="box-item-text">
-                                	<p><i class="common-ico product-tip3"></i>总期数：<span class="color-green">15</span>期</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="order-item-btn-box">
-                        	<a href="../mystaging/mystaging.html" class="item-btn item-btn-green">编辑</a>
-                        	<a href="javascript:void(0)" class="item-btn item-btn-red">删除</a>
-                        </div>
-                    </li>
-                	<li>
-                    	<div class="order-item-top">
-                        	<div class="order-state state-orange">待放款</div>
-                        	<div class="order-type-name">
-                            	<i class="common-ico product-ico"></i>生活家
-                            </div>
-                        </div>
-                        <div class="order-item-box">
-                        	<div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip1"></i>订单编号：<span class="color-green">35824856</span></p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip1"></i>合同编号：<span class="color-green">35824856</span></p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip2"></i>分期金额：<span class="color-green">23500</span>元</p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip3"></i>最近待还：<span class="color-green">5</span>期</p>
-                                </div>
-                                <div class="box-item-text">
-                                	<p><i class="common-ico product-tip3"></i>总期数：<span class="color-green">15</span>期</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="order-item-btn-box">
-                        	<a href="order-detail.html" class="item-btn item-btn-green">查看详情</a>
-                        	<a href="javascript:void(0)" class="item-btn item-btn-red">删除</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="order-item-top">
-                        	<div class="order-state state-green">已还清</div>
-                        	<div class="order-type-name">
-                            	<i class="common-ico product-ico"></i>生活家
-                            </div>
-                        </div>
-                        <div class="order-item-box">
-                        	<div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip1"></i>订单编号：<span class="color-green">35824856</span></p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip1"></i>合同编号：<span class="color-green">35824856</span></p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip2"></i>分期金额：<span class="color-green">23500</span>元</p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip3"></i>最近待还：<span class="color-green">5</span>期</p>
-                                </div>
-                                <div class="box-item-text">
-                                	<p><i class="common-ico product-tip3"></i>总期数：<span class="color-green">15</span>期</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="order-item-btn-box">
-                        	<a href="already-repayment-detail.html" class="item-btn item-btn-green">查看详情</a>
-                        	<a href="javascript:void(0)" class="item-btn item-btn-red">删除</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="order-item-top">
-                        	<div class="order-state state-orange">还款中</div>
-                        	<div class="order-type-name">
-                            	<i class="common-ico product-ico"></i>尊享家
-                            </div>
-                        </div>
-                        <div class="order-item-box">
-                        	<div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip1"></i>订单编号：<span class="color-green">35824856</span></p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip1"></i>合同编号：<span class="color-green">35824856</span></p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip2"></i>分期金额：<span class="color-green">23500</span>元</p>
-                                </div>
-                            </div>
-                            <div class="box-item">
-                            	<div class="box-item-text">
-                                	<p><i class="common-ico product-tip3"></i>最近待还：<span class="color-green">5</span>期</p>
-                                </div>
-                                <div class="box-item-text">
-                                	<p><i class="common-ico product-tip3"></i>总期数：<span class="color-green">15</span>期</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="order-item-btn-box">
-                        	<a href="repayment-list-item.html" class="item-btn item-btn-green">查看详情</a>
-                        	<a href="javascript:void(0)" class="item-btn item-btn-red">删除</a>
-                        </div>
-                    </li>
-                    -->
-                </ul>
-                <div class="btn-box">
-                	<a id="nextpagebtn" style="display:none" href="javascript:void(0)" class="common-btn btn-white">加载下一页</a>
-                </div>
-				<div class="btn-box">
-                	<a id="prepagebtn" style="display:none" href="javascript:void(0)" class="common-btn btn-white">加载上一页</a>
-                </div>
-            </div>
+		<div class="sub-main index">
+			<div class="order-list order-list1">
+				<div class="common_h4 active"><span class="text">未完成</span><i class="common_left_ico"></i></div>
+				<div class="content_box">
+					<ul id="orderlist1" class="order-list-ul">
+					</ul>
+				</div>	
+			</div>
+			<div class="order-list order-list2">
+				<div class="common_h4"><span class="text">审核中</span><i class="common_left_ico"></i></div>
+				<div class="content_box">
+					<ul id="orderlist2" class="order-list-ul">
+					</ul>
+				</div>	
+			</div>
+			<div class="order-list order-list3">
+				<div class="common_h4"><span class="text">待放款</span><i class="common_left_ico"></i></div>
+				<div class="content_box">
+					<ul id="orderlist3" class="order-list-ul">
+					</ul>
+				</div>	
+			</div>
+			<div class="order-list order-list4">
+				<div class="common_h4"><span class="text">还款中</span><i class="common_left_ico"></i></div>
+				<div class="content_box">
+					<ul id="orderlist4" class="order-list-ul">
+					</ul>
+				</div>	
+			</div>
+			<div class="order-list order-list5">
+				<div class="common_h4"><span class="text">已还清</span><i class="common_left_ico"></i></div>
+				<div class="content_box">
+					<ul id="orderlist5" class="order-list-ul">
+					</ul>
+				</div>	
+			</div>
+			<div class="order-list order-list6 M_hidden">
+				<div class="common_h4"><span class="text">拒绝</span><i class="common_left_ico"></i></div>
+				<div class="content_box">
+					<ul id="orderlist6" class="order-list-ul">
+					</ul>
+				</div>	
+			</div>
+			<div class="order-list order-list7 M_hidden">
+				<div class="common_h4"><span class="text">已逾期</span><i class="common_left_ico"></i></div>
+				<div class="content_box">
+					<ul id="orderlist7" class="order-list-ul">
+					</ul>
+				</div>	
+			</div>
+			<div class="order-list order-list8 M_hidden">
+				<div class="common_h4"><span class="text">已违约</span><i class="common_left_ico"></i></div>
+				<div class="content_box">
+					<ul id="orderlist8" class="order-list-ul">
+					</ul>
+				</div>	
+			</div>
+			<div class="order-list order-list9 M_hidden">
+				<div class="common_h4"><span class="text">已取消</span><i class="common_left_ico"></i></div>
+				<div class="content_box">
+					<ul id="orderlist9" class="order-list-ul">
+					</ul>
+				</div>	
+			</div>
 		</div>
 	</div>
 
