@@ -268,7 +268,6 @@ $(function(){
 	}
 
 	function sendGetUserOrderListHttp(condi){
-		g.httpTip.show();
 		var url = Base.serverUrl + "order/queryOrderList";//之前是order/queryOrderList
 		$.ajax({
 			url:url,
@@ -286,10 +285,8 @@ $(function(){
 					var msg = data.message || "获取用户订单失败";
 					alert(msg);
 				}
-				g.httpTip.hide();
 			},
 			error:function(data){
-				g.httpTip.hide();
 			}
 		});
 	}
