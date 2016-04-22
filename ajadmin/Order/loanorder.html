@@ -46,8 +46,9 @@
 		结束时间：<input type="text" id="applicationTimeEnd" name="applicationTimeEnd" style="width:206px;" />&nbsp;&nbsp;
 		订单&nbsp;&nbsp;&nbsp;编号：<input type="text" id="orderId" name="orderId" style="width:206px;" />&nbsp;&nbsp;
 		<button id="querybtn" type="button" class="btn btn-primary" style="width: 140px">查询</button>
-		<button type="button" onclick="down('DataTable','支付订单管理')" class="btn btn-warning" style="width: 140px">导出本页</button>
-		<a href="#" id="export">导出全部</a>
+		<!--<button type="button" onclick="down('DataTable','支付订单管理')" class="btn btn-warning" style="width: 140px">导出本页</button>-->
+		<button type="button"  id="outBut" class="btn btn-warning" style="width: 140px">导出全部</button>
+		<!--<a href="#" id="export">导出全部</a>-->
 	</form>
 
 	<div id="orderlist">
@@ -88,6 +89,9 @@
 	<script src="js/loanorder.js"></script>
 	<script  src="../JsOutXls/jquery.base64.js"></script>
 	<script src="../JsOutXls/JsDown.js"></script>
+	<script src="../Js/HmgxExtend.js"></script>
+
+
 </body>
 </html>
 

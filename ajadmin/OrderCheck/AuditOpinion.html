@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>审核意见</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../Css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="js/table.css"/>
+    <script type="text/javascript" src="../Js/jquery.js"></script>
+    <script type="text/javascript" src="../Js/bootstrap.js"></script>
+    <script type="text/javascript" src="../Js/ckform.js"></script>
+    <script type="text/javascript" src="../Js/common.js"></script>
+    <script src="../libs/json.js"></script>
+    <script src="../libs/base.js"></script>
+    <script src="../libs/utils.js"></script>
+    <script>
+
+        //页面初始化
+        $(function () {
+            var g = {};
+            g.phone = "";
+            g.imgCodeId = "";
+            g.sendCode = false;
+            g.sendTime = 60;
+            g.login_token = Utils.offLineStore.get("token", false) || "";
+            g.httpTip = new Utils.httpTip({});
+            g.orderId = Utils.getQueryString("orderId");
+
+            //验证登录状态
+            var loginStatus = Utils.getUserInfo();
+            if (!loginStatus) {
+                alert("您没有登陆系统！");
+            } else {
+                //获取数据列表
+                readOpinion();
+            }
+
+            function readOpinion() {
+                g.httpTip.show();
+                $.ajax({
+                    url: Base.serverUrl + "order/getAuditOpinion",
+                    data: {login_token: g.login_token, orderId: g.orderId},
+                    type: "POST",
+                    dataType: "json",
+                    context: this,
+                    success: function (data) {
+                        var success = data.success;
+                        if (success) {
+                            var list = data.list;
+                            if(list.length==0){
+                                Utils.alert("没有审核意见数据！");
+                            }
+                            for(var i = 0; i < list.length;i++) {
+                                switch (list[i].approve_type) {
+                                    case "101702"://终审
+                                        $("#zsbg").val(list[i].approve_report);
+                                        break;
+                                    case "101703"://复审
+                                        $("#fsbg").val(list[i].approve_report);
+                                        break;
+                                    case "101704"://初审
+                                        $("#csbg").val(list[i].approve_report);
+                                        $("#csyj").val(list[i].approve_remarks);
+                                        break;
+                                }
+                            }
+                        } else {
+                            Utils.alert(data.message);
+                        }
+                        g.httpTip.hide();
+                    },
+                    error: function (data) {
+                        g.httpTip.hide();
+                    }
+                });
+            }
+        })
+        ;
+
+
+    </script>
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+<table class="table table-bordered table-hover definewidth m10">
+    <tr>
+        <td class="tableleft">初审报告</td>
+        <td><textarea id="csbg" name="csbg" style="width:99%;height:80px;" disabled></textarea></td>
+    </tr>
+    <tr>
+        <td class="tableleft">初审意见</td>
+        <td><textarea id="csyj" name="csyj" style="width:99%;height:80px;" disabled></textarea></td>
+    </tr>
+    <tr>
+        <td class="tableleft">复审报告</td>
+        <td><textarea id="fsbg" name="fsbg" style="width:99%;height:80px;" disabled></textarea></td>
+    </tr>
+    <tr>
+        <td class="tableleft">终审报告</td>
+        <td><textarea id="zsbg" name="zsbg" style="width:99%;height:80px;" disabled></textarea></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center">
+            <button id="backid" type="button" class="btn" type="button" onclick="window.close()">关闭</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

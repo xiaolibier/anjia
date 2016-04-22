@@ -48,6 +48,13 @@ $(function(){
 
 	$("#querybtn").bind("click",queryOrderList);
 	$("#export").attr("href", Base.serverUrl  + "order/queryLoanRecordByQueryExport?login_token=" + g.login_token);
+	$("#outBut").bind("click", function(){
+		var ParamObj={};
+		ParamObj.login_token = g.login_token;
+		ParamObj.currentPageNum = 1;
+		ParamObj.pageSize = 10000;
+		Hmgx.serializeDownload(Base.serverUrl  + "order/queryLoanRecordByQueryExport","CX",ParamObj);
+	});
 
 	function queryOrderList(){
 		g.currentPage = 1;
