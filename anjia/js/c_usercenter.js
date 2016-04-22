@@ -17,14 +17,16 @@ $(function(){
 	g.orderDetailInfo = {};
 	g.orderInfo = {};
 	g.orderStatus = Utils.getQueryString("ostatus") || "";
+	g.item = Utils.getQueryString("item") || "";
 	g.get_coupons_money = 0;
 	g.useLeastMoney = 0;//优惠券限制使用最低金额
 	g.coupons = [];
+	g.token1 = Utils.getQueryString("t1") || "";
 	//验证登录状态
 	var loginStatus = Utils.getUserInfo();
 	if(!loginStatus){
 		//未登录
-		location.replace("/anjia/login.html");
+		if(g.token1 != ""){getUserInfo_func();}else{location.replace("/anjia/login.html");}
 	}
 	else{
 		getUserInfo();
@@ -53,6 +55,37 @@ $(function(){
 	$(".yuqi_box a.close_btn,.yuqi_box.yuqi_box2 .btn a.a_btn2").bind("click",close_box);
 	$(".yuqi_box span.color").bind("click",show_toggle);
 	
+	/* 为了解决网银支付跳转到个人中心 */
+	function getUserInfo_func(){
+		var condi = {};
+		condi.login_token = g.token1;
+		var url = Base.serverUrl + "user/getCustomerByToken";
+		$.ajax({
+			url:url,
+			data:condi,
+			type:"POST",
+			dataType:"json",
+			context:this,
+			success: function(data){
+				var success = data.success || false;
+				if(success){
+					var userInfo = data.obj || "";
+					if(userInfo !== ""){
+						userInfo = JSON.stringify(userInfo);
+						//保存用户数据
+						Utils.offLineStore.set("userinfo",userInfo,false);
+						var token = data.token || "";
+						Utils.offLineStore.set("token",token,false);
+						location.reload();
+					}
+				}else{
+					var msg = data.message || "";
+				}
+			},
+			error:function(data){
+			}
+		});
+	}
 	/* 逾期 */
 	function yuqi_message_fuc(){
 		//order/selectCustomerOrderNextRepaymentRecords
@@ -491,6 +524,8 @@ $(function(){
 		html.push('<th width="110">申请分期期数</th>');
 		html.push('<th>操作</th>');
 		html.push('</tr>');
+		var _status = ["100501","100502_100503","100515_100505_100506","100507","100508_100512_100513","100509","100510","100511","100514"];
+		var score = 0;
 		var obj = data.list || [];
 		for(var i = 0,len = obj.length; i < len; i++){
 			var d = obj[i];
@@ -541,7 +576,7 @@ $(function(){
 			}
 			else if(status == "100506"){
 				//100506: "待放款"
-				html.push('<td><a class="a1" href="javascript:showOrderDetail(\'' + orderId + '\',0)">查看</a></td>');
+				html.push('<td><a class="a1" href="javascript:showOrderDetail(\'' + orderId + '\',1)">查看</a></td>');
 			}
 			else if(status == "100507"){
 				//100506: "待放款"
@@ -575,7 +610,18 @@ $(function(){
 				html.push('<td><a class="a1" href="javascript:showOrderDetail(\'' + orderId + '\',-1)">查看</a><a class="a3" href="javascript:confirmOrder_fun(\'' + orderId + '\')">接受</a></td>');
 			}
 			html.push('</tr>');
+			/* 初次加载显示左侧菜单选中状态 */
+			for(var s = 0;s < _status.length;s++ ){
+				var a = s+1;
+				var str = _status[s].split("_") || [];
+				var con = (status == str[0] || status == str[1] || status == str[2] || status == str[3] || status == str[4]) ? true : false;
+				if(con){
+					$("#M"+_status[s]).addClass("selected");
+					score++;
+				}
+			}
 		}
+		if(score >= 1){$("dl.sub-left-sec-nav.sub-left-sec-nav-m").slideDown(0);}
 		html.push('</table>');
 
 		var pobj = data.obj || {};
@@ -1177,7 +1223,7 @@ function sendGetPayOrderListHttp4(condi){
 			}
 			else if(status == "100506"){
 				//100506: "待放款"
-				html.push('<td><a class="a1" href="javascript:showOrderDetail(\'' + orderId + '\',0)">查看</a></td>');
+				html.push('<td><a class="a1" href="javascript:showOrderDetail(\'' + orderId + '\',1)">查看</a></td>');
 			}
 			else if(status == "100507"){
 				//100506: "待放款"
@@ -2905,11 +2951,11 @@ function sendGetPayOrderListHttp12(condi){
 				var status = data.success || false;
 				if(status){
 					//用户绑定银行卡
-					location.href = "/anjia/card-pay2.html?recordId=" + poundageRecordId + "&p=" + yinghuanjine+"&id=" + get_coupons_couponId;
+					location.href = "/anjia/payment.html?recordId=" + poundageRecordId + "&p=" + yinghuanjine+"&id=" + get_coupons_couponId+"&BK=1";
 				}
 				else{
 					//用户没有绑定银行卡
-					location.href = "/anjia/bind-card.html?recordId=" + poundageRecordId + "&p=" + yinghuanjine+"&id=" + get_coupons_couponId;
+					location.href = "/anjia/payment.html?recordId=" + poundageRecordId + "&p=" + yinghuanjine+"&id=" + get_coupons_couponId+"&BK=2";
 				}
 				g.httpTip.hide();
 			},

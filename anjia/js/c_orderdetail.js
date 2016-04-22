@@ -792,11 +792,11 @@ $(function(){
 				var status = data.success || false;
 				if(status){
 					//用户绑定银行卡
-					location.href = "/anjia/card-pay2.html?recordId=" + repaymentRecordId + "&p=" + yinghuanjine+"&id=" + g.couponId;
+					location.href = "/anjia/payment.html?recordId=" + repaymentRecordId + "&p=" + yinghuanjine+"&id=" + g.couponId+"&BK=1";
 				}
 				else{
 					//用户没有绑定银行卡
-					location.href = "/anjia/bind-card.html?recordId=" + repaymentRecordId + "&p=" + yinghuanjine+"&id=" + g.couponId;
+					location.href = "/anjia/payment.html?recordId=" + repaymentRecordId + "&p=" + yinghuanjine+"&id=" + g.couponId+"&BK=2";
 				}
 				g.httpTip.hide();
 			},

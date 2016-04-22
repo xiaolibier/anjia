@@ -48,50 +48,50 @@ __html__.push('</div>');
 __html__.push('<dl class="sub-left-sec-nav sub-left-sec-nav-m">');
 
 if(__ostatus__ == "100501"){
-	__html__.push('<dd class="selected">');
+	__html__.push('<dd id="M100501" class="selected">');
 }
 else{
-	__html__.push('<dd>');
+	__html__.push('<dd id="M100501">');
 }
 __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100501">未完成</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
 
 if(__ostatus__ == "100502_10050301_10050302_10050303"){
-	__html__.push('<dd class="selected">');
+	__html__.push('<dd id="M100502_100503" class="selected">');
 }
 else{
-	__html__.push('<dd>');
+	__html__.push('<dd id="M100502_100503">');
 }
 __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100502_10050301_10050302_10050303">审批中</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
 
 if(__ostatus__ == "100515_100505_100506"){
-	__html__.push('<dd class="selected">');
+	__html__.push('<dd id="M100515_100505_100506" class="selected">');
 }
 else{
-	__html__.push('<dd>');
+	__html__.push('<dd id="M100515_100505_100506">');
 }
 __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100515_100505_100506">待放款</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
 
 if(__ostatus__ == "100507"){
-	__html__.push('<dd class="selected">');
+	__html__.push('<dd id="M100507" class="selected">');
 }
 else{
-	__html__.push('<dd>');
+	__html__.push('<dd id="M100507">');
 }
 __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100507">还款中</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
 
 if(__ostatus__ == "100508_100512_100513"){
-	__html__.push('<dd class="selected">');
+	__html__.push('<dd id="M100508_100512_100513" class="selected">');
 }
 else{
-	__html__.push('<dd>');
+	__html__.push('<dd id="M100508_100512_100513">');
 }
 __html__.push('<a href="/anjia/usercenter.html?item=1&ostatus=100508_100512_100513">已还清</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
