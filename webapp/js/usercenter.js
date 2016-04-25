@@ -174,13 +174,13 @@ $(function(){
 	$(".yuqi_box.yuqi_box2 .btn a.a_btn1").click(function(event){
 		$(this).parents(".yuqi_box").slideUp(300);
 		Utils.offLineStore.set("weiyue_message",1,false);
-		location.href="../order/index.html?orderType=100510";
+		location.href="../order/index.html";
 		event.stopPropagation();
 	})
 	$(".yuqi_box.yuqi_box2 .btn a.a_btn3").click(function(event){
 		$(this).parents(".yuqi_box").slideUp(300);
 		Utils.offLineStore.set("weiyue_message",1,false);
-		location.href="../order/index.html?orderType=100511";
+		location.href="../order/index.html";
 		event.stopPropagation();
 	})
 		/* 显示详情 */
