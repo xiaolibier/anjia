@@ -123,7 +123,7 @@ $(function(){
 				}
 			break;
 			case "li_3":
-				url = location.href = "../order/index.html?orderType=100507";
+				url = location.href = "../order/paying.html?orderType=100507";
 				if(g.loginStatus){
 					location.href = url;
 				}
