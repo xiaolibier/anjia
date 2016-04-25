@@ -247,7 +247,7 @@ $(function(){
 	}
 
 	function sendGetUserOrderListHttp(condi){
-		condi.status = "100507";
+		condi.status = "100507_100510_100511";
 		g.httpTip.show();
 		var url = Base.serverUrl + "order/queryOrderList";//之前是queryOrdersController
 		$.ajax({
