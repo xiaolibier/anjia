@@ -1131,3 +1131,5 @@ div.shili span.idcard i.i2{font-style:normal;}
 .sub-main.index .order-list.M_hidden{display:none;}
 .sub-main.index .order-list.M_hidden.M_show{display:block;}
 .sub-main.index  div.order-list .order-list-ul li{margin:0;margin-top:10px;}
+
+li.repayment-list-detail .order-item-box .box-item{display:block;}
