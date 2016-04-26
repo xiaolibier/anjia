@@ -178,7 +178,17 @@ else{
 __html__.push('<a href="/anjia/userinfo.html?item=2&ostatus=1002">编辑资料</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</dd>');
-
+/*  */
+if(__ostatus__ == "1006"){
+	__html__.push('<dd class="selected">');
+}
+else{
+	__html__.push('<dd>');
+}
+__html__.push('<a href="/anjia/changePassword.html?item=2&ostatus=1006">修改密码</a>');
+__html__.push('<i class="common-ico ico-selected-flag"></i>');
+__html__.push('</dd>');
+/*  */
 if(__ostatus__ == "1005"){
 	__html__.push('<dd class="selected">');
 }

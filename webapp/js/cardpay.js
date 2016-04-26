@@ -25,6 +25,7 @@ $(function(){
 	g.paidMoney = 0;
 	g.codelist = [];
 	g.nowPayMoney = "";
+	g.errorMessage = "请求支付失败";//当用户点击获取验证码是提示用户错误信息
 	//获取图形验证码
 	sendGetImgCodeHttp();
 
@@ -105,9 +106,11 @@ $(function(){
 				else{
 					var msg = data.message || "查询已支付金额失败";					
 					Utils.alert(msg);
+					g.errorMessage = msg;
 				}
 			},
 			error:function(data){
+				g.errorMessage = "查询已支付金额失败";
 			}
 		});
 	}
@@ -140,10 +143,12 @@ $(function(){
 				else{
 					var msg = data.message || "获取绑定银行卡失败";
 					alert(msg);
+					g.errorMessage = msg;
 				}
 				g.httpTip.hide();
 			},
 			error:function(data){
+				g.errorMessage = "获取绑定银行卡失败";
 				g.httpTip.hide();
 			}
 		});
@@ -224,6 +229,7 @@ $(function(){
 		bankType = bankType.toUpperCase();
 		var codexiane = g.codelist[bankType] || "";
 		if(codexiane == ""){
+			g.errorMessage = "燕子安家不支持此银行卡，请更换银行卡";
 			alert('燕子安家不支持此银行卡，请更换银行卡');
 			return false;
 		}
@@ -271,6 +277,7 @@ $(function(){
 			g.breakUp = false;
 			var msg = "银行限额，无法完成支付！";
 				alert(msg);
+				g.errorMessage = msg;
 		}
 		else if(con3){//可以分笔支付
 			var money = (money2 - historyMoney).toFixed(2) || 0;
@@ -379,12 +386,14 @@ $(function(){
 					g.nowPayMoney = xiane || "";
 				}
 				else{
-					var msg = data.message || "获取绑定银行卡失败";
+					var msg = data.message || "请求支付失败";
 					alert(msg);
+					g.errorMessage = msg;
 				}
 				g.httpTip.hide();
 			},
 			error:function(data){
+				g.errorMessage = "请求支付失败";
 				g.httpTip.hide();
 			}
 		});
@@ -421,10 +430,12 @@ $(function(){
 					var msg = data.message || "支付请求失败";
 					if(msg == "单卡超过单笔支付限额"){msg = "所选银行卡余额不足"}
 					alert(msg);
+					g.errorMessage = msg;
 				}
 				g.httpTip.hide();
 			},
 			error:function(data){
+				g.errorMessage = "支付请求失败";
 				g.httpTip.hide();
 			}
 		});
@@ -435,7 +446,7 @@ $(function(){
 		var img_validate_code = $("#inputimgcode").val() || "";
 
 		if(g.payId == ""){
-			alert("正在创建支付订单ID...");
+			alert(g.errorMessage);
 			return;
 		}
 		if(img_validate_code == ""){
