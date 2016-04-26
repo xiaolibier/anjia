@@ -181,6 +181,7 @@ $(function () {
         html.push('<th>逾期天数</th>');
         html.push('<th>逾期利息</th>');
         html.push('<th>逾期管理费</th>');
+        html.push('<th>豁免金额</th>');
         html.push('<th>应还金额</th>');
         html.push('<th>初审人员</th>');
         html.push('<th>复审人员</th>');
@@ -213,14 +214,15 @@ $(function () {
             html.push('<td>' + ( d.loanTime || "") + '</td>');
             html.push('<td>' + ( d.moneyMonth || "") + '</td>');
             html.push('<td>' + ( d.overfenqiTimes || "") + '</td>');
-            html.push('<td>' + ( d.serverFee || "") + '</td>');
             html.push('<td>' + ( d.residuePrincipal || "") + '</td>');
+            html.push('<td>' + ( d.serverFee || "") + '</td>');
             html.push('<td>' + ( d.expectRepaymentTime || "") + '</td>');
             html.push('<td>' + ( d.overdueCount || "") + '</td>');
             html.push('<td>' + ( d.overdueTime || "") + '</td>');
             html.push('<td>' + ( d.overdueInterest || "") + '</td>');
             html.push('<td>' + ( d.managementFee || "") + '</td>');
-            html.push('<td>' + ( d.overPackageMoney  || "") + '</td>');
+            html.push('<td>' + ( d.exemptMoney  || "") + '</td>');
+            html.push('<td>' + ( d.currentBalance  || "") + '</td>');
             html.push('<td>' + ( d.firstApprovePerson || "") + '</td>');
             html.push('<td>' + ( d.SecondApprovePerson || "") + '</td>');
             html.push('<td>' + ( d.LastApprovePerson || "") + '</td>');

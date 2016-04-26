@@ -187,7 +187,7 @@ $(function(){
 			else if(status == "100506" || status == "100510" ){
 				//100506: "待放款"
 				//html.push('<td><a href="/anjia/orderdetail.html">查看</a></td>');
-				html.push('<td><a href="fkuan_detail.html?orderid=' + orderId + '">查看</a>&nbsp&nbsp<a href="fkuan_loan.html?orderid=' + orderId + '">放款</a></td>');
+				html.push('<td><a href="javascript:void(0)" onclick="ViewOrder(' + orderId +')">查看</a>&nbsp&nbsp<a href="fkuan_loan.html?orderid=' + orderId + '">放款</a></td>');
 			}
 			else if(status == "100507"){
 				//100506: "待放款"
@@ -365,4 +365,7 @@ $(function(){
 
 	window.sellerOrderById = sellerOrderById;
 
+	window.ViewOrder = function (OrderId){
+		Hmgx.openWin("ViewOrderDetail.html?orderid=" + OrderId );
+	}
 });
