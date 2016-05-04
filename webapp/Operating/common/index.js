@@ -1,16 +1,23 @@
 ﻿
 $(document).ready(function(){
 	/*  */	
+	var myCity = new BMap.LocalCity();
+		myCity.get(myFun);
+		
 	var g = {};
 	g.userCity = Utils.offLineStore.get("userCity",false) || "请选择";
 	g.operate = Utils.getQueryString("O") || "";//获取运营人员
 	g.channel = Utils.getQueryString("C") || "";//获取渠道
 	
-	sendGetUserInfoDicHttp();
 	$("#submit_a_btn").bind("click",submit_form);
 	//if(!isWeiXin()){alert("请使用微信");}
-
-	
+	//百度定位
+	function myFun(result){
+		var cityName = result.name;
+		g.userCity = cityName;
+		Utils.offLineStore.set("userCity",cityName,false);
+		sendGetUserInfoDicHttp();
+	}
 	
 	function submit_form(){
 		var condi = {};
