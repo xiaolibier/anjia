@@ -42,7 +42,7 @@ $(document).ready(function(){
 				success: function(data){
 					var success = data.success || "";
 					if(success){
-						alert("恭喜你，预约成功！");
+						location.href="ok.html";
 					}
 					else{
 						var msg = data.message || "预约失败";
