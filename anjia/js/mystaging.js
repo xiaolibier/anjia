@@ -620,7 +620,7 @@ $(function(){
 		g.httpTip.show();
 		var url = Base.serverUrl + "order/queryProductController";
 		var condi = {};
-		condi.companyId = companyId;
+		//condi.companyId = companyId;
 		$.ajax({
 			url:url,
 			data:condi,
