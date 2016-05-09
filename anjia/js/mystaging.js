@@ -42,8 +42,9 @@ $(function(){
 	else{
 		getUserInfo();
 		//sendGetProductHttp();
-		sendGetDicHttp();
-		sendGetcompanys();
+		sendGetDicHttp();//获取字典列表 如果orderId为空 则获取订单信息列表
+		sendGetcompanys();//获取合作商户
+		nextBtnUp1();
 		//getCompanyinfo();//发送商户信息到协议
 	}
 	/* 获取合作商户列表 */
@@ -663,7 +664,11 @@ $(function(){
 					changeSelectHtml(obj);
 
 					//判断是否是编辑状态
-					if(g.orderId !== ""){
+					if(g.orderId == ""){
+						//获取订单编号
+						sendGetOrderIdHttp();
+					}
+					else{
 						//$("#step1").hide();
 						//$("#step2").show();
 
@@ -747,10 +752,10 @@ $(function(){
 			Utils.offLineStore.remove("userorderinfo_detail",false);
 			sendGetProductHttp(companyId);
 
-			if(g.orderId == ""){
+			/* if(g.orderId == ""){
 				//获取订单编号
 				sendGetOrderIdHttp();
-			}
+			} */
 			window.scrollTo(0,170);
 		}
 		else{
@@ -823,7 +828,7 @@ $(function(){
 				//console.log("sendGetOrderIdHttp",data);
 				var status = data.success || false;
 				if(status){
-					g.orderId = data.obj || "";
+					g.orderId = data.obj || "";console.log(2);
 				}
 				else{
 					//var msg = data.error || "";

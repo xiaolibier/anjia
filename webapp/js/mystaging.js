@@ -43,6 +43,7 @@ $(function(){
 		//sendGetProductHttp();
 		sendGetDicHttp();
 		sendGetcompanys();
+		nextBtnUp1();
 	}
 
 	//获取图形验证码
@@ -701,7 +702,11 @@ $(function(){
 					changeSelectHtml(obj);
 
 					//判断是否是编辑状态
-					if(g.orderId !== ""){
+					if(g.orderId == ""){
+						//获取订单编号
+						sendGetOrderIdHttp();
+					}
+					else{
 						//$("#step1").hide();
 						//$("#step2").show();
 
@@ -801,10 +806,10 @@ $(function(){
 			Utils.offLineStore.remove("userorderinfo_detail",false);
 			sendGetProductHttp(companyId);
 
-			if(g.orderId == ""){
+			/* if(g.orderId == ""){
 				//获取订单编号
 				sendGetOrderIdHttp();
-			}
+			} */
 			//window.scrollTo(0,170);
 		}
 		else{
