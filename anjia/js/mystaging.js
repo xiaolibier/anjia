@@ -14,7 +14,7 @@ $(function(){
 	g.sendTime = 60;
 	g.customerId = "";
 	g.userPhone = "";
-	
+
 	g.orderId = Utils.getQueryString("orderid") || "";
 	g.poundage = 0;
 	g.moneyMonth = 0;
@@ -283,16 +283,17 @@ $(function(){
 	function validIsPhone(evt){
 		var t = $(this).val() || "";
 		var reg = /^1[3,5,7,8]\d{9}$/;
+		var reg2 = /^(\d{3}-?\d{8}|\d{4}-?\d{7,8})$/g;
 		var next = $(this).next();
 		if(t !== ""){
-			if(reg.test(t)){
+			if(reg.test(t) || reg2.test(t)){
 				$(next).html('<i class="common-ico validate-ico"></i>填写正确');
 				$(next).removeClass("validate-error");
 				$(next).addClass("validate-success");
 				$(next).show();
 			}
 			else{
-				$(next).html('<i class="common-ico validate-ico"></i>手机号码输入错误');
+				$(next).html('<i class="common-ico validate-ico"></i>号码输入错误');
 				$(next).removeClass("validate-success");
 				$(next).addClass("validate-error");
 				$(next).show();
@@ -469,8 +470,9 @@ $(function(){
 			return b;
 		}
 		var reg = /^1[3,5,7,8]\d{9}$/;
+		var reg2 = /^(\d{3}-?\d{8}|\d{4}-?\d{7,8})$/g;
 		var next = dom.next();
-		if(reg.test(txt)){
+		if(reg.test(txt) || reg2.test(txt)){
 			b = true;
 			$(next).html('<i class="common-ico validate-ico"></i>填写正确');
 			$(next).removeClass("validate-error");
@@ -478,7 +480,7 @@ $(function(){
 			$(next).show();
 		}
 		else{
-			$(next).html('<i class="common-ico validate-ico"></i>手机号码输入错误');
+			$(next).html('<i class="common-ico validate-ico"></i>号码输入错误');
 			$(next).removeClass("validate-success");
 			$(next).addClass("validate-error");
 			$(next).show();
@@ -828,7 +830,8 @@ $(function(){
 				//console.log("sendGetOrderIdHttp",data);
 				var status = data.success || false;
 				if(status){
-					g.orderId = data.obj || "";console.log(2);
+					g.orderId = data.obj || "";
+					location.href = "/anjia/mystaging.html?orderid="+g.orderId;
 				}
 				else{
 					//var msg = data.error || "";
@@ -1851,7 +1854,7 @@ $(function(){
 				else{
 					//var msg = data.error || "";
 					var msg = data.message || "获取订单信息失败";
-					Utils.alert(msg);
+					//Utils.alert(msg);
 				}
 				g.httpTip.hide();
 			},

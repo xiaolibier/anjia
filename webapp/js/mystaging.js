@@ -317,16 +317,17 @@ $(function(){
 	function validIsPhone(evt){
 		var t = $(this).val() || "";
 		var reg = /^1[3,5,7,8]\d{9}$/;
+		var reg2 = /^(\d{3}-?\d{8}|\d{4}-?\d{7,8})$/g;
 		var next = $(this).next();
 		if(t !== ""){
-			if(reg.test(t)){
+			if(reg.test(t) || reg2.test(t)){
 				$(next).html('<i class="common-ico validate-ico"></i>填写正确');
 				$(next).removeClass("validate-error");
 				$(next).addClass("validate-success");
 				$(next).show();
 			}
 			else{
-				$(next).html('<i class="common-ico validate-ico"></i>手机号码输入错误');
+				$(next).html('<i class="common-ico validate-ico"></i>号码输入错误');
 				$(next).removeClass("validate-success");
 				$(next).addClass("validate-error");
 				$(next).show();
@@ -521,8 +522,9 @@ $(function(){
 		var b = false;
 		if(txt==""){return true;}
 		var reg = /^1[3,5,7,8]\d{9}$/;
+		var reg2 = /^(\d{3}-?\d{8}|\d{4}-?\d{7,8})$/g;
 		var next = dom.next();
-		if(reg.test(txt)){
+		if(reg.test(txt) || reg2.test(txt)){
 			b = true;
 			//~ $(next).html('<i class="common-ico validate-ico"></i>填写正确');
 			//~ $(next).removeClass("validate-error");
@@ -535,7 +537,7 @@ $(function(){
 			//~ $(next).addClass("validate-error");
 			//~ $(next).show();
 
-			alert(msg + "手机号码输入错误");
+			alert(msg + "号码输入错误");
 		}
 		return b;
 	}
