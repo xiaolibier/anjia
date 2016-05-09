@@ -165,6 +165,7 @@ $(function(){
 		html.push('<th>设计师电话</th>');
 		html.push('<th>运营人员</th>');
 		html.push('<th>投放渠道</th>');
+		html.push('<th>活动名称</th>');
 		html.push('</tr>');
 		var obj = data.list || [];
 		for(var i = 0,len = obj.length; i < len; i++){
@@ -181,6 +182,7 @@ $(function(){
 			var designPhone = d.designPhone || "";
 			var operate = d.operate || "";
 			var channel = d.channel || "";
+			var activity = d.activity || "";
 
 			html.push('<tr>');
 			html.push('<td>' + createTime + '</td>');
@@ -191,6 +193,7 @@ $(function(){
 			html.push('<td>' + designPhone + '</td>');
 			html.push('<td>' + operate + '</td>');
 			html.push('<td>' + channel + '</td>');
+			html.push('<td>' + activity + '</td>');
 			html.push('</tr>');
 		}
 		html.push('</table>');
@@ -359,8 +362,11 @@ $(function(){
 			});
 		}
 	}
-
-
+	window.OutXls = function(){
+        var ParamObj={};
+        ParamObj.login_token = g.login_token;
+        Hmgx.serializeDownload(Base.serverUrl  + "user/getCustomerCollectExport","CX",ParamObj);
+    }
 	window.deleteOrderById = deleteOrderById;
 
 	window.ViewOrder = function (OrderId){

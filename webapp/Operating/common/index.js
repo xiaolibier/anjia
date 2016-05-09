@@ -8,6 +8,7 @@ $(document).ready(function(){
 	g.userCity = Utils.offLineStore.get("userCity",false) || "请选择";
 	g.operate = Utils.getQueryString("O") || "";//获取运营人员
 	g.channel = Utils.getQueryString("C") || "";//获取渠道
+	g.activity = Utils.getQueryString("A") || "";//获取活动标识
 	
 	$("#submit_a_btn").bind("click",submit_form);
 	//if(!isWeiXin()){alert("请使用微信");}
@@ -28,8 +29,9 @@ $(document).ready(function(){
 		if(!validPhone()){return;}		
 		condi.designName = $("#designName").val() || "";
 		condi.designPhone = $("#designPhone").val() || "";
-		condi.operate = g.operate || "获取失败";
-		condi.channel = g.channel || "获取失败";
+		condi.operate = escape(g.operate) || "";
+		condi.channel = escape(g.channel) || "";
+		condi.activity = escape(g.activity) || "";
 		var url = Base.serverUrl + "user/insertCustomerCollect";
 		//if(!isWeiXin()){alert("请使用微信");return;}
 			$.ajax({
