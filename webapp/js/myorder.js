@@ -729,7 +729,7 @@ $(function(){
 		condi.customerId = g.customerId;
 		condi.orderId = orderId;
 		g.httpTip.show();
-		var url = Base.serverUrl + "order/confirmOrder";//修改之前queryOrdersController
+		var url = Base.serverUrl + "order/takeInOrder";//修改之前queryOrdersController
 		$.ajax({
 			url:url,
 			data:condi,
