@@ -11,6 +11,16 @@ $(document).ready(function(){
 	g.activity = Utils.getQueryString("A") || "";//获取活动标识
 	
 	$("#submit_a_btn").bind("click",submit_form);
+	$("#common_a_btn_regist").bind("click",return_regist);
+	$("#common_a_btn_tell").bind("click",return_tel);
+	/* 跳转 */
+	function return_regist(){
+		location.href="../login/regist.html";
+	}
+	function return_tel(){
+		location.href = "tel://4006616896";
+	}
+	
 	//if(!isWeiXin()){alert("请使用微信");}
 	//百度定位
 	function myFun(result){
