@@ -18,9 +18,9 @@ html,body{height:100%;position:relative;font-size:16px;font-family:microsoft yah
 .page1 .page_div .ul span.color{color:#f80000;vertical-align:middle;}
 .page1 .page_div .ul span.spacing1{letter-spacing:6px;}
 .page1 .page_div .ul span.spacing2{letter-spacing:42px;}
-.page1 .page_div .ul li{line-height:38px;margin-top:4px;}
+.page1 .page_div .ul li{line-height:38px;margin-top:0px;}
 .page1 .page_div .ul li .block{display:block;}
-.page1 .page_div .btn {text-align:center;margin-top:15px;}
+.page1 .page_div .btn {text-align:center;margin-top:5px;}
 .page1 .page_div .btn  a.btn_a{color:#14032a;display:inline-block;width:84%;margin-top:15px;height:40px;line-height:40px;text-align:center;background-color:#f9ed35;border-radius:30px;}
 .page1 .page_div .bg{background-color:#002741;position:absolute;top:0;right:0;left:0;bottom:0;z-index:1;
     /* older safari/Chrome browsers */  
@@ -60,7 +60,7 @@ select{appearance:none;-webkit-appearance: none;}
 .page3 .page_div .div2{height:60%;}
 .page3 .page_div .div1 img.img{height:100%;width:100%;margin:0 auto;}
 .page3 .page_div .div1 ul.ul{position:absolute;left:0;right:0;top:0;bottom:0;}
-.page3 .page_div .div1 ul.ul2{background:url('img/huo.png') no-repeat center 60%;background-size:10% auto;}
+.page3 .page_div .div1 .ul2{overflow:hidden;background:url('img/huo.png') no-repeat center 50%;background-size:10% auto;}
 .page3 .page_div .div1 ul.ul li{font-size:13px;color:#f9c43d;float:left;display:inline-block;width:46%;padding:0 2%;text-align:center;}
 .page3 .page_div .div1 ul.ul li .img1{width:60%;margin:0 auto;}
 .page3 .page_div .div1 ul.ul .p{color:#fa6020;margin:13% 3% 0;}
