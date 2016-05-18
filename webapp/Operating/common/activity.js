@@ -14,9 +14,10 @@ $(document).ready(function(){
 	
 	page_now();
 	window_scroll();
+	show_paiming();
 	$("#submit_a_btn").bind("click",submit_form);
 	$("#common_a_btn_regist").bind("click",return_regist);
-	$("#common_a_btn_tell").bind("click",return_tel);
+	$(".common_a_btn_tell").bind("click",return_tel);
 	$(".back_up_btn").bind("click",function(){
 		$("html, body").animate({
 		  scrollTop: "0px"
@@ -26,10 +27,44 @@ $(document).ready(function(){
 		});	
 	});
 	
+	/* 获取排名前两位 */
+	function show_paiming(){
+		var url = Base.serverUrl + "user/getCustomerCollectTop";
+		$.ajax({
+			url:url,
+			data:'',
+			type:"POST",
+			dataType:"json",
+			context:this,
+			global:false,
+			success: function(data){
+				var success = data.success || "";
+				if(success){
+					var d = data.list || [];
+					var a = ['一','二','三'];
+					var b = ['<br>',''];
+					var html = '';
+					for(var i=0;i<d.length;i++){
+						var phoneNub = d[i].userPhone || "";
+						var num = d[i].num || 0;
+						var phone =  phoneNub.substring(0,3)+'*****'+phoneNub.substring(8,phoneNub.length)+"";
+						html += '第'+a[i]+'名：'+phone+' 分享次数：'+num+'次'+b[i];
+					}
+					$('#user_list_paiming').html(html);
+				}
+				else{
+					var msg = data.message || "获取失败";
+					alert(msg);
+				}
+			},
+			error:function(data){
+			}
+		});
+	}
 	/* 滑动一屏 */
-	function window_scroll(){	
+	function window_scroll(){
 		back_top();
-		$('.body_list').each(function(evt){
+		$('.body_list_page1').each(function(evt){
 			var n1 = evt + 2,n2 = evt;
 			$(this).touchwipe({
 	 			min_move_y: 30, //纵向灵敏度
@@ -52,6 +87,47 @@ $(document).ready(function(){
 					
 				},
 	 			preventDefaultEvents: true //阻止默认事件
+	 		});
+			$(this).find('.u-arrow-bottom .pre-wrap').click(function(){
+				$("html, body").animate({
+				  scrollTop: $('.page'+n1).offset().top + "px"
+				}, {
+				  duration: 300,
+				  easing: "swing"
+				});	
+	 		});
+		});
+		$('.body_list_page2').each(function(evt){
+			var n1 = evt + 2,n2 = evt;
+			$(this).touchwipe({
+	 			min_move_y: 30, //纵向灵敏度
+				wipeDown: function() { 
+					$("html, body").animate({
+					  scrollTop: $('._page'+n2).offset().top + "px"
+					}, {
+					  duration: 300,
+					  easing: "swing"
+					});	
+					
+				}, 
+				wipeUp: function() { 
+					$("html, body").animate({
+					  scrollTop: $('._page'+n1).offset().top + "px"
+					}, {
+					  duration: 300,
+					  easing: "swing"
+					});	
+					
+				},
+	 			preventDefaultEvents: true //阻止默认事件
+	 		});
+			$(this).find('.u-arrow-bottom .pre-wrap').click(function(){
+				$("html, body").animate({
+				  scrollTop: $('.page'+n1).offset().top + "px"
+				}, {
+				  duration: 300,
+				  easing: "swing"
+				});	
 	 		});
 		});
 	}
