@@ -159,6 +159,7 @@ $(function(){
 		html.push('<tr>');
 		html.push('<th>提交时间</th>');
 		html.push('<th>客户姓名</th>');
+		html.push('<th>转发次数</th>');
 		html.push('<th>客户电话</th>');
 		html.push('<th>所在城市</th>');
 		html.push('<th>设计师姓名</th>');
@@ -176,6 +177,7 @@ $(function(){
 
 			var createTime = d.createTime || "";
 			var userName = d.userName || "";
+			var num = d.num || 0;
 			var userPhone = d.userPhone || "";
 			var userCity = d.userCity || "";
 			var designName = d.designName || "";
@@ -187,6 +189,7 @@ $(function(){
 			html.push('<tr>');
 			html.push('<td>' + createTime + '</td>');
 			html.push('<td>' + userName + '</td>');
+			html.push('<td>' + num + '次</td>');
 			html.push('<td>' + userPhone + '</td>');
 			html.push('<td>' + userCity + '</td>');
 			html.push('<td>' + designName + '</td>');

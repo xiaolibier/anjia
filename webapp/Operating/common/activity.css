@@ -1,0 +1,87 @@
+﻿
+h1,h2,h3,h4,h5,ul,li,dd,dl{margin:0;padding:0;font-weight:500;list-style-type:none;}
+a{cursor:pointer;outline:none;}
+html,body{margin:0;padding:0;}
+*{}
+html,body{height:100%;position:relative;font-size:16px;font-family:microsoft yahei;background-color:#151228;color:#fff;}
+/*  */
+.body_list,.body_list2{display:none;height:97%;padding-bottom:5%;background:url('img/common_a_bg.jpg') no-repeat top center;background-size:100% 100%;}
+/* page1 */
+.page1{display:block;}
+.page1 .page_div{height:100%;}
+.page1 .page_div img.img1{max-width:100%;margin:4% 0 6%;}
+.page1 .page_div .tip_body{width:89%;height:353px;margin:0 auto;position:relative;}
+.page1 .page_div .bg2{position:absolute;display:block;top:0;right:0;left:0;bottom:0;z-index:2;}
+.page1 .page_div .ul{text-align:center;}
+.page1 .page_div .ul span.color{color:#f80000;vertical-align:middle;}
+.page1 .page_div .ul span.spacing1{letter-spacing:6px;}
+.page1 .page_div .ul span.spacing2{letter-spacing:42px;}
+.page1 .page_div .ul li{line-height:38px;margin-top:13px;}
+.page1 .page_div .ul li .block{display:block;}
+.page1 .page_div .btn {text-align:center;margin-top:15px;}
+.page1 .page_div .btn  a.btn_a{color:#14032a;display:inline-block;width:84%;margin-top:15px;height:40px;line-height:40px;text-align:center;background-color:#f9ed35;border-radius:30px;}
+.page1 .page_div .bg{background-color:#002741;position:absolute;top:0;right:0;left:0;bottom:0;z-index:1;
+    /* older safari/Chrome browsers */  
+    -webkit-opacity: 0.5;  
+    /* Netscape and Older than Firefox 0.9 */  
+    -moz-opacity: 0.5;  
+    /* Safari 1.x (pre WebKit!) 老式khtml内核的Safari浏览器*/  
+    -khtml-opacity: 0.5;  
+    /* IE9 + etc...modern browsers */  
+    opacity: .5;  
+    /* IE 4-9 */  
+    filter:alpha(opacity=50);  
+    /*This works in IE 8 & 9 too*/  
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";  
+    /*IE4-IE9*/  
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50); 
+}
+select{appearance:none;-webkit-appearance: none;}
+.select_common,.input_common{color:#fff;background:none;border:none;border-bottom:1px solid #fff;width:47%;height:22px;line-height:22px;display:inline-block;}
+.select_common{background:none;background:url('img/down.png') no-repeat 97% center;background-size:auto 40%;}
+
+/* page1 */
+/* .page2{}
+.page2 .page_div{position:relative;height:100%;background:url('img/page1_img1.jpg') no-repeat top center;background-size:100% auto;}
+.page2 .page_div img.img1{position:absolute;bottom:10%;left:0;right:0;max-width:100%;vertical-align:bottom;}
+ */
+
+/* page2 */
+.page2{display:block;}
+.page2 .page_div{position:relative;height:100%;}
+.page2 .page_div img.img1{z-index:2;margin:0 auto;position:absolute;max-width:100%;top:0;right:0;left:0;height:100%;vertical-align:bottom;}
+
+/* page3 */
+.page3{font-size:14px;display:block;}
+.page3 .page_div{height:100%;}
+.page3 .page_div .div1{height:40%;position:relative;width:90%;margin: 0 auto;}
+.page3 .page_div .div2{height:60%;}
+.page3 .page_div .div1 img.img{height:100%;width:100%;margin:0 auto;}
+.page3 .page_div .div1 ul.ul{position:absolute;left:0;right:0;top:0;bottom:0;}
+.page3 .page_div .div1 ul.ul li{font-size:13px;color:#f9c43d;float:left;display:inline-block;width:46%;padding:0 2%;text-align:center;}
+.page3 .page_div .div1 ul.ul li .img1{width:60%;margin:0 auto;}
+.page3 .page_div .div1 ul.ul .p{color:#fa6020;margin:13% 3% 0;}
+.page3 .page_div .div1 ul.ul .p2{text-align:center;}
+
+/* page4 */
+.page4{display:block;}
+.page4 .page_div{height:100%;text-align:center;}
+.page4 .page_div img.img1{max-width:100%;margin:4% 0 1%;}
+.page4 .page_div img.img2{max-width:100%;height:72%;margin:0 auto;}
+/* page5 */
+.page5{}
+.page5 .page_div{height:100%;}
+.page5 .page_div img.img1{max-width:100%;margin:4% 0 6%;}
+.page5 .page_div img.img2{max-width:100%;margin:15% 0 0;}
+.common_a_btn{margin:20px auto;color:#fff;display:block;width:72%;height:35px;line-height:35px;text-align:center;border-radius:30px;}
+.common_a_btn1{background-color:#f9ed35;margin-top:15%;color:#000000;}
+.common_a_btn1:active{background-color:#cec42e;}
+.common_a_btn2{background-color:#ff8314;}
+.common_a_btn2:active{background-color:#c66a18;}
+
+
+/* 返回顶部 */
+.back_up_btn{z-index:5;display:inline-block;display:none;position:fixed;bottom:0;right:0;width:45px;height:45px;background:url('img/TOP.png') no-repeat top left;background-size:contain;}
+
+
+
