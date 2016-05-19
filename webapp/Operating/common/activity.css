@@ -84,8 +84,9 @@ select{appearance:none;-webkit-appearance: none;}
 .page6{}
 .page6 .page_div{height:100%;}
 .page6 .page_div img.img1{max-width:100%;margin:4% 0 6%;}
-.page6 .page_div img.img2{max-width:100%;margin:15% 0 0;}
-
+.page6 .page_div img.img2{max-width:100%;margin:0;}
+.page6 p.tip{width:80%;margin:0 auto;font-size:14px;}
+.page6 p.tip a{color:#539d34;text-decoration:underline;}
 .common_a_btn{margin:20px auto;color:#fff;display:block;width:72%;height:35px;line-height:35px;text-align:center;border-radius:30px;}
 .common_a_btn1{background-color:#f9ed35;margin-top:15%;color:#000000;}
 .common_a_btn1:active{background-color:#cec42e;}
