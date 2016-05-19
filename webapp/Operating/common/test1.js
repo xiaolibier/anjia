@@ -3,102 +3,7 @@ $(document).ready(function(){
 	/* 测试获取分享 */	
 	var g = {};
 	test();
-	function test(){
-		var condi = {};
-		condi.url = window.location.href || '';
-		var url = Base.serverUrl + "weixin/getJsSdkConfig";
-		$.ajax({
-			url:url,
-			data:condi,
-			type:"POST",
-			dataType:"json",
-			context:this,
-			global:false,
-			success: function(data){
-			
-				var d = data || {};
-				var appId = d.appId || "";
-				var signature = d.signature || "";
-				var nonceStr = d.nonceStr || "";
-				var timestamp = d.timestamp || "";
-				
-				wx.config({
-					debug: '', // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-					appId: appId, // 必填，公众号的唯一标识
-					timestamp:timestamp, // 必填，生成签名的时间戳
-					nonceStr: nonceStr, // 必填，生成签名的随机串
-					signature: signature,// 必填，签名，见附录1
-					jsApiList: ['onMenuShareQZone','onMenuShareWeibo','onMenuShareQQ','onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-				});
-				
-				/* 分享到朋友圈 */
-				wx.onMenuShareTimeline({
-					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
-					link: '', // 分享链接
-					imgUrl: 'img/logo.jpg', // 分享图标
-					success: function () { 
-						
-					},
-					cancel: function () { 
-					}
-				});	
-				/* 发送给朋友 */
-				wx.onMenuShareAppMessage({
-					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
-					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
-					link: '1', // 分享链接
-					imgUrl: 'img/logo.jpg', // 分享图标
-					type: '', // 分享类型,music、video或link，不填默认为link
-					dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-					success: function () { 
-
-					},
-					cancel: function () { 
-					}
-				}); 
-				/* 分享到qq */
-				wx.onMenuShareQQ({
-					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
-					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
-					link: '', // 分享链接
-					imgUrl: '', // 分享图标
-					success: function () { 
-
-					},
-					cancel: function () { 
-					}
-				});
-				/* 分享到微博 */
-				wx.onMenuShareWeibo({
-					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
-					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
-					link: '', // 分享链接
-					imgUrl: '', // 分享图标
-					success: function () { 
-					
-					},
-					cancel: function () { 
-					}
-				});
-				/* 分享到qq空间 */
-				wx.onMenuShareQZone({
-					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
-					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
-					link: '', // 分享链接
-					imgUrl: '', // 分享图标
-					success: function () { 
-
-					},
-					cancel: function () { 
-					}
-				});
-				
-			},
-			error:function(data){
-			}
-		});
-		
-	}
+	
 	var myCity = new BMap.LocalCity();
 		myCity.get(myFun);
 
@@ -312,7 +217,132 @@ $(document).ready(function(){
 		
 		
 	}
-	
+	function test(){
+		var condi = {};
+		condi.url = window.location.href || '';
+		var url = Base.serverUrl + "weixin/getJsSdkConfig";
+		$.ajax({
+			url:url,
+			data:condi,
+			type:"POST",
+			dataType:"json",
+			context:this,
+			global:false,
+			success: function(data){
+			
+				var d = data || {};
+				var appId = d.appId || "";
+				var signature = d.signature || "";
+				var nonceStr = d.nonceStr || "";
+				var timestamp = d.timestamp || "";
+				var nub = Math.floor(Math.random()*10) || '5';
+				var userPhone = $("#userPhone").val() || "";
+				var phone_nub = userPhone.substring(0,5)+nub+userPhone.substring(5,userPhone.length);
+				var localtionUrl ="activity.html?O="+g.operate+"&C="+g.channel+"&A="+g.activity+"&up="+phone_nub;
+				
+				wx.config({
+					debug: '', // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					appId: appId, // 必填，公众号的唯一标识
+					timestamp:timestamp, // 必填，生成签名的时间戳
+					nonceStr: nonceStr, // 必填，生成签名的随机串
+					signature: signature,// 必填，签名，见附录1
+					jsApiList: ['onMenuShareQZone','onMenuShareWeibo','onMenuShareQQ','onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				});
+				
+				/* 分享到朋友圈 */
+				wx.onMenuShareTimeline({
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					link: localtionUrl, // 分享链接
+					imgUrl: 'img/logo.jpg', // 分享图标
+					success: function () { 
+						diskFunc();
+					},
+					cancel: function () { 
+					}
+				});	
+				/* 发送给朋友 */
+				wx.onMenuShareAppMessage({
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
+					link: localtionUrl, // 分享链接
+					imgUrl: 'img/logo.jpg', // 分享图标
+					type: '', // 分享类型,music、video或link，不填默认为link
+					dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+					success: function () { 
+						diskFunc();
+					},
+					cancel: function () { 
+					}
+				}); 
+				/* 分享到qq */
+				wx.onMenuShareQQ({
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
+					link: localtionUrl, // 分享链接
+					imgUrl: 'img/logo.jpg', // 分享图标
+					success: function () { 
+						diskFunc();
+					},
+					cancel: function () { 
+					}
+				});
+				/* 分享到微博 */
+				wx.onMenuShareWeibo({
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
+					link: localtionUrl, // 分享链接
+					imgUrl: 'img/logo.jpg', // 分享图标
+					success: function () { 
+						diskFunc();
+					},
+					cancel: function () { 
+					}
+				});
+				/* 分享到qq空间 */
+				wx.onMenuShareQZone({
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
+					link: localtionUrl, // 分享链接
+					imgUrl: 'img/logo.jpg', // 分享图标
+					success: function () { 
+						diskFunc();
+					},
+					cancel: function () { 
+					}
+				});
+				
+			},
+			error:function(data){
+			}
+		});
+		
+	}
+	//分享触发计数
+	function diskFunc(){
+		var url = Base.serverUrl + "user/updateNum";
+		var condi = {};
+		condi.userPhone = $("#userPhone").val() || "";
+		condi.activity = g.activity;
+		$.ajax({
+			url:url,
+			data:condi,
+			type:"POST",
+			dataType:"json",
+			context:this,
+			success: function(data){
+				var status = data.success || false;
+				if(status){
+					
+				}
+				else{
+					var msg = data.message || "失败";
+					
+				}				
+			},
+			error:function(data){
+			}
+		});
+	}
 		//验证手机号
 	function validPhone(){
 		var phone = $("#userPhone").val() || "";
