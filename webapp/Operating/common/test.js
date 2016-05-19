@@ -28,8 +28,9 @@ $(document).ready(function(){
 					timestamp:timestamp, // 必填，生成签名的时间戳
 					nonceStr: nonceStr, // 必填，生成签名的随机串
 					signature: signature,// 必填，签名，见附录1
-					jsApiList: ['ready','error','onMenuShareQZone','onMenuShareWeibo','onMenuShareQQ','onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+					jsApiList: ['onMenuShareQZone','onMenuShareWeibo','onMenuShareQQ','onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 				});
+				
 				/* 分享到朋友圈 */
 				wx.onMenuShareTimeline({
 					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
