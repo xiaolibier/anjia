@@ -28,83 +28,67 @@ $(document).ready(function(){
 					timestamp:timestamp, // 必填，生成签名的时间戳
 					nonceStr: nonceStr, // 必填，生成签名的随机串
 					signature: signature,// 必填，签名，见附录1
-					jsApiList: ['ready','error','showAllNonBaseMenuItem','onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-				});
-				
-				wx.checkJsApi({
-				  jsApiList: [
-					'showOptionMenu',
-					'onMenuShareTimeline'
-				  ],
-				  success: function (res) {
-					alert(res);
-				  }
-				});
-				wx.ready(function(){
-					wx.showOptionMenu();
-					wx.showMenuItems({
-						menuList: ['menuItem:openWithSafari','menuItem:refresh'] // 要显示的菜单项，所有menu项见附录3
-					});
-					// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-				});
-				wx.error(function(res){	
-					// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+					jsApiList: ['ready','error','onMenuShareQZone','onMenuShareWeibo','onMenuShareQQ','onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 				});
 				/* 分享到朋友圈 */
 				wx.onMenuShareTimeline({
 					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
-					link: 'http://www.yanzianjia.com', // 分享链接
-					imgUrl: 'http://www.yanzianjia.com', // 分享图标
+					link: '', // 分享链接
+					imgUrl: 'img/logo.jpg', // 分享图标
 					success: function () { 
-						alert('分享成功');
-						// 用户确认分享后执行的回调函数
+						
 					},
 					cancel: function () { 
-						alert('分享失败');
-						// 用户取消分享后执行的回调函数
 					}
 				});	
 				/* 发送给朋友 */
 				wx.onMenuShareAppMessage({
-					title: '测试分享2', // 分享标题
-					desc: '11', // 分享描述
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
 					link: '1', // 分享链接
-					imgUrl: '2', // 分享图标
+					imgUrl: 'img/logo.jpg', // 分享图标
 					type: '', // 分享类型,music、video或link，不填默认为link
 					dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 					success: function () { 
-						alert('分享回调成功');
-						// 用户确认分享后执行的回调函数
+
 					},
 					cancel: function () { 
-						alert('分享回调失败');
-						// 用户取消分享后执行的回调函数
 					}
 				}); 
 				/* 分享到qq */
 				wx.onMenuShareQQ({
-					title: '', // 分享标题
-					desc: '', // 分享描述
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
 					link: '', // 分享链接
 					imgUrl: '', // 分享图标
 					success: function () { 
-					   // 用户确认分享后执行的回调函数
+
 					},
 					cancel: function () { 
-					   // 用户取消分享后执行的回调函数
 					}
 				});
 				/* 分享到微博 */
 				wx.onMenuShareWeibo({
-					title: '', // 分享标题
-					desc: '', // 分享描述
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
 					link: '', // 分享链接
 					imgUrl: '', // 分享图标
 					success: function () { 
-					   // 用户确认分享后执行的回调函数
+					
 					},
 					cancel: function () { 
-						// 用户取消分享后执行的回调函数
+					}
+				});
+				/* 分享到qq空间 */
+				wx.onMenuShareQZone({
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
+					link: '', // 分享链接
+					imgUrl: '', // 分享图标
+					success: function () { 
+
+					},
+					cancel: function () { 
 					}
 				});
 				
