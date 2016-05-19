@@ -14,7 +14,7 @@ $(document).ready(function(){
 	
 	page_now();
 	window_scroll();
-	show_paiming();
+	//show_paiming();
 	$("#submit_a_btn").bind("click",submit_form);
 	$("#common_a_btn_regist").bind("click",return_regist);
 	$(".common_a_btn_tell").bind("click",return_tel);
