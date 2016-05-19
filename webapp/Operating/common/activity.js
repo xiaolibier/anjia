@@ -123,7 +123,7 @@ $(document).ready(function(){
 	 		});
 			$(this).find('.u-arrow-bottom .pre-wrap').click(function(){
 				$("html, body").animate({
-				  scrollTop: $('.page'+n1).offset().top + "px"
+				  scrollTop: $('._page'+n1).offset().top + "px"
 				}, {
 				  duration: 300,
 				  easing: "swing"
