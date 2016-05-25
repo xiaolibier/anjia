@@ -1827,3 +1827,29 @@ i.radio_common  input,i.check_common input{display:none;}
 /* 控制个人中心左侧菜单显示 */
 dl.sub-left-sec-nav dd.M_hidden{display:none;}
 dl.sub-left-sec-nav dd.M_hidden.M_show{display:block;}
+
+/* 六一儿童节活动 */
+.c_childrenDay_ico{z-index:11;position:fixed;bottom:0;right:0;left:0;height:100px;}
+.c_childrenDay_ico .bg{position:fixed;bottom:0;right:0;left:0;height:100px;filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity:0.5;opacity: 0.5;background-color:#5c49b7;}
+.c_childrenDay_ico .content{position:relative;width:1295px;margin-left:5%;}
+.c_childrenDay_ico .img{position:absolute;top:-64px;left:0;display:inline-block;width:260px;height:161px;background:url('../images/c_ico_img.png') no-repeat center top;background-size:contain;}
+.c_childrenDay_ico .ul{display:inline-block;overflow:hidden;margin-top:30px;margin-left:260px;}
+.c_childrenDay_ico .ul li{color:#fff;float:left;display:inline-block;}
+.c_childrenDay_ico .common_input{margin-left:10px;margin-right:53px;padding-left:3px;width:197px;height:40px;line-height:40px;background-color:#fff;color:#000;}
+.c_childrenDay_ico .common_btn{cursor:pointer;font-size:18px;display:inline-block;margin-left:25px;border-radius:3px;text-align:center;width:181px;height:40px;line-height:40px;background-color:#fff;color:#000;}
+.c_childrenDay_ico .common_btn.btn1{background-color:#feee39;color:#000;}
+.c_childrenDay_ico .common_btn.btn2{background-color:#fb8500;color:#fff;}
+.c_childrenDay_sbox{display:none;left:0;position:absolute;top:0;width:100%;z-index: 20;}
+.c_childrenDay_sbox .bg{z-index:20;height: 100%;left: 0;position: fixed;top: 0;width: 100%;background-color: rgba(0, 0, 0, 0.5);}
+.c_childrenDay_sbox .content{display: table;font-family: Helvetica,arial,sans-serif;height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;z-index:21;}
+.c_childrenDay_sbox .content .session{display: table-cell;
+    text-align: center;
+    vertical-align: middle;}
+.c_childrenDay_sbox .content .session .img{display: inline-block;
+    position: relative;width: 862px;
+    height: 532px;background:url('../images/c_common_ico_bg.png') no-repeat center top;}
+.c_childrenDay_sbox .a_btn{cursor:pointer;display:block;float:right;width:55px;height:55px;}	
