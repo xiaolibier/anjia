@@ -16,7 +16,7 @@ $(document).ready(function(){
 	function sendGetAllUser(){
 		var url = Base.serverUrl + "user/getCustomerCollectCount";
 		var condi = {};
-		condi.activty = '0601';
+		condi.activity = '0601';
 		$.ajax({
 			url:url,
 			data:condi,
