@@ -426,7 +426,7 @@ $(function(){
 			var status = d.status || "";
 			var repaymentType = d.repaymentType || "";
 			var overdueCount = d.overdueCount || "";
-			var monthPoundage = d.monthPoundage || "";			
+			var residueMonthPoundage = d.residueMonthPoundage || 0;			
 			if(status == "101903" || status == "101904"){html.push('<tr class="yuqi1">');}else{html.push('<tr>');}
 			
 			html.push('<td>' + repaymentTypeDesc + '</td>');
@@ -434,13 +434,13 @@ $(function(){
 			if(g.month_Poundage && i == 0 && g.couponId == "8"){
 				html.push('<td style="color:#ff5f00;">享贴息活动已减免</td>');
 			}else if(g.month_Poundage){
-				html.push('<td>' + monthPoundage + '元</td>');
+				html.push('<td>' + residueMonthPoundage + '元</td>');
 			}
 			html.push('<td>' + expectRepaymentTime + '</td>');
 			html.push('<td>' + overdueTime + '天</td>');
 			html.push('<td>' + overdueFee + '元</td>');
 			if(g.month_Poundage && i == 0 && g.couponId == "8"){
-				currentBalance = (currentBalance - monthPoundage).toFixed(2) || 0;
+				currentBalance = (currentBalance - residueMonthPoundage).toFixed(2) || 0;
 			}
 			html.push('<td>' + currentBalance + '元</td>');
 			html.push('<td>' + realRepaymentTime + '</td>');
@@ -632,7 +632,8 @@ $(function(){
 		var totalOverdueFee = d.totalOverdueFee || 0;
 		var totalCurrentBalance = d.totalCurrentBalance || 0 ;
 		var realRepaymentTime = d.realRepaymentTime || "无";
-		var monthPoundage = d.monthPoundage || "";//还款服务费
+		var monthPoundage = d.monthPoundage || 0;//还款服务费
+		var residueMonthPoundage = d.residueMonthPoundage || 0;//还款服务费
 		var i = d.repaymentTimes || "";//判断是第几笔付款	
 		var dd = JSON.parse(g.orderInfo) || {};
 		var orderId = dd.orderId || "";
@@ -720,7 +721,7 @@ $(function(){
 		if(g.month_Poundage && i == "1" && g.couponId == "8"){
 			html.push('<td style="color:#ff5f00;">享贴息活动已减免</td>');
 		}else if(g.month_Poundage){
-			html.push('<td>' + monthPoundage + '元</td>');
+			html.push('<td>' + residueMonthPoundage + '元</td>');
 		}
 		html.push('<td>' + firstExpectRepaymentTime + '</td>');
 		html.push('<td>' + firstOverdueTime + '天</td>');

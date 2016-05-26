@@ -471,7 +471,7 @@ function OrderLeftProtocolClick(){
 			var overdueFee = d.overdueFee || 0;
 			var currentBalance = d.currentBalance || 0;
 			var realRepaymentTime = d.realRepaymentTime || "无";
-			var monthPoundage = d.monthPoundage || "";
+			var residueMonthPoundage = d.residueMonthPoundage || 0;
 			var status = d.status || "";
 			var repaymentType = d.repaymentType || "";
 			var overdueCount = d.overdueCount || "";
@@ -519,7 +519,7 @@ function OrderLeftProtocolClick(){
 			}else if(g.month_Poundage){
 				html.push('<div class="box-item">');
 				html.push('<div class="box-item-text">');
-				html.push('<p><i class="common-ico product-tip2"></i>还款服务费：<span class="color-green">' + monthPoundage + '</span>元</p>');
+				html.push('<p><i class="common-ico product-tip2"></i>还款服务费：<span class="color-green">' + residueMonthPoundage + '</span>元</p>');
 				html.push('</div>');
 				html.push('</div>');
 			}

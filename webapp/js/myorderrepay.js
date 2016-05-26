@@ -140,6 +140,7 @@ $(function(){
 		var totalCurrentBalance = d.totalCurrentBalance || 0;		
 		var firstOverdueTime = d.firstOverdueTime || 0;	
 		var monthPoundage = d.monthPoundage || "";
+		var residueMonthPoundage = d.residueMonthPoundage || 0; 
 		var i = d.repaymentTimes || "";//判断是第几笔付款
 		g.month_Poundage = monthPoundage == "" ?  false : true ;		
 		/* var userorderinfo_list = Utils.offLineStore.get("userorderinfo_list",false) || "";
@@ -221,7 +222,7 @@ $(function(){
 		}else if(g.month_Poundage){
 			html.push('<div class="box-item">');
 			html.push('<div class="box-item-text">');
-			html.push('<p><i class="common-ico product-tip1"></i>还款服务费：<span class="color-green">' +monthPoundage + '</span>元</p>');
+			html.push('<p><i class="common-ico product-tip1"></i>还款服务费：<span class="color-green">' +residueMonthPoundage + '</span>元</p>');
 			html.push('</div>');
 			html.push('</div>');
 		}
