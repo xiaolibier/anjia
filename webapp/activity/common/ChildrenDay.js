@@ -11,7 +11,17 @@ $(document).ready(function(){
 	g.activity = Utils.getQueryString("A") || "";//获取活动标识
 	
 	$("#submit_a_btn").bind("click",submit_form);
-
+	$("#backTop").bind("click",back_top);
+	$("#text_link").bind("click",tel_link);
+	
+	/* 拨打电话 */
+	function tel_link(){
+		location.href = "tel://4006616896";
+	}
+	/* 返回顶部 */
+	function back_top(){
+		$('html,body').animate({scrollTop:0},900);
+	}
 	//百度定位
 	function myFun(result){
 		var cityName = result.name;
