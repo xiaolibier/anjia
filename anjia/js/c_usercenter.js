@@ -2899,7 +2899,7 @@ function sendGetPayOrderListHttp12(condi){
 							var coupon_money = poundage*(10-discount)/10 || 0;
 							coupons_money_span = coupon_money.toFixed(2) || 0;
 						}
-						if(poundage >= useLeastMoney && coupons_money_span > 0){
+						if(coupons_money_span > 0){
 							g.coupons[i] = [coupons_money_span,get_coupons_couponId,useLeastMoney,discount];
 						}
 					}
