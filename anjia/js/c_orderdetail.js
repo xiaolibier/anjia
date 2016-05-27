@@ -397,6 +397,7 @@ $(function(){
 		html.push('<tr>');
 		html.push('<th width="130">还款期数</th>');
 		html.push('<th width="100">还款本金</th>');
+		html.push('<th width="100">剩余本金</th>');
 		if(g.month_Poundage){
 			html.push('<th width="105">还款服务费</th>');
 		}		
@@ -418,10 +419,12 @@ $(function(){
 			var repaymentRecordId = d.repaymentRecordId || "主键";
 			var repaymentTypeDesc = d.repaymentTypeDesc || "";
 			var residuePrincipal = d.residuePrincipal || 0;
+			var repaymentPrincipal = d.repaymentPrincipal || 0;
 			var expectRepaymentTime = d.expectRepaymentTime || "";
 			var overdueTime = d.overdueTime || 0;
 			var overdueFee = d.overdueFee || 0;
-			var currentBalance = d.currentBalance || 0;			
+			var currentBalance = d.currentBalance || 0;	//老的应还金额
+			var residueBalance = d.residueBalance || 0;	//新应还金额
 			var realRepaymentTime = d.realRepaymentTime || "无";
 			var status = d.status || "";
 			var repaymentType = d.repaymentType || "";
@@ -430,6 +433,7 @@ $(function(){
 			if(status == "101903" || status == "101904"){html.push('<tr class="yuqi1">');}else{html.push('<tr>');}
 			
 			html.push('<td>' + repaymentTypeDesc + '</td>');
+			html.push('<td>' + repaymentPrincipal + '元</td>');
 			html.push('<td>' + residuePrincipal + '元</td>');
 			if(g.month_Poundage && i == 0 && g.couponId == "8"){
 				html.push('<td style="color:#ff5f00;">享贴息活动已减免</td>');
@@ -439,10 +443,12 @@ $(function(){
 			html.push('<td>' + expectRepaymentTime + '</td>');
 			html.push('<td>' + overdueTime + '天</td>');
 			html.push('<td>' + overdueFee + '元</td>');
-			if(g.month_Poundage && i == 0 && g.couponId == "8"){
+			if(g.month_Poundage && i == 0 && g.couponId == "8"){//贴息活动
 				currentBalance = (currentBalance - residueMonthPoundage).toFixed(2) || 0;
+				html.push('<td>' + currentBalance + '元</td>');
+			}else{
+				html.push('<td>' + residueBalance + '元</td>');
 			}
-			html.push('<td>' + currentBalance + '元</td>');
 			html.push('<td>' + realRepaymentTime + '</td>');
 			if(status == "101904"){
 				yuqi_number++;

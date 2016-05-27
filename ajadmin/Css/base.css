@@ -95,3 +95,13 @@ to{-webkit-transform:rotate(360deg) translateZ(0);}*/
 	font-size: 14px;
 }
 
+/* 数据统计弹出底部层 */
+.bottom_sbox{display:none;box-shadow:0px 0px 15px 7px #dfdfdf;background-color:#f4f2f2;position:fixed;right:10px;bottom:1px;width:444px;}
+.bottom_sbox .header2{display:none;font-size:16px;font-family:sans-serif;color:#fff;height:41px;line-height:41px;background:url('../Operating/img/header.png') no-repeat center center;background-size:contain;}
+.bottom_sbox .header2 .close{float:right;width:35px;height:35px;display:inline-block;margin:0 10px;}
+.bottom_sbox .list_box{display:none;border:1px solid #cbcbcb;}
+.bottom_sbox .list_box .ul{display:block;margin:10px 10px;}
+.bottom_sbox .list_box .ul li{margin-bottom:10px;line-height:20px;border-radius:2px;padding:15px 10px;display:block;border:1px solid #e2e0e0;background-color:#f5f3f3;color:#957171;}
+.bottom_sbox .num_total{color:#f40b0c;}
+
+

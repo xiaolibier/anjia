@@ -4,6 +4,7 @@
     <title>后台管理系统</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="Css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="Css/base.css"/>
     <link href="assets/css/dpl-min.css" rel="stylesheet" type="text/css"/>
     <link href="assets/css/bui-min.css" rel="stylesheet" type="text/css"/>
     <link href="assets/css/main-min.css" rel="stylesheet" type="text/css"/>
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="Js/JquerySwitches/lc_switch.css">
 </head>
 <body>
+
 <div class="header">
     <!--logo-->
     <div class="dl-title">
@@ -65,7 +67,15 @@
     </div>
 
 </div>
-
+<!-- 底部弹出层 -->
+	<div class="bottom_sbox">
+		<div class="header2">&nbsp;&nbsp;&nbsp;新订单提示<a class="close"></a></div>
+		<div class="list_box">
+			<ul class="ul">
+				<li>您有<span class="num_total" id="num_total">0</span>个新订单，请到用户统计列表查看!</li>
+			</ul>
+		</div>
+	</div>
 <script type="text/javascript" src="assets/js/jquery-1.8.1.min.js"></script>
 <script type="text/javascript" src="assets/js/bui-min.js"></script>
 <script type="text/javascript" src="assets/js/common/main-min.js"></script>
@@ -83,8 +93,65 @@
     $(function () {
         var g = {};
         g.login_token = Utils.offLineStore.get("token", false) || "";
+		g.user_usersName = Utils.offLineStore.get("user_usersName", false) || "";
         g.tabConfig = [];
-
+		g.interval = '';
+		g.oldNum = Utils.offLineStore.get("oldNum", false) || 0;
+		g.nowNum = 0;
+		g.closed = "0";
+		setTimeout(function(){if(g.user_usersName == '才璐'){//限制用户访问
+			$('.bottom_sbox .header2 .close').bind('click',click_close);
+			setTimeoutSendHttp();
+			g.interval = setInterval(setTimeoutSendHttp,60000);
+		}},1000);
+		
+		/* 关闭点击弹窗 */
+		function click_close(){
+			g.closed = "1";
+			$(".bottom_sbox .list_box").slideUp(300);
+			setTimeout(function(){$(".bottom_sbox .header2").fadeOut(300);$(".bottom_sbox").fadeOut(300);},600);
+			Utils.offLineStore.set("oldNum",g.oldNum, false);
+		}
+			/* 定时判断是否有新订单 */
+		function setTimeoutSendHttp(){
+			if(Utils.offLineStore.get("token",false) == ""){clearInterval(g.interval);return false;}
+			var url = Base.serverUrl + "user/getCustomerCollectSum";
+			var condi = {};
+			condi.login_token = g.login_token;
+			$.ajax({
+				url:url,
+				data:condi,
+				type:"POST",
+				dataType:"json",
+				context:this,
+				success: function(data){
+					var status = data.success || false;
+					if(status){
+						var num = data.obj || 0;
+						if(g.oldNum == 0){
+							g.oldNum = num;
+						}else if(num > Utils.offLineStore.get("oldNum", false)){
+							g.closed = '0';
+						}
+						g.nowNum = num;
+						$('#num_total').html(num);
+						if(num > 0 && g.closed == '0'){//判断有新消息
+							$(".bottom_sbox").fadeIn(300);
+							$(".bottom_sbox .header2").fadeIn(300);
+							setTimeout(function(){$(".bottom_sbox .list_box").slideDown(300);},600);
+						}else{
+							$(".bottom_sbox .list_box").slideUp(300);
+							setTimeout(function(){$(".bottom_sbox .header2").fadeOut(300);$(".bottom_sbox").fadeOut(300);},600);
+						}
+					}
+					else{
+						var msg = data.message || "获取失败";
+					}
+				},
+				error:function(data){
+				}
+			});
+		}
         function sendQueryMenuListByRoleHttp(roleId) {
             //g.httpTip.show();
             var url = Base.serverUrl + "authority/queryAdminMenuTreeByRoleId";
@@ -254,6 +321,9 @@
                 }
             });
         })
+		
+		
+
     });
 </script>
 </body>

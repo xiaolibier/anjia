@@ -466,10 +466,11 @@ function OrderLeftProtocolClick(){
 			var repaymentRecordId = d.repaymentRecordId || "主键";
 			var repaymentTypeDesc = d.repaymentTypeDesc || "";
 			var residuePrincipal = d.residuePrincipal || 0;
+			var repaymentPrincipal = d.repaymentPrincipal || 0;
 			var expectRepaymentTime = d.expectRepaymentTime || "";
 			var overdueTime = d.overdueTime || 0;
 			var overdueFee = d.overdueFee || 0;
-			var currentBalance = d.currentBalance || 0;
+			var residueBalance = d.residueBalance || 0;
 			var realRepaymentTime = d.realRepaymentTime || "无";
 			var residueMonthPoundage = d.residueMonthPoundage || 0;
 			var status = d.status || "";
@@ -507,7 +508,12 @@ function OrderLeftProtocolClick(){
 			html.push('</div>');
 			html.push('<div class="box-item">');
 			html.push('<div class="box-item-text">');
-			html.push('<p><i class="common-ico product-tip2"></i>还款本金：<span class="color-green">' + residuePrincipal + '</span>元</p>');
+			html.push('<p><i class="common-ico product-tip2"></i>还款本金：<span class="color-green">' + repaymentPrincipal + '</span>元</p>');
+			html.push('</div>');
+			html.push('</div>');
+			html.push('<div class="box-item">');
+			html.push('<div class="box-item-text">');
+			html.push('<p><i class="common-ico product-tip2"></i>剩余本金：<span class="color-green">' + residuePrincipal + '</span>元</p>');
 			html.push('</div>');
 			html.push('</div>');
 			if(g.month_Poundage && i == 0 && g.couponId == "8"){
@@ -547,7 +553,7 @@ function OrderLeftProtocolClick(){
 			}
 			html.push('<div class="box-item">');
 			html.push('<div class="box-item-text">');
-			html.push('<p><i class="common-ico product-tip3"></i>应还金额：<span class="color-green">' + currentBalance + '</span></p>');
+			html.push('<p><i class="common-ico product-tip3"></i>应还金额：<span class="color-green">' + residueBalance + '</span></p>');
 			html.push('</div>');
 			html.push('</div>');
 			html.push('</div>');

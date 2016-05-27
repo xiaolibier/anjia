@@ -24,11 +24,12 @@ $(function(){
 	g.sendTime = 60;
 	g.login_token = Utils.offLineStore.get("token",false) || "";
 	g.httpTip = new Utils.httpTip({});
-
+	g.totalRowNumC2 = Utils.offLineStore.get("totalRowNumC",false) || 0;
+	g.totalRowNumC = 0;
 	g.totalPage = 1;
 	g.currentPage = 1;
 	g.pageSize = 10;
-
+	g.interval = '';
 
 	//验证登录状态
 	var loginStatus = Utils.getUserInfo();
@@ -185,7 +186,7 @@ $(function(){
 			var operate = d.operate || "";
 			var channel = d.channel || "";
 			var activity = d.activity || "";
-
+			var isRead = d.isRead || "";
 			html.push('<tr>');
 			html.push('<td>' + createTime + '</td>');
 			html.push('<td>' + userName + '</td>');
@@ -196,7 +197,12 @@ $(function(){
 			html.push('<td>' + designPhone + '</td>');
 			html.push('<td>' + operate + '</td>');
 			html.push('<td>' + channel + '</td>');
-			html.push('<td>' + activity + '</td>');
+			if(isRead == '1'){
+				var _class = 'asc_ico'+i;
+				html.push('<td class="w">' + activity + '<a onclick="javascript:asc_click(\'' + userPhone + '\',\'' + activity + '\',\'' + _class + '\')" class="asc_ico '+_class+'"></a></td>');
+			}else{
+				html.push('<td>' + activity + '</td>');
+			}
 			html.push('</tr>');
 		}
 		html.push('</table>');
@@ -212,10 +218,37 @@ $(function(){
 		}
 
 		$("#orderlist").html(html.join(''));
-
 		$("#orderlistpage a").bind("click",pageClick);
 	}
 
+	/* new图标绑定click事件 */
+	window.asc_click = function(userPhone,activity,_class){
+		if(confirm('确认标记为已读？')){}else{return false;}
+		var url = Base.serverUrl + "user/updateIsRead";
+		var condi = {};
+		condi.login_token = g.login_token;
+		condi.userPhone = userPhone || '';
+		condi.activity = activity || '';
+		$.ajax({
+			url:url,
+			data:condi,
+			type:"POST",
+			dataType:"json",
+			context:this,
+			success: function(data){
+				var status = data.success || false;
+				if(status){
+					$('.'+_class).fadeOut(300);
+				}
+				else{
+					var msg = data.message || "获取订单列表数据失败";
+					Utils.alert(msg);
+				}
+			},
+			error:function(data){
+			}
+		});
+	}
 	function countListPage(data){
 		var html = [];
 		g.totalPage = Math.ceil(data.totalRowNum / data.pageSize);
