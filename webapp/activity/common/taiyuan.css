@@ -41,7 +41,9 @@ select{appearance:none;-webkit-appearance: none;}
 .page_div2 .img1{width:100%;vertical-align:bottom;}
 /*  */
 .c_bottom{height:50px;line-height:50px;text-align:center;background-color:#9b2f53;font-size:16px;color:#fff;}
-.c_bottom a{color:#fff;}
+.c_bottom2{overflow:hidden;line-height:20px;text-align:center;padding:10px 0 20px;background-color:#9b2f53;font-size:12px;color:#fff;}
+.c_bottom a,.c_bottom2 a{color:#fff;}
+.c_bottom2 .img{width:150px;}
 /*  */
 .page_div3{overflow:hidden;margin:20px 0 60px;}
 .page_div3 .pd_div{float:left;display:inline-block;}

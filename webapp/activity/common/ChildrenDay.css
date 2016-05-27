@@ -96,6 +96,6 @@ select{appearance:none;-webkit-appearance: none;}
 .c_div9 .ul li .size{display:block;margin-top:15px;margin-bottom:5px;height:36px;}
 .c_div9 .ul .img{width:70%;}
 /*  */
-.c_bottom{height:50px;line-height:50px;text-align:center;background-color:#1c253c;font-size:16px;color:#fff;}
+.c_bottom{text-align:center;background-color:#1c253c;font-size:16px;color:#fff;}
 .c_bottom a{color:#fff;}
-
+.c_bottom .img{width:100%;vertical-align:bottom;}
