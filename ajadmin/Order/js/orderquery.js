@@ -426,7 +426,7 @@ $(function(){
 			condi.orderId = id;
 			condi.login_token = g.login_token;
 
-			var url = Base.serverUrl + "order/deleteOrderByOrderIdController";
+			var url = Base.serverUrl + "order/deleteOrderById";
 			$.ajax({
 				url:url,
 				data:condi,
