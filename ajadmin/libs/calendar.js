@@ -293,8 +293,11 @@ CalendarWidget.resetDateContent = function () {
                     currentDays[n] + '</li>';
         }
     }
-
-    this.dateContent.innerHTML = dateHTML;
+	var scor = 0;
+	$('.eui-calendar').each(function(){
+		if($(this).css('display') == 'block'){$(this).find('.eui-calendar-datecontent').html(dateHTML);scor++;}
+	});
+	if(scor == 0){this.dateContent.innerHTML = dateHTML;}
 };
 
 CalendarWidget.change = function (year, month) {
