@@ -20,7 +20,7 @@
     <script src="js/OrderFunction.js"></script>
     <script src="../Js/HmgxExtend.js"></script>
     <script src="js/Fk_Daily.js"></script>
-
+	<script language="javascript" type="text/javascript" src="../Js/My97DatePicker/WdatePicker.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -69,9 +69,9 @@
         </tr> -->
         <tr>
             <td bgcolor="#F1F1F1">开始时间</td>
-            <td><input type="text" id="dateTimeBegin" name="dateTimeBegin"/></td>
+            <td><input type="text" onClick="WdatePicker()" id="dateTimeBegin" name="dateTimeBegin"/></td>
             <td bgcolor="#F1F1F1">结束时间</td>
-            <td><input type="text" id="dateTimeEnd" name="dateTimeEnd"/></td>
+            <td><input type="text" onClick="WdatePicker()" id="dateTimeEnd" name="dateTimeEnd"/></td>
             <!-- <td bgcolor="#F1F1F1">订单编号</td>
             <td><input type="text" id="orderId" name="orderId" maxlength="20"/></td> -->
 			<td width="15%" rowspan="2" style="text-align: center; vertical-align: middle;">

@@ -14,6 +14,7 @@
     <script type="text/javascript" src="../Js/ckform.js"></script>
     <script type="text/javascript" src="../Js/common.js"></script>
     <script src="../Js/HmgxExtend.js"></script>
+	<script language="javascript" type="text/javascript" src="../Js/My97DatePicker/WdatePicker.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -46,8 +47,8 @@
 <form id="CX" name="CX" class="form-inline definewidth m20" action="" method="get">
     订单编号：<input type="text" style="width:206px;" name="orderId" id="orderId">&nbsp;&nbsp;
     客户姓名：<input type="text" id="applicantName" name="applicantName" style="width:120px;" />&nbsp;&nbsp;
-    进件开始时间：<input type="text" id="applicationTimeBegin" name="applicationTimeBegin" style="width:120px;" />&nbsp;&nbsp;
-    进件结束时间：<input type="text" id="applicationTimeEnd" name="applicationTimeEnd" style="width:120px;" />&nbsp;&nbsp;
+    进件开始时间：<input type="text" onClick="WdatePicker()" id="applicationTimeBegin" name="applicationTimeBegin" style="width:120px;" />&nbsp;&nbsp;
+    进件结束时间：<input type="text" onClick="WdatePicker()" id="applicationTimeEnd" name="applicationTimeEnd" style="width:120px;" />&nbsp;&nbsp;
     <button id="querybtn" type="button" class="btn btn-primary">查询</button>
 </form>
 <div id="orderlist"></div>

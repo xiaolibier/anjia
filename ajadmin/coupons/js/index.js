@@ -44,7 +44,7 @@ $(function(){
 		//sendGetCITYs();//首页获取城市列表
 		//getcompanys();//获取品牌类型列表
 	}	
-	if(typeof eui !== "undefined"){
+	/* if(typeof eui !== "undefined"){
 		eui.calendar({
 			startYear: 1900,
 			input: document.getElementById('createTimeBegin'),
@@ -55,7 +55,7 @@ $(function(){
 			input: document.getElementById('createTimeEnd'),
 			id:"createTimeEnd"
 		});
-	}
+	} */
 	
 	$("#addCoopusbtn").bind("click",addNewPage);
 	$("#searchCoopusbtn").bind("click",search_func);

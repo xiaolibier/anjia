@@ -21,7 +21,7 @@
     <script src="../Js/HmgxExtend.js"></script>
     <script src="js/OrderFunction.js"></script>
     <script src="js/Fk_OrderList_3.js"></script>
-
+	<script language="javascript" type="text/javascript" src="../Js/My97DatePicker/WdatePicker.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -56,9 +56,9 @@
         </tr>
         <tr>
             <td bgcolor="#F1F1F1">开始时间</td>
-            <td><input type="text" id="createTimeBegin" name="createTimeBegin"/></td>
+            <td><input type="text" onClick="WdatePicker()" id="createTimeBegin" name="createTimeBegin"/></td>
             <td bgcolor="#F1F1F1">结束时间</td>
-            <td><input type="text" id="createTimeEnd" name="createTimeEnd"/></td>
+            <td><input type="text" onClick="WdatePicker()" id="createTimeEnd" name="createTimeEnd"/></td>
             <td colspan="2" style="text-align: center">
                 <button id="querybtn" type="button" class="btn btn-primary">查询</button>
                 <br>

@@ -11,7 +11,7 @@
     <script type="text/javascript" src="../Js/bootstrap.js"></script>
     <script type="text/javascript" src="../Js/ckform.js"></script>
     <script type="text/javascript" src="../Js/common.js"></script>
-
+	<script language="javascript" type="text/javascript" src="../Js/My97DatePicker/WdatePicker.js"></script>
 
 
     <style type="text/css">
@@ -43,9 +43,9 @@
 		真实姓名：
 		<input type="text" id="usersName" name="usersName" style="width:210px;" />&nbsp;&nbsp;<br />
 		开始时间：
-		<input type="text" id="createTimeBegin" name="createTimeBegin" style="width:206px;" />&nbsp;&nbsp;
+		<input type="text" onClick="WdatePicker()" id="createTimeBegin" name="createTimeBegin" style="width:206px;" />&nbsp;&nbsp;
 		结束时间：
-		<input type="text" id="createTimeEnd" name="createTimeEnd" style="width:210px;" />&nbsp;&nbsp;
+		<input type="text" onClick="WdatePicker()" id="createTimeEnd" name="createTimeEnd" style="width:210px;" />&nbsp;&nbsp;
 		<button id="querybtn" type="button" class="btn btn-primary" style="margin-top: 5px;">查询</button>&nbsp;&nbsp;<br />
 
 		<hr />

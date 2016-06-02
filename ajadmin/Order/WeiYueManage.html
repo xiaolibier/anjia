@@ -19,7 +19,7 @@
 	<script type="text/javascript" src="../Js/HmgxExtend.js"></script>
 	<script src="../Js/HmgxExtend.js"></script>
 	<script src="js/WeiYueManage.js"></script>
-
+	<script language="javascript" type="text/javascript" src="../Js/My97DatePicker/WdatePicker.js"></script>
 	<style type="text/css">
 		body {
 			padding-bottom: 40px;
@@ -55,9 +55,9 @@
 		</select>&nbsp;&nbsp;
 		<div style="height: 5px"></div>
 		开&nbsp;始&nbsp;时&nbsp;间：
-		<input type="text" id="finishContractTimeBegin" name="finishContractTimeBegin" style="width:150px;" />&nbsp;&nbsp;
+		<input type="text" onClick="WdatePicker()" id="finishContractTimeBegin" name="finishContractTimeBegin" style="width:150px;" />&nbsp;&nbsp;
 		结&nbsp;束&nbsp;时&nbsp;间：
-		<input type="text" id="finishContractTimeEnd" name="finishContractTimeEnd" style="width:150px;" />&nbsp;&nbsp;
+		<input type="text" onClick="WdatePicker()" id="finishContractTimeEnd" name="finishContractTimeEnd" style="width:150px;" />&nbsp;&nbsp;
 		订单编号：
 		<input type="text" id="orderId" name="orderId" style="width:150px;" />&nbsp;&nbsp;
 		<button id="querybtn" type="button" class="btn btn-primary">查询</button>&nbsp;&nbsp;

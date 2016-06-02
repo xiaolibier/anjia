@@ -11,7 +11,7 @@
     <script type="text/javascript" src="../Js/bootstrap.js"></script>
     <script type="text/javascript" src="../Js/ckform.js"></script>
     <script type="text/javascript" src="../Js/common.js"></script>
-
+	<script language="javascript" type="text/javascript" src="../Js/My97DatePicker/WdatePicker.js"></script>
 
 
     <style type="text/css">
@@ -38,9 +38,9 @@
 	<form class="form-inline definewidth m20" action="index.html" method="get">
 		领用人电话：<input id="phone" type="text" style="width:210px;" name="phone"/>&nbsp;&nbsp;
 		开始时间：
-		<input type="text" id="createTimeBegin" name="createTimeBegin" style="width:210px;" />&nbsp;&nbsp;
+		<input type="text" onClick="WdatePicker()" id="createTimeBegin" name="createTimeBegin" style="width:210px;" />&nbsp;&nbsp;
 		结束时间：
-		<input type="text" id="createTimeEnd" name="createTimeEnd" style="width:210px;" />&nbsp;&nbsp;
+		<input type="text" onClick="WdatePicker()" id="createTimeEnd" name="createTimeEnd" style="width:210px;" />&nbsp;&nbsp;
 		<button id="searchCoopusbtn"  type="button" class="btn btn-primary" style="">查询</button>
 		<button id="addCoopusbtn"  type="button" class="btn btn-primary" style="">新增用户</button>
 	</form>

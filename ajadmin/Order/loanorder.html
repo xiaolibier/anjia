@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="../Js/bootstrap.js"></script>
 	<script type="text/javascript" src="../Js/ckform.js"></script>
 	<script type="text/javascript" src="../Js/common.js"></script>
-
+	<script language="javascript" type="text/javascript" src="../Js/My97DatePicker/WdatePicker.js"></script>
 	<style type="text/css">
 		body {
 			padding-bottom: 40px;
@@ -42,8 +42,8 @@
 		申请人姓名：<input type="text" id="customerName" name="customerName" style="width:206px;" />&nbsp;&nbsp;
 		申请人电话：<input type="text" id="customerPhone" name="customerPhone" style="width:206px;margin-top: 5px;" />&nbsp;&nbsp;<br />
 		<div style="height: 5px"></div>
-		开始时间：<input type="text" id="applicationTimeBegin" name="applicationTimeBegin" style="width:206px;" />&nbsp;&nbsp;
-		结束时间：<input type="text" id="applicationTimeEnd" name="applicationTimeEnd" style="width:206px;" />&nbsp;&nbsp;
+		开始时间：<input type="text" onClick="WdatePicker()" id="applicationTimeBegin" name="applicationTimeBegin" style="width:206px;" />&nbsp;&nbsp;
+		结束时间：<input type="text" onClick="WdatePicker()" id="applicationTimeEnd" name="applicationTimeEnd" style="width:206px;" />&nbsp;&nbsp;
 		订单&nbsp;&nbsp;&nbsp;编号：<input type="text" id="orderId" name="orderId" style="width:206px;" />&nbsp;&nbsp;
 		<button id="querybtn" type="button" class="btn btn-primary" style="width: 140px">查询</button>
 		<!--<button type="button" onclick="down('DataTable','支付订单管理')" class="btn btn-warning" style="width: 140px">导出本页</button>-->

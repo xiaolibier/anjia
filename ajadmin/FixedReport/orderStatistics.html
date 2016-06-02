@@ -14,6 +14,7 @@
     <script type="text/javascript" src="../Js/ckform.js"></script>
     <script type="text/javascript" src="../Js/common.js"></script>
     <script src="../Js/HmgxExtend.js"></script>
+	<script language="javascript" type="text/javascript" src="../Js/My97DatePicker/WdatePicker.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -44,8 +45,8 @@
 </head>
 <body>
 <form id="CX" name="CX" class="form-inline definewidth m20" action="" method="get">
-    开始时间：<input type="text" id="editCompleteTimeBegin" name="editCompleteTimeBegin" style="width:120px;" />&nbsp;&nbsp;
-    结束时间：<input type="text" id="editCompleteTimeEnd" name="editCompleteTimeEnd" style="width:120px;" />&nbsp;&nbsp;
+    开始时间：<input type="text"  onClick="WdatePicker()" id="editCompleteTimeBegin" name="editCompleteTimeBegin" style="width:120px;" />&nbsp;&nbsp;
+    结束时间：<input type="text"  onClick="WdatePicker()" id="editCompleteTimeEnd" name="editCompleteTimeEnd" style="width:120px;" />&nbsp;&nbsp;
     订单编号：
     <input type="text" id="orderId" name="orderId" style="width:120px;" />&nbsp;&nbsp;
     申请人姓名：

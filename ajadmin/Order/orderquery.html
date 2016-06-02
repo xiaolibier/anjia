@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="../Js/bootstrap.js"></script>
 	<script type="text/javascript" src="../Js/ckform.js"></script>
 	<script type="text/javascript" src="../Js/common.js"></script>
+	<script language="javascript" type="text/javascript" src="../Js/My97DatePicker/WdatePicker.js"></script>
 	<script src="../Js/HmgxExtend.js"></script>
 
 	<style type="text/css">
@@ -46,9 +47,9 @@
 		申请人电话：
 		<input type="text" id="applicantPhone" name="applicantPhone" style="width:206px;" />&nbsp;&nbsp;<br />
 		开始时间：
-		<input type="text" id="createTimeBegin" name="createTimeBegin" style="width:206px;" />&nbsp;&nbsp;
+		<input type="text" id="createTimeBegin" onClick="WdatePicker()" name="createTimeBegin" style="width:206px;" />&nbsp;&nbsp;
 		　结束时间：
-		<input type="text" id="createTimeEnd" name="createTimeEnd" style="width:206px;" />&nbsp;&nbsp;
+		<input type="text" id="createTimeEnd" onClick="WdatePicker()" name="createTimeEnd" style="width:206px;" />&nbsp;&nbsp;
 		　订单编号：
 		<input type="text" id="orderId" name="orderId" style="width:206px;" />&nbsp;&nbsp;
 		<button id="querybtn" type="button" class="btn btn-primary">查询</button>&nbsp;&nbsp;

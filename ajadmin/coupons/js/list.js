@@ -41,7 +41,7 @@ $(function(){
 	else{
 		queryList();
 	}	
-	if(typeof eui !== "undefined"){
+	/* if(typeof eui !== "undefined"){
 		eui.calendar({
 			startYear: 1900,
 			input: document.getElementById('createTimeBegin'),
@@ -52,7 +52,7 @@ $(function(){
 			input: document.getElementById('createTimeEnd'),
 			id:"createTimeEnd"
 		});
-	}
+	} */
 	
 	$("#addCoopusbtn").bind("click",addNewPage);
 	$("#searchCoopusbtn").bind("click",search_func);

@@ -18,7 +18,7 @@
     <script src="../libs/calendar.js"></script>
 
     <script src="js/OperationLog.js"></script>
-
+	<script language="javascript" type="text/javascript" src="../Js/My97DatePicker/WdatePicker.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -55,9 +55,9 @@
         </tr>
         <tr>
             <td bgcolor="#F1F1F1">开始时间</td>
-            <td><input type="text" id="createTimeBegin" name="createTimeBegin"/></td>
+            <td><input type="text" onClick="WdatePicker()" id="createTimeBegin" name="createTimeBegin"/></td>
             <td bgcolor="#F1F1F1">结束时间</td>
-            <td><input type="text" id="createTimeEnd" name="createTimeEnd"/></td>
+            <td><input type="text" onClick="WdatePicker()" id="createTimeEnd" name="createTimeEnd"/></td>
             <td bgcolor="#F1F1F1">IP地址</td>
             <td><input type="text" id="client_ip" name="client_ip" maxlength="20"/></td>
         </tr>

@@ -5,7 +5,7 @@
 
 //页面初始化
 $(function(){
-	if(typeof eui !== "undefined"){
+	/* if(typeof eui !== "undefined"){
 		eui.calendar({
 			startYear: 1900,
 			input: document.getElementById('dateTimeBegin'),
@@ -16,7 +16,7 @@ $(function(){
 			input: document.getElementById('dateTimeEnd'),
 			id:"dateTimeEnd"
 		});
-	}
+	} */
 
 	var g = {};
 	g.phone = "";

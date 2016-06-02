@@ -12,7 +12,7 @@ $(function () {
             break;
         }
     }
-    if (typeof eui !== "undefined") {
+    /* if (typeof eui !== "undefined") {
         eui.calendar({
             startYear: 1900,
             input: document.getElementById('finishContractTimeBegin'),
@@ -23,7 +23,7 @@ $(function () {
             input: document.getElementById('finishContractTimeEnd'),
             id: "finishContractTimeEnd"
         });
-    }
+    } */
 
     var g = {};
     g.phone = "";
