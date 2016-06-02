@@ -318,7 +318,8 @@ $(function(){
 		}
 
 		if(g.currentPage <= g.totalPage){
-			sendQueryListHttp();
+			var condi={};
+			sendQueryListHttp(condi);
 		}
 		else{
 			Utils.alert("当前是最后一页");
