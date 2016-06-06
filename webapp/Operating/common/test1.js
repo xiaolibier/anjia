@@ -17,7 +17,7 @@ $(document).ready(function(){
 	page_now();
 	window_scroll();
 	show_paiming();
-	$("#submit_a_btn").bind("click",onBridgeReady);
+	$("#submit_a_btn").bind("click",_click_f);
 	$("#common_a_btn_regist").bind("click",return_regist);
 	$(".common_a_btn_tell").bind("click",return_tel);
 	$(".back_up_btn").bind("click",function(){
@@ -28,7 +28,8 @@ $(document).ready(function(){
 		  easing: "swing"
 		});	
 	});
-	 if (typeof WeixinJSBridge == "undefined"){
+	function _click_f(){
+		if (typeof WeixinJSBridge == "undefined"){
 		  // alert(WeixinJSBridge);
 		   if( document.addEventListener ){
 			   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
@@ -39,6 +40,8 @@ $(document).ready(function(){
 		}else{
 		   onBridgeReady();
 		}
+	}
+		
 	function onBridgeReady(){
 	  var url = Base.serverUrl + "weixin/pay/getBrandWCPayConfig";
 		$.ajax({
@@ -70,7 +73,7 @@ $(document).ready(function(){
 						   "paySign" : paySign //微信签名 
 					   },
 					   function(res){
-						  alert(res);
+						  //alert(res);
 						  if(res.err_msg == "get_brand_wcpay_request：ok" ) {alert('成功')}
 						  else if(res.err_msg == "get_brand_wcpay_request：cancel"){alert('失败')}
 						  else if(res.err_msg == "get_brand_wcpay_request：fail"){alert('失败')}// 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
