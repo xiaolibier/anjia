@@ -72,6 +72,7 @@ $(document).ready(function(){
 					signature: signature,// 必填，签名，见附录1
 					jsApiList: ['onMenuShareQZone','onMenuShareWeibo','onMenuShareQQ','onMenuShareTimeline','onMenuShareAppMessage','chooseWXPay'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 				});
+				alert('timestamp:'+g.timestamp+";nonceStr:"+g.nonceStr+";package:"+g.packAge+";signType:"+g.signType+";paySign:"+g.paySign);
 				 wx.chooseWXPay({
 							timestamp: g.timestamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
 							nonceStr: g.nonceStr, // 支付签名随机串，不长于 32 位
@@ -88,7 +89,7 @@ $(document).ready(function(){
 						});
 				/* 分享到朋友圈 */
 				wx.onMenuShareTimeline({
-					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					title: '燕子安家，5.20分期享好礼，分享献爱心', // 分享标题
 					link: localtionUrl, // 分享链接
 					imgUrl: 'img/logo.jpg', // 分享图标
 					success: function () { 
