@@ -41,8 +41,108 @@ $(document).ready(function(){
 		   onBridgeReady();
 		}
 	}
+	function test(){
+		var condi = {};
+		condi.url = window.location.href || '';
+		var url = Base.serverUrl + "weixin/getJsSdkConfig";
+		$.ajax({
+			url:url,
+			data:condi,
+			type:"POST",
+			dataType:"json",
+			context:this,
+			global:false,
+			success: function(data){
+			
+				var d = data || {};
+				var appId = d.appId || "";
+				var signature = d.signature || "";
+				var nonceStr = d.nonceStr || "";
+				var timestamp = d.timestamp || "";
+				var nub = Math.floor(Math.random()*10) || '5';
+				var userPhone = $("#userPhone").val() || "";
+				var phone_nub = userPhone.substring(0,5)+nub+userPhone.substring(5,userPhone.length);
+				var localtionUrl ="activity.html?O="+g.operate+"&C="+g.channel+"&A="+g.activity+"&up="+phone_nub;
+				
+				wx.config({
+					debug: '', // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					appId: appId, // 必填，公众号的唯一标识
+					timestamp:timestamp, // 必填，生成签名的时间戳
+					nonceStr: nonceStr, // 必填，生成签名的随机串
+					signature: signature,// 必填，签名，见附录1
+					jsApiList: ['onMenuShareQZone','onMenuShareWeibo','onMenuShareQQ','onMenuShareTimeline','onMenuShareAppMessage','chooseWXPay'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				});
+				
+				/* 分享到朋友圈 */
+				wx.onMenuShareTimeline({
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					link: localtionUrl, // 分享链接
+					imgUrl: 'img/logo.jpg', // 分享图标
+					success: function () { 
+						diskFunc();
+					},
+					cancel: function () { 
+					}
+				});	
+				/* 发送给朋友 */
+				wx.onMenuShareAppMessage({
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
+					link: localtionUrl, // 分享链接
+					imgUrl: 'img/logo.jpg', // 分享图标
+					type: '', // 分享类型,music、video或link，不填默认为link
+					dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+					success: function () { 
+						diskFunc();
+					},
+					cancel: function () { 
+					}
+				}); 
+				/* 分享到qq */
+				wx.onMenuShareQQ({
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
+					link: localtionUrl, // 分享链接
+					imgUrl: 'img/logo.jpg', // 分享图标
+					success: function () { 
+						diskFunc();
+					},
+					cancel: function () { 
+					}
+				});
+				/* 分享到微博 */
+				wx.onMenuShareWeibo({
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
+					link: localtionUrl, // 分享链接
+					imgUrl: 'img/logo.jpg', // 分享图标
+					success: function () { 
+						diskFunc();
+					},
+					cancel: function () { 
+					}
+				});
+				/* 分享到qq空间 */
+				wx.onMenuShareQZone({
+					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
+					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
+					link: localtionUrl, // 分享链接
+					imgUrl: 'img/logo.jpg', // 分享图标
+					success: function () { 
+						diskFunc();
+					},
+					cancel: function () { 
+					}
+				});
+				
+			},
+			error:function(data){
+			}
+		});
 		
+	}	
 	function onBridgeReady(){
+
 	  var url = Base.serverUrl + "weixin/pay/getBrandWCPayConfig";
 		$.ajax({
 			url:url,
@@ -62,8 +162,18 @@ $(document).ready(function(){
 					 var appId = d.appId || "";
 					 var signType = d.signType || "";
 					 var nonceStr = d.nonceStr || "";
-					 
-					 WeixinJSBridge.invoke(
+					 wx.chooseWXPay({
+							timestamp: 0, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+							nonceStr: nonceStr, // 支付签名随机串，不长于 32 位
+							package: packAge, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+							signType: signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+							paySign: paySign, // 支付签名
+							success: function (res) {
+								// 支付成功后的回调函数
+								alert(res);
+							}
+						});
+					 /* WeixinJSBridge.invoke(
 					   'getBrandWCPayRequest', {
 						   "appId" : appId, //公众号名称，由商户传入     
 						   "timeStamp":timeStamp, //时间戳，自1970年以来的秒数     
@@ -78,7 +188,7 @@ $(document).ready(function(){
 						  else if(res.err_msg == "get_brand_wcpay_request：cancel"){alert('失败')}
 						  else if(res.err_msg == "get_brand_wcpay_request：fail"){alert('失败')}// 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
 					   }
-				   ); 
+				   );  */
 					/* -- */
 				}
 				else{
@@ -283,106 +393,7 @@ $(document).ready(function(){
 		
 		
 	}
-	function test(){
-		var condi = {};
-		condi.url = window.location.href || '';
-		var url = Base.serverUrl + "weixin/getJsSdkConfig";
-		$.ajax({
-			url:url,
-			data:condi,
-			type:"POST",
-			dataType:"json",
-			context:this,
-			global:false,
-			success: function(data){
-			
-				var d = data || {};
-				var appId = d.appId || "";
-				var signature = d.signature || "";
-				var nonceStr = d.nonceStr || "";
-				var timestamp = d.timestamp || "";
-				var nub = Math.floor(Math.random()*10) || '5';
-				var userPhone = $("#userPhone").val() || "";
-				var phone_nub = userPhone.substring(0,5)+nub+userPhone.substring(5,userPhone.length);
-				var localtionUrl ="activity.html?O="+g.operate+"&C="+g.channel+"&A="+g.activity+"&up="+phone_nub;
-				
-				wx.config({
-					debug: '', // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-					appId: appId, // 必填，公众号的唯一标识
-					timestamp:timestamp, // 必填，生成签名的时间戳
-					nonceStr: nonceStr, // 必填，生成签名的随机串
-					signature: signature,// 必填，签名，见附录1
-					jsApiList: ['onMenuShareQZone','onMenuShareWeibo','onMenuShareQQ','onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-				});
-				
-				/* 分享到朋友圈 */
-				wx.onMenuShareTimeline({
-					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
-					link: localtionUrl, // 分享链接
-					imgUrl: 'img/logo.jpg', // 分享图标
-					success: function () { 
-						diskFunc();
-					},
-					cancel: function () { 
-					}
-				});	
-				/* 发送给朋友 */
-				wx.onMenuShareAppMessage({
-					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
-					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
-					link: localtionUrl, // 分享链接
-					imgUrl: 'img/logo.jpg', // 分享图标
-					type: '', // 分享类型,music、video或link，不填默认为link
-					dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-					success: function () { 
-						diskFunc();
-					},
-					cancel: function () { 
-					}
-				}); 
-				/* 分享到qq */
-				wx.onMenuShareQQ({
-					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
-					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
-					link: localtionUrl, // 分享链接
-					imgUrl: 'img/logo.jpg', // 分享图标
-					success: function () { 
-						diskFunc();
-					},
-					cancel: function () { 
-					}
-				});
-				/* 分享到微博 */
-				wx.onMenuShareWeibo({
-					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
-					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
-					link: localtionUrl, // 分享链接
-					imgUrl: 'img/logo.jpg', // 分享图标
-					success: function () { 
-						diskFunc();
-					},
-					cancel: function () { 
-					}
-				});
-				/* 分享到qq空间 */
-				wx.onMenuShareQZone({
-					title: '燕子安家，5.20分期享好礼，分享献爱心~', // 分享标题
-					desc: '加入燕子安家助建520爱的音乐教室公益行动，动动手指领取豪礼，为爱加油！', // 分享描述
-					link: localtionUrl, // 分享链接
-					imgUrl: 'img/logo.jpg', // 分享图标
-					success: function () { 
-						diskFunc();
-					},
-					cancel: function () { 
-					}
-				});
-				
-			},
-			error:function(data){
-			}
-		});
-		
-	}
+	
 	//分享触发计数
 	function diskFunc(){
 		var url = Base.serverUrl + "user/updateNum";
