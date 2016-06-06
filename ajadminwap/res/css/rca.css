@@ -1,0 +1,18 @@
+
+html,body{background-color:#fff;font-size:16px;color:#000000;}
+/*  */
+.list_body{}
+.list_body .common_list_div{transition:background-color .1.5s ease-out;line-height:50px;height:50px;border-bottom:1px solid #e5e5e5;}
+.list_body .common_list_div:active{background-color:#dfdfdf;}
+.list_body .common_list_div i.i1{margin:0 1.5% 0 3%;width:27px;height:27px;margin-top:11px;vertical-align:top;display:inline-block;}
+.list_body .common_list_div.div1 i.i1{background:url('../img/rca_ico_1.png') no-repeat center center;background-size:contain;}
+.list_body .common_list_div.div2 i.i1{background:url('../img/rca_ico_2.png') no-repeat center center;background-size:contain;}
+.list_body .common_list_div.div3 i.i1{background:url('../img/rca_ico_3.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body .common_list_div.div1 i.i1{background:url('../img/Crca_ico_1.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body .common_list_div.div2 i.i1{background:url('../img/Crca_ico_2.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body .common_list_div.div3 i.i1{background:url('../img/Crca_ico_3.png') no-repeat center center;background-size:contain;}
+
+.list_body .common_list_div i.i2{width:20px;height:20px;margin-top:15px;display:inline-block;float:right;margin-right:3%;background:url('../img/rca_ico_4.png') no-repeat center center;background-size:contain;}
+
+
+

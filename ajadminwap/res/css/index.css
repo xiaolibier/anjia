@@ -1,0 +1,99 @@
+
+html,body{background-color:#fff;font-size:16px;color:#222222;}
+/*  */
+.list_body1{margin:0 0 20px 0;}
+.list_body1 ul.ul{overflow:hidden;}
+.list_body1 ul.ul li{line-height:40px;display:inline-block;vertical-align:middle;}
+.list_body1 ul.ul li.left{width:24%;height:40px;background-color:#00abdf;float:left;}
+html.cheng .list_body1 ul.ul li.left{width:24%;height:40px;background-color:#f7931e;float:left;}
+.list_body1 ul.ul li.right{padding-left:7%;width:69%;float:right;}
+.list_body1 ul.ul li span.color{color:#00abdf;}
+html.cheng .list_body1 ul.ul li span.color{color:#f7931e;}
+.list_body1 ul.ul li.li1{background:url('../img/index_ico_1.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li2{background:url('../img/index_ico_2.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li3{background:url('../img/index_ico_3.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li4{background:url('../img/index_ico_4.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li5{background:url('../img/index_ico_5.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li6{background:url('../img/index_ico_6.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li7{background:url('../img/index_ico_7.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li8{background:url('../img/index_ico_8.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li9{background:url('../img/index_ico_9.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li10{background:url('../img/index_ico_10.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li11{background:url('../img/index_ico_11.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li12{background:url('../img/index_ico_12.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+/* rca */
+.list_body3 .common_list_div{transition:background-color .1.5s ease-out;line-height:50px;height:50px;border-bottom:1px solid #e5e5e5;}
+.list_body3 .common_list_div:active{background-color:#dfdfdf;}
+.list_body3 .common_list_div i.i1{margin:0 1.5% 0 3%;width:27px;height:27px;margin-top:11px;vertical-align:top;display:inline-block;}
+.list_body3 .common_list_div.div1 i.i1{background:url('../img/rca_ico_1.png') no-repeat center center;background-size:contain;}
+.list_body3 .common_list_div.div2 i.i1{background:url('../img/rca_ico_2.png') no-repeat center center;background-size:contain;}
+.list_body3 .common_list_div.div3 i.i1{background:url('../img/rca_ico_3.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body3 .common_list_div.div1 i.i1{background:url('../img/Crca_ico_1.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body3 .common_list_div.div2 i.i1{background:url('../img/Crca_ico_2.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body3 .common_list_div.div3 i.i1{background:url('../img/Crca_ico_3.png') no-repeat center center;background-size:contain;}
+
+.list_body3 .common_list_div i.i2{width:20px;height:20px;margin-top:15px;display:inline-block;float:right;margin-right:3%;background:url('../img/rca_ico_4.png') no-repeat center center;background-size:contain;}
+
+/* order */
+.list_body2 .common_list_div{transition:background-color .1.5s ease-out;line-height:50px;height:50px;border-bottom:1px solid #e5e5e5;background-color:#fff;}
+.list_body2 .common_list_div:active{background-color:#dfdfdf;}
+.list_body2 .common_list_div i.i1{margin:0 1.5% 0 3%;width:27px;height:27px;margin-top:11px;vertical-align:top;display:inline-block;}
+.list_body2 .common_list_div.div1 i.i1{background:url('../img/order_ico_1.png') no-repeat center center;background-size:contain;}
+.list_body2 .common_list_div.div2 i.i1{background:url('../img/order_ico_2.png') no-repeat center center;background-size:contain;}
+.list_body2 .common_list_div.div3 i.i1{background:url('../img/order_ico_3.png') no-repeat center center;background-size:contain;}
+.list_body2 .common_list_div.div4 i.i1{background:url('../img/order_ico_4.png') no-repeat center center;background-size:contain;}
+.list_body2 .common_list_div.div5 i.i1{background:url('../img/order_ico_5.png') no-repeat center center;background-size:contain;}
+.list_body2 .common_list_div.div6 i.i1{background:url('../img/order_ico_6.png') no-repeat center center;background-size:contain;}
+.list_body2 .common_list_div.div7 i.i1{background:url('../img/order_ico_7.png') no-repeat center center;background-size:contain;}
+.list_body2 .common_list_div.div8 i.i1{background:url('../img/order_ico_8.png') no-repeat center center;background-size:contain;}
+.list_body2 .common_list_div.div9 i.i1{background:url('../img/order_ico_9.png') no-repeat center center;background-size:contain;}
+
+html.cheng .list_body2 .common_list_div.div1 i.i1{background:url('../img/Corder_ico_1.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body2 .common_list_div.div2 i.i1{background:url('../img/Corder_ico_2.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body2 .common_list_div.div3 i.i1{background:url('../img/Corder_ico_3.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body2 .common_list_div.div4 i.i1{background:url('../img/Corder_ico_4.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body2 .common_list_div.div5 i.i1{background:url('../img/Corder_ico_5.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body2 .common_list_div.div6 i.i1{background:url('../img/Corder_ico_6.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body2 .common_list_div.div7 i.i1{background:url('../img/Corder_ico_7.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body2 .common_list_div.div8 i.i1{background:url('../img/Corder_ico_8.png') no-repeat center center;background-size:contain;}
+html.cheng .list_body2 .common_list_div.div9 i.i1{background:url('../img/Corder_ico_9.png') no-repeat center center;background-size:contain;}
+
+
+.list_body2 .common_list_div i.i2{width:20px;height:20px;margin-top:15px;display:inline-block;float:right;margin-right:3%;background:url('../img/rca_ico_4.png') no-repeat center center;background-size:contain;}
+/* 翻页动画 */
+.list_body{position:relative;}
+.over_div{width:100%;height:auto;overflow:hidden;}
+
+@keyframes left_in{
+	from{left:-100%;}
+	to{left:0;}
+}
+@-moz-keyframes left_in{
+	from{left:-100%;}
+	to{left:0;}
+}
+@-webkit-keyframes left_in{
+	from{left:-100%;}
+	to{left:0;}
+}
+@-o-keyframes left_in{
+	from{left:-100%;}
+	to{left:0;}
+}
+/*  */
+@keyframes right_in{
+	from{left:100%;}
+	to{left:0;}
+}
+@-moz-keyframes right_in{
+	from{left:100%;}
+	to{left:0;}
+}
+@-webkit-keyframes right_in{
+	from{left:100%;}
+	to{left:0;}
+}
+@-o-keyframes right_in{
+	from{left:100%;}
+	to{left:0;}
+}

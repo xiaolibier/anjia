@@ -1,0 +1,13 @@
+
+html,body{background-color:#00abdf;font-size:16px;color:#8e8e8e;}
+/*  */
+.logo{margin-top:56px;text-align:center;}
+.logo img.logo_img{max-width:100%;vertical-align:bottom;}
+
+.login_form{}
+.login_form .bg{width:90%;margin:0 auto;padding:8px;background-color:#009ece;}
+.login_form .common_input{border-radius:3px;padding-left:5%;margin-bottom:10px;display:inline-block;width:95%;height:40px;line-height:40px;}
+.login_form .common_input.username{background:url('../img/login_ico1.png') no-repeat 95% center;background-size:auto 50%;background-color:#fff;}
+.login_form .common_input.password{background:url('../img/login_ico2.png') no-repeat 95% center;background-size:auto 50%;background-color:#fff;}
+.login_form a.login_btn{border-radius:3px;background-color:#fcd927;text-align:center;font-size:17px;color:#000000;display:inline-block;width:100%;height:40px;line-height:40px;}
+.login_form a.login_btn:active{background-color:#b8b81a;}

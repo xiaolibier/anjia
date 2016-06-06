@@ -1,0 +1,14 @@
+
+html,body{background-color:#fff;font-size:14px;color:#000000;}
+/*  */
+.list_body{margin:0 0 20px 0;}
+.list_body .ul{width:100%;}
+.list_body .ul td{border-bottom:1px solid #e5e5e5;line-height:40px;}
+
+.list_body .ul .left{padding-left:3.33%;color:#fff;width:30%;height:40px;background-color:#00abdf;}
+html.cheng .list_body .ul .left{background-color:#f7931e;}
+.list_body .ul .right{padding-left:7.67%;width:59%;}
+.list_body .ul span.color{color:#00abdf;}
+
+.list_body  .search_btn{width:68%;margin:10px auto;height:35px;line-height:35px;color:#fff;display:block;border-radius:3px;background-color:#5bb75b;text-align:center;}
+html.cheng .list_body   .search_btn{background-color:#5bb75b;}
