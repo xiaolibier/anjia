@@ -171,6 +171,9 @@ $(document).ready(function(){
 							success: function (res) {
 								// 支付成功后的回调函数
 								alert(res);
+							},
+							cancel: function (res) { 
+								alert(res);
 							}
 						});
 					 /* WeixinJSBridge.invoke(
