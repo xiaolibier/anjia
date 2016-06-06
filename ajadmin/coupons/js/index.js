@@ -163,7 +163,7 @@ $(function(){
 		html.push('<th>开始时间</th>');
 		html.push('<th>结束时间</th>');
 		html.push('<th>有效期</th>');
-		html.push('<th>操作</th>');
+		//html.push('<th>操作</th>');
 		html.push('</tr>');
 
 		var obj = data.list || [];
@@ -199,7 +199,7 @@ $(function(){
 			html.push('<td>' + beginDate + '</td>');
 			html.push('<td>' + endDate + '</td>');
 			html.push('<td>' + expiryDate + '</td>');			
-			html.push('<td><a >上架</a></td>');
+			//html.push('<td><a >上架</a></td>');
 			html.push('</tr>');
 		}
 		html.push('</table>');
@@ -211,7 +211,7 @@ $(function(){
 			html.push(page);
 		}
 		else{
-			layer.msg("没有后台账户数据");
+			layer.msg("没有数据");
 		}
 
 		$("#companylist").html(html.join(''));

@@ -77,7 +77,7 @@ $(function () {
         $.ajax({
             url: url, data: condi, type: "POST", dataType: "json", context: this,
             success: function (data) {
-                console.log("sendLoginHttp",data);
+                //console.log("sendLoginHttp",data);
                 var status = data.success || false;
                 if (status) {
                     var userInfo = data.obj || "";
@@ -103,9 +103,10 @@ $(function () {
                 g.httpTip.hide();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert(XMLHttpRequest.status);
-                alert(XMLHttpRequest.readyState);
-                alert(textStatus);
+                //alert(XMLHttpRequest.status);
+                //alert(XMLHttpRequest.readyState);
+                //alert(textStatus);
+            	alert('网络连接错误,请联系管理员.');
             }
         });
     }
