@@ -17,7 +17,7 @@ $(document).ready(function(){
 	page_now();
 	window_scroll();
 	show_paiming();
-	$("#submit_a_btn").bind("click",onBridgeReady);
+	$("#submit_a_btn").bind("click",submit_form);
 	$("#common_a_btn_regist").bind("click",return_regist);
 	$(".common_a_btn_tell").bind("click",return_tel);
 	$(".back_up_btn").bind("click",function(){
@@ -29,68 +29,6 @@ $(document).ready(function(){
 		});	
 	});
 	
-	function onBridgeReady(){
-	  var url = Base.serverUrl + "weixin/pay/getBrandWCPayConfig";
-		$.ajax({
-			url:url,
-			data:'',
-			type:"POST",
-			dataType:"json",
-			context:this,
-			global:false,
-			success: function(data){
-				var success = data.success || true;
-				if(success){
-					 /* -- */
-					 var d = data.obj || {};
-					 var timeStamp = d.timeStamp || "";
-					 var packAge = d.packAge || "";
-					 var paySign = d.paySign || "";
-					 var appId = d.appId || "";
-					 var signType = d.signType || "";
-					 var nonceStr = d.nonceStr || "";
-					 
-					 WeixinJSBridge.invoke(
-					   'getBrandWCPayRequest', {
-						   "appId" : appId, //公众号名称，由商户传入     
-						   "timeStamp":timeStamp, //时间戳，自1970年以来的秒数     
-						   "nonceStr" : nonceStr, //随机串     
-						   "package" : packAge,
-						   "signType" : signType,//微信签名方式：     
-						   "paySign" : paySign //微信签名 
-					   },
-					   function(res){     
-						  //alert(res);
-						  if(res.err_msg == "get_brand_wcpay_request：ok" ) {alert('成功')}     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
-					   }
-				   ); 
-				   if (typeof WeixinJSBridge == "undefined"){
-					  // alert(WeixinJSBridge);
-					   if( document.addEventListener ){
-						   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-					   }else if (document.attachEvent){
-						   document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
-						   document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-					   }
-					}else{
-					   //alert('存在');
-					}
-					/* -- */
-				}
-				else{
-					var msg = data.message || "获取失败";
-					alert(msg);
-				}
-			},
-			error:function(data){
-			}
-		});
-
-
-
-	 
-	}
-
 	/* 获取排名前两位 */
 	function show_paiming(){
 		var url = Base.serverUrl + "user/getCustomerCollectTop";
