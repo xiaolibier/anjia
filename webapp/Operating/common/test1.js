@@ -93,7 +93,7 @@ $(document).ready(function(){
 					 var nonceStr = d.nonceStr || "";
 					 
 					 alert('timestamp:'+timestamp+";nonceStr:"+nonceStr+";package:"+packAge+";signType:"+signType+";paySign:"+paySign);
-				/*  wx.chooseWXPay({
+				wx.chooseWXPay({
 							timestamp: timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
 							nonceStr: nonceStr, // 支付签名随机串，不长于 32 位
 							package: packAge, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
@@ -106,7 +106,7 @@ $(document).ready(function(){
 							cancel: function (res) { 
 								alert(res);
 							}
-						}); */
+						});
 				}
 				else{
 					var msg = data.message || "获取失败";
