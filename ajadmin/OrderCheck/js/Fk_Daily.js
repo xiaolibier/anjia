@@ -98,7 +98,7 @@ $(function(){
 		html.push('</tr>');
 
 		var obj = data.list || [];
-		for(var i = 0,len = obj.length; i < len; i++){
+		for(var i = 0,len = obj.length; i < len-1; i++){
 			var d = obj[i];
 			html.push('<tr>');
 			html.push('<td>' + d.date + '</td>');
@@ -115,6 +115,21 @@ $(function(){
 			html.push('<td>' + d.chargesSum + '元</td>');
 			html.push('</tr>');
 		}
+		var d = obj[obj.length-1];
+		html.push('<tr>');
+		html.push('<td>' + d.total + '</td>');
+		html.push('<td>' + d.anjiaCountTotal + '个</td>');
+		html.push('<td>' + d.anjiaSumTotal + '元</td>');
+		html.push('<td>' + d.approveCountTotal + '个</td>');
+		html.push('<td>' + d.approveSumTotal + '元</td>');
+		html.push('<td>' + d.loanCountTotal + '个</td>');
+		html.push('<td>' + d.loanSumTotal + '元</td>');
+		html.push('<td>' + d.nextRepayCountTotal + '个</td>');
+		html.push('<td>' + d.nextRepaySumTotal + '元</td>');
+		html.push('<td>' + d.repayCountTotal + '个</td>');
+		html.push('<td>' + d.repaySumTotal + '元</td>');
+		html.push('<td>' + d.chargesSumTotal + '元</td>');
+		html.push('</tr>');
 		html.push('</table>');
 
 		/* var pobj = data.obj || {};
