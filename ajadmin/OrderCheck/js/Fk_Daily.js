@@ -116,7 +116,7 @@ $(function(){
 			html.push('</tr>');
 		}
 		var d = obj[obj.length-1];
-		html.push('<tr>');
+		html.push('<tr style="color:#006dcc">');
 		html.push('<td>' + d.total + '</td>');
 		html.push('<td>' + d.anjiaCountTotal + '个</td>');
 		html.push('<td>' + d.anjiaSumTotal + '元</td>');
