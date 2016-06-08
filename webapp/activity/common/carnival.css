@@ -1,0 +1,82 @@
+﻿
+h1,h2,h3,h4,h5,ul,li,dd,dl{margin:0;padding:0;font-weight:500;list-style-type:none;}
+a,a:active{cursor:pointer;outline:none;text-decoration:none;}
+
+html,body{margin:0;padding:0;}
+*{}
+html,body{height:100%;position:relative;font-size:16px;font-family:microsoft yahei;color:#fff;}
+/*  */
+.carnival.div1 .tip_body{width:89%;height:278px;margin:0 auto;position:relative;}
+.carnival.div1 .bg2{position:absolute;display:block;top:0;right:0;left:0;bottom:0;z-index:2;}
+.carnival.div1 .ul{text-align:center;}
+.carnival.div1 .ul span.color{color:#fff;vertical-align:middle;}
+.carnival.div1 .ul span.spacing1{letter-spacing:6px;}
+.carnival.div1 .ul span.spacing2{letter-spacing:42px;}
+.carnival.div1 .ul li{line-height:38px;margin-top:0px;}
+.carnival.div1 .ul li .block{display:block;}
+.carnival.div1 .btn {text-align:center;margin-top:5px;}
+.carnival.div1 .btn  a.btn_a{color:#14032a;display:inline-block;width:84%;margin-top:15px;height:40px;line-height:40px;text-align:center;background-color:#f9ed35;border-radius:30px;}
+.carnival.div1 .bg{background-color:#61030f;position:absolute;top:0;right:0;left:0;bottom:0;z-index:1;
+    /* older safari/Chrome browsers */  
+    -webkit-opacity: 0.2;  
+    /* Netscape and Older than Firefox 0.9 */  
+    -moz-opacity: 0.2;  
+    /* Safari 1.x (pre WebKit!) 老式khtml内核的Safari浏览器*/  
+    -khtml-opacity: 0.2;  
+    /* IE9 + etc...modern browsers */  
+    opacity: .2;  
+    /* IE 4-9 */  
+    filter:alpha(opacity=20);  
+    /*This works in IE 8 & 9 too*/  
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";  
+    /*IE4-IE9*/  
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=20); 
+}
+select{appearance:none;-webkit-appearance: none;}
+.select_common,.input_common{color:#fff;background:none;border:none;border-bottom:1px solid #fff;width:47%;height:22px;line-height:22px;display:inline-block;}
+.select_common{background:none;background:url('img/down.png') no-repeat 97% center;background-size:auto 40%;}
+
+/*  */
+.carnival.div1{position:relative;background-color:#f53e57;}
+.carnival.div1 .img_header{width:100%;}
+.carnival.div1 .box1{text-align:center;}
+.carnival.div1 .box1 .img{width:100%;margin:0 auto;max-width:500px;}
+.carnival.div1 .box2{margin:0 auto;padding:20px 0 30px;}
+/*  */
+.carnival.div2{padding:45px 0;}
+.carnival.div2 .content{width:95%;margin:0 auto;} 
+.carnival.div2 .img_list{overflow:hidden;}
+.carnival.div2 .img_list .img{float:left;width:60%;margin-top:17px;display:inline-block;vertical-align:top;}
+.carnival.div2 .img_list .img1{margin-right:2%;margin-top:0;width:38%;}
+.carnival.div2 .ul{overflow:hidden;color:#38af15;}
+.carnival.div2 .ul li{border:2px solid #38af15;height:152px;border-radius:10px;text-align:center;float:left;display:inline-block;width:22%;margin:3px 1.5px;}
+.carnival.div2 .ul li.last{}
+.carnival.div2 .ul .img{margin:18px auto 2px;width:40%;}
+.carnival.div2 .ul .text1{font-size:16px;line-height:30px;}
+.carnival.div2 .ul .text2{font-size:12px;}
+/*  */
+.carnival.div3{padding:130px 0 30px;background:url('../../res/images/carnival/div3_bg.jpg') no-repeat center center;background-size:100% 100%;}
+.carnival.div3 .content{width:95%;margin:0 auto;} 
+.carnival.div3 .ul{overflow:hidden;color:#a7590d;}
+.carnival.div3 .ul li{text-align:center;float:left;margin:0 2px;display:inline-block;width:32%;height:270px;background:url('../../res/images/carnival/div3_img_bg.png') no-repeat center center;background-size:100% 100%;}
+.carnival.div3 .ul .img{margin:20px auto 5px;width:40%;}
+.carnival.div3 .ul .text1{font-size:16px;line-height:40px;}
+.carnival.div3 .ul .text2{font-size:14px;line-height:19px;width:90%;display:block;margin:0 auto;}
+.carnival.div3 .ul li.last{margin-right:0;}
+/*  */
+/*  */
+.carnival.div4{position:relative;}
+.carnival.div4 .img_bottom{width:100%;vertical-align:bottom;}
+.carnival.div4 .content{height:1740px;background:url('../../res/images/carnival/div4_bg.png') no-repeat center top;}
+.carnival.div4 .bg{height:1042px;background-color:#f53e57;position:absolute;bottom:0;right:0;left:0;}
+.carnival.div4 .ul_list{width:1082px;overflow:hidden;position:absolute;top:122px;right:0;left:0;margin:0 auto;}
+.carnival.div4 .ul_list li{text-align:center;float:left;display:inline-block;vertical-align:bottom;padding:12px 6px;}
+.carnival.div4 .ul_list li .img{display:inline-block;margin:0 auto;}
+
+.carnival.div4 .ul{display:block;overflow:hidden;width:100%;margin:0 auto;}
+.carnival.div4 .ul li{text-align:center;line-height:30px;color:#c5193f;font-size:16px;float:left;display:inline-block;width:180px;margin-right:34px;}
+.carnival.div4 .ul li.last{margin-right:0;}
+.carnival.div4 .ul li .box{position:relative;z-index:1;height:260px;margin-top:-28px;background-color:#fff;}
+.carnival.div4 .ul li  i{position:relative;z-index:2;display:block;margin:0 auto;font-size:22px;color:#c5193f;text-align:center;width:101px;height:101px;line-height:101px;background:url('../../res/images/carnival/div4_i_bg.png') no-repeat center center;background-size:contain;}
+.carnival.div4 .ul li span.t{display:inline-block;font-size:22px;margin:53px 0 16px;}
+
