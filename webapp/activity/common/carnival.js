@@ -78,8 +78,10 @@ $(document).ready(function(){
 		var index = $(this).attr('index') || "";
 		if(index == 1){
 			g.channel = '01';
+			g.activity = '618';
 		}else if(index == 2){
 			g.channel = '02';
+			g.activity = '618';
 		}
 		var condi = {};
 		condi.userCity = $("#userCity").val() || "";
@@ -201,8 +203,8 @@ $(document).ready(function(){
 						});
 				}
 				else{
-					var msg = data.message || "获取失败";
-					//alert(msg);
+					var msg = data.message || "支付失败";
+					alert(msg);
 				}
 			},
 			error:function(data){

@@ -58,10 +58,10 @@ $(document).ready(function(){
 		var index = $(this).attr('index') || "";
 		if(index == 1){
 			g.channel = '1';
-			g.activity = '0601'
+			g.activity = '618'
 		}else if(index == 2){
 			g.channel = '2';
-			g.activity = '0601'
+			g.activity = '618'
 		}
 		var condi = {};
 		condi.userCity = $("#userCity").val() || "";
