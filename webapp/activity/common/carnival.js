@@ -9,10 +9,14 @@ $(document).ready(function(){
 	g.operate = Utils.getQueryString("O") || "";//获取运营人员
 	g.channel = Utils.getQueryString("C") || "";//获取渠道
 	g.activity = Utils.getQueryString("A") || "";//获取活动标识
+	g.code = Utils.getQueryString("code") || "";//获取微信扫码code
+	g.customerCollectId = Utils.getQueryString("cus") || "";//获取用户识别id
 	
 	$("#submit_a_btn").bind("click",submit_form);
 	$("#chakan_inf").bind("click",chakan_inf_func);
 	$("#telphone").bind("click",telphone_func);
+	$("#common_a_btn_regist").bind("click",config_weixin);
+	
 	
 	//百度定位
 	function myFun(result){
@@ -99,10 +103,13 @@ $(document).ready(function(){
 				success: function(data){
 					var success = data.success || "";
 					if(success){
-						alert('恭喜，预约成功！');
+						/* alert('恭喜，预约成功！');
 						$("#userName").val('');
-						$("#userPhone").val('');
-						//location.href="carnivalOK.html";
+						$("#userPhone").val(''); */
+						var d = data.obj || {};
+						var c = d.customerCollect || {};
+						var customerCollectId = c.id || "";
+						location.href="carnivalOK.html?cus="+customerCollectId;
 					}
 					else{
 						var msg = data.message || "预约失败";
@@ -114,6 +121,96 @@ $(document).ready(function(){
 			})
 		
 		
+	}
+	/* 配置微信参数 */
+	function config_weixin(){
+		var condi = {};
+		condi.url = window.location.href || '';
+		var url = Base.serverUrl + "weixin/getJsSdkConfig";
+		$.ajax({
+			url:url,
+			data:condi,
+			type:"POST",
+			dataType:"json",
+			context:this,
+			global:false,
+			success: function(data){	
+				var d = data || {};
+				var appId = d.appId || "";
+				var signature = d.signature || "";
+				var nonceStr = d.nonceStr || "";
+				var timestamp = d.timestamp || "";
+				var nub = Math.floor(Math.random()*10) || '5';
+				var userPhone = $("#userPhone").val() || "";
+				var phone_nub = userPhone.substring(0,5)+nub+userPhone.substring(5,userPhone.length);
+				var localtionUrl ="activity.html?O="+g.operate+"&C="+g.channel+"&A="+g.activity+"&up="+phone_nub;
+				
+				wx.config({
+					debug: '', // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					appId: appId, // 必填，公众号的唯一标识
+					timestamp:timestamp, // 必填，生成签名的时间戳
+					nonceStr: nonceStr, // 必填，生成签名的随机串
+					signature: signature,// 必填，签名，见附录1
+					jsApiList: ['chooseWXPay'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				});
+				onBridgeReady();
+			},
+			error:function(data){
+			}
+		});
+		
+	}	
+	/* 弹出支付窗口 */
+	function onBridgeReady(){
+	  var condi = {};
+	  condi.code = g.code || "";
+	  condi.customerCollectId = g.customerCollectId || "";
+	  var url = Base.serverUrl + "user/payActivity";
+		$.ajax({
+			url:url,
+			data:condi,
+			type:"POST",
+			dataType:"json",
+			context:this,
+			global:false,
+			success: function(data){
+				var success = data.success || true;
+				if(success){
+					 /* -- */
+					 var d = data.obj || {};
+					 g.timeStamp = d.timeStamp || "";
+					 g.packAge = d.packAge || "";
+					 g.paySign = d.paySign || "";
+					 g.appId = d.appId || "";
+					 g.signType = d.signType || "";
+					 g.nonceStr = d.nonceStr || "";
+					 
+					 WeixinJSBridge.invoke(
+					   'getBrandWCPayRequest', {
+						   "appId" : appId, //公众号名称，由商户传入     
+						   "timeStamp":timeStamp, //时间戳，自1970年以来的秒数     
+						   "nonceStr" : nonceStr, //随机串     
+						   "package" : packAge,
+						   "signType" : signType,//微信签名方式：     
+						   "paySign" : paySign //微信签名 
+					   },
+					   function(res){
+						 // alert(res.err_msg);
+						  /* if(res.err_msg == "get_brand_wcpay_request：ok" ) {alert('成功')}
+						  else if(res.err_msg == "get_brand_wcpay_request：cancel"){alert('失败')}
+						  else if(res.err_msg == "get_brand_wcpay_request：fail"){alert('失败')} */// 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
+					   }
+				   );
+					/* -- */
+				}
+				else{
+					var msg = data.message || "获取失败";
+					//alert(msg);
+				}
+			},
+			error:function(data){
+			}
+		});
 	}
 	
 		//验证手机号
@@ -133,6 +230,7 @@ $(document).ready(function(){
 	}
 	window.sendGetUserInfoDicHttp = sendGetUserInfoDicHttp;
 	window.validPhone = validPhone;
+	window.onBridgeReady = onBridgeReady;
 /*  */
 })
 

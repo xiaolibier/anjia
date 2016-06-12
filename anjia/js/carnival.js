@@ -7,10 +7,45 @@ $(document).ready(function(){
 	g.operate = Utils.getQueryString("O") || "";//获取运营人员
 	g.channel = Utils.getQueryString("C") || "";//获取渠道
 	g.activity = Utils.getQueryString("A") || "";//获取活动标识
+	g.customerCollectId = Utils.getQueryString("cus") || "";//获取用户标识
 	
 	$("#submit_a_btn").bind("click",submit_form);
 	$("#chakan_inf").bind("click",chakan_inf_func);
 	$(".c_childrenDay_ico .common_btn.btn2").bind("click",url_go);
+	
+	erWeiMa_func();
+	/* 动态生成二维码 */
+	function erWeiMa_func(){
+		if(g.customerCollectId != ""){
+			$("#img_span").empty();
+			var str = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8e885de9bab84c4d&redirect_uri=http://m.yanzianjia.com/webapp/activity/carnivalOK.html?cus='+g.customerCollectId+'&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';
+			$("#img_span").qrcode({
+				render: "table",
+				width: 230,
+				height:230,
+				text: str
+			});
+		}
+	}
+	function toUtf8(str) {   
+		var out, i, len, c;   
+		out = "";   
+		len = str.length;   
+		for(i = 0; i < len; i++) {   
+			c = str.charCodeAt(i);   
+			if ((c >= 0x0001) && (c <= 0x007F)) {   
+				out += str.charAt(i);   
+			} else if (c > 0x07FF) {   
+				out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));   
+				out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));   
+				out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));   
+			} else {   
+				out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));   
+				out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));   
+			}   
+		}   
+		return out;   
+	}  
 	/* 跳转页面 */
 	function url_go(){
 		location.href='carnival.html';
@@ -50,10 +85,13 @@ $(document).ready(function(){
 				success: function(data){
 					var success = data.success || "";
 					if(success){
-						alert('恭喜，预约成功！');
+						/* alert('恭喜，预约成功！');
 						$("#userName").val('');
-						$("#userPhone").val('');
-						//location.href="carnivalOK.html";
+						$("#userPhone").val(''); */
+						var d = data.obj || {};
+						var c = d.customerCollect || {};
+						var customerCollectId = c.id || "";
+						location.href="carnivalOK.html?cus="+customerCollectId;
 					}
 					else{
 						var msg = data.message || "预约失败";
