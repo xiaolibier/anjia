@@ -178,12 +178,12 @@ $(document).ready(function(){
 				if(success){
 					 /* -- */
 					 var d = data.obj || {};
-					 g.timeStamp = d.timeStamp || "";
-					 g.packAge = d.packAge || "";
-					 g.paySign = d.paySign || "";
-					 g.appId = d.appId || "";
-					 g.signType = d.signType || "";
-					 g.nonceStr = d.nonceStr || "";
+					 var timeStamp = d.timeStamp || "";
+					 var packAge = d.packAge || "";
+					 var paySign = d.paySign || "";
+					 var appId = d.appId || "";
+					 var signType = d.signType || "";
+					 var nonceStr = d.nonceStr || "";
 					 
 					 WeixinJSBridge.invoke(
 					   'getBrandWCPayRequest', {
