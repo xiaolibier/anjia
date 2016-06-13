@@ -18,11 +18,9 @@ $(document).ready(function(){
 	function erWeiMa_func(){
 		if(g.customerCollectId != ""){
 			$("#img_span").empty();
-			var str = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8e885de9bab84c4d&redirect_uri=http://m.yanzianjia.com/webapp/activity/?cus='+g.customerCollectId+'&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';
+			var str = 'http://m.yanzianjia.com/weixin/authorize?redirect_uri=http://m.yanzianjia.com/webapp/activity/?cus='+g.customerCollectId+"";
 			$("#img_span").qrcode({
 				render: "table",
-				
-				
 				text: str
 			});
 		}
