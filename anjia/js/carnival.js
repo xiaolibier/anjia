@@ -18,9 +18,11 @@ $(document).ready(function(){
 	function erWeiMa_func(){
 		if(g.customerCollectId != ""){
 			$("#img_span").empty();
-			var str = 'http://m.yanzianjia.com/weixin/authorize?redirect_uri=http://m.yanzianjia.com/webapp/activity/?cus='+g.customerCollectId+"";
+			var str = 'http://m.yanzianjia.com/weixin/authorize?cus='+g.customerCollectId+"";
 			$("#img_span").qrcode({
 				render: "table",
+				width:256,
+				height:256,
 				text: str
 			});
 		}
