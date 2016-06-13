@@ -7,7 +7,7 @@ html,body{margin:0;padding:0;}
 *{}
 html,body{font-family:microsoft yahei;background-color:#f4f4f4;}
 
-.img_span{display:inline-block;padding:40px;background-color:#fff;}
+.img_span{display:inline-block;padding:20px;background-color:#fff;}
 .carnivalOK.div1{color:#fff;height:787px;background:url('../images/carnival/ok_bg.jpg') no-repeat center center;}
 .carnivalOK.div1 .content{width:900px;margin:0 auto;text-align:center;}
 .carnivalOK.div1 .title{text-align:center;display:inline-block;font-size:26px;margin:132px auto 117px;}
