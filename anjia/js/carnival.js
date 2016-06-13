@@ -21,8 +21,8 @@ $(document).ready(function(){
 			var str = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8e885de9bab84c4d&redirect_uri=http://m.yanzianjia.com/webapp/activity/?cus='+g.customerCollectId+'&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';
 			$("#img_span").qrcode({
 				render: "table",
-				width: 230,
-				height:230,
+				
+				
 				text: str
 			});
 		}
