@@ -88,6 +88,7 @@ $(function () {
         html.push('<th width="80">订单状态</th>');
         html.push('<th width="80">手机号</th>');
         html.push('<th width="80">逾期笔数</th>');
+		html.push('<th width="80">分期余额</th>');
         html.push('<th width="80">服务费支付方式</th>');
         html.push('<th width="150">操作</th>');
         html.push('</tr>');
@@ -125,6 +126,7 @@ $(function () {
 
             html.push('<td>' + d.applicantPhone + '</td>');
             html.push('<td>' + d.overdueCount + '期</td>');
+			html.push('<td>' + d.totalResidueBalance + '元</td>');
             html.push('<td>' + (d.poundageRepaymentType == "103001" ? "一次性付款" : "分期付款") + '</td>');
 
             //操作列
@@ -137,7 +139,7 @@ $(function () {
             }
 
             html.push('</tr>');
-            html.push('<tr><td id="Sub' + d.orderId + '" OrderStatus="' + d.status + '" colspan="13" style="display: none;background-color: #FAFAD2;margin: 0px;padding:5px 5px 5px 40px;"></td></tr>');
+            html.push('<tr><td id="Sub' + d.orderId + '" OrderStatus="' + d.status + '" colspan="14" style="display: none;background-color: #FAFAD2;margin: 0px;padding:5px 5px 5px 40px;"></td></tr>');
         }
         html.push('</table>');
 
@@ -201,6 +203,7 @@ $(function () {
                     SubHtml.push('<th>分期编号</th>');
                     SubHtml.push('<th>应还时间</th>');
                     SubHtml.push('<th>分期本金</th>');
+					SubHtml.push('<th>剩余本金</th>');
                     if (List.length > 0) {
                         if (List[0].monthPoundage > 0) {
                             SubHtml.push('<th>分期服务费</th>');
@@ -209,7 +212,8 @@ $(function () {
                     SubHtml.push('<th>逾期管理费</th>');
                     SubHtml.push('<th>逾期罚息</th>');
                     SubHtml.push('<th>豁免</th>');
-                    SubHtml.push('<th>应还金额</th>');
+					SubHtml.push('<th>应还金额(总)</th>');
+                    SubHtml.push('<th>应还金额(变)</th>');
                     SubHtml.push('<th width="140px">实还时间</th>');
                     SubHtml.push('<th>实还金额</th>');
                     SubHtml.push('<th>逾期天数</th>');
@@ -221,15 +225,17 @@ $(function () {
                         SubHtml.push('<tr>');
                         SubHtml.push('<td>' + row.repaymentTimes + '</td>');
                         SubHtml.push('<td>' + row.expectRepaymentTime + '</td>');
-                        SubHtml.push('<td>' + (row.residuePrincipal || "") + '</td>');
+                        SubHtml.push('<td>' + (row.repaymentPrincipal || "") + '</td>');
+						SubHtml.push('<td>' + (row.residuePrincipal || 0) + '</td>');
                         if (row.monthPoundage > 0) {
-                            SubHtml.push('<td>' + row.monthPoundage + '元</td>');
+                            SubHtml.push('<td>' + row.monthPoundage + '</td>');
                         }
                         SubHtml.push('<td>' + (row.managementFee || "") + '</td>');
                         SubHtml.push('<td>' + (row.overdueInterest || "") + '</td>');
                         SubHtml.push('<td>' + (row.exemptMoney || "") + '</td>');
-                        SubHtml.push('<td>' + row.currentBalance + '</td>');
-                        SubHtml.push('<td>' + (row.realRepaymentTime || "") + '</td>');
+                        SubHtml.push('<td>' + (row.currentBalance || 0) + '</td>');
+                        SubHtml.push('<td>' + (row.residueBalance || 0) + '</td>');
+						SubHtml.push('<td>' + (row.realRepaymentTime || "") + '</td>');
                         SubHtml.push('<td>' + row.realRepaymentMoney + '</td>');
                         SubHtml.push('<td>' + row.overdueTime + '</td>');
                         SubHtml.push('<td>' + row.statusDesc + '</td>');
