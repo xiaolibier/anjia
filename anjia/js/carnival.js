@@ -21,8 +21,6 @@ $(document).ready(function(){
 			var str = 'http://m.yanzianjia.com/weixin/authorize?cus='+g.customerCollectId+"";
 			$("#img_span").qrcode({
 				render: "table",
-				width:256,
-				height:256,
 				text: str
 			});
 		}
