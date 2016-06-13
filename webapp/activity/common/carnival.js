@@ -111,7 +111,7 @@ $(document).ready(function(){
 						var d = data.obj || {};
 						var c = d.customerCollect || {};
 						var customerCollectId = c.id || "";
-						location.href="carnivalOK.html?cus="+customerCollectId;
+						location.href="http://m.yanzianjia.com/weixin/authorize?cus="+customerCollectId+"";
 					}
 					else{
 						var msg = data.message || "预约失败";
