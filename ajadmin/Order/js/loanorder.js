@@ -53,6 +53,16 @@ $(function(){
 		ParamObj.login_token = g.login_token;
 		ParamObj.currentPageNum = 1;
 		ParamObj.pageSize = 10000;
+		ParamObj.companyId = $("#company").val() || "";
+		if(ParamObj.companyId == "20150901"){
+			ParamObj.companyId = "";
+		}
+		ParamObj.status = $("#status").val() || "";
+		ParamObj.customerName = $("#customerName").val() || "";
+		ParamObj.customerPhone = $("#customerPhone").val() || "";
+		ParamObj.applicationTimeBegin = $("#applicationTimeBegin").val() || "";
+		ParamObj.applicationTimeEnd = $("#applicationTimeEnd").val() || "";
+		ParamObj.orderId = $("#orderId").val() || ""
 		Hmgx.serializeDownload(Base.serverUrl  + "order/queryLoanRecordByQueryExport","CX",ParamObj);
 	});
 
