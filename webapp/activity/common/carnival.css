@@ -37,7 +37,7 @@ select{appearance:none;-webkit-appearance: none;}
 .select_common{background:none;background:url('img/down.png') no-repeat 97% center;background-size:auto 40%;}
 
 /*  */
-.carnival.div1{position:relative;background-color:#f53e57;}
+.carnival.div1{position:relative;background-color:#f44265;}
 .carnival.div1 .img_header{width:100%;}
 .carnival.div1 .box1{text-align:center;}
 .carnival.div1 .box1 .img{width:100%;margin:0 auto;max-width:500px;}
