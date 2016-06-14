@@ -91,10 +91,11 @@ $(function(){
 		html.push('<th>签约量</th>');
 		html.push('<th>签约金额</th>');
 		html.push('<th>应还款量</th>');
-		html.push('<th>应还款金额</th>');
+		html.push('<th>应还款（总）</th>');
 		html.push('<th>实际还款数量</th>');
-		html.push('<th>实际还款金额</th>');
-		html.push('<th>服务费金额</th>');
+		html.push('<th>实还本金</th>');
+		html.push('<th>实还分期服务费</th>');
+		html.push('<th>一次性支付服务费</th>');
 		html.push('</tr>');
 
 		var obj = data.list || [];
@@ -112,6 +113,7 @@ $(function(){
 			html.push('<td>' + d.nextRepaySum + '元</td>');
 			html.push('<td>' + d.repayCount + '个</td>');
 			html.push('<td>' + d.repaySum + '元</td>');
+			html.push('<td>' + d.repayPounSum + '元</td>');
 			html.push('<td>' + d.chargesSum + '元</td>');
 			html.push('</tr>');
 		}
@@ -128,6 +130,7 @@ $(function(){
 		html.push('<td>' + d.nextRepaySumTotal + '元</td>');
 		html.push('<td>' + d.repayCountTotal + '个</td>');
 		html.push('<td>' + d.repaySumTotal + '元</td>');
+		html.push('<td>' + d.repayPounSumTotal + '元</td>');
 		html.push('<td>' + d.chargesSumTotal + '元</td>');
 		html.push('</tr>');
 		html.push('</table>');
