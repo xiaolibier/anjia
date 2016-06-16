@@ -186,7 +186,8 @@ $(function () {
             html.push('<td>' + ( d.monthRepay   || "" ) + '</td>');
 
             var buttonStr = '<a class="btn btn-success" href="javascript:SaveAccept(' + d.orderId + ')">接受</a>  &nbsp;&nbsp;';
-            buttonStr += '<a class="btn btn-warning" href="javascript:ShowCancelWin(' + d.orderId + ')">取消</a>';
+            buttonStr += '<a class="btn btn-warning" href="javascript:ShowCancelWin(' + d.orderId + ')">取消</a>&nbsp;&nbsp;';
+			buttonStr += '<a class="btn btn-success" href="javascript:SendWin(' + d.orderId +  ',\'' + d.customerId + '\',' +  d.poundage + ')">选择活动</a>';
             html.push('<td>' + buttonStr + '</td>');
 
             html.push('</tr>');
@@ -204,6 +205,94 @@ $(function () {
         $("#orderlistpage a").bind("click", pageClick);
     }
 
+	    //显示下发优惠券窗口
+    window.SendWin = function (orderId,customerId,poundage){//用户ID，订单手续费
+        GetExistCoupon(orderId,customerId,poundage);//获取用户存在的优惠券数据
+        $('#SendCoupon').modal('show');
+    };
+    //获取该用户存在的优惠券数据
+    function GetExistCoupon(orderId,customerId,poundage){
+        var url = Base.serverUrl + "coupon/getSelectableCoupons";
+        var condi = {};
+        condi.login_token = g.login_token;
+        condi.orderId = orderId;
+        condi.customerId = customerId;
+        condi.useMoney = poundage;
+        $.ajax({
+            url: url, data: condi,type: "POST", dataType: "json", context: this,
+            success: function (data) {
+                var status = data.success || false;
+                if (status) {
+                    var obj = data.list || [];
+                    var RadioHtml = [];
+                    for(var i = 0 ; i < obj.length ; i ++){
+                        var rowData = obj[i];
+                        if(rowData.couponType == "0"){
+                            RadioHtml.push('<li><input name="sendCouponList" type="radio" id="couponId" value="' + rowData.id + '" />&nbsp;&nbsp;<label>名称:' + rowData.title + '</label></li>');
+                        }else{
+                            RadioHtml.push('<li><input name="sendCouponList" type="radio" id="couponId" value="' + rowData.id + '" />&nbsp;&nbsp;<label>名称:' + rowData.title + '</label></li>');
+                        }
+                    }
+                    RadioHtml.push('<li><input name="sendCouponList" type="radio" id="couponId" value="0" /><label>&nbsp;&nbsp;自定义金额:</label><input style="margin-top: 10px;" type="text" id="couponMoney"></li>');
+                    RadioHtml.push('<input type="hidden" id="customerId" value="' + customerId + '" />');
+                    RadioHtml.push('<input type="hidden" id="poundage"  value="' + poundage + '" />');
+					RadioHtml.push('<input type="hidden" id="orderId"  value="' + orderId + '" />');
+                    $("#CoponUl").html(RadioHtml.join(''));
+                } else {
+                    var msg = data.message || "获取用户优惠券失败！";
+                    Utils.alert(msg);
+                }
+            }
+        });
+    }
+    //保存下发优惠券
+    window.SaveSendCoupon=function(customerId){
+        var condi = {};
+        condi.orderId = $("#CoponUl > input[id='orderId']").val();
+		condi.customerId = $("#CoponUl > input[id='customerId']").val();
+        condi.couponId = $("#CoponUl li input[type='radio']:checked").val();
+        condi.couponMoney = $("#CoponUl li input[id='couponMoney']").val();
+        condi.poundage = $("#CoponUl > input[id='poundage']").val();
+        condi.login_token = g.login_token;
+        if(typeof(condi.couponId) === "undefined"){
+            alert("请选择您要下发的优惠券！");
+            return false;
+        }
+        if(condi.couponId == 0){
+            if(condi.couponMoney == "") {
+                alert("您选择的是自定义优惠券,请输入自定义金额！");
+                return false;
+            }
+            if(isNaN(condi.couponMoney)){
+                alert("自定义金额必须为数字,请重新输入！");
+                $("li input[id='couponMoney']").focus();
+                return false;
+            }
+        }
+        if(confirm("你确认要执行下发优惠券操作吗?")) {
+            g.httpTip.show();
+            $('#SendCoupon').modal('hide');
+            var url = Base.serverUrl + "coupon/sendDownCoupon";
+            $.ajax({
+                url: url, data: condi, type: "POST", dataType: "json", context: this,
+                success: function (data) {
+                    var status = data.success || false;
+                    if (status) {
+                        Utils.alert(data.message);
+                    } else {
+                        var msg = data.message || "下发优惠券失败";
+                        Utils.alert(msg);
+                    }
+                    g.httpTip.hide();
+                },
+                error: function (data) {
+                    g.httpTip.hide();
+                }
+            });
+        }
+    };
+	
+	
     //分页处理
     function countListPage(data) {
         var html = [];

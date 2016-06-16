@@ -226,8 +226,8 @@ $(function () {
 
             if (status == "100505") {
                 //html.push('<td><a href="ViewOrderDetail.html?orderid=' + orderId + '">查看</a>&nbsp&nbsp<a href="javascript:deleteOrderById(\'' + orderId + '\')">代缴费</a></td>');
-                var buttonStr = '<a class="btn btn-primary" href="javascript:ShowWin(\'' + d.orderId +  '\',\'' + d.customerId + '\',\'' + d.poundage + '\')">代缴费</a>&nbsp;&nbsp;';
-                buttonStr += '<a class="btn btn-success" href="javascript:SendWin(' + d.orderId +  ',\'' + d.customerId + '\',' +  d.poundage + ')">发优惠券</a>&nbsp;&nbsp;';
+                var buttonStr = '<a class="btn btn-primary" href="javascript:ShowWin(\'' + d.orderId +  '\',\'' + d.customerId + '\',\'' + d.poundage + '\')">代缴费</a>';
+                //buttonStr += '<a class="btn btn-success" href="javascript:SendWin(' + d.orderId +  ',\'' + d.customerId + '\',' +  d.poundage + ')">发优惠券</a>&nbsp;&nbsp;';
                 html.push('<td>' + buttonStr + '</td>');
             }
             html.push('</tr>');
