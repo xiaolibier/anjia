@@ -1829,7 +1829,7 @@ dl.sub-left-sec-nav dd.M_hidden{display:none;}
 dl.sub-left-sec-nav dd.M_hidden.M_show{display:block;}
 
 /* 六一儿童节活动 */
-.c_childrenDay_ico{z-index:11;position:fixed;bottom:0;right:0;left:0;height:150px;}
+.c_childrenDay_ico{z-index:99999;position:fixed;bottom:0;right:0;left:0;height:150px;}
 .c_childrenDay_ico .bg{position:fixed;bottom:0;right:0;left:0;height:150px;filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity:0.5;opacity: 0.5;background-color:#5c49b7;}
 .c_childrenDay_ico .content{position:relative;width:1295px;margin-left:5%;}
 .c_childrenDay_ico .img{position:absolute;top:-68px;left:0;display:inline-block;width:341px;height:215px;background:url('../images/carnival/c_ico_img.png') no-repeat center top;background-size:contain;}

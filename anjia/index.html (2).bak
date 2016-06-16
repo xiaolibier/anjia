@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<title>燕子安家--家装分期--专业的家庭消费分期互联网金融平台</title>
+	<meta name="keywords"    content="燕子安家，家装分期，装修，装修怎么申请，家庭消费">
+	<meta name="description"   content="燕子安家—致力于打造“家消费”领域的互联网金融服务平台，向3亿中国家庭提供低利率、高额度、长期限、纯信用的的家装分期等金融服务">
+	<link href="../res/css/common.css" rel="stylesheet">
+	<link href="../res/css/shake.css" rel="stylesheet">
+	<link href="../res/css/carouFredSel.css" rel="stylesheet">
+	<link href="../res/css/index.css" rel="stylesheet"> 
+</head>
+<body>
+	<div class="c_childrenDay_ico">
+		<div class="bg"></div>
+		<div class="content">
+			<a class="img"></a>
+			<ul class="ul">
+				<li class="">姓名<span class="color">*</span>：<input  id="userName" type="text" class="name common_input common_input1" /><br>设计师：<input id="designName" type="text" class="name common_input" /></li>
+				<li class="">电话<span class="color">*</span>：<input id="userPhone" type="text" class="name common_input common_input1" /><br>设计师电话：<input id="designPhone" type="text" class="name common_input" /></li>
+				<li class=""><a id="submit_a_btn" index=1 class="common_btn btn1 common_input1">预约</a><br><a class="common_btn btn2">查看活动页面</a></li>
+			</ul>
+		</div>
+	</div>	
+	<div class="header_bg" >
+		<div class="ui-short-head">
+			<div class="ui-wrap">
+				<!-- <div class="denglong denglong1"><img src="../res/images/denglong.png" /></div>
+				<div class="denglong denglong2"><img src="../res/images/denglong.png" /></div> -->
+				<div id="loginstatus" class="head-box">
+					<a style="margin-right:30px;">咨询热线：4006-616-896</a>
+					<a href="/anjia/login.html">登录</a>
+					<s class="header-line"></s>
+					<a href="/anjia/reg.html">注册</a>
+					<s class="header-line"></s>
+					<a href="/anjia/login.html">个人中心</a>
+					<s class="header-line"></s>
+					<a href="/anjia/login.html">我要还款</a>
+					<s class="header-line"></s>
+					<a href="/anjia/guide.html">新手引导</a>
+				</div>
+			</div>
+		</div>
+		<!--加载通用头部-->
+		<script type="text/javascript" src="../anjia/js/head.js"></script>
+	</div>
+	<!-- 右侧二维码 -->
+	<ul class="weixin_er">
+		<a class="er "><img class="er_img" src="../res/images/erweima.jpg"/></a>
+		<a class="top"><img src="../res/images/right_box_img1.png"/></a>
+		<!-- <img class="big_er" src="../res/images/weixin_er.png"/> -->
+	</ul>
+    <div class="ui-slide index-slide"> 
+		<!-- <div class="happy_body_body">
+			<i class="happy_body_body1"></i>
+			<i class="happy_body_body2"></i>
+		</div>	 -->
+    	<div class="ui-wrap" style="width:100%">
+        	<div class="ui-slider">
+		<!--haitao-->
+                <ul class="list_carousel" id="bannerSlider">
+			<li style="background:url(../res/images/banner10.jpg) top center no-repeat"><a href="###"><div class="ui-wrap"></div></a></li>
+			<!--
+			<li style="background:url(../res/images/banner0.jpg) top center no-repeat"><a href="###"><div class="ui-wrap"></div></a></li>
+			<li style="background:url(../res/images/banner5.jpg) top center no-repeat"><a href="###"><div class="ui-wrap"></div></a></li>
+			-->
+                </ul>
+                <div class="ui-wrap ui-wrap-width">
+                	<ul class="pager pager2"></ul>
+					<ul id="pager" class="pager"></ul>
+                </div>
+				<!--[if IE]>
+                <div class="prev" id="prev"></div>
+                <div class="next" id="next"></div>
+				<![endif]-->
+				<!--[if !IE]><!-->
+				<div class="carousel-control">
+					<a class="carousel-btn-prev" id="prev" mon="c=top&amp;a=50&amp;col=4&amp;ct=1&amp;pn=0" href="javascript:void(0);">
+						<span class="icon-wrap"></span>
+					</a>
+					<a class="carousel-btn-next" id="next" mon="c=top&amp;a=52&amp;col=4&amp;ct=1&amp;pn=0" href="javascript:void(0);">
+						<span class="icon-wrap"></span>
+					</a>
+				</div>
+				<!--<![endif]-->
+            </div>
+        </div>
+    </div>
+<div class="body_div">    
+    <div class="index-main1">
+    	<div class="ui-wrap">
+        	<div class="common-title1 title1">
+            	<i class="happy_tree happy_tree1"></i>家装分期
+                <p>Decoration loan</p>
+				<i class="happy_position2"></i>
+            </div>           
+            <div class="loan-img">
+				<img class="rotate" id="fenqi_btn1" src="images/button_m_2.png"/>
+			</div>          
+        </div>
+    </div>
+   <!--  <div class="index-divn">
+    	<div class="content">
+	    	<h4><span class="font">其实不用算</span><br>月服务费率低至0.44%</h4>
+	    	<ul class="ul"><li class="rela">分期金额： <input id="allprice2" type="text" placeholder='0.00' onfocus="placeholder=''" onblur="placeholder='0.00'" class="input1"/><span class="position">（元）</span></li><li>分期期数： <select id="select-option"><option>请选择分期期数</option><option value='1'>6期（服务费率4%）</option><option value='2'>12期（服务费率7%）</option><option value='3'>18期（服务费率10%）</option><option value='4'>24期（服务费率13%）</option><option value='5'>36期（服务费率16%）</option></select></li><li><a class="do" id="do_btn">计算</a></li></ul>
+	    	<div class="id_bt">每月还款<span id="mouthtext2" class="font2">￥000000.00  元</span>服务费（一次性支付）<span id="feetext2" class="font2">￥000000.00  元</span></div>
+			<div class="bttom_btn"><a class="btn" id="fenqi_btn2" href="javascript:void(0)">我要分期</a></div>
+		</div>
+    </div> -->
+	<div class="index-divn index-divn2 staging_divn2">
+    	<div id="one_or_other_c" class="content ">
+	    	<h4>其实不用算<br/><span class="color">￥服务费每月低至44.5元</span></h4>
+	    	<div class="ul_div">
+				<ul class="ul_left">
+					<li class="li1">
+						<span class="title">还款方式：</span>
+						<i class="radio_common checked"><input type="radio" value='1' checked="checked" name="radio1"/></i><span class="size">一次性支付服务费</span>
+						<i class="radio_common"><input type="radio" value='2' name="radio1"/></i><span class="size">分期支付服务费</span>
+					</li>
+					<li class="li2 one_pay">分期数（月）    6期&nbsp;&nbsp;12期&nbsp;&nbsp;18期&nbsp;&nbsp;24期&nbsp;&nbsp;36期&nbsp;&nbsp;</li>
+					<li class="li2 other_pay" style="text-align:center;">月费率0.7%</li>
+					<li class="li3 one_pay">费率&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4%&nbsp;&nbsp;&nbsp;&nbsp;7%&nbsp;&nbsp;&nbsp;10%&nbsp;&nbsp;&nbsp;13%&nbsp;&nbsp;16%&nbsp;&nbsp;</li>			
+				</ul>
+				<ul class="ul_right">
+					<li class="rela"><input id="allprice" type="text" placeholder='0.00' onfocus="placeholder=''" onblur="placeholder='0.00'" class="input1"/><span class="position">元</span></li>
+					<li><select id="select-option"><option>请选择分期期数</option><option value='1'>6期</option><option value='2'>12期</option><option value='3'>18期</option><option value='4'>24期</option><option value='5'>36期</option></select></li>
+					<li><a class="do" id="do_btn">计算</a></li>
+				</ul>
+			</div>	
+	    	<div class="id_bt one_pay">每月还款<span id="mouthtext2" class="font2">￥000000.00  元</span>服务费（一次性支付）<span id="feetext2" class="font2">￥000000.00  元</span></div>
+    		<div class="id_bt other_pay">每月还款<span id="monthRepay" class="font2">￥000000.00  元</span>月还款本金<span id="mouthtext4" class="font2">￥000000.00  元</span>月服务费<span id="monthPoundage" class="font2">￥000000.00  元</span></div>
+			<!-- <div class="bttom_btn"><a class="btn" id="fenqi_btn4" href="javascript:void(0)"></a></div> -->
+    	</div>
+    </div>   
+    <div class="staging-step-main">
+    	<div class="ui-wrap">
+        	<div class="common-title1">
+            	<i class="happy_tree happy_tree2"></i>平台优势
+                <p>Platform advantage</p>
+            </div>
+        	<div class="staging-step-box clearfix staging-border">
+            	<!-- <div class="border_none"></div> -->
+				<div class="staging-step-item">
+                	<i class="staging-ico staging-ico1"></i>
+                    <p class="highlight staging-step-title li3 txt1">额度高</p>
+                    <p class="li3 txt2">最高额度50万<br>可申请全额分期！</p>
+                </div>
+                <div class="staging-step-item">
+                	<i class="staging-ico staging-ico2"></i>
+                    <p class="highlight staging-step-title li3 txt1">效率高</p>
+                    <p class="li3 txt2">平均2个工作日<br>审批效率高于大部分同行！</p>
+                </div>
+                <div class="staging-step-item">
+                	<i class="staging-ico staging-ico3"></i>
+                    <p class="highlight staging-step-title li3 txt1">费率低</p>
+                    <p class="li3 txt2">月费率0.44%起<br>打破行业底线！</p>
+                </div>
+                <div class="staging-step-item">
+                	<i class="staging-ico staging-ico4"></i>
+                    <p class="highlight staging-step-title li3 txt1">门槛低</p>
+                    <p class="li3 txt2">在线申请<br>只需身份证房产证！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--     <div class="cooperative-business-main bg-color-white">
+    	<div class="ui-wrap">
+        	<div class="common-title1">
+            	<i class="happy_tree happy_tree3"></i>合作商家
+                <p>Cooperative business</p>
+				<i class="happy_position2"></i>
+            </div>
+            <div class="cooperative-business-box clearfix">           	
+				<div class="cooperative-part border_outside f-right" onclick="window.open('http://www.cdlrzs.com/')">
+					<div class="cooperative_border1"></div>					
+					<div class="cooperative-part f-right">
+						<img src="../res/images/business-logo2.png" class="cooperative-part-logo" />
+						<div class="cooperative-example clearfix">
+							<div class="cooperative-example-part cooperative-example-part-two cooperative-example-part2">
+								<img src="../res/images/example-img2.jpg" class="c-example-img hover-img c-example-img2" />
+								<div class="c-example-box">
+									<img src="../res/images/example-logo3.png" class="c-example-logo">
+									<p>
+										<a href="http://www.cdlrzs.com/" target="_blank" class="btn-green-full">了解朗润</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cooperative_border2"></div>
+					<div class="cooperative_border3"></div>	
+				</div>	               				
+            	<div class="cooperative-part border_outside" onclick="window.open('http://www.shj.cn/')">
+					<div class="cooperative_border1"></div> 
+					<div class="cooperative-part">
+						<div class="border">
+							<img src="../res/images/business-logo1.png" class="cooperative-part-logo" />
+							<div class="cooperative-example clearfix">
+								<div class="cooperative-example-part">
+									<img src="../res/images/example-img1.jpg" class="c-example-img hover-img" />
+									<div class="c-example-box">
+										<img src="../res/images/example-logo1.png" class="c-example-logo">
+										<p>
+											<a href="http://www.shj.cn/" target="_blank" class="btn-green-full">了解悦享家</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>						
+					</div>
+					<div class="cooperative_border2"></div>
+					<div class="cooperative_border3"></div>
+				</div>				
+            </div>
+        </div>
+    </div> -->
+    <div class="ui-bottom">
+    </div>
+</div>
+	<script type="text/javascript" src="../res/js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="../res/js/jquery.carouFredSel-6.1.0-packed.js"></script>
+	<script type="text/javascript" src="../res/js/ui.js"></script>
+	<script src="../anjia/libs/json.js"></script>
+	<script src="../anjia/libs/base.js"></script>
+	<script src="../anjia/libs/layer.js"></script>
+	<script src="../anjia/libs/utils.js"></script>
+	<script type="text/javascript" src="../res/js/snow.js"></script>
+	<script src="../anjia/js/index.js"></script>
+	<script src="js/carnival.js"></script>
+	<!--BAIDU定位JS 开始-->
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=9Z4yvIoj9jnpKfPA4igxxbLP"></script>
+	<script type="text/javascript">
+		$(function(){
+			// 百度地图API功能
+			function myFun(result){
+				var cityName = result.name;
+				$("#curCity").html(cityName);
+				Utils.offLineStore.set("curCity",cityName,false);
+			}
+			var myCity = new BMap.LocalCity();
+			myCity.get(myFun);
+			//createSnow('', 30);
+		});
+	</script>
+</body>
+
+</html>
+
