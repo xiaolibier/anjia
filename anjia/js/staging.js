@@ -53,7 +53,25 @@ $(function(){
 		//未登录
 		//location.replace("/anjia/login.html");
 	}
-
+	scroll_position();
+	/* 判断底部位置 */
+	function scroll_position(){
+		var _obj = $('.c_childrenDay_ico') || false;
+		if(_obj){
+			$(window).scroll(function(){
+				var scrollTop = $(this).scrollTop();
+			　　var scrollHeight = $(document).height();
+			　　var windowHeight = $(this).height();
+			　　var _height = $('.ui-bottom').outerHeight()+12;
+				if(scrollTop + windowHeight == scrollHeight){
+			　　　　$('.c_childrenDay_ico,.c_childrenDay_ico .bg').css({'bottom':_height});
+			　　}else{
+					$('.c_childrenDay_ico,.c_childrenDay_ico .bg').css({'bottom':'0'});
+				}
+			});
+		}
+		
+	}
 	//g.httpTip.show();
 	$("#countbtn").bind("click",countBtnUp);
 	$("#more_question").bind("click",more_question_f);

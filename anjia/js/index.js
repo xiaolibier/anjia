@@ -22,8 +22,45 @@ $(function(){
 	else{
 	}
 
+	scroll_position();
+	/* 判断底部位置 */
+	function scroll_position(){
+		var _obj = $('.c_childrenDay_ico') || false;
+		if(_obj){
+			$(window).scroll(function(){
+				var scrollTop = $(this).scrollTop();
+			　　var scrollHeight = $(document).height();
+			　　var windowHeight = $(this).height();
+			　　var _height = $('.ui-bottom').outerHeight()+12;
+				if(scrollTop + windowHeight == scrollHeight){
+			　　　　$('.c_childrenDay_ico,.c_childrenDay_ico .bg').css({'bottom':_height});
+			　　}else{
+					$('.c_childrenDay_ico,.c_childrenDay_ico .bg').css({'bottom':'0'});
+				}
+			});
+		}
+		
+	}
+	/* “我要分期”判断是否登录 */
+	$("#fenqi_btn_a_link").bind("click",fenqi_btn_click2);
+	function fenqi_btn_click2(){
+
+		if(!loginStatus){
+			location.href = "/anjia/login.html?p=1";
+		}else{
+			location.href = "/anjia/mystaging.html";
+		}
+	}
 	//合作商家经过效果
 	$.fn.businessHoverFun();
+	
+	/* 首页底部hover */
+	/* $(".new_div3 .div_hover").hover(function(){
+		
+		$(this).children('.hover_text').css('display','table-cell');
+	},function(){
+		$(this).children('.hover_text').fadeOut(300);
+	}); */
 
 	/* “我要分期”判断是否登录 */
 	$("#fenqi_btn1,#fenqi_btn2").bind("click",fenqi_btn_click);

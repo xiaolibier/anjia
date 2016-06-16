@@ -1215,12 +1215,14 @@ a{cursor:pointer;}
 .new_div3 .div_left{float:left;display:inline-block;width:400px;overflow:hidden;}
 .new_div3 .div_left .l_box1{width:100%;height:276px;margin-bottom:5px;background:url('../images/index/n_div3_img1.jpg') no-repeat center center;background-size:contain;}
 .new_div3 .div_left .l_box2{float:right;height:225px;width:319px;background:url('../images/index/n_div3_img3.jpg') no-repeat center center;background-size:contain;}
-.new_div3 .hover_text{cursor:pointer;display:table-cell;display:none;font-size:16px;color:#fff;height:100%;background-color:#fec901;vertical-align:middle;line-height:25px;padding:0 35px;}
+.new_div3 .div_hover .hover_text{transition:all .2s ease-out;cursor:pointer;display:table-cell;display:none;font-size:16px;color:#fff;height:100%;background-color:#fec901;vertical-align:middle;line-height:25px;padding:0 35px;}
 .new_div3 .div_right{float:right;display:inline-block;width:641px;overflow:hidden;}
 .new_div3 .div_right .r_box1{width:496px;height:200px;margin-bottom:5px;background:url('../images/index/n_div3_img2.jpg') no-repeat center center;background-size:contain;}
 .new_div3 .div_right .r_box2{width:276px;float:left;height:301px;margin-right:5px;background:url('../images/index/n_div3_img4.jpg') no-repeat center center;background-size:contain;}
 .new_div3 .div_right .r_box3{width:360px;float:left;height:301px;background:url('../images/index/n_div3_img5.jpg') no-repeat center center;background-size:contain;}
 .new_div3  .div_hover{display:table;}
+.new_div3  .div_hover:hover .hover_text{display:table-cell;}
+
 
 /*  */
 .new_div1 .fenqi_abtn{width:1156px;margin:0 auto;position:relative;}
