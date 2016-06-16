@@ -39,6 +39,7 @@ $(function(){
 	}
 	else{
 		//获取公司信息
+		sendGetcompanys();
 		//sendGetCompanyInfoHttp();
 		//获取订单状态
 		sendGetUserInfoDicHttp();
@@ -103,6 +104,45 @@ $(function(){
 	}
 	*/
 
+	/* 获取合作商户列表 */
+	function sendGetcompanys(){
+		g.httpTip.show();
+		var url = Base.serverUrl + "subsidiary/getSubsidiarys";
+		var condi = {};		
+		$.ajax({
+			url:url,
+			data:condi,
+			type:"POST",
+			dataType:"json",
+			context:this,
+			success: function(data){
+				//console.log("sendGetNavigationKeyHttp",data);
+				var status = data.success || false;
+				if(status){
+					changeSelect(data);
+				}
+				else{
+					var msg = data.message || "获取公司信息字典数据失败";
+					Utils.alert(msg);
+				}
+				g.httpTip.hide();
+			},
+			error:function(data){
+				g.httpTip.hide();
+			}
+		});
+	}
+
+	function changeSelect(obj){
+		var data = obj.list || {};
+		var option = [];
+		option.push('<option value="">全部</option>');	
+		for(var i=0;i<data.length;i++){
+			var name = data[i].name;
+			option.push('<option value="' + data[i].id + '">' + name + '</option>');			
+		}
+		$("#subsidiaryId").html(option.join(''));
+	}
 	//获取用户信息字典信息
 	function sendGetUserInfoDicHttp(){
 		g.httpTip.show();
@@ -167,7 +207,8 @@ $(function(){
 		condi.applicantPhone = $("#applicantPhone").val() || "";
 		condi.createTimeBegin = $("#createTimeBegin").val() || "";
 		condi.createTimeEnd = $("#createTimeEnd").val() || "";
-		condi.orderId = $("#orderId").val() || ""
+		condi.orderId = $("#orderId").val() || "";
+		condi.subsidiaryId = $("#subsidiaryId").val() || "";
 		//condi.companyId = $("#company").val() || "";
 
 		$.ajax({
