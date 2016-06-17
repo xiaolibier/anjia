@@ -1,0 +1,30 @@
+{	
+	obj:[{
+		title:'新鲜抢购',
+		text:'',
+		list:[{
+					title:'山东烟台大樱桃 22-24mm5斤装 新鲜包邮直达',
+					img:'FuG6jKQHnlotGnrgSgCaTXvQ7l70.jpg',
+					price:'118.00'
+				},
+				{
+					title:'山东烟台大樱桃 22-24mm5斤装 新鲜包邮直达',
+					img:'FuG6jKQHnlotGnrgSgCaTXvQ7l70.jpg',
+					price:'118.00'
+			}]
+		},
+		{
+		title:'新鲜抢购',
+		text:'',
+		list:[{
+					title:'山东烟台大樱桃 22-24mm5斤装 新鲜包邮直达',
+					img:'FuG6jKQHnlotGnrgSgCaTXvQ7l70.jpg',
+					price:'118.00'
+				},
+				{
+					title:'山东烟台大樱桃 22-24mm5斤装 新鲜包邮直达',
+					img:'FuG6jKQHnlotGnrgSgCaTXvQ7l70.jpg',
+					price:'118.00'
+			}]
+	}]
+}
