@@ -7,8 +7,9 @@ $(function(){
 	read_database();
 	
 	/* 存取读取数据 */
-	function read_database(){
+	function write_database(){
 		var condi = {};
+		condi.activityId = "789456321";
 		condi.userPhone = "13520478359";
 		var url = Base.serverUrl + "questionnaire/queryQuestionnaires";
 		$.ajax({
@@ -33,11 +34,11 @@ $(function(){
 		});
 	}	
 	
-	function write_database(){
+	function read_database(){
 		var condi = {};
-		condi.userPhone = "1";
+		condi.activityId = "1";
 		condi.question1 = 1;
-		var url = "http://111.198.136.245/questionnaire/gydcwj";
+		var url = Base.serverUrl + "questionnaire/queryQuestionnaires";
 		$.ajax({
 			url:url,
 			data:condi,
