@@ -4,7 +4,7 @@ $(function(){
 	g.fangwen = 0;
 	
 	loding();
-	read_txt();
+	//read_txt();
 	read_database();
 	
 	$('.mod-nav.no-icon').bind('click',write_zan);
@@ -25,7 +25,7 @@ $(function(){
 			success : function(data){
 				var status = data.success || false;
 				if(status){
-					
+					window.location.reload(true);
 				}
 				else{
 					var msg = data.message || "获取失败";
