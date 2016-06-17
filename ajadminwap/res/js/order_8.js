@@ -143,7 +143,7 @@ $(function(){
 
 			var orderId = d.orderId || "";
 			var currentBalance = d.currentBalance || 0;
-			var overdueTime = d.overdueTime || 0;
+			var overdueDay = d.overdueDay || 0;
 			var finishContractTime = d.finishContractTime || "";
 			var status = d.status || "";
 			var applicantName = d.applicantName || "";
@@ -157,7 +157,7 @@ $(function(){
 			html.push('<td>' + orderId + '</td>');
 			html.push('<td>' + applicantName + '</td>');
 			html.push('<td>' + finishContractTime + '</td>');
-			html.push('<td>' + overdueTime + '</td>');
+			html.push('<td>' + overdueDay + '</td>');
 			html.push('<td>' + currentBalance + '</td>');
 			html.push('<td>' + statusDes + '</td>');
 			if(status == '100511'){
