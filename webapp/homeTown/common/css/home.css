@@ -20457,3 +20457,5 @@ ul.coupon-list > li {
     color: #c30000;
     font-weight: 700;
 }
+.mod-tag-nav li a.show_alert{background-color:#f0ebf0;}
+.mod-tag-nav li a.show_alert:active{background-color:#d7d7d7;}
