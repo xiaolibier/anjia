@@ -79,8 +79,9 @@ $(function(){
 	/* 家装分期底部显示答案 */
 	$("#Q_A_list_a li").each(function(n){
 		var a = n+1;
-		$(this).hover(function(){			
-			$("#Q_A_list .p"+a).fadeIn(0).siblings('p').fadeOut(0);
+		$(this).hover(function(){
+			$("#Q_A_list .p"+a).fadeIn(0).siblings('.p').fadeOut(0);
+			$("#Q_A_list .title").html($(this).text());
 		})
 	});
 	/* 选择一次性支付 还是分期支付 */	
