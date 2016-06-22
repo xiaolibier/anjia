@@ -90,6 +90,8 @@ $(function(){
 		html.push('<th>批核金额</th>');
 		html.push('<th>签约量</th>');
 		html.push('<th>签约金额</th>');
+		html.push('<th>优惠券使用量</th>');
+		html.push('<th>优惠券使用金额</th>');
 		html.push('<th>应还款量</th>');
 		html.push('<th>应还款（总）</th>');
 		html.push('<th>实际还款数量</th>');
@@ -109,6 +111,8 @@ $(function(){
 			html.push('<td>' + d.approveSum + '元</td>');
 			html.push('<td>' + d.loanCount + '个</td>');
 			html.push('<td>' + d.loanSum + '元</td>');
+			html.push('<td>' + d.couponCount + '个</td>');
+			html.push('<td>' + d.couponSum + '元</td>');
 			html.push('<td>' + d.nextRepayCount + '个</td>');
 			html.push('<td>' + d.nextRepaySum + '元</td>');
 			html.push('<td>' + d.repayCount + '个</td>');
@@ -126,6 +130,8 @@ $(function(){
 		html.push('<td>' + d.approveSumTotal + '元</td>');
 		html.push('<td>' + d.loanCountTotal + '个</td>');
 		html.push('<td>' + d.loanSumTotal + '元</td>');
+		html.push('<td>' + d.couponCountTotal + '个</td>');
+		html.push('<td>' + d.couponSumTotal + '元</td>');
 		html.push('<td>' + d.nextRepayCountTotal + '个</td>');
 		html.push('<td>' + d.nextRepaySumTotal + '元</td>');
 		html.push('<td>' + d.repayCountTotal + '个</td>');
