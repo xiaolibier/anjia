@@ -84,8 +84,8 @@ $(function(){
 
 			var orderId = d.orderId || "";
 			var expectRepaymentTime = d.expectRepaymentTime || "";
-			var currentBalance = d.currentBalance || 0;
-			var statusDes = d.statusDes || "";
+			var currentBalance = d.residueBalance || 0;
+			var statusDes = d.statusDesc || "";
 			var status = d.status || "";
 			var repaymentRecordId = d.repaymentRecordId || "";
 

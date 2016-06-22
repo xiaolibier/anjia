@@ -37,9 +37,9 @@ $(function () {
                 }
                 var obj = data.obj || [];
                 for (var i = 0; i < obj.length; i++) {
-                    var column = obj[i].orderColumn;
-                    var columnName = obj[i].orderColumnName;
-                    var columnValue = obj[i].orderColumnValue;
+                    var column = obj[i].authorityId;
+                    var columnName = obj[i].authorityName;
+                    var columnValue = obj[i].authorityValue;
                     if ($("#" + column).length != 1) {
                         console.log(column + " [" + columnName + "=" + columnValue + "] 不存在");
                     } else {

@@ -142,7 +142,7 @@ $(function(){
 			var deleted = d.deleted - 0 || 0;
 
 			var orderId = d.orderId || "";
-			var currentBalance = d.currentBalance || 0;
+			var currentBalance = d.residueBalance || 0;
 			var overdueDay = d.overdueDay || 0;
 			var finishContractTime = d.finishContractTime || "";
 			var status = d.status || "";

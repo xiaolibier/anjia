@@ -89,7 +89,7 @@ $(function(){
 
 	function sendQueryOrderListHttp(sys){
 		g.httpTip.show();
-		var url = Base.serverUrl + "md/op/getCustomerCollect";
+		var url = Base.serverUrl + "md/report/getCustomerCollect";
 		var condi = {};
 		condi.login_token = g.login_token;
 		condi.currentPageNum = g.currentPage;

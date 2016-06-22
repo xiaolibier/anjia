@@ -149,8 +149,8 @@ $(function(){
 			var applicantPhone = d.applicantPhone || "";
 			
 			var fenQiTimes = d.fenQiTimes || "";
-			var totalCurrentBalance = d.totalCurrentBalance || 0;
-			var currentBalance = d.currentBalance || 0;
+			var totalCurrentBalance = d.totalResidueBalance || 0;
+			var currentBalance = d.residueBalance || 0;
 
 			html.push('<tr>');
 			html.push('<td>' + orderId + '</td>');
