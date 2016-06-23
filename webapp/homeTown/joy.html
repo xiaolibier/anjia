@@ -6,6 +6,9 @@
 	<meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 	<title>这是个秀长腿的季节悠着点 </title>
 	<link href="common/css/common.css" rel="stylesheet">
+	<link href="common/css/reset.css" rel="stylesheet">
+	<link rel="stylesheet" href="common/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="common/css/willesPlay.css"/>
 	<link href="common/css/joy.css" rel="stylesheet">
 	<style>
 		
@@ -21,9 +24,41 @@
 		<a href="home.html" class="a_btn">来自家乡的星星</a>
 		<i class="point"></i>
 	</div>
-	<div class="video_div">
-		<embed id="video_id" width="100%" height="100%"  align="middle" pluginspage="http://get.adobe.com/cn/flashplayer/" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" bgcolor="#000000" quality="high"   wmode="direct"/>
-
+	<div class="video_div" id="mod_player">
+		<!-- 11 -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div id="willesPlay">
+						<div class="playHeader">
+							<div class="videoName"></div>
+						</div>
+						<div class="playContent">
+							<video width="100%" height="100%" id="playVideo">
+								<source src="http://111.202.85.153/vhot2.qqvideo.tc.qq.com/q030330lgha.m701.mp4?vkey=6F7AA6352A5780040DA366FF27D7589113F855EDB97572CC303F75A456EF12024F9FAA0ABE8275209FD1F938C4BC9A4872B6245B4A6A465C54551756BA17FB9C85C61CDDCB3002FCD87E27624A6059498D31F2256B9716A2&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010" type="video/mp4"></source>
+								当前浏览器不支持 video直接播放
+							</video>
+							<div class="playTip glyphicon glyphicon-play"></div>
+						</div>
+						<div class="playControll">
+							<div class="playPause playIcon"></div>
+							<div class="timebar">
+								<span class="currentTime">0:00:00</span>
+								<div class="progress">
+									<div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+									</div>
+								<span class="duration">0:00:00</span>
+							</div>
+							<div class="otherControl">
+								<span class="fullScreen glyphicon glyphicon-fullscreen"></span>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+<!-- 11 -->
 	</div>
 	<div class="time time2">
 		<span class="date">阅读 3274</span>
@@ -44,6 +79,7 @@
 <script type="text/javascript" src="../libs/json.js"></script>
 <script type="text/javascript" src="../libs/base.js"></script>
 <script type="text/javascript" src="../libs/utils.js"></script>
+<script type="text/javascript"  src="common/js/willesPlay.js"></script>
 <script type="text/javascript"  src="common/js/joy.js"></script>
 </body>
 </html>

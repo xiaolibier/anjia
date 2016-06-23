@@ -4,9 +4,9 @@ $(function(){
 	g.fangwen = 0;
 	var gs = "{	'obj':[{'title':'二师弟开发网站','text':'','list':[{'id':'1','sell':'1','title':'网站开发 电脑网站 手机网站 微信微官网等','img':'1447321487.jpg','img2':'1-16022915514N15.jpg','price':'10.00'},{'id':'2','sell':'2','title':'app开发 ios app开发 android app开发等(上海复大医院案例)','img':'wei15.gif','img2':'1-150R9135K80-L.jpg','price':'10.00'},{'id':'3','sell':'5','title':'微信开发 微网站开发 商城开发','img':'u421994179.jpg','img2':'201403171657254045.jpg','price':'10.00'}]}]}";
 	var goods_id = Utils.getQueryString("id") || "";
-	set_video();
+	//set_video();
 	
-	$('.mod-nav.no-icon').bind('click',write_zan);
+	//$('.mod-nav.no-icon').bind('click',write_zan);
 	
 	/* 配置视频参数 */
 	function set_video(){
@@ -24,9 +24,9 @@ $(function(){
 		var width1 = $('html').width();
 		var width = (width1*90/100).toFixed(0);
 		
-		$('#video_id').attr('flashvars',flashvars);
-		$('#video_id').attr('src',src);
-		$('#video_id').attr('height',width);
+		//$('#video_id').attr('flashvars',flashvars);
+		$('#playVideo').attr('src',src);
+		$('#playVideo').attr('height',width);
 	}
 	
 	/* end */
