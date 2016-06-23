@@ -71,12 +71,14 @@ a:hover{
 	left: 50%;
 	margin-left: -55px;
 	margin-top: -55px;
-	background: #ef6a6c;
+	/* background: #ef6a6c; */
 	font-size: 60px;
 	border: 3px solid #FFFFFF;
 	border-radius: 50%;
 	color: #fff;
 	cursor: pointer;
+	background:url('../img/play.png') no-repeat 60% center;
+	background-size:40% auto;
 }
 #willesPlay .playControll{
 	position: absolute;
@@ -148,6 +150,8 @@ margin: 0px 0px 0px 6px;
 #willesPlay .otherControl span:nth-child(1){
 	font-size: 28px;
 	color: #ef6a6c;
+	background:url('../img/big.png') no-repeat center center;
+	background-size:80%;
 }
 /*#willesPlay .otherControl span:nth-child(2){
 	background-position: -171px 0px;

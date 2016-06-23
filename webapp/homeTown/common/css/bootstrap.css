@@ -507,9 +507,9 @@ th {
 .glyphicon-backward:before {
   content: "\e071";
 }
-.glyphicon-play:before {
+/* .glyphicon-play:before {
   content: "\e072";
-}
+} */
 .glyphicon-pause:before {
   content: "\e073";
 }
@@ -702,12 +702,12 @@ th {
 .glyphicon-briefcase:before {
   content: "\e139";
 }
-.glyphicon-fullscreen:before {
+/* .glyphicon-fullscreen:before {
   content: "\e140";
-}
-.glyphicon-dashboard:before {
+} */
+/* .glyphicon-dashboard:before {
   content: "\e141";
-}
+} */
 .glyphicon-paperclip:before {
   content: "\e142";
 }
