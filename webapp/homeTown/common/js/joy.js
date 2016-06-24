@@ -36,7 +36,7 @@ $(function(){
 		src[6] = '';
 		src[7] = '';
 		$('#playVideo').attr('poster',poster[page_id]);
-		$('.zhuan_img').attr('src',poster[page_id]);
+		//$('.zhuan_img img').attr('src',poster[page_id]);
 		$('#playVideo source').attr('src',src[page_id]);
 		$('.title_title,.j_title').html(title[page_id]);
 		
