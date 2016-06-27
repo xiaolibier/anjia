@@ -104,7 +104,7 @@ $(function(){
 		html.push('<th>终审人员</th>');
 		html.push('<th>终审时间</th>');
 		html.push('<th>审核结果</th>');
-		html.push('<th>审核意见</th>');
+		html.push('<th>操作</th>');
 		html.push('</tr>');
 
 		var obj = data.list || [];
@@ -127,7 +127,7 @@ $(function(){
 			html.push('<td>' + (d.fk3_approve_name || "" ) + '</td>');
 			html.push('<td>' + (d.fk3_approve_time || "" ) + '</td>');
 			html.push('<td>' + getCheckStatus(d.last_approve_type) + " " + getCheckResult(d.last_approve_result) +  '</td>');
-			html.push('<td><a href="javascript:void(0)" onclick="Hmgx.openWin(\'AuditOpinion.html?orderid=' + d.orderId + '\')" title="查看审核意见">查看</a>&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'FK_Seller_4.html?orderid=' + d.orderId + '\')">修改信息</a></td>');
+			html.push('<td><a href="javascript:void(0)" onclick="Hmgx.openWin(\'AuditOpinion.html?orderid=' + d.orderId + '\')" title="查看审核意见">审核意见</a>&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'FK_Seller_4.html?orderid=' + d.orderId + '\')">修改信息</a></td>');
 			html.push('</tr>');
 		}
 		html.push('</table>');
