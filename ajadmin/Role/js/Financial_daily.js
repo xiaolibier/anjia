@@ -271,7 +271,7 @@ $(function(){
 			var repaySecondSum = d.repaySecondSum || 0;
 			var residueRepaySum = d.residueRepaySum || 0;
 			var overdueSum = d.overdueSum || 0;
-			loanCountTotal += loanCount;
+			loanCountTotal += parseInt(loanCount);
 			loanSumTotal += loanSum;
 			approveCountTotal += approveCount;
 			approveSumTotal += approveSum;
