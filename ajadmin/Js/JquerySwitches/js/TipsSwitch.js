@@ -5,7 +5,7 @@
 $(document).ready(function (e) {
     var roleId = Utils.offLineStore.get("user_roleId", false) || "";
     var FinancialObj = {};
-    if (roleId == "20151118000001") {//财务提示开关
+    /* if (roleId == "20151118000001") {//财务提示开关
         FinancialObj.Status = true;
         $("input[id='FinancialTips']").lc_switch();
         // triggered each time a field changes status 触发更新
@@ -23,7 +23,7 @@ $(document).ready(function (e) {
             SetTimer();
         });
         SetTimer();
-    }
+    } */
 
     function SetTimer() {
         if (FinancialObj.Status) {
