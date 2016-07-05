@@ -90,6 +90,8 @@ $(function () {
         html.push('<th width="80">逾期笔数</th>');
 		html.push('<th width="80">分期余额</th>');
         html.push('<th width="80">服务费支付方式</th>');
+		html.push('<th width="80">实际服务费</th>');
+		html.push('<th width="80">优惠金额</th>');
         html.push('<th width="150">操作</th>');
         html.push('</tr>');
         var obj = data.list || [];
@@ -128,7 +130,8 @@ $(function () {
             html.push('<td>' + d.overdueCount + '期</td>');
 			html.push('<td>' + d.totalResidueBalance + '元</td>');
             html.push('<td>' + (d.poundageRepaymentType == "103001" ? "一次性付款" : "分期付款") + '</td>');
-
+			html.push('<td>' + d.totalMonthPoundageMoney + '元</td>');
+			html.push('<td>' + d.totalPrivilegeMoney + '元</td>');
             //操作列
             if (d.status == "100508") {
                 html.push('<td>' + aStr + '</td>');
@@ -139,7 +142,7 @@ $(function () {
             }
 
             html.push('</tr>');
-            html.push('<tr><td id="Sub' + d.orderId + '" OrderStatus="' + d.status + '" colspan="14" style="display: none;background-color: #FAFAD2;margin: 0px;padding:5px 5px 5px 40px;"></td></tr>');
+            html.push('<tr><td id="Sub' + d.orderId + '" OrderStatus="' + d.status + '" colspan="15" style="display: none;background-color: #FAFAD2;margin: 0px;padding:5px 5px 5px 40px;"></td></tr>');
         }
         html.push('</table>');
 
@@ -228,7 +231,7 @@ $(function () {
                         SubHtml.push('<td>' + (row.repaymentPrincipal || "") + '</td>');
 						SubHtml.push('<td>' + (row.residuePrincipal || 0) + '</td>');
                         if (row.monthPoundage > 0) {
-                            SubHtml.push('<td>' + row.monthPoundage + '</td>');
+                            SubHtml.push('<td>' + row.shouldRepayMonthPoundage + '</td>');
                         }
                         SubHtml.push('<td>' + (row.managementFee || "") + '</td>');
                         SubHtml.push('<td>' + (row.overdueInterest || "") + '</td>');
