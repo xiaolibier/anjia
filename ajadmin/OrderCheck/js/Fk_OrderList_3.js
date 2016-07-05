@@ -124,7 +124,7 @@ $(function(){
 			//根据订单状态 判断 终审
 			var credit = '&nbsp&nbsp<a href="javascript:void(0)" onclick="OpenCredit(' + d.orderId + ',this)">91征信</a>';
 			if(d.status == "10050303"){
-				html.push('<td><a href="javascript:Hmgx.openWin(\'ModifyOrder_only.html?orderid=' + d.orderId + '\')">查看订单</a>&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'FK_Seller_3.html?orderid=' + d.orderId + '\')">终审</a>' + credit + '</td>');
+				html.push('<td><a href="javascript:Hmgx.openWin(\'ModifyOrder_only.html?orderid=' + d.orderId + '\')">查看订单</a>&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'FK_Seller_3.html?orderid=' + d.orderId + '\')">终审</a>' + credit + '&nbsp;&nbsp;<a class="" href="javascript:ShowCancelWin(' + d.orderId + ')">取消</a></td>');
 			}else{
 				html.push('<td><a href=""javascript:Hmgx.openWin(\'ViewOrder.html?orderid=' + d.orderId + '\')">查看订单</a>' + credit + '</td>');
 			}
@@ -144,7 +144,37 @@ $(function(){
 
 		$("#orderlistpage a").bind("click",pageClick);
 	}
-
+	 //显示取消订单窗口
+    window.ShowCancelWin = function(orderId){
+        $("#cancelReason").attr("orderId",orderId);
+        $('#CancelWin').modal('show');
+    };
+    window.SaveCancel = function(orderId){
+        if(!confirm("您确定要取消此订单吗?")){return;}
+        var orderId = $("#cancelReason").attr("orderId");
+        var cancelReason = $("#cancelReason").val();
+        if(orderId==""){
+            alert("订单号非法请检查！");
+            return false;
+        }
+        if(cancelReason==""){
+            alert("取消原因不能为空！");
+            return false;
+        }
+        var url = Base.serverUrl + "order/cancelOrderController";
+        var condi = {};
+        condi.login_token = g.login_token;
+        condi.orderId = orderId;
+        condi.cancelReason = cancelReason;
+        $.ajax({
+            url: url, data: condi,type: "POST", dataType: "json", context: this,
+            success: function (data) {
+                $('#CancelWin').modal('hide');
+                var msg = data.message || "取消订单失败！";
+                Utils.alert(msg);
+            }
+        });
+    };
 	function countListPage(data){
 		var html = [];
 		g.totalPage = Math.ceil(data.totalRowNum / data.pageSize);

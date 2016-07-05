@@ -84,7 +84,7 @@ $(function () {
         html.push('<th width="130">身份证号码</th>');
         html.push('<th width="100">审批分期金额</th>');
         html.push('<th width="100">审批分期期数</th>');
-        html.push('<th width="80">待还期数</th>');
+        /* html.push('<th width="80">待还期数</th>'); */
         html.push('<th width="80">订单状态</th>');
         html.push('<th width="80">手机号</th>');
         html.push('<th width="80">逾期笔数</th>');
@@ -104,7 +104,7 @@ $(function () {
             html.push('<td>' + d.applicantIdentity + '</td>');
             html.push('<td>' + d.packageMoney + '元</td>');
             html.push('<td>' + d.fenQiTimes + '期</td>');
-            html.push('<td>' + (d.noRepaymentTimes == 0 ? 0 : (d.fenQiTimes - d.noRepaymentTimes + 1) ) + '期</td>');
+            /* html.push('<td>' + (d.noRepaymentTimes == 0 ? 0 : (d.fenQiTimes - d.noRepaymentTimes + 1) ) + '期</td>'); */
 
             //订单状态
             if (d.status == "100507") {

@@ -116,7 +116,7 @@ $(function(){
 			//根据订单状态 判断 初审
 			var credit = '&nbsp&nbsp<a href="javascript:void(0)" onclick="OpenCredit(' + d.orderId + ',this)">91征信</a>';
 			if(d.status == "10050301"){
-				html.push('<td><a href="javascript:Hmgx.openWin(\'ModifyOrder.html?orderid=' + d.orderId + '\')">编辑</a>&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'FK_Seller_1.html?orderid=' + d.orderId + '\')">初审</a>' + credit + '</td>');
+				html.push('<td><a href="javascript:Hmgx.openWin(\'ModifyOrder.html?orderid=' + d.orderId + '\')">编辑</a>&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'FK_Seller_1.html?orderid=' + d.orderId + '\')">初审</a>' + credit + '&nbsp;&nbsp;<a class="" href="javascript:ShowCancelWin(' + d.orderId + ')">取消</a></td>');
 
 				//html.push('<td><a href="fkuan_detail.html?orderid=' + d.orderId + '">编辑</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-warning" href="javascript:ShowWin(\'' + d.orderId +  '\')">初审</a></td>');
 				//DataList.push(d);
@@ -139,6 +139,38 @@ $(function(){
 
 		$("#orderlistpage a").bind("click",pageClick);
 	}
+
+	 //显示取消订单窗口
+    window.ShowCancelWin = function(orderId){
+        $("#cancelReason").attr("orderId",orderId);
+        $('#CancelWin').modal('show');
+    };
+    window.SaveCancel = function(orderId){
+        if(!confirm("您确定要取消此订单吗?")){return;}
+        var orderId = $("#cancelReason").attr("orderId");
+        var cancelReason = $("#cancelReason").val();
+        if(orderId==""){
+            alert("订单号非法请检查！");
+            return false;
+        }
+        if(cancelReason==""){
+            alert("取消原因不能为空！");
+            return false;
+        }
+        var url = Base.serverUrl + "order/cancelOrderController";
+        var condi = {};
+        condi.login_token = g.login_token;
+        condi.orderId = orderId;
+        condi.cancelReason = cancelReason;
+        $.ajax({
+            url: url, data: condi,type: "POST", dataType: "json", context: this,
+            success: function (data) {
+                $('#CancelWin').modal('hide');
+                var msg = data.message || "取消订单失败！";
+                Utils.alert(msg);
+            }
+        });
+    };
 
 	function countListPage(data){
 		var html = [];
