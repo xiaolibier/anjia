@@ -1,11 +1,11 @@
 $(function(){
 	var g = {};
+	set_video();
 	g.zan = 0;//点赞数
 	g.fangwen = 0;
 	var page_id = Utils.getQueryString("page") || "";
 	g.channel = '76543210';
 	read_database();
-	set_video();
 	$('.mod-nav.no-icon').bind('click',write_zan);
 	
 	/* 配置视频参数 */
