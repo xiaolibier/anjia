@@ -244,6 +244,7 @@ $(function(){
 		html.push('<th>审批服务费</th>');
 		html.push('<th>一次性缴纳服务费</th>');
 		html.push('<th>分期缴纳服务费</th>');
+		html.push('<th>优惠金额</th>');
 		html.push('<th>应收服务费</th>');
 		html.push('<th>逾期金额</th>');
 		html.push('</tr>');
@@ -256,6 +257,7 @@ $(function(){
 		var repaySumTotal =  0;
 		var repayFirstSumTotal =  0;
 		var repaySecondSumTotal =  0;
+		var privilegeMoneyTotal = 0;
 		var residueRepaySumTotal =  0;
 		var overdueSumTotal =  0;
 		for(var i = 0,len = obj.length; i < len; i++){
@@ -269,6 +271,7 @@ $(function(){
 			var repaySum = d.repaySum || 0;
 			var repayFirstSum = d.repayFirstSum || 0;
 			var repaySecondSum = d.repaySecondSum || 0;
+			var privilegeMoney = d.privilegeMoney || 0;
 			var residueRepaySum = d.residueRepaySum || 0;
 			var overdueSum = d.overdueSum || 0;
 			loanCountTotal += parseInt(loanCount || 0);
@@ -279,6 +282,7 @@ $(function(){
 			repaySumTotal += repaySum;
 			repayFirstSumTotal += repayFirstSum;
 			repaySecondSumTotal += repaySecondSum;
+			privilegeMoneyTotal += privilegeMoney;
 			residueRepaySumTotal += residueRepaySum;
 			overdueSumTotal += overdueSum;
 
@@ -292,6 +296,7 @@ $(function(){
 			html.push('<td>' + repaySum + '元</td>');
 			html.push('<td>' + repayFirstSum +  '元</td>');
 			html.push('<td>' + repaySecondSum + '元</td>');
+			html.push('<td>' + privilegeMoney + '元</td>');
 			html.push('<td>' + residueRepaySum + '元</td>');
 			html.push('<td>' + overdueSum + '元</td>');
 			html.push('</tr>');
@@ -307,6 +312,7 @@ $(function(){
 		html.push('<td>' + repaySumTotal + '元</td>');
 		html.push('<td>' + repayFirstSumTotal +  '元</td>');
 		html.push('<td>' + repaySecondSumTotal + '元</td>');
+		html.push('<td>' + privilegeMoneyTotal + '元</td>');
 		html.push('<td>' + residueRepaySumTotal + '元</td>');
 		html.push('<td>' + overdueSumTotal + '元</td>');
 		html.push('</tr>');
