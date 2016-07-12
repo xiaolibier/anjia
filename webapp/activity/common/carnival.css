@@ -16,28 +16,28 @@ html,body{height:100%;position:relative;font-size:16px;font-family:microsoft yah
 .carnival.div1 .ul li .block{display:block;}
 .carnival.div1 .btn {text-align:center;margin-top:5px;}
 .carnival.div1 .btn  a.btn_a{color:#14032a;display:inline-block;width:84%;margin-top:15px;height:40px;line-height:40px;text-align:center;background-color:#f9ed35;border-radius:30px;}
-.carnival.div1 .bg{background-color:#61030f;position:absolute;top:0;right:0;left:0;bottom:0;z-index:1;
+.carnival.div1 .bg{background-color:#53a2f2;position:absolute;top:0;right:0;left:0;bottom:0;z-index:1;
     /* older safari/Chrome browsers */  
-    -webkit-opacity: 0.2;  
+    -webkit-opacity: 0.9;  
     /* Netscape and Older than Firefox 0.9 */  
-    -moz-opacity: 0.2;  
+    -moz-opacity: 0.9;  
     /* Safari 1.x (pre WebKit!) 老式khtml内核的Safari浏览器*/  
-    -khtml-opacity: 0.2;  
+    -khtml-opacity: 0.9;  
     /* IE9 + etc...modern browsers */  
-    opacity: .2;  
+    opacity: .9;  
     /* IE 4-9 */  
-    filter:alpha(opacity=20);  
+    filter:alpha(opacity=90);  
     /*This works in IE 8 & 9 too*/  
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";  
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";  
     /*IE4-IE9*/  
-    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=20); 
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=90); 
 }
 select{appearance:none;-webkit-appearance: none;}
 .select_common,.input_common{color:#fff;background:none;border:none;border-bottom:1px solid #fff;width:47%;height:22px;line-height:22px;display:inline-block;}
 .select_common{background:none;background:url('img/down.png') no-repeat 97% center;background-size:auto 40%;}
 
 /*  */
-.carnival.div1{position:relative;background-color:#f44265;}
+.carnival.div1{position:relative;background-color:#fef5e5;}
 .carnival.div1 .img_header{width:100%;}
 .carnival.div1 .box1{text-align:center;}
 .carnival.div1 .box1 .img{width:100%;margin:0 auto;max-width:500px;}

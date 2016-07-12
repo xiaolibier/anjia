@@ -4,18 +4,18 @@ a,a:active{cursor:pointer;outline:none;text-decoration:none;}
 
 html,body{margin:0;padding:0;}
 *{}
-html,body{height:100%;position:relative;font-size:16px;font-family:microsoft yahei;background-color:#f3efec;color:#fff;}
+html,body{height:100%;position:relative;font-size:16px;font-family:microsoft yahei;background-color:#f3efec;color:#000;}
 /* top */
 .main_bg{padding-top:15%;background:url('img/car_bg.jpg') no-repeat top center;background-size:100% 100%;}
 .body_div{margin:0 3%;}
-.header{text-align:center;font-size:26px;color:#fff;}
+.header{text-align:center;font-size:26px;color:#f02c75;}
 .body_div p.text2{display:block;width:50%;margin:0 auto 0;line-height:30px;min-width:212px;}
 .body_div p.text1{width:80%;display:block;margin:0 auto 7%;line-height:30px;min-width:212px;}
 .body_div p.text input{appearance:none;-webkit-appearance: none;display:inline-block;font-size:16px;color:#9b2f53;background:none;border:none;width:80px;}
 .body_div p.text input:active,.body_div p.text input:focus{border:none;}
 .body_div .text_div{padding:3% 0 7%;}
 .body_div img.er_weima{margin:0 auto;width:55%;display:block;}
-.body_div .abtn{color:#ffec01;}
+.body_div .abtn{color:#f02c75;}
 .bottom{position:relative;bottom:0;margin-top:35%;background-color:#8772a9;height:70px;}
 .bottom ul.ul{overflow:hidden;position:absolute;top:-148px;left:0;right:0;}
 .bottom ul.ul li{float:left;display:inline-block;width:50%;height:110px;vertical-align:bottom;}
@@ -25,8 +25,8 @@ select{appearance:none;-webkit-appearance: none;}
 .select_common,.input_common{background:none;border:none;border-bottom:1px solid #fff;width:47%;height:22px;line-height:22px;display:inline-block;}
 .select_common{background:none;background:url('img/down.png') no-repeat 97% center;background-size:auto 40%;}
 
-.common_a_btn{margin:10px auto;color:#000;display:block;width:60%;height:45px;line-height:45px;text-align:center;border-radius:30px;}
-.common_a_btn1{background-color:#ffec01;margin-top:40px;}
+.common_a_btn{margin:10px auto;color:#fff;display:block;width:60%;height:45px;line-height:45px;text-align:center;border-radius:30px;}
+.common_a_btn1{background-color:#f02c75;margin-top:40px;}
 .common_a_btn1:active{background-color:#eedb00;}
 
 .page_div2{padding:24px 0 0;margin-top:38px;}

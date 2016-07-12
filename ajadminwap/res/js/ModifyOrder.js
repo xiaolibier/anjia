@@ -316,7 +316,7 @@ $(function () {
 		 condi.customerCreditInfo = {};
         condi.login_token = g.login_token;
         condi.companyId = g.companyId;
-        condi.designer = g.designer || "";
+        condi.designer = $("#designer").val() || "";
         condi.packageName = $("#packageType").find("option:selected").text();
         condi.orderId = $('#orderId').val() || "";
 		condi.poundageRepaymentType = $('#poundageRepaymentType').val() || "";

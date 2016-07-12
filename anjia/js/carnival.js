@@ -12,8 +12,8 @@ $(document).ready(function(){
 	$("#submit_a_btn").bind("click",submit_form);
 	$("#chakan_inf").bind("click",chakan_inf_func);
 	$(".c_childrenDay_ico .common_btn.btn2").bind("click",url_go);
-	
 	erWeiMa_func();
+
 	/* 动态生成二维码 */
 	function erWeiMa_func(){
 		if(g.customerCollectId != ""){
