@@ -126,7 +126,7 @@ $(function(){
 	g.orderId = Utils.getQueryString("orderId");
 	g.login_token = Utils.offLineStore.get("token",false) || "";
 	var getOrderInfo = function(){
-		var url = Base.serverUrl + "order/queryOrdersByOrderIdController";
+		var url = Base.serverUrl + "order/getProtocolInfoByOrderId";//order/queryOrdersByOrderIdController
 		var condi = {};
 		condi.login_token = g.login_token;
 		condi.orderId = g.orderId;
