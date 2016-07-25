@@ -1,0 +1,195 @@
+/**
+ * author:hmgx
+ * data:2016-4-22
+ * 按钮权限
+*/
+
+//页面初始化
+$(function(){
+	var g = {};
+	g.phone = "";
+	g.imgCodeId = "";
+	g.sendCode = false;
+	g.sendTime = 60;
+	g.login_token = Utils.offLineStore.get("token",false) || "";
+	g.httpTip = new Utils.httpTip({});
+
+	g.checkedRoleId = ""; //保存选择的角色编号
+
+	g.totalPage = 1;
+	g.currentPage = 1;
+	g.pageSize = 5;
+
+	//验证登录状态
+	var loginStatus = Utils.getUserInfo();
+	if(!loginStatus){
+		alert("未登陆");
+	}else{
+		sendQueryRoleListHttp();//获取角色列表
+		$("#savebtn").bind("click",saveBtnUp); //保存按钮事件
+	}
+
+	//*************************************获取角色列表
+	function sendQueryRoleListHttp(){
+		g.httpTip.show();
+		var url = Base.serverUrl + "common/role/findRoles";//role/queryAllRole
+		var condi = {};
+		condi.login_token = g.login_token;
+		$.ajax({
+			url:url,data:condi,type:"POST",dataType:"json",context:this,
+			success: function(data){
+				var status = data.success || false;
+				if(status){
+					changeListHtml(data);
+				}else{
+					var msg = data.message || "获取角色数据失败！";
+					Utils.alert(msg);
+				}
+				g.httpTip.hide();
+			},
+			error:function(data){
+				g.httpTip.hide();
+			}
+		});
+	}
+	function changeListHtml(data){
+		var html = [];
+		html.push('<table class="table table-bordered table-hover definewidth m10" ><thead>');
+		html.push('<tr>');
+		html.push('<th>选择</th>');
+		html.push('<th>角色名称</th>');
+		html.push('<th>角色描述</th>');
+		html.push('</tr>');
+
+		var obj = data.obj || [];
+		for(var i = 0,len = obj.length; i < len; i++){
+			var d = obj[i];
+			var deleted = d.deleted || 0;
+			if(deleted === 1){
+				continue;
+			}
+			var roleId = d.roleId || "";
+			var roleName = d.roleName || "";
+			var description = d.description || "";
+			var createTime = d.createTime || "";
+
+			html.push('<tr>');
+			html.push('<td><input id="'+ roleId + '" type="radio" name="role" /></td>');
+			html.push('<td>' + roleName + '</td>');
+			html.push('<td>' + description + '</td>');
+			html.push('</tr>');
+		}
+		html.push('</table>');
+		var pobj = data.obj || {};
+		if(obj.length > 0){
+			//var page = countListPage(pobj);
+			//html.push(page);
+		}else{
+			Utils.alert("没有角色数据");
+		}
+		$("#list").html(html.join(''));
+		$("input[name='role']").bind("change",roleClick);
+	}
+
+	//*************************************获取角色按钮权限
+	function roleClick(evt){
+		var id = this.id;
+		g.checkedRoleId = id;
+		ReadRoleButton(id);
+	}
+	function ReadRoleButton(id){
+		g.httpTip.show();
+		var url = Base.serverUrl + "common/auth/findAllRoleAuthorityByRoleId";//uri/queryRoleUriByRoleId
+		var condi = {};
+		condi.login_token = g.login_token;
+		condi.roleId = id;
+		condi.authoritySystem= 102301;
+		condi.authorityType= 102203;
+		$.ajax({
+			url:url,data:condi,type:"POST",dataType:"json",context:this,
+			success: function(data){
+				var status = data.success || false;
+				if(status){
+					var fieldArr = data.obj;
+					var html = [];
+
+					//uriRoleId
+                    //
+					//null
+					//uriId
+                    //
+					//"1"
+					//uriColumnName
+                    //
+					//"/user/queryCustomerController"
+					//
+                    //
+					//"获取注册用户列表"
+
+					html.push('<table class="table table-bordered table-hover definewidth m10" ><thead>');
+					html.push('<tr>');
+					html.push('<th>字段名称</th>');
+					html.push('<th>权限</th>');
+
+					html.push('</tr>');
+					for(var i= 0 ; i < fieldArr.length ; i++ ){
+						html.push('<tr>');
+						html.push('<td>' + fieldArr[i].authorityName + '</td>');
+						html.push('<td><input type="checkbox" id="' +  fieldArr[i].authorityId + '" ' + (fieldArr[i].perm =="1"?"checked":"") + '></td>');
+						html.push('</tr>');
+					}
+					html.push('</table>');
+					$(".NullClass").height($(document).height() - 40);
+					$("#FieldDiv").html(html.join(''));
+				}else{
+					var msg = data.message || "获取角色按钮权限错误！";
+					Utils.alert(msg);
+				}
+				g.httpTip.hide();
+			},
+			error:function(data){
+				g.httpTip.hide();
+			}
+		});
+	}
+
+	//*************************************保存数据
+	function saveBtnUp(){
+		if(g.checkedRoleId == ""){
+			Utils.alert("请选择选择需要设置的角色!");
+			return false;
+		}
+		var fieldNames = "";
+		$('input[type="checkbox"]:checked').each(function(){
+			if(fieldNames == ""){
+				fieldNames = $(this).attr("id");
+			}else {
+				fieldNames += ',' + $(this).attr("id");
+			}
+		});
+		g.httpTip.show();
+		var url = Base.serverUrl + "common/auth/insertRoleAuthority";//uri/insertUriRolesByRoleId
+		var condi = {};
+		condi.login_token = g.login_token;
+		condi.roleId = g.checkedRoleId;
+		condi.authorityIds = fieldNames;
+		condi.authoritySystem= 102301;
+		condi.authorityType= 102203;
+		$.ajax({
+			url:url,data:condi,type:"POST",dataType:"json",context:this,
+			success: function(data){
+				var status = data.success || false;
+				if(status){
+					Utils.alert(data.message);
+				}else{
+					var msg = data.message || "保存按钮权限数据失败！";
+					Utils.alert(msg);
+				}
+				g.httpTip.hide();
+			},
+			error:function(data){
+				g.httpTip.hide();
+			}
+		});
+	}
+});
