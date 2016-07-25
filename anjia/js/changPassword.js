@@ -115,7 +115,7 @@ $(function(){
 	}
 	//请求验证码
 	function sendGetCodeHttp(){
-		var url = Base.serverUrl + "message/sendValidateMessage";
+		var url = Base.serverUrl + "message/sendPhoneValidateMessage";
 		var condi = {};
 		condi.phone_number = g.phone;
 		condi.validate_key = g.guid;

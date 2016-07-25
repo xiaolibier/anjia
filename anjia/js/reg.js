@@ -127,7 +127,7 @@ $(function(){
 	//请求验证码
 	function sendGetCodeHttp(imgCode){
 		//{'phone_number':string,'validate_key':string,'validate_code':string}
-		var url = Base.serverUrl + "message/sendRegisterValidateMessage";//message/sendValidateMessage
+		var url = Base.serverUrl + "message/sendRegisterValidateMessage";//message/sendPhoneValidateMessage
 		var condi = {};
 		condi.phone_num = g.phone;
 		condi.validate_key = g.guid;
