@@ -15,7 +15,7 @@ $(function(){
 	g.codeImg = $("#imgcodebtn")[0];
 	g.guid = Utils.getGuid();
 	//获取图形验证码
-	/* sendGetImgCodeHttp(); 11-16*/
+	sendGetImgCodeHttp();
 
 	//g.httpTip.show();
 
@@ -26,9 +26,9 @@ $(function(){
 	$("#regbtn").bind("click",regUser);
 	$("#gobtn").bind("click",gotoUserCenter);
 
-	/* $("#imgcodebtn").bind("click",sendGetImgCodeHttp); 11-16*/
+	$("#imgcodebtn").bind("click",sendGetImgCodeHttp);
 
-/* 	function sendGetImgCodeHttp(){
+ 	function sendGetImgCodeHttp(){
 		//URL:  http://www.partywo.com/imageValidate/getImageValidate
 		//参数: {image_key:string}
 		var url = Base.serverUrl + "imageValidate/getImageValidate";
@@ -36,7 +36,7 @@ $(function(){
 		g.codeImg.src = url;
 
 		$("#inputimgcode").val("");
-	} */
+	}
 
 	//验证手机号
 	function validPhone(){
@@ -86,15 +86,15 @@ $(function(){
 			var reg = /^1[3,4,5,7,8]\d{9}$/g;
 			if(reg.test(p)){
 				g.phone = p;
-				/* if(imgCode !== ""){ */
+				if(imgCode !== ""){
 					if(!g.sendCode){
 						sendGetCodeHttp(imgCode);
 					}
-				/* }
+				 }
 				else{
 					Utils.alert("请输入图形验证码");
 					$("#inputimgcode").focus();
-				} */
+				}
 			}
 			else{
 				Utils.alert("手机号输入错误");
@@ -121,15 +121,15 @@ $(function(){
 
 			//重新获取图形验证码,1分钟有效
 			//重新获取图形验证码,1分钟有效
-			/* sendGetImgCodeHttp(); 11-16*/
+			sendGetImgCodeHttp();
 		}
 	}
 	//请求验证码
 	function sendGetCodeHttp(imgCode){
 		//{'phone_number':string,'validate_key':string,'validate_code':string}
-		var url = Base.serverUrl + "message/sendValidateMessage";
+		var url = Base.serverUrl + "message/sendRegisterValidateMessage";//message/sendValidateMessage
 		var condi = {};
-		condi.phone_number = g.phone;
+		condi.phone_num = g.phone;
 		condi.validate_key = g.guid;
 		condi.validate_code = imgCode;
 
@@ -159,7 +159,7 @@ $(function(){
 					Utils.alert(msg);
 
 					//重新请求图形验证码
-					/* sendGetImgCodeHttp(); 11-16*/
+					sendGetImgCodeHttp();
 				}
 				g.httpTip.hide();
 			},
@@ -177,7 +177,7 @@ $(function(){
 		if(phone !== ""){
 			if(reg.test(phone)){
 				/* var name = $("#name").val() || "";
-				if(name !== ""){ 11-16*/
+				if(name !== ""){ */
 					var pwd1 = $("#inputpwd").val() || "";
 					var pwd2 = $("#inputcpwd").val() || "";
 					if(pwd1 !== ""){
@@ -218,11 +218,11 @@ $(function(){
 						Utils.alert("请输入密码");
 						$("#inputpwd").focus();
 					}
-				/* }
+				 /* }
 				else{
 					Utils.alert("请输入用户姓名");
 					$("#name").focus();
-				} 11-16*/
+				} */
 			}
 			else{
 				Utils.alert("手机号输入错误");
@@ -276,7 +276,7 @@ $(function(){
 					Utils.alert(msg);
 
 					//重新请求图形验证码
-					//sendGetImgCodeHttp();
+					sendGetImgCodeHttp();
 					$("#inputcode").val("");
 				}
 				g.httpTip.hide();

@@ -108,7 +108,7 @@ $(function(){
 		condi.phone_number = g.phone;
 		condi.validate_key = g.guid;
 		condi.validate_code = imgCode;
-
+		condi.login_token = g.login_token;
 		g.httpTip.show();
 		$.ajax({
 			url:url,

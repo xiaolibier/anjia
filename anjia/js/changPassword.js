@@ -119,6 +119,7 @@ $(function(){
 		var condi = {};
 		condi.phone_number = g.phone;
 		condi.validate_key = g.guid;
+		condi.login_token = g.login_token;
 		g.httpTip.show();
 		$.ajax({
 			url:url,
