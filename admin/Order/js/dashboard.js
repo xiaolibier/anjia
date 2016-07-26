@@ -181,7 +181,7 @@ $(function(){
 					html+= '</tr>';
 					for(var i=0,len=dw.length;i<len;i++){
 						var city = dw[i].city || "";
-						var provinceCode = dw[i].provinceCode+"" || "";
+						var provinceCode = dw[i].provinceCode+"" || "yunnan";
 						//var p = eval(provinceCode) || {};
 						var color = i > 3 ? 'ffac89' : 'ff773e';
 						if(i == 0)color = 'ff4c00';
