@@ -188,8 +188,9 @@ $(function(){
 						html+= '<tr>';
 						html+= '<td>'+city+'</td><td>'+(dw[i].cityCount || 0)+'</td><td>'+(dw[i].cityProportion || 0)+'%</td>';
 						html+= '</tr>';
-						//console.log(chinaMapConfig.names.$(p).color);
-						//console.log($(p));
+						console.log(chinaMapConfig);
+						console.log(chinaMapConfig.names);
+						console.log(chinaMapConfig.names[provinceCode]);
 						chinaMapConfig.names[provinceCode].color=color;
 						
 					}
