@@ -182,14 +182,14 @@ $(function(){
 					for(var i=0,len=dw.length;i<len;i++){
 						var city = dw[i].city || "";
 						var provinceCode = dw[i].provinceCode || "";
-						var p = eval(provinceCode) || {};
+						//var p = eval(provinceCode) || {};
 						var color = i > 3 ? 'ffac89' : 'ff773e';
 						if(i == 0)color = 'ff4c00';
 						html+= '<tr>';
 						html+= '<td>'+city+'</td><td>'+(dw[i].cityCount || 0)+'</td><td>'+(dw[i].cityProportion || 0)+'%</td>';
 						html+= '</tr>';
-						console.log(chinaMapConfig.names.p);
-						//console.log(chinaMapConfig.names[p]);
+						//console.log(chinaMapConfig.names.p);
+						console.log(chinaMapConfig[names][provinceCode]);
 						chinaMapConfig.names[provinceCode].color=color;
 						
 					}
