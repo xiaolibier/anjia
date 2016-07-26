@@ -181,7 +181,7 @@ $(function(){
 					html+= '</tr>';
 					for(var i=0,len=dw.length;i<len;i++){
 						var city = dw[i].city || "";
-						var provinceCode = dw[i].provinceCode || "";
+						var provinceCode = dw[i].provinceCode+"" || "";
 						//var p = eval(provinceCode) || {};
 						var color = i > 3 ? 'ffac89' : 'ff773e';
 						if(i == 0)color = 'ff4c00';
@@ -190,7 +190,7 @@ $(function(){
 						html+= '</tr>';
 						//console.log(chinaMapConfig.names.p);
 						console.log(chinaMapConfig['names'][provinceCode]);
-						chinaMapConfig['names']['yunnan'].color=color;
+						chinaMapConfig['names'][provinceCode].color=color;
 						
 					}
 					$("#city_list").html(html);
