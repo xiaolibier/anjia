@@ -179,7 +179,7 @@ $(function(){
 					html+= '<tr class="th">';
 					html+= '<td>城市</td><td>数量</td><td>百分比</td>';
 					html+= '</tr>';
-					for(var i=0,len=dw.length;i<len;i++){
+					for(var i=0,len=dw.length;i<5;i++){
 						var city = dw[i].city || "";
 						var provinceCode = dw[i].provinceCode+"" || "yunnan";
 						//var p = eval(provinceCode) || {};
