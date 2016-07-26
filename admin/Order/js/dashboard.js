@@ -189,7 +189,7 @@ $(function(){
 						html+= '<td>'+city+'</td><td>'+(dw[i].cityCount || 0)+'</td><td>'+(dw[i].cityProportion || 0)+'%</td>';
 						html+= '</tr>';
 						//console.log(chinaMapConfig.names.p);
-						console.log(chinaMapConfig[names][provinceCode]);
+						console.log(chinaMapConfig['names'][provinceCode]);
 						chinaMapConfig.names[provinceCode].color=color;
 						
 					}
