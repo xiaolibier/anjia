@@ -190,7 +190,7 @@ $(function(){
 						html+= '</tr>';
 						//console.log(chinaMapConfig.names.p);
 						console.log(chinaMapConfig['names'][provinceCode]);
-						chinaMapConfig['names'][""+provinceCode+""].color=color;
+						chinaMapConfig['names'][dw[i].provinceCode].color=color;
 						
 					}
 					$("#city_list").html(html);
