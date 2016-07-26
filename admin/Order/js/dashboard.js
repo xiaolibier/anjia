@@ -179,9 +179,9 @@ $(function(){
 					html+= '<tr class="th">';
 					html+= '<td>城市</td><td>数量</td><td>百分比</td>';
 					html+= '</tr>';
-					for(var i=0,len=dw.length;i<5;i++){
+					for(var i=0,len=dw.length;i<len;i++){
 						var city = dw[i].city || "";
-						var provinceCode = dw[i].provinceCode+"" || "yunnan";
+						var provinceCode = dw[i].provinceCode || "";
 						//var p = eval(provinceCode) || {};
 						var color = i > 3 ? 'ffac89' : 'ff773e';
 						if(i == 0)color = 'ff4c00';
@@ -189,9 +189,10 @@ $(function(){
 						html+= '<td>'+city+'</td><td>'+(dw[i].cityCount || 0)+'</td><td>'+(dw[i].cityProportion || 0)+'%</td>';
 						html+= '</tr>';
 						//console.log(chinaMapConfig.names.p);
-						console.log(chinaMapConfig['names'][provinceCode]);
-						chinaMapConfig['names'][provinceCode].color=color;
-						
+						//console.log(chinaMapConfig['names'][provinceCode]);
+						if(provinceCode != ""){
+							chinaMapConfig['names'][provinceCode].color=color;
+						}
 					}
 					$("#city_list").html(html);
 
