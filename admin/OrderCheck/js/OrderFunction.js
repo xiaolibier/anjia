@@ -56,7 +56,7 @@ function getCheckResult(CheckCode){
 		case "3":
 			return "审核中";
 		default :
-			return "错误状态";
+			return "";
 	}
 }
 
