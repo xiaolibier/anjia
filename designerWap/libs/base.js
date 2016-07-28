@@ -21,7 +21,7 @@
 
 	//请求服务地址
 	//var serverUrl = "http://www.partywo.com/";
-	var serverUrl = "http://123.57.95.154:8086/";
+	var serverUrl = "http://123.57.95.154:8087/";
 
 	Base.userName = userName;
 	Base.phoneNumber = phoneNumber;
