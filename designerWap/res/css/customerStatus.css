@@ -1,0 +1,30 @@
+
+
+/*  */
+.cus_body{padding:30px 3%;}
+.cus_body .list{overflow:hidden;}
+.cus_body .list li{float:left;display:inline-block;width:100%;margin:0 auto;position:relative;overflow:hidden;}
+.cus_body .list .left_line{position:absolute;top:0;bottom:0;display:inline-block;left:8%;width:11%;border-left:1px solid #887af5;}
+.cus_body .list .left_line .ico{background-color:#fff;z-index:99;font-style:normal;text-align:center;position:absolute;left:0%;margin-left:-15px;top:50%;margin-top:-15px;width:30px;height:30px;line-height:30px;border-radius:50px;border:1px solid #887af5;}
+.cus_body .list li.top .left_line {top:50%;}
+.cus_body .list li.top .left_line .ico{top:0%;}
+.cus_body .list li.bot .left_line {bottom:50%;}
+.cus_body .list li.bot .left_line .ico{bottom:0%;margin-bottom:-15px;margin-top:0;}
+
+.cus_body .list li .right_div{padding:5px 0;float:left;margin:2px 0;margin-left:19%;display:inline-block;width:80%;min-height:90px;line-height:30px;color:#fff;font-size:15px;}
+.cus_body .list li.active .right_div{
+FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#4bc2f4,endColorStr=#867cf5); /*IE 6 7 8*/ 
+background: -ms-linear-gradient(top, #4bc2f4,  #867cf5);        /* IE 10 */
+background:-moz-linear-gradient(top,#4bc2f4,#867cf5);/*火狐*/ 
+background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#4bc2f4), to(#867cf5));/*谷歌*/ 
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4bc2f4), to(#867cf5));      /* Safari 4-5, Chrome 1-9*/
+background: -webkit-linear-gradient(top, #4bc2f4, #867cf5);   /*Safari5.1 Chrome 10+*/
+background: -o-linear-gradient(top, #4bc2f4, #867cf5);  /*Opera 11.10+*/
+}
+.cus_body .list li .right_div{background:#bbbbbb;}
+.cus_body .list .right_div .title{font-size:18px;text-align:center;}
+.cus_body .list .right_div .text{margin:0 10%;}
+
+
+.bottom{background-color:#392248;padding:5px;overflow:hidden;margin-top:30px;}
+.bottom .right_img{margin-top:9px;float:right;color:#fff;font-size:15px;line-height:25px;}

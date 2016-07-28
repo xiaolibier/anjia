@@ -1,0 +1,36 @@
+
+.set_body{font-size:16px;color:#000000;padding:30px 0 0;
+FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#48c6f4,endColorStr=#a952f5); /*IE 6 7 8*/ 
+background: -ms-linear-gradient(top, #48c6f4,  #a952f5);        /* IE 10 */
+background:-moz-linear-gradient(top,#48c6f4,#a952f5);/*火狐*/ 
+background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#48c6f4), to(#a952f5));/*谷歌*/ 
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#48c6f4), to(#a952f5));      /* Safari 4-5, Chrome 1-9*/
+background: -webkit-linear-gradient(top, #48c6f4, #a952f5);   /*Safari5.1 Chrome 10+*/
+background: -o-linear-gradient(top, #48c6f4, #a952f5);  /*Opera 11.10+*/
+}
+/*  */
+.set_body{padding:20px 0 50px;}
+.logo_div{}
+.user_logo{display:inline-block;width:90%;height:90%;border-radius:150px;margin:8px auto 0;background:url('../img/index_img_ico.png') no-repeat center right;background-size:contain;}
+.ico_bg{display:block;margin:0 auto;text-align:center;width:160px;height:160px;background-color:#83c5f7;border-radius:150px;}
+.user_info{text-align:center;color:#fff;font-size:17px;margin:20px 0 20px;}
+.user_info .size1{font-size:15px;}
+.messa{margin:0 3% 20px;padding:5px 0;position:relative;}
+.messa .mess_bg{background-color:#fff;position:absolute;top:0;bottom:0;right:0;left:0;
+filter: Alpha(opacity=30); -moz-opacity:0.3; opacity:0.3;
+}
+.messa .con_text{position:relative;top:0;bottom:0;right:0;left:0;}
+.messa .title{color:#8b1dce;font-size:17px;margin:10px 0 10px;padding-left:3%;}
+.messa .title .i{padding:0 7px;border-radius:50px;background-color:#8b1dce;color:#fff;font-style:normal;}
+.messa .text{padding:0 6%;color:#fff;font-size:15px;line-height:25px;}
+.common_btn{display:block;margin:10px 3%;text-align:center;background-color:#3ec4f0;color:#fff;line-height:35px;font-size:15px;}
+
+.a_content{padding:0 3%;color:#fff;text-align:center;z-index:2;position:fixed;top:0;left:0;right:0;}
+.bg{z-index:1;position:fixed;bottom:0;top:0;left:0;right:0;background-color:#282828;filter:alpha(opacity=85); -moz-opacity:0.85; opacity:0.85;}
+.a_content .clear{overflow:hidden;}
+.a_content .top_img{float:right;margin-right:5%;}
+.a_content .size1{font-size:24px;display:block;margin:10px auto 40px;}
+.a_content .size2{font-size:20px;display:block;margin:20px auto 30px;}
+.a_content .size3{font-size:16px;display:block;margin:0px auto 30px;}
+.a_content .size4{font-size:16px;display:block;margin:0px auto 30px;}
+.sbox_tips{display:none;}

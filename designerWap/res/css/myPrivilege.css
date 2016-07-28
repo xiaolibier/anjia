@@ -1,0 +1,17 @@
+
+html,body{background-color:#fff;font-size:16px;color:#222222;margin;0;padding:0;}
+/*  */
+.index_h{position:relative;margin-bottom:60px;}
+.index_h .logo_ico{max-width:125px;border-radius:150px;display:block;margin:0 auto;height:102%;bottom:-50%;left:0;right:0;position:absolute;width:24%;background:url('../img/index_img_ico.png') no-repeat center center;background-size:contain;}
+.index_h .h_bg{width:100%;vertical-align:bottom;}
+
+.index_body{padding:0 3%;}
+.user_info{margin-bottom:20px;text-align:center;color:#000;font-size:18px;line-height:25px;}
+.user_info .size1{font-size:14px;color:#747474;}
+.content{padding:0 3%;}
+.poo{margin-bottom:30px;}
+.poo .radio{background-color:#3ec4f0;border:none;}
+.poo .right_btn{float:right;color:#fff;display:inline-block;width:30%;background-color:#3ec4f0;text-align:center;height:30px;line-height:30px;font-size:14px;}
+.list{width:100%;margin-bottom:10px;background-color:#887af5;color:#fff;font-size:14px;line-height:30px;}
+.list.used{background-color:#b4b4b4;}
+.list td{padding:5px 0 5px 5px;}
