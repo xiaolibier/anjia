@@ -124,7 +124,7 @@ $(function(){
 			//根据订单状态 判断 终审
 			var credit = '&nbsp&nbsp<a href="javascript:void(0)" onclick="OpenCredit(' + d.orderId + ',this)">91征信</a>';
 			/* if(d.status == "10050303"){ */
-				html.push('<td><a href="javascript:Hmgx.openWin(\'ModifyOrder_only.html?orderid=' + d.orderId + '\')">查看订单</a>&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'FK_Seller_3.html?orderid=' + d.orderId + '\')">终审</a>' + credit + '&nbsp;&nbsp;<a class="" href="javascript:ShowCancelWin(' + d.orderId + ')">取消</a></td>');
+				html.push('<td><a href="javascript:Hmgx.openWin(\'ModifyOrder_only.html?orderid=' + d.orderId + '\')">查看订单</a>&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'FK_Seller_3.html?orderid=' + d.orderId + '\')">终审</a>' + credit + '</td>');
 			/* }else{
 				html.push('<td><a href=""javascript:Hmgx.openWin(\'ViewOrder.html?orderid=' + d.orderId + '\')">查看订单</a>' + credit + '</td>');
 			} */

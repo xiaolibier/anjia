@@ -251,6 +251,7 @@ $(function(){
 		html.push('<th>审批分期金额</th>');
 		html.push('<th>审批分期期数</th>');
 		html.push('<th>订单状态</th>');
+		html.push('<th>服务费支付方式</th>');
 		html.push('<th>真实姓名</th>');
 		//html.push('<th>联系电话</th>');
 		html.push('<th>未还期数</th>');
@@ -270,7 +271,7 @@ $(function(){
 			var packageMoney = d.packageMoney || "";
 			var statusDes = d.statusDes || "";
 			var status = d.status || "";
-
+			var poundageRepaymentTypeDesc = d.poundageRepaymentTypeDesc || "";
 			var applicantName = d.applicantName || "";
 			var applicantPhone = d.applicantPhone || "";
 			
@@ -288,6 +289,7 @@ $(function(){
 			html.push('<td>' + (packageMoney==0?"":packageMoney + "元") +  '</td>');
 			html.push('<td>' + (fenQiTimes==0?"":fenQiTimes + "期") + '</td>');
 			html.push('<td>' + statusDes + '</td>');
+			html.push('<td>' + poundageRepaymentTypeDesc + '</td>');
 			html.push('<td>' + applicantName + '</td>');
 			//html.push('<td>' + applicantPhone + '</td>');
 

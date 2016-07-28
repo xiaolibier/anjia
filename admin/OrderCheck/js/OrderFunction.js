@@ -54,7 +54,7 @@ function getCheckResult(CheckCode){
 		case "2":
 			return "退回";
 		case "3":
-			return "审核中";
+			return "已取消";
 		default :
 			return "";
 	}

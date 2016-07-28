@@ -80,6 +80,7 @@ $(function () {
     $("#but_tg").bind("click", {approveResult: 0}, fkSellerBtnUp);
     $("#but_jj").bind("click", {approveResult: 1}, fkSellerBtnUp);
     $("#but_th").bind("click", {approveResult: 2}, fkSellerBtnUp);
+	$("#but_qx").bind("click", {approveResult: 3}, fkSellerBtnUp);
     $("#packageMoney").bind("blur", changePoundageRepaymentType);
     $("#fenQiTimes").bind("change", changePoundageRepaymentType);
 	$("#packageMoney").bind("blur", countFee);
