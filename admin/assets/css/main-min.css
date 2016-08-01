@@ -451,5 +451,5 @@ iframe {
 
 /* 2016-6-24 */
 .dl-log .n_user_ico{display:inline-block;vertical-align:text-bottom;width:24px;height:21px;margin:0px 6px 0 36px;background:url('../img/n_u_ico_1.png') no-repeat center center;background-size:contain;}
-
+.dl-log .n_user_ico2{background:url('../img/n_u_ico_2.png') no-repeat center center;background-size:contain;}
 
