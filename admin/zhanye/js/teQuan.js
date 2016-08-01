@@ -114,7 +114,7 @@ $(function(){
 			html.push('<td>' + (d.recvTypeDesc || "") + '</td>');
 			html.push('<td>' + (d.remark || "") + '</td>');
 			html.push('<td>' + (d.money || 0) + '元</td>');
-			html.push('<td>' + (d.expireDate || "") + '</td>');
+			html.push('<td>' + (d.createTime || "") + '</td>');
 			html.push('</tr>');
 		}
 		html.push('</table>');
