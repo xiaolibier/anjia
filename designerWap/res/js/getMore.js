@@ -80,11 +80,13 @@ $(function(){
 			var aUrl = g.aUrl || "";
 			var imgUrl = g.imgUrl || "";
 		}
-		if(isWeiXin()){
+		/* if(!isWeiXin()){
 			$('.sbox_tips').fadeIn();
 		}else{
 			share_weixin(aUrl,aTitle,imgUrl);
-		}
+		} */
+		//测试
+		share_weixin(aUrl,aTitle,imgUrl);
 	}
 	/* 配置微信参数 */
 	function share_weixin(aUrl,aTitle,imgUrl){
@@ -99,7 +101,7 @@ $(function(){
 			context:this,
 			global:false,
 			success: function(data){	
-				var d = data || {};
+				var d = data.obj || {};
 				var appId = d.appId || "";
 				var signature = d.signature || "";
 				var nonceStr = d.nonceStr || "";
