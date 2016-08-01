@@ -27,7 +27,7 @@ background: -o-linear-gradient(top, #48c6f4, #a952f5);  /*Opera 11.10+*/
 .a_content .common_abtn{color:#fff;display:inline-block;height:35px;line-height:35px;width:95%;margin:10px auto 30px;background-color:#3ec4f0;}
 
 .a_content2{padding:0 3%;color:#fff;text-align:center;z-index:2;position:fixed;top:0;left:0;right:0;}
-.bg2{z-index:1;position:fixed;bottom:0;top:0;left:0;right:0;background-color:#282828;filter:alpha(opacity=85); -moz-opacity:0.85; opacity:0.85;}
+.bg2{z-index:2;position:fixed;bottom:0;top:0;left:0;right:0;background-color:#282828;filter:alpha(opacity=85); -moz-opacity:0.85; opacity:0.85;}
 .a_content2 .clear{overflow:hidden;}
 .a_content2 .top_img{float:right;margin-right:5%;}
 .a_content2 .size1{font-size:24px;display:block;margin:10px auto 40px;}
