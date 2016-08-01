@@ -121,6 +121,7 @@ $(function(){
 						imgUrl: imgUrl, // 分享图标
 						success: function () { 
 							// 用户确认分享后执行的回调函数
+							alert('分享成功！');
 							Share_back();
 						},
 						cancel: function () { 
@@ -149,6 +150,7 @@ $(function(){
 
 	/* 微信分享成功后 */
 	function Share_back(){
+		alert('分享回调！');
 		var url = Base.serverUrl + "activity/shareActivityCallBack";
 		var condi = {};
 		condi.login_token = g.login_token;
