@@ -59,11 +59,11 @@ $(function(){
 						option.push('<div class="body_message">');
 						option.push('<h4 class="title">'+bmTitle+'：</h4>');
 						option.push('<p class="text">'+bmTextDesc+'</p>');
-						option.push('<div class="div"><a aUrl="'+bmClickUrl+'" aTitle="'+bmTitle+'" imgUrl="'+bmUrl+'" class="a_btn show_tip">分享活动赚现金</a></div>');
+						option.push('<div class="div"><a aUrl="'+bmClickUrl+'" href="javascript:void(0)" aTitle="'+bmTitle+'" onclick="share_btn_f()" imgUrl="'+bmUrl+'" class="a_btn show_tip">分享活动赚现金</a></div>');
 						option.push('</div>');
 					}
 					$("#activity_list").html(option.join(''));
-					$(".a_btn.show_tip").bind('click',share_btn_f);
+					//$(".a_btn.show_tip").bind('click',share_btn_f);
 				}
 				else{
 					var msg = data.message || "";
@@ -111,11 +111,9 @@ $(function(){
 						imgUrl: imgUrl, // 分享图标
 						success: function () { 
 							// 用户确认分享后执行的回调函数
-							alert('分享成功！');
 							Share_back();
 						},
 						cancel: function () { 
-						alert('分享失败！');
 							// 用户取消分享后执行的回调函数
 						}
 					});
@@ -138,7 +136,7 @@ $(function(){
 		}
 	}	
 	/* 活动分享点击 */
-	function share_btn_f(){
+	 window.share_btn_f = function(){
 		var aUrl = $(this).attr('aUrl') || "";
 		var aTitle = $(this).attr('aTitle') || "";
 		var imgUrl = $(this).attr('imgUrl') || "";
@@ -152,7 +150,6 @@ $(function(){
 	
 	/* 微信分享成功后 */
 	function Share_back(){
-		alert('分享回调！');
 		var url = Base.serverUrl + "activity/shareActivityCallBack";
 		var condi = {};
 		condi.login_token = g.login_token;
