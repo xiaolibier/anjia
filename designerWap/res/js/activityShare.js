@@ -104,6 +104,7 @@ $(function(){
 					jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 				});
 				wx.ready(function(){
+					alert(atitle+"+"+aurl+"+"+imgurl);
 					wx.onMenuShareTimeline({
 						title: atitle, // 分享标题
 						link: aurl, // 分享链接
@@ -125,6 +126,7 @@ $(function(){
 						dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 						success: function () { 
 							// 用户确认分享后执行的回调函数
+							Share_back();
 						},
 						cancel: function () { 
 							// 用户取消分享后执行的回调函数
@@ -139,15 +141,7 @@ $(function(){
 		});
 		
 	}
-	/* 判断是不是微信浏览器 */
-	function isWeiXin(){
-		var ua = window.navigator.userAgent.toLowerCase();
-		if(ua.match(/MicroMessenger/i) == 'micromessenger'){
-			return true;
-		}else{
-			return false;
-		}
-	}	
+	
 	/* 活动分享点击 */
 	 window.share_btn_f = function(){
 		var aurl = $(this).attr('aurl') || "";
@@ -160,7 +154,15 @@ $(function(){
 			share_weixin(aurl,atitle,imgurl);
 		}
 	}
-	
+	/* 判断是不是微信浏览器 */
+	function isWeiXin(){
+		var ua = window.navigator.userAgent.toLowerCase();
+		if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+			return true;
+		}else{
+			return false;
+		}
+	}	
 	/* 微信分享成功后 */
 	function Share_back(){
 		var url = Base.serverUrl + "activity/shareActivityCallBack";
