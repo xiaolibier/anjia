@@ -126,10 +126,13 @@ $(document).ready(function(){
 				var success = data.success || false;
 				if(success){
 					var d = data.obj || [];
+					var myDate = new Date();    
+					var date = myDate.toLocaleDateString();//可以获取当前日期
 					var num = d[0].question1 || 0;//记录访问量
 					var num2 = d[0].question2 || 1;//记录点赞数
 					$('.count_user_get').html('阅读 '+num);
 					$('.count_zan_num').html(num2);
+					$('#date_').html(date);
 					g.zan = num2;
 					num = parseInt(num)+1;
 					g.fangwen = num;
