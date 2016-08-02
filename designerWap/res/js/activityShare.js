@@ -59,7 +59,7 @@ $(function(){
 						option.push('<div class="body_message">');
 						option.push('<h4 class="title">'+bmTitle+'：</h4>');
 						option.push('<p class="text">'+bmTextDesc+'</p>');
-						option.push('<div class="div"><a aUrl="'+bmClickUrl+'" href="javascript:void(0)" aTitle="'+bmTitle+'" onclick="share_btn_f()" imgUrl="'+bmUrl+'" class="a_btn show_tip">分享活动赚现金</a></div>');
+						option.push('<div class="div"><a aurl="'+bmClickUrl+'" href="javascript:void(0)" atitle="'+bmTitle+'" onclick="share_btn_f()" imgurl="'+bmUrl+'" class="a_btn show_tip">分享活动赚现金</a></div>');
 						option.push('</div>');
 					}
 					$("#activity_list").html(option.join(''));
@@ -78,7 +78,7 @@ $(function(){
 	}
 	
 	/* 配置微信参数 */
-	function share_weixin(aUrl,aTitle,imgUrl){
+	function share_weixin(aurl,atitle,imgurl){
 		var condi = {};
 		condi.url = window.location.href || '';
 		var url = Base.serverUrl + "weixin/getJsSdkConfig";
@@ -105,9 +105,9 @@ $(function(){
 				});
 				wx.ready(function(){
 					wx.onMenuShareTimeline({
-						title: aTitle, // 分享标题
-						link: aUrl, // 分享链接
-						imgUrl: imgUrl, // 分享图标
+						title: atitle, // 分享标题
+						link: aurl, // 分享链接
+						imgUrl: imgurl, // 分享图标
 						success: function () { 
 							// 用户确认分享后执行的回调函数
 							Share_back();
@@ -117,10 +117,10 @@ $(function(){
 						}
 					});
 					wx.onMenuShareAppMessage({
-						title: aTitle, // 分享标题
+						title: atitle, // 分享标题
 						desc: '', // 分享描述
-						link: aUrl, // 分享链接
-						imgUrl: imgUrl, // 分享图标
+						link: aurl, // 分享链接
+						imgUrl: imgurl, // 分享图标
 						type: '', // 分享类型,music、video或link，不填默认为link
 						dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 						success: function () { 
@@ -150,14 +150,14 @@ $(function(){
 	}	
 	/* 活动分享点击 */
 	 window.share_btn_f = function(){
-		var aUrl = $(this).attr('aUrl') || "";
-		var aTitle = $(this).attr('aTitle') || "";
-		var imgUrl = $(this).attr('imgUrl') || "";
+		var aurl = $(this).attr('aurl') || "";
+		var atitle = $(this).attr('atitle') || "";
+		var imgurl = $(this).attr('imgurl') || "";
 		if(!isWeiXin()){
 			$('.sbox_tips').fadeIn();
 		}else{
 			$('.sbox_tips').fadeIn();
-			share_weixin(aUrl,aTitle,imgUrl);
+			share_weixin(aurl,atitle,imgurl);
 		}
 	}
 	
