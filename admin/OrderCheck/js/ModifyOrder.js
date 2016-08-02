@@ -435,7 +435,7 @@ $(function () {
         condi.customerId = g.customerId;
         condi.orderId = g.orderId;
         condi.orderMaterialType = upType;
-        var url = Base.serverUrl + "order/uploadOrderMaterial";
+        var url = Base.serverUrl + "pc/order/uploadOrderMaterialImage";//order/uploadOrderMaterial
         $.ajaxFileUpload({
             url: url, data: condi,
             secureuri: false, //一般设置为false
@@ -457,7 +457,7 @@ $(function () {
         condi.customerId = g.customerId;
         condi.orderId = g.orderId;
         condi.orderMaterialType = upType;
-        var url = Base.serverUrl + "order/uploadOrderMaterialFile";
+        var url = Base.serverUrl + "pc/order/uploadOrderMaterialFile";//order/uploadOrderMaterialFile
         $.ajaxFileUpload({
             url: url, data: condi,
             secureuri: false, //一般设置为false
@@ -476,7 +476,7 @@ $(function () {
     //刷新图片
     function RefreshImage(orderId,upType) {
         $.ajax({
-            url: Base.serverUrl + "order/getOrderMaterialsByOrderId",
+            url: Base.serverUrl + "pc/order/findOrderMaterialByOrderId",//order/getOrderMaterialsByOrderId
             data: {login_token: g.login_token, orderId:orderId,orderMaterialType:upType},
             type: "POST", async: false, dataType: "json", context: this,
             success: function (data) {
