@@ -177,12 +177,12 @@ $(function(){
 	}
 	 //显示取消订单窗口
     window.ShowCancelWin = function(id){
-        $("#cancelReason").attr("id",id);
+        $("#cancelReason").attr("_id",id);
         $('#CancelWin').modal('show');
     };
     window.SaveCancel = function(id){
         if(!confirm("您确定要取消/拒绝此订单吗?")){return;}
-        var id = $("#cancelReason").attr("id");
+        var id = $("#cancelReason").attr("_id");
         var cancelReason = $("#cancelReason").val();
         if(id==""){
             alert("订单号非法请检查！");
