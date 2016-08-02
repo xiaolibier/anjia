@@ -59,7 +59,7 @@ $(function(){
 						option.push('<div class="body_message">');
 						option.push('<h4 class="title">'+bmTitle+'：</h4>');
 						option.push('<p class="text">'+bmTextDesc+'</p>');
-						option.push('<div class="div"><a aurl="'+bmClickUrl+'" href="javascript:void(0)" atitle="'+bmTitle+'" onclick="share_btn_f()" imgurl="'+bmUrl+'" class="a_btn show_tip">分享活动赚现金</a></div>');
+						option.push('<div class="div"><a onclick="share_btn_f(\''+bmClickUrl+'\',\''+bmTitle+'\',\''+bmUrl+'\')" class="a_btn show_tip">分享活动赚现金</a></div>');
 						option.push('</div>');
 					}
 					$("#activity_list").html(option.join(''));
@@ -104,7 +104,7 @@ $(function(){
 					jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 				});
 				wx.ready(function(){
-					alert(atitle+"+"+aurl+"+"+imgurl);
+					
 					wx.onMenuShareTimeline({
 						title: atitle, // 分享标题
 						link: aurl, // 分享链接
@@ -143,15 +143,16 @@ $(function(){
 	}
 	
 	/* 活动分享点击 */
-	 window.share_btn_f = function(){
-		var aurl = $(this).attr('aurl') || "";
+	 window.share_btn_f = function(aurl,atitle,imgurl){
+		/* var aurl = $(this).attr('aurl') || "";
 		var atitle = $(this).attr('atitle') || "";
-		var imgurl = $(this).attr('imgurl') || "";
-		if(!isWeiXin()){
+		var imgurl = $(this).attr('imgurl') || ""; */
+		if(isWeiXin()){
 			$('.sbox_tips').fadeIn();
 		}else{
 			$('.sbox_tips').fadeIn();
 			share_weixin(aurl,atitle,imgurl);
+			//alert(atitle+"+"+aurl+"+"+imgurl);
 		}
 	}
 	/* 判断是不是微信浏览器 */
