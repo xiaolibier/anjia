@@ -147,7 +147,7 @@ $(function(){
 		/* var aurl = $(this).attr('aurl') || "";
 		var atitle = $(this).attr('atitle') || "";
 		var imgurl = $(this).attr('imgurl') || ""; */
-		if(isWeiXin()){
+		if(!isWeiXin()){
 			$('.sbox_tips').fadeIn();
 		}else{
 			$('.sbox_tips').fadeIn();
