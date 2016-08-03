@@ -110,8 +110,8 @@ input[type="search"],input[type="number"],input[type="text"],input[type="button"
 .charts .c_right .common_date{display:inline-block;width:80%;background-color:#fff;height:28px;line-height:28px;border:1px solid #dcdcdc;margin-bottom:5px;}
 /*  */
 .data_pie{width:100%;max-width:1295px;margin:0 auto;color:#000000;}
-.data_pie td{width:25%;}
-.data_pie span.title{font-size:30px;}
+.data_pie td{width:20%;overflow:visible;}
+.data_pie span.title{font-size:17px;}
 .data_pie span.size2{font-size:14px;}
 /*  */
 .map_div{overflow:hidden;}

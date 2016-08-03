@@ -234,6 +234,7 @@ $(function(){
 					var d2 = o.chartByStudy || [];
 					var d3 = o.chartByWage[0] || [];
 					var d4 = o.chartByJob || [];
+					var d5 = o.chartByMarital || [];
 					/* var applyPackageCount = d.applyPackageCount || 0;//申请量 */
 					var data2 = [];
 					for(var i=0,len=d2.length;i<len;i++){
@@ -243,11 +244,15 @@ $(function(){
 					for(var i=0,len=d4.length;i<len;i++){
 						data4[i]= [d4[i].job,d4[i].jobCount];
 					}
-					/* 用户数据1 */
-					$('.pie_row').highcharts({
+					var data5 = [];
+					for(var i=0,len=d5.length;i<len;i++){
+						data5[i]= [d5[i].marital,d5[i].maritalCount];
+					}
+					/* 用户数据5 */
+					$('.pie_row5').highcharts({
 						title: {//走势图标题
-							text: '<span class="title">'+d1.avgAge+'</span><br><span class="size2">平均年龄</span>',
-							y: -18 ,
+							text: '<span class="title">'+d5[0].marital+'</span><br><span class="size2">婚姻情况</span>',
+							y: -14 ,
 							verticalAlign:'middle',
 							useHTML:true
 						},
@@ -257,7 +262,58 @@ $(function(){
 						},
 						plotOptions:{
 							pie:{
-								size:170,
+								size:'40%',
+								innerSize:'90%',//饼状图内径大小，也可以配置为20%的百分比形式
+								colors:[
+									'#570bc8',
+									'#7637e9',
+									'#9365e8',
+									'#ae8fe8',
+									'#d7c6f4'
+								],
+							datalabels:{
+								distance:15,//数据标签距离饼图边缘的距离，为负数就越靠近饼图圆心
+								formatter:function(){
+									return this.y + '%';
+								},
+								style:{
+									fontWeight:'bold',
+									color:'fff'
+								},
+								enabled:true
+								}
+							}
+						},
+						series: [{//可以为多个品种
+							data:data5
+						}],
+						subtitle: {//走势图来源
+							text: 'Source: www.jstxdm.com',
+							x: 20,
+							style:{display:"none"}//可隐藏
+						},
+						credits:{//制作人；可作为本站水印
+							text:"http://www.jstxdm.com",
+							href:"http://www.jstxdm.com",
+							position:{x:-250,y:-180},
+							style:{"z-index":"999",'display':'none'}
+						}
+					});
+					/* 用户数据1 */
+					$('.pie_row').highcharts({
+						title: {//走势图标题
+							text: '<span class="title">'+d1.avgAge+'</span><br><span class="size2">平均年龄</span>',
+							y: -14 ,
+							verticalAlign:'middle',
+							useHTML:true
+						},
+						chart: {
+							backgroundColor: '#edeef2',
+							type: 'pie'
+						},
+						plotOptions:{
+							pie:{
+								size:'40%',
 								innerSize:'90%',//饼状图内径大小，也可以配置为20%的百分比形式
 								colors:[
 									'#20ade4',
@@ -283,7 +339,7 @@ $(function(){
 								['20-30岁',d1.c1],
 								['30-40岁',d1.c2],
 								['40-50岁',d1.c3],
-								['其他',d1.c4]
+								['50岁以上',d1.c4]
 							]
 						}],
 						subtitle: {//走势图来源
@@ -302,7 +358,7 @@ $(function(){
 			$('.pie_row2').highcharts({
 				title: {//走势图标题
 					text: '<span class="title">'+d2[0].education+'</span><br><span class="size2">平均学历</span>',
-					y: -18 ,
+					y: -14 ,
 					verticalAlign:'middle',
 					useHTML:true
 				},
@@ -312,7 +368,7 @@ $(function(){
 				},
 				plotOptions:{
 					pie:{
-						size:170,
+						size:'40%',
 						innerSize:'90%',//饼状图内径大小，也可以配置为20%的百分比形式
 						colors:[
 							'#e51600',
@@ -355,7 +411,7 @@ $(function(){
 			$('.pie_row3').highcharts({
 				title: {//走势图标题
 					text: '<span class="title">'+d3.avgWages+'</span><br><span class="size2">平均收入</span>',
-					y: -18 ,
+					y: -14 ,
 					verticalAlign:'middle',
 					useHTML:true
 				},
@@ -365,7 +421,7 @@ $(function(){
 				},
 				plotOptions:{
 					pie:{
-						size:170,
+						size:'40%',
 						innerSize:'90%',//饼状图内径大小，也可以配置为20%的百分比形式
 						colors:[
 							'#f4c700',
@@ -409,7 +465,7 @@ $(function(){
 			$('.pie_row4').highcharts({
 				title: {//走势图标题
 					text: '<span class="title">'+d4[0].job+'</span><br><span class="size2">工作性质</span>',
-					y: -18 ,
+					y: -14 ,
 					verticalAlign:'middle',
 					useHTML:true
 				},
@@ -419,7 +475,7 @@ $(function(){
 				},
 				plotOptions:{
 					pie:{
-						size:170,
+						size:'40%',
 						innerSize:'90%',//饼状图内径大小，也可以配置为20%的百分比形式
 						colors:[
 							'#66b500',
