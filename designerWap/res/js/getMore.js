@@ -77,7 +77,7 @@ $(function(){
 			var imgUrl = "";
 		}else{
 			var aTitle = g.aTitle || "" ;
-			var aUrl = g.aUrl+"?O="+_phone || "";
+			var aUrl = g.aUrl+"&O="+_phone || "";
 			var imgUrl = g.imgUrl || "";
 		}
 		 if(!isWeiXin()){
