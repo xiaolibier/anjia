@@ -53,13 +53,15 @@ $(function(){
 						var bmTitle = d.bmTitle || "";
 						var bmTextDesc = d.bmTextDesc || "";
 						var bmClickUrl = d.bmClickUrl || "";
+						var bUrl = bmClickUrl +"?O="+_phone;
+						console.log(bUrl);
 						option.push('<div class="logo">');
 						option.push('<img class="logo_img" src="'+bmUrl+'"/>');
 						option.push('</div>');
 						option.push('<div class="body_message">');
 						option.push('<h4 class="title">'+bmTitle+'：</h4>');
 						option.push('<p class="text">'+bmTextDesc+'</p>');
-						option.push('<div class="div"><a onclick="share_btn_f(\''+bmClickUrl+'\',\''+bmTitle+'\',\''+bmUrl+'\')" class="a_btn show_tip">分享活动赚现金</a></div>');
+						option.push('<div class="div"><a onclick="share_btn_f(\''+bUrl+'\',\''+bmTitle+'\',\''+bmUrl+'\')" class="a_btn show_tip">分享活动赚现金</a></div>');
 						option.push('</div>');
 					}
 					$("#activity_list").html(option.join(''));
@@ -124,7 +126,7 @@ $(function(){
 						imgUrl: imgurl, // 分享图标
 						type: '', // 分享类型,music、video或link，不填默认为link
 						dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-						success: function () { 
+						success: function () {
 							// 用户确认分享后执行的回调函数
 							Share_back();
 						},
@@ -166,7 +168,8 @@ $(function(){
 	}	
 	/* 微信分享成功后 */
 	function Share_back(){
-		var url = Base.serverUrl + "activity/shareActivityCallBack";
+		alert('恭喜您，分享成功！');
+		/* var url = Base.serverUrl + "activity/shareActivityCallBack";
 		var condi = {};
 		condi.login_token = g.login_token;
 		$.ajax({
@@ -189,7 +192,7 @@ $(function(){
 			error:function(data){
 				g.httpTip.hide();
 			}
-		});
+		}); */
 		
 	}
 	

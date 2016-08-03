@@ -77,7 +77,7 @@ $(function(){
 			var imgUrl = "";
 		}else{
 			var aTitle = g.aTitle || "" ;
-			var aUrl = g.aUrl || "";
+			var aUrl = g.aUrl+"?O="+_phone || "";
 			var imgUrl = g.imgUrl || "";
 		}
 		 if(!isWeiXin()){
@@ -165,7 +165,8 @@ $(function(){
 
 	/* 微信分享成功后 */
 	function Share_back(){
-		var url = Base.serverUrl + "activity/shareActivityCallBack";
+		alert('恭喜您，分享成功！');
+		/* var url = Base.serverUrl + "activity/shareActivityCallBack";
 		var condi = {};
 		condi.login_token = g.login_token;
 		$.ajax({
@@ -188,7 +189,7 @@ $(function(){
 			error:function(data){
 				g.httpTip.hide();
 			}
-		});
+		}); */
 		
 	}
 	

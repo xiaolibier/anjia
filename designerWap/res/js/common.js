@@ -1,3 +1,4 @@
+var _phone = "";
 (function($){
 	var g = {};
 	g.login_token = Utils.offLineStore.get("token",false) || "";
@@ -25,6 +26,7 @@
 				if(status){
 					var d = data.obj || [];
 					var code = d.code || "";
+					_phone = d.phone || "";
 					var html = [];
 					$("#name").html(d.name || "");
 					$("#phone").html(d.phone || "");
