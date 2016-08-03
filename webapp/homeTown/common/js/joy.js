@@ -12,26 +12,26 @@ $(document).ready(function(){
 	function set_video(){
 		
 		var title = [],poster = [],src = [];
-		title[0] = '乞丐也难当 太逗全场哄笑';//标题
-		title[1] = '美女这身材比例 实属罕见';
-		title[2] = '取了这老婆 大哥心里苦啊';
+		title[0] = '这把路人整的都懵了 太逗';//标题
+		title[1] = '电梯里遇到个奇葩 笑喷了';
+		title[2] = '懵圈中 美女太糗了哈哈';
 		title[3] = '';
 		title[4] = '';
 		title[5] = '';
 		title[6] = '';
 		title[7] = '';
-		poster[0] = 'http://shp.qpic.cn/qqvideo_ori/0/g0315ji2682_496_280/0';//背景图片地址
-		poster[1] = 'http://shp.qpic.cn/qqvideo_ori/0/h0314l90ria_496_280/0';
-		poster[2] = 'http://shp.qpic.cn/qqvideo_ori/0/i031530k1y6_496_280/0';
+		poster[0] = 'http://shp.qpic.cn/qqvideo_ori/0/m0316atspo0_496_280/0';//背景图片地址
+		poster[1] = 'http://shp.qpic.cn/qqvideo_ori/0/j0316xlw68d_496_280/0';
+		poster[2] = 'http://shp.qpic.cn/qqvideo_ori/0/o03159ltmne_496_280/0';
 		poster[3] = '';
 		poster[4] = '';
 		poster[5] = '';
 		poster[6] = '';
 		poster[7] = '';
 		//视频地址
-		src[0] = 'http://111.202.98.148/vhot2.qqvideo.tc.qq.com/g0315ji2682.m701.mp4?vkey=E49C6FBBAD40A17ED476436902B06AC5E3EFBC62BFE5A05A9412558CA1F370D3FA042238E990AE60070B8EE856AA53820C571C614C2E7062715DC6B97302830771320CC16E732DA1BE9416B0CCF31B5543DBF3AAFB40D7D1&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
-		src[1] = 'http://123.125.110.147/vhot2.qqvideo.tc.qq.com/h0314l90ria.m701.mp4?vkey=0592D3E02625DC96456CED2BE382265693B6473C60C7B808CC06C93FCDA37ED2851E57D4D4F70DD95AB3ADDA0C36B03542CDA53FC6128B81DE2F0A74FE30F1E17FD8D128E8E04ACFE2CBDD26C889113E29FB30908B073248&br=28&platform=2&fmt=auto&level=0&sdtfrom=v3010';
-		src[2] = 'http://111.202.85.147/vhot2.qqvideo.tc.qq.com/i031530k1y6.m701.mp4?vkey=24646434DCFD022DDEFF8D69FE4240910405CE0BBBDC916B99ACD6C9FA89E2DE805A29B87E5474094913224DDF28D687153238FC22DF59D371D3F4FA5FD434853B38E2FF8C1223104E6D846A37F975BA251F6CF52EC519FE&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
+		src[0] = 'http://123.125.86.26/vhot2.qqvideo.tc.qq.com/m0316atspo0.m701.mp4?vkey=2A04A2F41204274EA8A81C638594A2F17B42146C24CB812F4C00CB4364DE7849B64A81005FD5CF7FDFC3DB1854A43914AF862E40EBF9EE882A3C9201EE972D400561BB16A22CB13C8140DE7C16CE929D8891500A163A790E&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
+		src[1] = 'http://111.202.98.150/vhot2.qqvideo.tc.qq.com/j0316xlw68d.m701.mp4?vkey=3A05ACA5BD47CD9086AB33C9F4D704599976CA3E69746AA010F95814FA0951C48C563C249DF54D7CC6A7F54AD40A11137B1CB56613C039E08CFC7D54637FDC5D2EBDF3374221D295C6E6DC09803F8F9B235E7241518E7EE4&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
+		src[2] = 'http://123.125.110.143/vhot2.qqvideo.tc.qq.com/o03159ltmne.m701.mp4?vkey=727FCCD2A2CE39E28EFCFAAC23A2781420064BEE36EFCE72D2C7A08BDCC58F6259E172AA7674521AED67BC39D03E2F9AF7D52EFFC39F01BF778A31DE30BFDE736282F1B4DE5EE7C953E6436A85D92258FF10D6B823E290CF&br=27&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[3] = '';
 		src[4] = '';
 		src[5] = '';
