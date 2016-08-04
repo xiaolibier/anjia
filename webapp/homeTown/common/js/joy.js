@@ -14,16 +14,16 @@ $(document).ready(function(){
 		var title = [],poster = [],src = [];
 		title[0] = '大哥跑这来嘚瑟 师傅机智';//标题
 		title[1] = '美女的回答同伴都听不下去';
-		title[2] = '懵圈中 美女太糗了哈哈';
-		title[3] = '';
+		title[2] = '大师最后也是自作自受哈哈';
+		title[3] = '两个二货斗舞画面太搞笑';
 		title[4] = '';
 		title[5] = '';
 		title[6] = '';
 		title[7] = '';
 		poster[0] = 'http://shp.qpic.cn/qqvideo_ori/0/i03159hurqx_496_280/0';//背景图片地址
 		poster[1] = 'http://shp.qpic.cn/qqvideo_ori/0/z0315w9gmc5_496_280/0';
-		poster[2] = 'http://shp.qpic.cn/qqvideo_ori/0/o03159ltmne_496_280/0';
-		poster[3] = '';
+		poster[2] = 'http://shp.qpic.cn/qqvideo_ori/0/x0316u3gby5_496_280/0';
+		poster[3] = 'http://shp.qpic.cn/qqvideo_ori/0/r0316v73f0x_496_280/0';
 		poster[4] = '';
 		poster[5] = '';
 		poster[6] = '';
@@ -31,8 +31,8 @@ $(document).ready(function(){
 		//视频地址
 		src[0] = 'http://123.125.110.142/vhot2.qqvideo.tc.qq.com/i03159hurqx.m701.mp4?vkey=EC887348E4F8E45664914654D6D70F687563B56787F4DE928D8AAE7B54CC1D3189A39DFCD03FD8A56ADD15A8D21FBFAA6345136A3AFE5D557AA995A1C472755DA48A30E2F051C842E564D6549B5740B73F8247F505CDEC34&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[1] = 'http://123.125.110.142/vhot2.qqvideo.tc.qq.com/z0315w9gmc5.m701.mp4?vkey=5F0520FCA34B51C19188D9B16FDC74E801EBA87CB050E34D26FC1AAE6FF181F78728F07D40A0899032B994F2160AEBF58E1105EB5B1B29F0214BC85BE3D795E24499FDC643AE5A6584A5C120A91C33429E6D1A8D2EA39516&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
-		src[2] = 'http://123.125.110.143/vhot2.qqvideo.tc.qq.com/o03159ltmne.m701.mp4?vkey=727FCCD2A2CE39E28EFCFAAC23A2781420064BEE36EFCE72D2C7A08BDCC58F6259E172AA7674521AED67BC39D03E2F9AF7D52EFFC39F01BF778A31DE30BFDE736282F1B4DE5EE7C953E6436A85D92258FF10D6B823E290CF&br=27&platform=2&fmt=auto&level=0&sdtfrom=v3010';
-		src[3] = '';
+		src[2] = 'http://123.125.86.30/vhot2.qqvideo.tc.qq.com/x0316u3gby5.m701.mp4?vkey=1110F1BB4B900A90881C995103A80145281B5E14CF1134CF1253BE1C8E951E4C7653256738EB0F51FF8A8246F5F84774FC6ABA269A7C883925B4F9D374EAA47EA751D626375AFA2F56BB445891CE4F0B2E20DD9C885AEA22&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
+		src[3] = 'http://123.125.86.16/vhot2.qqvideo.tc.qq.com/r0316v73f0x.m701.mp4?vkey=04B271AE329B84DB13C0465FFD8EA81351E4B87D4801BA8C807E21C86168562846975E6C161DE949F0FDDA894EC9DBA9C913226D9AC40B1375F94AAF20C7E06D007063210FC6EBA561F821C729882D01A5BF2A5581603650&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[4] = '';
 		src[5] = '';
 		src[6] = '';
