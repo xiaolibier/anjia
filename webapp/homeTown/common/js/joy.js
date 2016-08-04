@@ -12,16 +12,16 @@ $(document).ready(function(){
 	function set_video(){
 		
 		var title = [],poster = [],src = [];
-		title[0] = '这把路人整的都懵了 太逗';//标题
-		title[1] = '电梯里遇到个奇葩 笑喷了';
+		title[0] = '大哥跑这来嘚瑟 师傅机智';//标题
+		title[1] = '美女的回答同伴都听不下去';
 		title[2] = '懵圈中 美女太糗了哈哈';
 		title[3] = '';
 		title[4] = '';
 		title[5] = '';
 		title[6] = '';
 		title[7] = '';
-		poster[0] = 'http://shp.qpic.cn/qqvideo_ori/0/m0316atspo0_496_280/0';//背景图片地址
-		poster[1] = 'http://shp.qpic.cn/qqvideo_ori/0/j0316xlw68d_496_280/0';
+		poster[0] = 'http://shp.qpic.cn/qqvideo_ori/0/i03159hurqx_496_280/0';//背景图片地址
+		poster[1] = 'http://shp.qpic.cn/qqvideo_ori/0/z0315w9gmc5_496_280/0';
 		poster[2] = 'http://shp.qpic.cn/qqvideo_ori/0/o03159ltmne_496_280/0';
 		poster[3] = '';
 		poster[4] = '';
@@ -29,8 +29,8 @@ $(document).ready(function(){
 		poster[6] = '';
 		poster[7] = '';
 		//视频地址
-		src[0] = 'http://123.125.86.26/vhot2.qqvideo.tc.qq.com/m0316atspo0.m701.mp4?vkey=2A04A2F41204274EA8A81C638594A2F17B42146C24CB812F4C00CB4364DE7849B64A81005FD5CF7FDFC3DB1854A43914AF862E40EBF9EE882A3C9201EE972D400561BB16A22CB13C8140DE7C16CE929D8891500A163A790E&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
-		src[1] = 'http://111.202.98.150/vhot2.qqvideo.tc.qq.com/j0316xlw68d.m701.mp4?vkey=3A05ACA5BD47CD9086AB33C9F4D704599976CA3E69746AA010F95814FA0951C48C563C249DF54D7CC6A7F54AD40A11137B1CB56613C039E08CFC7D54637FDC5D2EBDF3374221D295C6E6DC09803F8F9B235E7241518E7EE4&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
+		src[0] = 'http://123.125.110.142/vhot2.qqvideo.tc.qq.com/i03159hurqx.m701.mp4?vkey=EC887348E4F8E45664914654D6D70F687563B56787F4DE928D8AAE7B54CC1D3189A39DFCD03FD8A56ADD15A8D21FBFAA6345136A3AFE5D557AA995A1C472755DA48A30E2F051C842E564D6549B5740B73F8247F505CDEC34&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
+		src[1] = 'http://123.125.110.142/vhot2.qqvideo.tc.qq.com/z0315w9gmc5.m701.mp4?vkey=5F0520FCA34B51C19188D9B16FDC74E801EBA87CB050E34D26FC1AAE6FF181F78728F07D40A0899032B994F2160AEBF58E1105EB5B1B29F0214BC85BE3D795E24499FDC643AE5A6584A5C120A91C33429E6D1A8D2EA39516&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[2] = 'http://123.125.110.143/vhot2.qqvideo.tc.qq.com/o03159ltmne.m701.mp4?vkey=727FCCD2A2CE39E28EFCFAAC23A2781420064BEE36EFCE72D2C7A08BDCC58F6259E172AA7674521AED67BC39D03E2F9AF7D52EFFC39F01BF778A31DE30BFDE736282F1B4DE5EE7C953E6436A85D92258FF10D6B823E290CF&br=27&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[3] = '';
 		src[4] = '';
