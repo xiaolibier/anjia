@@ -481,7 +481,7 @@ if(typeof console == "undefined"){
 		var token = Utils.offLineStore.get("token",false);
 		var condi = {};
 		condi.login_token = token;
-		var url = Base.serverUrl + "user/CustomerLoginOutController";
+		var url = Base.serverUrl + "pc/user/loginOut";//user/CustomerLoginOutController
 		$.ajax({
 			url:url,
 			data:condi,
