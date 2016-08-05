@@ -17,7 +17,7 @@ $(document).ready(function(){
 		title[2] = '大师最后也是自作自受哈哈';
 		title[3] = '两个二货斗舞画面太搞笑';
 		title[4] = '街上遇高手 耍的太厉害';
-		title[5] = '';
+		title[5] = '两个二货斗舞画面太搞笑';
 		title[6] = '';
 		title[8] = '';
 		title[9] = '';
@@ -30,7 +30,7 @@ $(document).ready(function(){
 		poster[2] = 'http://shp.qpic.cn/qqvideo_ori/0/x0316u3gby5_496_280/0';
 		poster[3] = 'http://shp.qpic.cn/qqvideo_ori/0/r0316v73f0x_496_280/0';
 		poster[4] = 'http://shp.qpic.cn/qqvideo_ori/0/u03168oi7vl_496_280/0';
-		poster[5] = '';
+		poster[5] = 'http://shp.qpic.cn/qqvideo_ori/0/r0316v73f0x_496_280/0';
 		poster[6] = '';
 		poster[7] = '';
 		poster[8] = '';
@@ -45,7 +45,7 @@ $(document).ready(function(){
 		src[2] = 'http://123.125.86.30/vhot2.qqvideo.tc.qq.com/x0316u3gby5.m701.mp4?vkey=1110F1BB4B900A90881C995103A80145281B5E14CF1134CF1253BE1C8E951E4C7653256738EB0F51FF8A8246F5F84774FC6ABA269A7C883925B4F9D374EAA47EA751D626375AFA2F56BB445891CE4F0B2E20DD9C885AEA22&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[3] = 'http://123.125.86.16/vhot2.qqvideo.tc.qq.com/r0316v73f0x.m701.mp4?vkey=04B271AE329B84DB13C0465FFD8EA81351E4B87D4801BA8C807E21C86168562846975E6C161DE949F0FDDA894EC9DBA9C913226D9AC40B1375F94AAF20C7E06D007063210FC6EBA561F821C729882D01A5BF2A5581603650&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[4] = 'http://111.202.98.150/vhot2.qqvideo.tc.qq.com/u03168oi7vl.m701.mp4?vkey=86F5C1393AE064EBDDDA2DA39C9FA8AE90EDC0F6319C08F9F1B7C673499FE34BCA6D9ABF402CD101C1BCECF7DADA136298E48E763DE662479184D80221774F78FC1FE9A98CB947A99596BAB05841735BD541D2198717B24B&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
-		src[5] = '';
+		src[5] = 'http://123.125.86.16/vhot2.qqvideo.tc.qq.com/r0316v73f0x.m701.mp4?vkey=04B271AE329B84DB13C0465FFD8EA81351E4B87D4801BA8C807E21C86168562846975E6C161DE949F0FDDA894EC9DBA9C913226D9AC40B1375F94AAF20C7E06D007063210FC6EBA561F821C729882D01A5BF2A5581603650&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[6] = '';
 		src[7] = '';
 		src[8] = '';
