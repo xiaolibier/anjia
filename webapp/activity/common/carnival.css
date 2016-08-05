@@ -4,46 +4,47 @@ a,a:active{cursor:pointer;outline:none;text-decoration:none;}
 
 html,body{margin:0;padding:0;}
 *{}
-html,body{height:100%;position:relative;font-size:16px;font-family:microsoft yahei;color:#fff;}
+html,body{height:100%;background-color:#fff0f9;position:relative;font-size:16px;font-family:microsoft yahei;color:#d11e34;}
 /*  */
-.carnival.div1 .tip_body{width:89%;height:278px;margin:0 auto;position:relative;}
-.carnival.div1 .bg2{position:absolute;display:block;top:0;right:0;left:0;bottom:0;z-index:2;}
+.carnival.div1 .tip_body{margin:0 auto;position:relative;}
+.carnival.div1 .bg2{width:89%;margin:30% auto 0;position:absolute;display:block;top:0;right:0;left:0;bottom:0;z-index:2;}
+.carnival.div1 .bg_img{width:100%;}
 .carnival.div1 .ul{text-align:center;}
-.carnival.div1 .ul span.color{color:#fff;vertical-align:middle;}
+.carnival.div1 .ul span.color{color:#d11e34;vertical-align:middle;}
 .carnival.div1 .ul span.spacing1{letter-spacing:6px;}
 .carnival.div1 .ul span.spacing2{letter-spacing:42px;}
-.carnival.div1 .ul li{line-height:38px;margin-top:0px;}
+.carnival.div1 .ul li{line-height:43px;margin-top:0px;}
 .carnival.div1 .ul li .block{display:block;}
 .carnival.div1 .btn {text-align:center;margin-top:5px;}
-.carnival.div1 .btn  a.btn_a{color:#14032a;display:inline-block;width:84%;margin-top:15px;height:40px;line-height:40px;text-align:center;background-color:#f9ed35;border-radius:30px;}
-.carnival.div1 .bg{background-color:#53a2f2;position:absolute;top:0;right:0;left:0;bottom:0;z-index:1;
+.carnival.div1 .btn  a.btn_a{color:#fff;display:inline-block;width:84%;margin-top:15px;height:40px;line-height:40px;text-align:center;background-color:#ff384d;border-radius:30px;}
+.carnival.div1 .bg{width:89%;height:298px;margin:30% auto 0;background-color:#de0020;position:absolute;top:0;right:0;left:0;bottom:0;z-index:1;
     /* older safari/Chrome browsers */  
-    -webkit-opacity: 0.9;  
+    -webkit-opacity: 0.1;  
     /* Netscape and Older than Firefox 0.9 */  
-    -moz-opacity: 0.9;  
+    -moz-opacity: 0.1;  
     /* Safari 1.x (pre WebKit!) 老式khtml内核的Safari浏览器*/  
-    -khtml-opacity: 0.9;  
+    -khtml-opacity: 0.1;  
     /* IE9 + etc...modern browsers */  
-    opacity: .9;  
+    opacity: .1;  
     /* IE 4-9 */  
-    filter:alpha(opacity=90);  
+    filter:alpha(opacity=10);  
     /*This works in IE 8 & 9 too*/  
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";  
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";  
     /*IE4-IE9*/  
-    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=90); 
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=10); 
 }
 select{appearance:none;-webkit-appearance: none;}
-.select_common,.input_common{color:#fff;background:none;border:none;border-bottom:1px solid #fff;width:47%;height:22px;line-height:22px;display:inline-block;}
+.select_common,.input_common{color:#d11e34;background:none;border:none;border-bottom:1px solid #d11e34;width:47%;height:22px;line-height:22px;display:inline-block;}
 .select_common{background:none;background:url('img/down.png') no-repeat 97% center;background-size:auto 40%;}
 
 /*  */
-.carnival.div1{position:relative;background-color:#fef5e5;}
+.carnival.div1{position:relative;}
 .carnival.div1 .img_header{width:100%;}
 .carnival.div1 .box1{text-align:center;}
 .carnival.div1 .box1 .img{width:100%;margin:0 auto;max-width:500px;}
 .carnival.div1 .box2{margin:0 auto;padding:20px 0 30px;}
 /*  */
-.carnival.div2{padding:45px 0;}
+.carnival.div2{padding:0px 0 45px;}
 .carnival.div2 .content{width:95%;margin:0 auto;} 
 .carnival.div2 .img_list{overflow:hidden;}
 .carnival.div2 .img_list .img{float:left;width:60%;margin-top:17px;display:inline-block;vertical-align:top;}
