@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="Js/JquerySwitches/lc_switch.css">
 </head>
 <body>
-
+<style>
+	a{cursor:pointer;}
+</style>
 <div class="header">
     <!--logo-->
     <div class="dl-title">
@@ -20,7 +22,8 @@
     </div>
     <div class="dl-log">
         <input type="checkbox" class="lcs_check" checked autocomplete="off" id="FinancialTips" style="display: none"/>
-        <i class="n_user_ico n_user_ico1"></i><span class="dl-log-user" id="username_index"></span>
+        <a class="dl-log-quit" id="set_index"  title="设置为首页">设置当前页面为首页</a>
+		<i class="n_user_ico n_user_ico1"></i><span class="dl-log-user" id="username_index"></span>
 		<i class="n_user_ico n_user_ico2"></i><a href="javascript:Utils.loginOut();" title="退出系统"class="dl-log-quit">退出</a>
 	</div>
 </div>
@@ -94,6 +97,7 @@
         var g = {};
         g.login_token = Utils.offLineStore.get("token", false) || "";
 		g.user_usersName = Utils.offLineStore.get("user_usersName", false) || "";
+		g.mainMenu = Utils.offLineStore.get("mainMenu", false) || "1/1";
         g.tabConfig = [];
 		g.interval = '';
 		g.oldNum = Utils.offLineStore.get("oldNum", false) || 0;
@@ -104,6 +108,39 @@
 			setTimeoutSendHttp();
 			g.interval = setInterval(setTimeoutSendHttp,60000);
 		}},1000);*/
+		
+		$('#set_index').bind('click',setIndexFunc);
+		
+		/*-- 设置主页 */
+		function setIndexFunc(){
+			var index = location.href.indexOf('#') == -1 ? '' : location.href.split('#')[1];
+			if(index == ""){alert('首页设置失败，请检查网站问题！');return false;}
+			g.mainMenu = index;
+			var url = Base.serverUrl + "pc/user/updateMainMenu";
+			var condi = {};
+			condi.login_token = g.login_token;
+			condi.mainMenu = index || "";
+			$.ajax({
+				url:url,
+				data:condi,
+				type:"POST",
+				dataType:"json",
+				context:this,
+				success: function(data){
+					var status = data.success || false;
+					if(status){
+						alert('设置成功！');
+						Utils.offLineStore.set("mainMenu", g.mainMenu, false);
+					}
+					else{
+						var msg = data.message || "获取失败";
+					}
+				},
+				error:function(data){
+				}
+			});
+		}
+		
 		
 		/* 关闭点击弹窗 */
 		function click_close(){
@@ -206,6 +243,8 @@
                     //g.httpTip.hide();
                 }
             });
+			var l = location.href.indexOf('#') == -1 ? location.href : location.href.split('#')[0];
+			location.href = l + "#" + g.mainMenu;
         }
 
         function initTab() {
