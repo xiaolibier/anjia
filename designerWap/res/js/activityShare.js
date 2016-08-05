@@ -22,6 +22,7 @@ $(function(){
 		sendGetActivity();
 		sendGetBackTime();
 		activitys();
+		slideTo_func();
 	}
 
 	
@@ -54,7 +55,6 @@ $(function(){
 						var bmTextDesc = d.bmTextDesc || "";
 						var bmClickUrl = d.bmClickUrl || "";
 						var bUrl = bmClickUrl +"&O="+_phone;
-						console.log(bUrl);
 						option.push('<div class="logo">');
 						option.push('<img class="logo_img" src="'+bmUrl+'"/>');
 						option.push('</div>');

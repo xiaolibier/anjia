@@ -24,7 +24,9 @@ $(function(){
 	}
 
 	$("#share_btn1").bind('click',share_btn_f);
-	$("#share_btn2").bind('click',share_btn_f);
+	$("#share_btn2").bind('click',function(){
+		location.href="../html/activityShare.html";
+	});
 	$(".sbox_tips").bind('click',function(){$('.sbox_tips').fadeOut();});
 
 	/* 获取最新活动 */

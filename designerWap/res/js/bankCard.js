@@ -68,6 +68,7 @@ $(function(){
 						$("#change_bank").html('修改信息');
 						$("#addBindCard").html(html).removeClass('noCard');
 						$("#inputphone").val(d.phone || "");
+						$("#bankName").val(d.bankName || "");
 						$("#bankCode").val(d.bankType || "");
 						$("#username").val(d.username || "");
 						$("#idcardno").val(d.idcard || "");
@@ -165,8 +166,13 @@ $(function(){
 		var idcardno = $("#idcardno").val() || "";
 		var cardno = $("#cardno").val() || "";
 		var phone = $("#inputphone").val() || "";
+		var bankName = $("#bankName").val() || "";
 		if(bankCode == ""){
 			alert("请选择发卡银行");
+			return;
+		}
+		if(bankName == ""){
+			alert("请输入开户行信息");
 			return;
 		}
 		if(!sendValidNoEmpty(username,$("#username"))){
@@ -192,6 +198,7 @@ $(function(){
 		condi.bankCard = cardno;
 		condi.idcard = idcardno;
 		condi.phone = phone;
+		condi.bankName = bankName;
 		g.bindCondi = condi;
 		sendInvokeBindBanCardHttp(condi);
 	}
@@ -272,6 +279,7 @@ $(function(){
 		var idcardno = $("#idcardno").val() || "";
 		var cardno = $("#cardno").val() || "";
 		var phone = $("#inputphone").val() || "";
+		var bankName = $("#bankName").val() || "";
 		condi.validateCode = $("#validcode").val() || "";
 		condi.login_token = g.login_token;
 		condi.bankType = bankCode
@@ -279,6 +287,7 @@ $(function(){
 		condi.bankCard = cardno;
 		condi.idcard = idcardno;
 		condi.phone = phone;
+		condi.bankName = bankName;
 		var url = Base.serverUrl + "bankCard/addBankCard";
 		if($("#bindcardbtn").attr('info') == 'addBtn'){
 			url = Base.serverUrl + "bankCard/updateBankCard";

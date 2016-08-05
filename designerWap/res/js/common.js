@@ -5,6 +5,9 @@ var _phone = "";
 	timeout_func();
 	
 	$("#back_btn").bind("click",backHistory);
+	$("#out").bind("click",function(){
+		location.href="../html/login.html";
+	});
 		/* 公共头部返回 */
 	function backHistory(){
 		history.go(-1);
