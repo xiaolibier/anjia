@@ -39,10 +39,10 @@ $(function(){
 	}
 	else{
 		//获取公司信息
-		sendGetcompanys();
+		//sendGetcompanys();
 		//sendGetCompanyInfoHttp();
 		//获取订单状态
-		sendGetUserInfoDicHttp();
+		//sendGetUserInfoDicHttp();
 
 		queryOrderList();
 	}
@@ -198,13 +198,12 @@ $(function(){
 
 	function sendQueryOrderListHttp(){
 		g.httpTip.show();
-		var url = Base.serverUrl + "pc/report/getFinanceDetailsByPcAction";//oplog/getFinanceDetails
+		var url = Base.serverUrl + "pc/report/getApprovalDaysByPcAction";//oplog/getFinanceDetails
 		var condi = {};
 		condi.login_token = g.login_token;
 		condi.currentPageNum = g.currentPage;
 		condi.dateTimeBegin = $("#dateTimeBegin").val() || "";
 		condi.dateTimeEnd = $("#dateTimeEnd").val() || "";
-		condi.subsidiaryId = $("#subsidiaryId").val() || "";
 
 		$.ajax({
 			url:url,
@@ -249,91 +248,10 @@ $(function(){
 			}
             html.push('</tr>');
         }
-		/* html.push('<tr>');
-		html.push('<th>序号</th>');
-		html.push('<th>分公司</th>');
-		html.push('<th>客户</th>');
-		html.push('<th>审批时间</th>');
-		html.push('<th>合同编号</th>');
-		html.push('<th>分期金额</th>');
-		html.push('<th>期限</th>');
-		html.push('<th>费率</th>');
-		html.push('<th>审批服务费</th>');
-		html.push('<th>优惠金额</th>');
-		html.push('<th>服务费缴纳方式</th>');
-		html.push('<th>月服务费</th>');
-		html.push('<th>总服务费</th>');
-		html.push('<th>已还期数</th>');
-		html.push('<th>已还服务费</th>');
-		html.push('<th>应收服务费</th>');
-		html.push('<th>缴纳服务费时间</th>');
-		html.push('<th>实收金额</th>');
-		html.push('<th>一期款</th>');
-		html.push('<th>日期</th>');
-		html.push('<th>二期款</th>');
-		html.push('<th>日期</th>');
-		html.push('<th>三期款</th>');
-		html.push('<th>日期</th>');
-		html.push('<th>四期款</th>');
-		html.push('<th>日期</th>');
-		html.push('<th>放款合计</th>');
-		html.push('<th>未放工程款</th>');
-		html.push('<th>手机号</th>');
-		html.push('<th>身份证号码</th>');
-		html.push('<th>设计师</th>');
-		html.push('</tr>');
-		var obj = data.list || [];
-		var companyName = 0, applicantName = 0, loanTime = 0, contractNo = 0, packageMoney = 0, fenQiTimes = 0, interestRate = 0, poundage = 0,
-		 privilegeMoney = 0, poundageType = 0, monthPoundage = 0, poundage = 0, repayFenQiTime = 0, realRepaymentMoney = 0, residueMonthPoundage = 0, repayFirstTime = 0, repayFirstSum = 0,
-		 firstLoanMoney = 0, firstRealLoanTime = 0, SecondstLoanMoney = 0, SecondRealLoanTime = 0, threeLoanMoney = 0, threeRealLoanTime = 0, fourRealLoanTime = 0, fourLoanMoney = 0, totalLoanMoney = 0,
-		 loanResidueMoney = 0, applicantIdentity = 0, designer = 0;
-
-		for(var i = 0,len = obj.length; i < len; i++){
-			var d = obj[i];
-			var a = i+1;
-			//loanCountTotal += parseInt(loanCount || 0);
-			html.push('<tr>');
-			html.push('<td>' + a + '</td>');
-			html.push('<td>' + (d.companyName || "") + '</td>');
-			html.push('<td>' + (d.applicantName || "") + '</td>');
-			html.push('<td>' + (d.loanTime || "") + '</td>');
-			html.push('<td>' + (d.contractNo || "") + '</td>');
-			html.push('<td>' + (d.packageMoney || 0) + '</td>');
-			html.push('<td>' + (d.fenQiTimes || 0) + '</td>');
-			html.push('<td>' + (d.interestRate || 0) + '</td>');
-			html.push('<td>' + (d.poundage || 0) + '</td>');
-			html.push('<td>' + (d.privilegeMoney || 0) + '</td>');
-			html.push('<td>' + (d.poundageType || "") + '</td>');
-			html.push('<td>' + (d.monthPoundage || 0) + '</td>');
-			html.push('<td>' + (d.poundage || 0) + '</td>');
-			html.push('<td>' + (d.repayFenQiTime || 0) + '</td>');
-			html.push('<td>' + (d.realRepaymentMoney || 0) + '</td>');
-			html.push('<td>' + (d.residueMonthPoundage || 0) + '</td>');
-			html.push('<td>' + (d.repayFirstTime || "") + '</td>');
-			html.push('<td>' + (d.repayFirstSum || 0) + '</td>');
-			html.push('<td>' + (d.firstLoanMoney || 0) + '</td>');
-			html.push('<td>' + (d.firstRealLoanTime || "") + '</td>');
-			html.push('<td>' + (d.SecondstLoanMoney || 0) + '</td>');
-			html.push('<td>' + (d.SecondRealLoanTime || "") + '</td>');
-			html.push('<td>' + (d.threeLoanMoney || 0) + '</td>');
-			html.push('<td>' + (d.threeRealLoanTime || "") + '</td>');
-			html.push('<td>' + (d.fourRealLoanTime || "") + '</td>');
-			html.push('<td>' + (d.fourLoanMoney || 0) + '</td>');
-			html.push('<td>' + (d.totalLoanMoney || 0) + '</td>');
-			html.push('<td>' + (d.loanResidueMoney || 0) + '</td>');
-			html.push('<td>' + (d.applicantPhone || "") + '</td>');
-			html.push('<td>' + (d.applicantIdentity || "") + '</td>');
-			html.push('<td>' + (d.designer || "") + '</td>');
-			html.push('</tr>');
-		}
-		var d = obj[obj.length-1];
-		//html.push('<tr style="color:#006dcc">');
-		//html.push('<td>总计：</td>');
-		//html.push('<td>' + loanCountTotal + '</td>');
-		//html.push('</tr>'); */
+		
 		html.push('</table>');
 
-		var pobj = data.obj || {};
+		/* var pobj = data.obj || {};
 
 		if(obj.length > 0){
 			var page = countListPage(pobj);
@@ -341,7 +259,7 @@ $(function(){
 		}
 		else{
 			Utils.alert("没有订单数据");
-		}
+		} */
 
 		$("#orderlist").html(html.join(''));
 
@@ -512,6 +430,6 @@ $(function(){
 		ParamObj.dateTimeBegin = $('#dateTimeBegin').val() || '';
 		ParamObj.dateTimeEnd = $('#dateTimeEnd').val() || '';
 		ParamObj.subsidiaryId = $('#subsidiaryId').val() || '';
-        Hmgx.serializeDownload(Base.serverUrl  + "pc/report/getFinanceDetailsExportAction","CX",ParamObj);//oplog/financeWeeklyExport
+        Hmgx.serializeDownload(Base.serverUrl  + "pc/report/getApprovalDaysExportAction","CX",ParamObj);//oplog/financeWeeklyExport
     }
 });
