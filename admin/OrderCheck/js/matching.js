@@ -6,18 +6,6 @@
 
 //页面初始化
 $(function(){
-	/* if(typeof eui !== "undefined"){
-		eui.calendar({
-			startYear: 1900,
-			input: document.getElementById('createTimeBegin'),
-			id:"createTimeBegin"
-		});
-		eui.calendar({
-			startYear: 1900,
-			input: document.getElementById('createTimeEnd'),
-			id:"createTimeEnd"
-		});
-	} */
 
 	var g = {};
 	g.phone = "";
@@ -25,6 +13,7 @@ $(function(){
 	g.sendCode = false;
 	g.sendTime = 60;
 	g.login_token = Utils.offLineStore.get("token",false) || "";
+	g.orderId = Utils.getQueryString("orderId") || "";
 	g.httpTip = new Utils.httpTip({});
 
 	g.totalPage = 1;
@@ -32,10 +21,6 @@ $(function(){
 	g.pageSize = 10;
 
 	//window.DataList = []; //存放可以申请的订单列表数据
-
-	//加载订单方法
-	$.getScript("js/OrderFunction.js").done(function() {}).fail(function() {Utils.alert("@_@加载订单状态方法失败<br>请检查！");});
-
 	//验证登录状态
 	var loginStatus = Utils.getUserInfo();
 	if(!loginStatus){
@@ -57,12 +42,12 @@ $(function(){
 	//获取订单数据
 	function sendQueryRiskOrderListHttp(){
 		g.httpTip.show();
-		var url = Base.serverUrl + "pc/order/findFirstRiskManagementOrder";//order/queryOrdersMapController
+		var url = Base.serverUrl + "pc/order/findOrderByMatch";
 		var condi = {};
 		condi.login_token = g.login_token;
 		condi.currentPageNum = g.currentPage;
-		condi.status = "10050301";
-		condi = getQueryParameters1(condi,"CX");
+		condi.orderId = g.orderId;
+		//condi = getQueryParameters1(condi,"CX");
 		//console.log(condi);
 		$.ajax({
 			url:url, data:condi,type:"POST",	dataType:"json",context:this,
@@ -90,40 +75,80 @@ $(function(){
 		html.push('<table class="table table-bordered table-hover definewidth m10" ><thead>');
 		html.push('<tr>');
 		html.push('<th>订单编号</th>');
-		html.push('<th>真实姓名</th>');
-		//html.push('<th>联系电话</th>');
-		html.push('<th>合同编号</th>');
-		html.push('<th>产品名称</th>');
-		html.push('<th>申请分期金额</th>');
-		html.push('<th>申请分期期数</th>');
-		html.push('<th>订单状态</th>');
-		html.push('<th>操作</th>');
+		html.push('<th>客户姓名</th>');
+		html.push('<th>证件号码</th>');
+		html.push('<th>本人手机号</th>');
+		html.push('<th>公司名称</th>');
+		html.push('<th>装修地址</th>');
+		html.push('<th>单位电话</th>');
+		html.push('<th>配偶手机号</th>');
+		html.push('<th>亲属手机号</th>');
+		html.push('<th>同事手机号</th>');
+		html.push('<th>朋友手机号</th>');
 		html.push('</tr>');
 
 		var obj = data.list || [];
+		var s = data.other || [];
 		var cc = {"aa":1,"bb":2};
+		var cp = [s.applicantPhone,s.applicantCompanyPhone,s.familyPhone,s.familyTwoPhone,s.workmatePhone,s.friendPhone];
 		for(var i = 0,len = obj.length; i < len; i++){
 			var d = obj[i];
 			html.push('<tr>');
-			html.push('<td>' + d.orderId + '</td>');
-			html.push('<td>' + d.applicantName + '</td>');
-			//html.push('<td>' + d.applicantPhone + '</td>');
-			html.push('<td>' + d.contractNo + '</td>');
-			html.push('<td>' + d.packageName + '</td>');
-			html.push('<td>' + d.applyPackageMoney + '元</td>');
-			html.push('<td>' + d.applyFenQiTimes  + '</td>');
-			html.push('<td>' + d.statusDes  + '</td>');
-			//根据订单状态 判断 初审
-			var credit = '&nbsp&nbsp<a href="javascript:void(0)" onclick="OpenCredit(' + d.orderId + ',this)">91征信</a>';
-			/* if(d.status == "10050301"){ */
-				html.push('<td><a href="javascript:Hmgx.openWin(\'ModifyOrder.html?orderid=' + d.orderId + '\')">编辑</a>&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'FK_Seller_1.html?orderid=' + d.orderId + '\')">初审</a>' + credit + '&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'matching.html?orderid=' + d.orderId + '\')">匹配</a></td>');
-
-				//html.push('<td><a href="fkuan_detail.html?orderid=' + d.orderId + '">编辑</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-warning" href="javascript:ShowWin(\'' + d.orderId +  '\')">初审</a></td>');
-				//DataList.push(d);
-			/* }else{
-				html.push('<td><a href=""javascript:Hmgx.openWin(\'ViewOrder.html?orderid=' + d.orderId + '\')">查看订单</a>' + credit + '</td>');
-			} */
-			html.push('</tr>');
+			if(s.orderId == d.orderId && s.orderId != ""){
+				html.push('<td class="td1 bg">' + (d.orderId || '') + '</td>');
+			}else{
+				html.push('<td class="td1">' + (d.orderId || '') + '</td>');
+			}
+			if(s.applicantName == d.applicantName && s.applicantName != ""){
+				html.push('<td class="bg">' + (d.applicantName || '') + '</td>');
+			}else{
+				html.push('<td class="">' + (d.applicantName || '') + '</td>');
+			}
+			if(s.applicantIdentity == d.applicantIdentity && s.applicantIdentity != ""){
+				html.push('<td class="td1 bg">' + (d.applicantIdentity || '') + '</td>');
+			}else{
+				html.push('<td class="td1">' + (d.applicantIdentity || '') + '</td>');
+			}
+			if(cp.indexOf(d.applicantPhone) != -1 && s.applicantPhone != ""){//
+				html.push('<td class="td1 bg">' + (d.applicantPhone || '') + '</td>');
+			}else{
+				html.push('<td class="td1">' + (d.applicantPhone || '') + '</td>');
+			}
+			if(s.applicantCompany == d.applicantCompany && s.applicantCompany != ""){
+				html.push('<td class="td1 bg">' + (d.applicantCompany || '') + '</td>');
+			}else{
+				html.push('<td class="td1">' + (d.applicantCompany || '') + '</td>');
+			}
+			if(s.decorateAddress == d.decorateAddress && s.decorateAddress != ""){
+				html.push('<td class="td1 bg">' + (d.decorateAddress || '') + '</td>');
+			}else{
+				html.push('<td class="td1">' + (d.decorateAddress || '') + '</td>');
+			}
+			if(cp.indexOf(d.applicantCompanyPhone) != -1 && d.applicantCompanyPhone != ""){
+				html.push('<td class="td1 bg">' + (d.applicantCompanyPhone || '') + '</td>');
+			}else{
+				html.push('<td class="td1">' + (d.applicantCompanyPhone || '') + '</td>');
+			}
+			if(cp.indexOf(d.familyPhone) != -1 && d.familyPhone != ""){
+				html.push('<td class="td1 bg">' + (d.familyPhone || '') + '</td>');
+			}else{
+				html.push('<td class="td1">' + (d.familyPhone || '') + '</td>');
+			}
+			if(cp.indexOf(d.familyTwoPhone) != -1 && d.familyTwoPhone != ""){
+				html.push('<td class="td1 bg">' + (d.familyTwoPhone || '') + '</td>');
+			}else{
+				html.push('<td class="td1">' + (d.familyTwoPhone || '') + '</td>');
+			}
+			if(cp.indexOf(d.workmatePhone) != -1 && d.workmatePhone != ""){
+				html.push('<td class="td1 bg">' + (d.workmatePhone || '') + '</td>');
+			}else{
+				html.push('<td class="td1">' + (d.workmatePhone || '') + '</td>');
+			}
+			if(cp.indexOf(d.friendPhone) != -1  && d.friendPhone != ""){
+				html.push('<td class="td1 bg">' + (d.friendPhone || '') + '</td>');
+			}else{
+				html.push('<td class="td1">' + (d.friendPhone || '') + '</td>');
+			}
 		}
 		html.push('</table>');
 
@@ -139,38 +164,6 @@ $(function(){
 
 		$("#orderlistpage a").bind("click",pageClick);
 	}
-	
-	 //显示取消订单窗口
-    window.ShowCancelWin = function(orderId){
-        $("#cancelReason").attr("orderId",orderId);
-        $('#CancelWin').modal('show');
-    };
-    window.SaveCancel = function(orderId){
-        if(!confirm("您确定要取消此订单吗?")){return;}
-        var orderId = $("#cancelReason").attr("orderId");
-        var cancelReason = $("#cancelReason").val();
-        if(orderId==""){
-            alert("订单号非法请检查！");
-            return false;
-        }
-        if(cancelReason==""){
-            alert("取消原因不能为空！");
-            return false;
-        }
-        var url = Base.serverUrl + "pc/order/cancelOrder";//order/cancelOrderController
-        var condi = {};
-        condi.login_token = g.login_token;
-        condi.orderId = orderId;
-        condi.cancelReason = cancelReason;
-        $.ajax({
-            url: url, data: condi,type: "POST", dataType: "json", context: this,
-            success: function (data) {
-                $('#CancelWin').modal('hide');
-                var msg = data.message || "取消订单失败！";
-                Utils.alert(msg);
-            }
-        });
-    };
 
 	function countListPage(data){
 		var html = [];
@@ -275,31 +268,4 @@ $(function(){
 		}
 	}
 
-	window.OpenCredit = function(OrderId,e){
-		Hmgx.openWin("CreditReport.html?orderid=" + OrderId );
-		//$(e).attr("onclick","alert('征信报告不能重复获取！')");
-	};
-
-	//显示审核窗口
-	//window.ShowWin = function (OrderID){
-	//	var RowData = null;
-	//	for(var i = 0 ; i < DataList.length ; i++){
-	//		if(DataList[i].orderId == OrderID){
-	//			RowData = DataList[i];
-	//			break;
-	//		}
-	//	}
-	//	if(RowData == null){
-	//		alert("数据错误!");
-	//		return false;
-	//	}
-	//	$("#s_orderId").val(RowData.orderId);
-	//	$('#pass').modal('show').css({
-	//		width: '1000',
-	//		'margin-left': function () {
-	//			return -($(this).width() / 2);
-	//			//return 20;
-	//		}
-	//	});
-	//}
 });
