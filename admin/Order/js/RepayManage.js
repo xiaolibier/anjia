@@ -117,7 +117,7 @@ $(function () {
                 aStr = '';
             } else if (d.status == "100510") {
                 html.push('<td id="F_Status' + d.orderId + '">已逾期</td>');
-                aStr = '<a href="javascript:void(0)" onclick="DaiHuanKuan(' + d.residueBalance + ',\'' + d.orderId + '\')">代还款</a>&nbsp;&nbsp; <a href="javascript:void(0)" onclick="popHuoMianWin(' + d.orderId + ')">豁免</a>';
+                aStr = '<a href="javascript:void(0)" onclick="DaiHuanKuan(' + d.residueBalance + ',\'' + d.orderId + '\')">代还款</a>&nbsp;&nbsp; <a href="javascript:void(0)" onclick="popHuoMianWin(' + d.orderId + ',\'' + d.totalOverdueFee + '\')">豁免</a>';
             } else if (d.status == "100512") {
                 html.push('<td id="F_Status' + d.orderId + '">逾期已还清</td>');
             } else if (d.status == "100513") {
@@ -486,11 +486,12 @@ $(function () {
     };
 
     //豁免
-    window.popHuoMianWin = function (OrderId) {
+    window.popHuoMianWin = function (OrderId,money) {
         if (confirm('是否确定执行豁免操作? ') == false) {
             return false;
         }
         $("#exemptMoney").attr("OrderId", OrderId);
+		$("#exemptMoney").val(money);
         $('#HuoMianDiv').modal('show');
     };
     window.SaveHuoMian = function () {
