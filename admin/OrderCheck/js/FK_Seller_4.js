@@ -146,7 +146,7 @@ $(function () {
         //condi.approveResult = ActType;
         //condi.approveRemarks = $("#approveRemarks").val() || "";
         //condi.approveReport = $("#approveReport").val() || "";
-        var url = Base.serverUrl + "pc/order/ updateOrderMoney";
+        var url = Base.serverUrl + "pc/order/updateOrderMoney";
         $.ajax({
             url: url, data: condi, type: "POST", dataType: "json", context: this,
             success: function (data) {
