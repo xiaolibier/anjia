@@ -5,7 +5,7 @@ $(document).ready(function(){
 	var g = {};
 	g.sbox = Utils.offLineStore.get("sbox",false) || '0';
 	
-	sbox_show();
+	//sbox_show();//关闭活动自动弹窗
 	
 	$(".c_childrenDay_sbox .a_btn,.c_childrenDay_sbox .content .session").bind("click",btn_click2);
 	$(".c_childrenDay_sbox .content .session .img,.c_childrenDay_ico .common_btn.btn2").bind("click",url_go);
