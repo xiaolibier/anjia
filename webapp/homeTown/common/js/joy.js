@@ -19,7 +19,8 @@ $(document).ready(function(){
 		title[4] = '开门遇到女神问这样的问题';
 		title[5] = '女友呆萌的可爱 笑喷了';
 		title[6] = '男友这么体贴最后女友气疯';
-		title[8] = '';
+		title[7] = '妹子叫你悠着点这下好玩不';
+		title[8] = '姑娘感觉很无语吧哈哈';
 		title[9] = '';
 		title[10] = '';
 		title[11] = '';
@@ -32,8 +33,8 @@ $(document).ready(function(){
 		poster[4] = 'http://shp.qpic.cn/qqvideo_ori/0/i03172u2tsu_496_280/0';
 		poster[5] = 'http://shp.qpic.cn/qqvideo_ori/0/l0317mebf4n_496_280/0';
 		poster[6] = 'http://shp.qpic.cn/qqvideo_ori/0/w0317jw4m4r_496_280/0';
-		poster[7] = '';
-		poster[8] = '';
+		poster[7] = 'http://shp.qpic.cn/qqvideo_ori/0/z03169pi9jp_496_280/0';
+		poster[8] = 'http://shp.qpic.cn/qqvideo_ori/0/c0317ibrtot_496_280/0';
 		poster[9] = '';
 		poster[10] = '';
 		poster[11] = '';
@@ -47,8 +48,8 @@ $(document).ready(function(){
 		src[4] = 'http://111.202.85.143/vhot2.qqvideo.tc.qq.com/i03172u2tsu.m701.mp4?vkey=A45372B7C1968A37DF8E5F5A2ED81691F2C6D53DBC00428AD595818BD918FE9CA17E2E69F2A4E655EB7CD20540765ED1FE5E58299929E441E54877D79668F74A6F0E3C913FA38F807B0995F4DB8B7895CADCB77869FABEAD&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[5] = 'http://111.202.85.147/vhot2.qqvideo.tc.qq.com/l0317mebf4n.m701.mp4?vkey=8889F3CA0FD0C92EBA6AAC6535AF7E56AE2D669E982C08D18C7F339C919625F891403287A10C157B5049157972347BE398F1561FF84A35A524156374DDCC27F836AC3935E336A29CE7B98BE1A224B381F76EDC4A9ED1A7D6&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[6] = 'http://123.125.110.142/vhot2.qqvideo.tc.qq.com/w0317jw4m4r.m701.mp4?vkey=EFB1D20A4DB20096D14845508654A455CC1C812AEFF34817697A51002B53795BCEFAC59E8E90D4F89B101A6F471CFD54F1E89FE757D7060C459913D1CCC732B14E376496D9E589BD66B77311812B5DFB89D2914E66C80D94&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
-		src[7] = '';
-		src[8] = '';
+		src[7] = 'http://111.202.85.150/vhot2.qqvideo.tc.qq.com/z03169pi9jp.m701.mp4?vkey=B2BF7F044B876F22A7F0AC1FF1722717F368131488C5C80E960212AE925E37A4D4D30DF9F3BC0B1B745AD769CFD4208DD5BF4EA17A03D59A4DD218BFA227E76CAAFDF766AFE20F2B907F285B68FDB914F99CBB21484A7A6C&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
+		src[8] = 'http://123.125.110.148/vhot2.qqvideo.tc.qq.com/c0317ibrtot.m701.mp4?vkey=04ADE87A1BDAB71D6BE4537CA666ECAFB8B52F63FEC24265C2E6868D5994F5CE05E0C78392AD03F48BED13E2F09B6B479EB891AEF0F6580E9DEF4BEF56168DDF3D40E045770EF7840E672EEBFF31BFC0B494A5B54BDF24E0&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[9] = '';
 		src[10] = '';
 		src[11] = '';
