@@ -86,7 +86,7 @@ $(function(){
 
 	function sendQueryListHttp(){
 		g.httpTip.show();
-		var url = Base.serverUrl + "article/queryArticle";
+		var url = Base.serverUrl + "common/article/findByQuery";//article/queryArticle
 		var condi = {};
 		condi.login_token = g.login_token;
 		condi.pageSize = g.pageSize;
@@ -319,10 +319,10 @@ $(function(){
 			condi.login_token = g.login_token;
 
 			if(status == 1){
-				var url = Base.serverUrl + "article/usedArticle";
+				var url = Base.serverUrl + "common/article/openArticle";//article/usedArticle
 			}
 			else{
-				var url = Base.serverUrl + "article/stopArticle";
+				var url = Base.serverUrl + "common/article/stopArticle";//article/stopArticle
 			}
 			$.ajax({
 				url:url,
@@ -360,7 +360,7 @@ $(function(){
 			condi.articleId = articleId;
 			condi.login_token = g.login_token;
 
-			var url = Base.serverUrl + "article/deleteArticle";
+			var url = Base.serverUrl + "common/article/deleteArticle";//article/deleteArticle
 			$.ajax({
 				url:url,
 				data:condi,

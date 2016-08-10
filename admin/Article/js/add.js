@@ -135,7 +135,7 @@ $(function(){
 
 	function sendAddArticleHttp(condi){
 		g.httpTip.show();
-		var url = Base.serverUrl + "article/addArticle";
+		var url = Base.serverUrl + "common/article/addArticle";//article/addArticle
 		$.ajax({
 			url:url,
 			data:condi,

@@ -117,7 +117,7 @@ $(function(){
 	function sendGetArticleInfoById(){
 		var articleId = g.articleId;
 		g.httpTip.show();
-		var url = Base.serverUrl + "article/getArticleById";
+		var url = Base.serverUrl + "common/article/findArticleById";//article/getArticleById
 		var condi = {};
 		condi.login_token = g.login_token;
 		condi.articleId = articleId;
@@ -181,7 +181,7 @@ $(function(){
 
 	function sendUpdateArticleInfoById(condi){
 		g.httpTip.show();
-		var url = Base.serverUrl + "article/updateArticle";
+		var url = Base.serverUrl + "common/article/updateArticle";//article/updateArticle
 		$.ajax({
 			url:url,
 			data:condi,
@@ -189,7 +189,7 @@ $(function(){
 			dataType:"json",
 			context:this,
 			success: function(data){
-				console.log("sendUpdateArticleInfoById",data);
+				//console.log("sendUpdateArticleInfoById",data);
 				var status = data.success || false;
 				if(status){
 					window.location.href="index.html";
