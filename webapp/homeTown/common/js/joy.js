@@ -28,7 +28,7 @@ $(document).ready(function(){
 		title[13] = '让你瞧不起捡破烂的 糗了';
 		title[14] = '这一刻简直了 迷之尴尬啊';
 		title[15] = '小小年纪这么能耐 看服了';
-		title[16] = '';
+		title[16] = '就这样做个快乐的吃货多好';
 		poster[0] = 'http://shp.qpic.cn/qqvideo_ori/0/i03159hurqx_496_280/0';//背景图片地址
 		poster[1] = 'http://shp.qpic.cn/qqvideo_ori/0/z0315w9gmc5_496_280/0';
 		poster[2] = 'http://shp.qpic.cn/qqvideo_ori/0/x0316u3gby5_496_280/0';
@@ -45,7 +45,7 @@ $(document).ready(function(){
 		poster[13] = 'http://shp.qpic.cn/qqvideo_ori/0/v0151snhuqp_496_280/0';
 		poster[14] = 'http://shp.qpic.cn/qqvideo_ori/0/j0317zv7uzo_496_280/0';
 		poster[15] = 'http://shp.qpic.cn/qqvideo_ori/0/z0317l7rac4_496_280/0';
-		poster[16] = '';
+		poster[16] = 'http://shp.qpic.cn/qqvideo_ori/0/o0145n4jksc_496_280/0';
 		poster[17] = '';
 		//视频地址
 		src[0] = 'http://123.125.110.142/vhot2.qqvideo.tc.qq.com/i03159hurqx.m701.mp4?vkey=EC887348E4F8E45664914654D6D70F687563B56787F4DE928D8AAE7B54CC1D3189A39DFCD03FD8A56ADD15A8D21FBFAA6345136A3AFE5D557AA995A1C472755DA48A30E2F051C842E564D6549B5740B73F8247F505CDEC34&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
@@ -64,7 +64,7 @@ $(document).ready(function(){
 		src[13] = 'http://111.202.85.151/vhot2.qqvideo.tc.qq.com/v0151snhuqp.mp4?vkey=959B1387F9ABB4A2F0695909D6CD9C1E3FF00DF0FFFCEF81E4CE75A90BC91DCD35B6CAABF2FBCB407086A073EC1D888D728FEA943BA921590356C277F62CE4CCCD203184BE2078B3399C049CA4C427C7270A9490D25E7C0F&br=60&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[14] = 'http://123.125.110.142/vhot2.qqvideo.tc.qq.com/j0317zv7uzo.m701.mp4?vkey=5118093F394F285A4C238C0FAE46D8D35158F17F7732984EA62811FA9DF1D189E196B707EF20DD88B863E7C105E733C486902633BB70D8984913FFFC23C8E6A9F87196A85566071AADBEB2AE0372CDC4BF5740B97C670279&br=28&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[15] = 'http://123.125.110.145/vhot2.qqvideo.tc.qq.com/z0317l7rac4.m701.mp4?vkey=703796BB7079E60A4B7D77412424838CE3DD21536214F7750F42737E6BEF296F645828281F2FB2CBF75AE6F00759D0F6516553962F20C45481DC1194278A2B5762382249348320661839C61D71AC7888F86E218A31E7D493&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
-		src[16] = '';
+		src[16] = 'http://123.125.86.18/vhot2.qqvideo.tc.qq.com/o0145n4jksc.m701.mp4?vkey=569DC6A0A6A0C8DBE2CC2DA0C52733A37421D1BE5D4068194B1FC8F6C3746D65B46EFFA608E2494C39F274C97D2C8A7D7BB7F8CA003A5D7A0ADB75CD47D4FDAA32A6DD727A92B10CC4B332144C90A552EC5F4826FEF5E3AD&br=28&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[17] = '';
 		$('#playVideo').attr('poster',poster[g.page_id]);
 		//$('.zhuan_img img').attr('src',poster[g.page_id]);
