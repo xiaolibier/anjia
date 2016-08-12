@@ -49,7 +49,7 @@ $(function(){
 						var expireDate = d.expireDate || 0;
 						var statusDesc = d.statusDesc || "";
 						var id = d.id || "";
-						if(status == "102602"){
+						if(status == "102602" || status == "102603"){
 							html += '<table class="list used">';
 						}else if(status == "102601"){
 							html += '<table class="list">';
