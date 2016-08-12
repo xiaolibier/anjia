@@ -10,6 +10,21 @@
     <link rel="stylesheet" href="../res/css/core.css?123" />
 	<title>个人中心</title>
 </head>
+<style>
+	.ui-item-box li a .person-ico {
+		color: red;
+		font-size: 14px;
+		line-height: 1px;
+		margin-bottom: 3px;
+		margin-right: 10px;
+		text-align: center;
+	}
+	.ui-item-box li a .p-ico8 {
+		background-position:0 -174px;
+	}
+	div.ui-item-box li a .trigger2{display:none;top:14px;font-size:12px;line-height:17px;text-align:center;transform:none;border-radius:50px;height:17px;width:17px;right:20px;background:none;border:none;background-color:#f43530;color:#fff;}
+
+</style>
 <body>
 	<div class="ui-main">
     	<div class="ui-header">
@@ -48,7 +63,10 @@
                     </li>                  
                     <li>
                     	<a href="../coupons/index.html"><i class="person-ico p-ico7"></i>我的优惠券<i class="trigger"></i></a>
-                    </li>					
+                    </li>
+					<li>
+                    	<a href="../letters/index.html"><i class="person-ico p-ico8"></i>站内信与反馈<i id="letter_num"  class="trigger trigger2"></i><i class="trigger"></i></a>
+                    </li>
                 </ul>
             </div>
             <div class="ui-item-box">

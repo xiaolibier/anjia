@@ -15,8 +15,44 @@ $(function(){
 	else{
 		checkGetUserInfoDicHttp();
 		yuqi_message_fuc2();
+		getNewNum();
 	}
 	
+	/* 输出新消息个数 */
+		function getNewNum(){
+		
+			var condi = {};
+			condi.login_token = g.login_token;
+			var url = Base.serverUrl + "user/getCustomerByToken";
+			$.ajax({
+				url:url,
+				data:condi,
+				type:"POST",
+				dataType:"json",
+				context:this,
+				success: function(data){
+					var success = data.success || false;
+					if(success){
+						var d = data.obj || [];
+						var communicationNum = d.communicationNum || 0;
+						if(communicationNum != 0){
+							$('#letter_num').html(communicationNum);
+							$('.personal-top .personal-inf .ico-phone').css('background','url("../res/images/center_ico_1.png") no-repeat center center / contain ');
+						}else{
+							$('.personal-top .personal-inf .ico-phone').css('background','url("../res/images/center_ico.png") no-repeat center center / contain ');
+						}
+					}
+					else{
+						var msg = data.message || "获取逾期信息失败";
+						Utils.alert(msg);
+					}
+				},
+				error:function(data){
+				}
+			});
+			
+			
+		}
 	/* 每次进个人中心实时监测是否有逾期 违约订单 然后控制我的额度 是否可用 */	
 	function yuqi_message_fuc2(){
 		var condi = {};

@@ -25,9 +25,44 @@ $(function(){
 		//sendGetUserInfoDicHttp();
 		if(g.weiyue_message != "1"){yuqi_message_fuc();}
 		//yuqi_message_fuc();
+		getNewNum();
 	}
 
-
+		
+		/* 输出新消息个数 */
+		function getNewNum(){
+		
+			var condi = {};
+			condi.login_token = g.login_token;
+			var url = Base.serverUrl + "user/getCustomerByToken";
+			$.ajax({
+				url:url,
+				data:condi,
+				type:"POST",
+				dataType:"json",
+				context:this,
+				success: function(data){
+					var success = data.success || false;
+					if(success){
+						var d = data.obj || [];
+						var communicationNum = d.communicationNum || 0;
+						if(communicationNum != 0){
+							$('#letter_num').html(communicationNum).fadeIn(0);
+						}else{
+							$('#letter_num').fadeOut(0);
+						}
+					}
+					else{
+						var msg = data.message || "获取逾期信息失败";
+						Utils.alert(msg);
+					}
+				},
+				error:function(data){
+				}
+			});
+			
+			
+		}
 
 	//头像
 	$("html,body").click(function(){

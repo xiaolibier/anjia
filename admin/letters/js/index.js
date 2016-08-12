@@ -1,63 +1,74 @@
 /**
- * function:风控初审列表
- * author:hmgx
- * date:2015-12-15
+ * author:chenxy
 */
 
 //页面初始化
 $(function(){
-
 	var g = {};
 	g.phone = "";
 	g.imgCodeId = "";
 	g.sendCode = false;
 	g.sendTime = 60;
 	g.login_token = Utils.offLineStore.get("token",false) || "";
-	g.orderId = Utils.getQueryString("orderId") || "";
 	g.httpTip = new Utils.httpTip({});
 
 	g.totalPage = 1;
 	g.currentPage = 1;
 	g.pageSize = 10;
 
-	//window.DataList = []; //存放可以申请的订单列表数据
+	g.navigationKeyObj = {};
+
+
+
 	//验证登录状态
 	var loginStatus = Utils.getUserInfo();
 	if(!loginStatus){
 		//未登录
 		//location.replace("/login.html");
 		//window.parent.location.href = "../Public/login.html";
-	}else{
-		//获取数据列表
-		setTimeout(sendQueryRiskOrderListHttp(),500);
+	}
+	else{
+		
+		queryList();
 	}
 
-	$("#querybtn").bind("click",queryOrderList);
+	$("#querybtn").bind("click",queryList);
+	$('#newbtn').bind('click',newItem);
 
-	function queryOrderList(){
+	
+	function newItem(){
+		location.href = "add.html";
+	}
+	
+	function queryList(){
 		g.currentPage = 1;
-		sendQueryRiskOrderListHttp();
+		sendQueryListHttp();
 	}
 
-	//获取订单数据
-	function sendQueryRiskOrderListHttp(){
+	function sendQueryListHttp(){
 		g.httpTip.show();
-		var url = Base.serverUrl + "pc/order/findOrderByMatch";
+		var url = Base.serverUrl + "pc/communication/findByQuery";
 		var condi = {};
 		condi.login_token = g.login_token;
+		condi.pageSize = g.pageSize;
 		condi.currentPageNum = g.currentPage;
-		condi.orderId = g.orderId;
-		//condi = getQueryParameters1(condi,"CX");
-		//console.log(condi);
+		condi.createTimeBegin = $("#createTimeBegin").val() || "";
+		condi.createTimeEnd = $("#createTimeEnd").val() || "";
+		condi.content = $("#content").val() || "";
 		$.ajax({
-			url:url, data:condi,type:"POST",	dataType:"json",context:this,
+			url:url,
+			data:condi,
+			type:"POST",
+			dataType:"json",
+			context:this,
 			success: function(data){
-				//console.log("sendQueryRiskOrderListHttp",data);
+				//console.log("sendQueryListHttp",data);
 				var status = data.success || false;
 				if(status){
-					changeOrderListHtml(data);
-				}else{
-					var msg = data.message || "获取订单列表数据失败";
+					changeListHtml(data);
+				}
+				else{
+					var msg = data.message || "获取轮播图列表数据失败";
 					Utils.alert(msg);
 				}
 				g.httpTip.hide();
@@ -68,64 +79,56 @@ $(function(){
 		});
 	}
 
-	//创建订单列表内容
-	function changeOrderListHtml(data){
+	function changeListHtml(data){
+
 		var html = [];
 
 		html.push('<table class="table table-bordered table-hover definewidth m10" ><thead>');
 		html.push('<tr>');
-		html.push('<th>订单编号</th>');
-		html.push('<th>客户姓名</th>');
-		html.push('<th>证件号码</th>');
-		html.push('<th>本人手机号</th>');
-		html.push('<th>公司名称</th>');
-		html.push('<th>装修地址</th>');
-		html.push('<th>单位电话</th>');
-		html.push('<th>配偶手机号</th>');
-		html.push('<th>亲属手机号</th>');
-		html.push('<th>同事手机号</th>');
-		html.push('<th>朋友手机号</th>');
+		html.push('<th>发送时间</th>');
+		html.push('<th>文字</th>');
+		html.push('<th>标题图片</th>');
+		html.push('<th>链接</th>');
+		html.push('<th>订单状态</th>');
+		html.push('<th>操作</th>');
 		html.push('</tr>');
 
 		var obj = data.list || [];
-		var s = data.other || [];
-		var cc = {"aa":1,"bb":2};
-		//var cp = [s.applicantPhone,s.applicantCompanyPhone,s.familyPhone,s.familyTwoPhone,s.workmatePhone,s.friendPhone];
 		for(var i = 0,len = obj.length; i < len; i++){
 			var d = obj[i];
+
 			html.push('<tr>');
-			html.push('<td class="td1">' + (d.orderId || '') + '</td>');
-			html.push('<td class="td1">' + (d.applicantName || '') + '</td>');
-			html.push('<td class="td1">' + (d.applicantIdentity || '') + '</td>');
-			html.push('<td class="td1">' + (d.applicantPhone || '') + '</td>');
-			html.push('<td class="td1">' + (d.applicantCompany || '') + '</td>');
-			html.push('<td class="td1">' + (d.decorateAddress || '') + '</td>');
-			html.push('<td class="td1">' + (d.applicantCompanyPhone || '') + '</td>');
-			html.push('<td class="td1">' + (d.familyPhone || '') + '</td>');
-			html.push('<td class="td1">' + (d.familyTwoPhone || '') + '</td>');
-			html.push('<td class="td1">' + (d.workmatePhone || '') + '</td>');
-			html.push('<td class="td1">' + (d.friendPhone || '') + '</td>');
+			html.push('<td>' + (d.createTime || "") + '</td>');
+			html.push('<td>' + (d.content || "") + '</td>');
+			html.push('<td><img width=60 height=60 src="' + (d.picUrl || "") + '" /></td>');
+			html.push('<td>' + (d.url || "") + '</td>');
+			html.push('<td>' + (d.orderStatusDesc || "") + '</td>');
+			html.push('<td><a href="javascript:changeBannerUsedFlag(\'' + (d.id || "") + '\');">撤回</a></td>');
 			html.push('</tr>');
 		}
 		html.push('</table>');
 
 		var pobj = data.obj || {};
+
 		if(obj.length > 0){
 			var page = countListPage(pobj);
 			html.push(page);
-		}else{
+		}
+		else{
 			Utils.alert("没有订单数据");
 		}
 
-		$("#orderlist").html(html.join(''));
+		$("#list").html(html.join(''));
 
-		$("#orderlistpage a").bind("click",pageClick);
+		$("#listpage a").bind("click",pageClick);
 	}
 
 	function countListPage(data){
 		var html = [];
 		g.totalPage = Math.ceil(data.totalRowNum / data.pageSize);
-		html.push('<div id="orderlistpage" class="inline pull-right page">');
+		//g.totalPage = 1;
+		//g.currentPage = 1;
+		html.push('<div id="listpage" class="inline pull-right page">');
 		html.push(data.totalRowNum + ' 条记录' + g.currentPage + '/' + g.totalPage + ' 页');
 		html.push('<a href="javascript:void(0);" class="page-next">下一页</a>');
 
@@ -139,13 +142,15 @@ $(function(){
 					html.push('<a href="javascript:void(0)" >' + (g.currentPage - 2) + '</a>');
 					html.push('<a href="javascript:void(0)" >' + (g.currentPage - 1) + '</a>');
 					html.push('<a href="javascript:void(0)" style="' + css + '">' + (g.currentPage) + '</a>');
-				}else{
+				}
+				else{
 					//末尾少于5页
 					var len = 9 - (g.totalPage - g.currentPage);
 					for(var j = len; j >= 0; j--){
 						if(j == 0){
 							html.push('<a href="javascript:void(0)" style="' + css + '">' + (g.currentPage) + '</a>');
-						}else{
+						}
+						else{
 							html.push('<a href="javascript:void(0)" >' + (g.currentPage - j) + '</a>');
 						}
 					}
@@ -154,18 +159,21 @@ $(function(){
 					var np = g.currentPage + i;
 					if(np <= g.totalPage){
 						html.push('<a href="javascript:void(0)" >' + np + '</a>');
-					}else{
+					}
+					else{
 						break;
 					}
 				}
 
-			}else{
+			}
+			else{
 				for(var i = 0; i < 10; i++){
 					var css = (i + 1) == g.currentPage ? "color: #ff0000;" : "";
 					html.push('<a href="javascript:void(0)" style="' + css + '">' + (i + 1) + '</a>');
 				}
 			}
-		}else{
+		}
+		else{
 			for(var i = 0; i < g.totalPage; i++){
 				var css = (i + 1) == g.currentPage ? "color: #ff0000;" : "";
 				html.push('<a href="javascript:void(0)" style="' + css + '">' + (i + 1) + '</a>');
@@ -176,17 +184,19 @@ $(function(){
 		return html.join('');
 	}
 
-	function pageClick(evt){;
+	function pageClick(evt){
 		var index = $(this).index();
 		var text = $(this).text() - 0 || "";
 		if(text !== ""){
 			if(g.currentPage === text){
 				Utils.alert("当前是第" + text + "页");
 				return;
-			}else{
+			}
+			else{
 				g.currentPage = text;
 			}
-		}else{
+		}
+		else{
 			var cn = $(this)[0].className;
 			switch(cn){
 				case "page-pre-end":
@@ -194,7 +204,8 @@ $(function(){
 					if(g.currentPage == 1){
 						Utils.alert("当前是第一页");
 						return;
-					}else{
+					}
+					else{
 						g.currentPage = 1;
 					}
 				break;
@@ -202,7 +213,8 @@ $(function(){
 					//前一页
 					if(g.currentPage > 1){
 						g.currentPage--;
-					}else{
+					}
+					else{
 						Utils.alert("当前是第一页");
 						return;
 					}
@@ -219,10 +231,49 @@ $(function(){
 		}
 
 		if(g.currentPage <= g.totalPage){
-			sendQueryRiskOrderListHttp();
-		}else{
+			sendQueryListHttp();
+		}
+		else{
 			Utils.alert("当前是最后一页");
 		}
 	}
+
+	function changeBannerUsedFlag(bmId){
+		var msg = "确认撤回消息吗?";
+		if(confirm(msg)){
+			g.httpTip.show();
+			var condi = {};
+			condi.id = bmId;
+			condi.login_token = g.login_token;
+			var url = Base.serverUrl + "pc/communication/cancelCommunication";
+			$.ajax({
+				url:url,
+				data:condi,
+				type:"POST",
+				dataType:"json",
+				context:this,
+				success: function(data){
+					//console.log("changeBannerUsedFlag",data);
+					var status = data.success || false;
+					if(status){
+						alert('撤回成功！');
+						sendQueryListHttp();
+					}
+					else{
+						var msg = data.message || "失败";
+						Utils.alert(msg);
+					}
+					g.httpTip.hide();
+				},
+				error:function(data){
+					g.httpTip.hide();
+				}
+			});
+		}
+	}
+
+
+	window.changeBannerUsedFlag = changeBannerUsedFlag;
+	window.newItem = newItem;
 
 });

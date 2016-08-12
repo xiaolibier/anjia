@@ -57,6 +57,8 @@
 }
 .personal-top .personal-inf .ico-phone{
 	margin:0px 10px;
+	background:url('../images/center_ico.png') no-repeat center center;
+	background-size:contain;
 }
 .my-order-select{
 	margin-top:25px;

@@ -1143,3 +1143,38 @@ div.shili span.idcard i.i2{font-style:normal;}
 .sub-main.index  div.order-list .order-list-ul li{margin:0;margin-top:10px;}
 
 li.repayment-list-detail .order-item-box .box-item{display:block;}
+
+
+/* 站内信 */
+.coupons_list{padding:10px 5px 50px;}
+.letter_list{overflow:hidden;margin-bottom:10px;}
+.letter_ico{display:inline-block;float:left;vertical-align:top;width:60px;height:60px;border-radius:5px;background:url('../images/letter_img1.png') no-repeat center top;background-size:contain;}
+.letter_text{margin-left:6%;width:72%;border-radius:3px;border:1px solid #b0dc9e;float:left;vertical-align:top;display:inline-block;position:relative;}
+.letter_text .ico{display:inline-block;position:absolute;left:-13px;top:20px;width:13px;height:15px;background:url('../images/letter_img2.png') no-repeat center top;background-size:contain;background-color:#f8f8f8;}
+.letter_text .text{padding:8px 21px 25px;min-height:30px;}
+.letter_text .text img{max-width:100%;}
+.letter_text .date{color:#6f6f6f;position:absolute;right:13px;bottom:8px;display:inline-block;}
+.letter_list.answer{}
+.letter_list.answer .letter_ico{float:right;background:url('../images/letter_img11.png') no-repeat center top;background-size:contain;}
+.letter_list.answer .letter_text{margin-right:6%;margin-left:auto;float:right;}
+.letter_list.answer .letter_text .ico{right:-13px;left:auto;background:url('../images/letter_img22.png') no-repeat center top;background-size:contain;background-color:#f8f8f8;}
+.letter_list.answer .letter_text .text{}
+.letter_list.answer .letter_text .date{left:13px;}
+
+.answer_input{background-color:#f8f8f8;padding:10px 3%;position:fixed;bottom:0;left:0;right:0;z-index:999;}
+.answer_input .input{font-size:12px;border:1px solid #e9e9e9;border-radius:5px;background-color:#fff;display:inline-block;width:65%;height:32px;line-height:32px;padding-left:1%;margin:0 2%;}
+.answer_input .send_btn{border-radius:5px;color:#fff;text-align:center;background-color:#5abe5b;display:inline-block;width:15%;height:32px;line-height:32px;text-align:center;font-size:14px;}
+.answer_input .upload-add-img {
+    background: rgba(0, 0, 0, 0) url("../images/letter_img_add.png") no-repeat center center;
+	background-size:30% 30%;
+    display: inline-block;
+    height: 31px;
+    margin-right: 0px;
+    vertical-align: middle;
+    width: 31px;
+	border-radius:5px;
+	border:1px solid #7f8389;
+	float:left;
+}
+
+

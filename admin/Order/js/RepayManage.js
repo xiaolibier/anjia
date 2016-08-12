@@ -212,6 +212,8 @@ $(function () {
                             SubHtml.push('<th>分期服务费</th>');
                         }
                     }
+					SubHtml.push('<th>已还管理费</th>');
+					SubHtml.push('<th>已还罚息</th>');
                     SubHtml.push('<th>逾期管理费</th>');
                     SubHtml.push('<th>逾期罚息</th>');
                     SubHtml.push('<th>豁免</th>');
@@ -233,7 +235,9 @@ $(function () {
                         if (row.monthPoundage > 0) {
                             SubHtml.push('<td>' + row.realMonthPoundage + '</td>');
                         }
-                        SubHtml.push('<td>' + (row.managementFee || "") + '</td>');
+                        SubHtml.push('<td>' + (row.realManagementFee || "") + '</td>');
+                        SubHtml.push('<td>' + (row.realOverdueInterest || "") + '</td>');
+						SubHtml.push('<td>' + (row.managementFee || "") + '</td>');
                         SubHtml.push('<td>' + (row.overdueInterest || "") + '</td>');
                         SubHtml.push('<td>' + (row.exemptMoney || "") + '</td>');
                         SubHtml.push('<td>' + (row.currentBalance || 0) + '</td>');

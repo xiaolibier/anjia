@@ -225,6 +225,18 @@ __html__.push('<a href="/anjia/coupons.html?item=6">我的优惠券</a>');
 __html__.push('<i class="common-ico ico-selected-flag"></i>');
 __html__.push('</div>');
 __html__.push('</li>');
+__html__.push('<li>');
+
+if(__item__ == 7){
+	__html__.push('<div class="nav-main-item selected">');
+}
+else{
+	__html__.push('<div class="nav-main-item">');
+}
+__html__.push('<a href="/anjia/letters.html?item=7">站内信 <span style="color:red;font-size:14px;" id="letter_num"></span></a>');
+__html__.push('<i class="common-ico ico-selected-flag"></i>');
+__html__.push('</div>');
+__html__.push('</li>');
 __html__.push('</ul>');
 document.write(__html__.join(''));
 
@@ -245,3 +257,4 @@ document.write(__html__.join(''));
 		$(".sub-left-nav ul li .nav-main-item .up_down_a2").addClass("up");	
 		$(".sub-left-nav .sub-left-sec-nav-n").fadeIn(0);
 	}
+	

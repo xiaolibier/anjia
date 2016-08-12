@@ -1867,7 +1867,7 @@ dl.sub-left-sec-nav dd.M_hidden.M_show{display:block;}
 .letter_text .ico{display:inline-block;position:absolute;left:-13px;top:20px;width:13px;height:15px;background:url('../images/letter_img2.png') no-repeat center top;background-size:contain;background-color:#fff;}
 .letter_text .text{padding:8px 21px 25px;min-height:30px;max-width:600px;}
 .letter_text .date{color:#6f6f6f; position:absolute;right:13px;bottom:8px;display:inline-block;}
-
+.letter_text .text img{max-width:100%;}
 .letter_list.answer{}
 .letter_list.answer .letter_ico{float:right;background:url('../images/letter_img11.png') no-repeat center top;background-size:contain;}
 .letter_list.answer .letter_text{margin-right:6%;margin-left:auto;float:right;}
