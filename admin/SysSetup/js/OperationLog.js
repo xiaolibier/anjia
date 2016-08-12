@@ -151,7 +151,7 @@ $(function(){
 				 }
 			}else{
 				for (var b = 0, len3 = d.length; b < len3; b++) {
-					 html.push('<td>' + d[b] + '</td>');
+					 html.push('<td style="max-width:400px;">' + d[b] + '</td>');
 				 }
 			}
             html.push('</tr>');
