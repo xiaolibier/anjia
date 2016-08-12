@@ -8,7 +8,7 @@ $(function(){
 	g.sendCode = false;
 	g.sendTime = 60;
 	g.login_token = Utils.offLineStore.get("token",false) || "";
-	g.code = Utils.getQueryString("Y") || "";
+	g.code = Utils.offLineStore.get("code",false) || "";
 	g.httpTip = new Utils.httpTip({});
 	g.aTitle = "" ;
 	g.aUrl = "";
@@ -75,7 +75,7 @@ $(function(){
 		var a = $(this).attr('idx') || "";
 		if(a == '1'){
 			var aTitle = '我用燕子安家活动页推广业务，你也快来吧，注册即送3000元';
-			var aUrl = location.href || "";
+			var aUrl = '../html/reg.html?code='+g.code || "";
 			var imgUrl = "";
 		}else{
 			var aTitle = g.aTitle || "" ;

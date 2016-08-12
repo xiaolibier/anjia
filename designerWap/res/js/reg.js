@@ -19,6 +19,8 @@ $(function(){
 	g.openid = Utils.offLineStore.get("openid",false) || "";
 	g.coupons_id = Utils.offLineStore.get("coupons_id",false) || "";
 	g.company = Utils.offLineStore.get("company",false) || "";
+	g.code = Utils.getQueryString("code") || "";
+	
 	//获取图形验证码
 	//sendGetImgCodeHttp();
 	sendGetCompanyList();
@@ -31,6 +33,10 @@ $(function(){
 
 	
 	function sendGetCompanyList(){
+		//自动填写邀请码
+		if(g.code != ""){
+			$('#inviterCode').val(g.code);
+		}
 		var url = Base.serverUrl + "common/findSubsidiarys";
 		var condi = {};
 		$.ajax({
