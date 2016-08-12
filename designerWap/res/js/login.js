@@ -76,7 +76,7 @@ $(function(){
 						var theme_color = userInfo.bgTheme || "blue";
 						var code = userInfo.code || "";
                         Utils.offLineStore.set("token", token, false);
-						Utils.offLineStore.set("code", token, false);
+						Utils.offLineStore.set("code", code, false);
 						g.customerId = userInfo.customerId || "";
 						userInfo = JSON.stringify(userInfo);
 						//保存用户数据
