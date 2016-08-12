@@ -13,12 +13,19 @@ $(function(){
 	g.coupons_id = Utils.offLineStore.get("coupons_id",false) || "";
 	g.openid = Utils.offLineStore.get("openid",false) || "";
 	var userPhone = Utils.offLineStore.get("userphone_login",true) || "";
+	g.code = Utils.getQueryString("de") || "";
 	$("#inputphone").val(userPhone);
 
 	$("#inputphone").bind("blur",validPhone);
 	$("#inputpwd").bind("blur",validPwd);
 	$("#loginbtn").bind("click",loginBtnUp);
-
+	$('#reg_btn').bind('click',reg_btn_func);
+	
+	/* 点击注册跳转 */
+	function reg_btn_func(){
+		location.href="../html/reg.html?de="+g.code;
+	}
+	
 	//验证手机号
 	function validPhone(){
 		var phone = $("#inputphone").val() || "";
