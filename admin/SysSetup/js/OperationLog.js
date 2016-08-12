@@ -57,7 +57,7 @@ $(function(){
 	//获取用户信息字典信息
 	function sendGetUserInfoDicHttp(){
 		g.httpTip.show();
-		var url = Base.serverUrl + "baseCodeController/getBaseCodeByParents";
+		var url = Base.serverUrl + "common/dic/findByParents";//baseCodeController/getBaseCodeByParents
 		var condi = {parents:1027};//只获取模块地址
 		$.ajax({
 			url:url,data:condi,type:"POST",dataType:"json",context:this,
@@ -102,7 +102,7 @@ $(function(){
 	function sendQueryRiskOrderListHttp(){
 		g.httpTip.show();
 		//var url = Base.serverUrl + "/order/queryOrdersMapController";
-		var url = Base.serverUrl + "oplog/getOplog";
+		var url = Base.serverUrl + "pc/report/getOpLog";//oplog/getOplog
 		var condi = {};
 		condi.login_token = g.login_token;
 		condi.currentPageNum = g.currentPage;
@@ -141,7 +141,23 @@ $(function(){
 		var html = [];
 
 		html.push('<table class="table table-bordered table-hover definewidth m10" ><thead>');
-		html.push('<tr>');
+		var obj = data.list || [];
+        for (var i = 0, len = obj.length; i < len; i++) {
+            var d = obj[i];
+            html.push('<tr>');
+			if(i == 0){
+				 for (var a = 0, len2 = d.length; a < len2; a++) {
+					 html.push('<th>' + d[a] + '</th>');
+				 }
+			}else{
+				for (var b = 0, len3 = d.length; b < len3; b++) {
+					 html.push('<td>' + d[b] + '</td>');
+				 }
+			}
+            html.push('</tr>');
+        }
+        
+		/* html.push('<tr>');
 		html.push('<th>用户ID</th>');
 		html.push('<th>用户姓名</th>');
 		html.push('<th>模块</th>');
@@ -166,7 +182,7 @@ $(function(){
 			html.push('<td>' + (d.status==0?"后台":"网站 WAP") + '</td>');
 			html.push('<td>' + d.create_time +  '</td>');
 			html.push('</tr>');
-		}
+		} */
 		html.push('</table>');
 
 		var pobj = data.obj || {};
