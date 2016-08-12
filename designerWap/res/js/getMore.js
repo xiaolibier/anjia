@@ -75,7 +75,7 @@ $(function(){
 		var a = $(this).attr('idx') || "";
 		if(a == '1'){
 			var aTitle = '我用燕子安家活动页推广业务，你也快来吧，注册即送3000元';
-			var aUrl = 'http://m.yanzianjia.com/designerWap/html/reg.html?code='+g.code || "";
+			var aUrl = 'http://m.yanzianjia.com/designerWap/html/reg.html?de='+g.code || "";
 			var imgUrl = "";
 		}else{
 			var aTitle = g.aTitle || "" ;

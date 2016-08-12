@@ -19,7 +19,7 @@ $(function(){
 	g.openid = Utils.offLineStore.get("openid",false) || "";
 	g.coupons_id = Utils.offLineStore.get("coupons_id",false) || "";
 	g.company = Utils.offLineStore.get("company",false) || "";
-	g.code = Utils.getQueryString("code") || "";
+	g.code = Utils.getQueryString("de") || "";
 	
 	//获取图形验证码
 	//sendGetImgCodeHttp();
