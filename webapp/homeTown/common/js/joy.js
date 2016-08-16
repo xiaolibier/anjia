@@ -12,9 +12,9 @@ $(document).ready(function(){
 	function set_video(){
 		
 		var title = [],poster = [],src = [];
-		title[0] = '大哥跑这来嘚瑟 师傅机智';//标题
-		title[1] = '美女的回答同伴都听不下去';
-		title[2] = '大师最后也是自作自受哈哈';
+		title[0] = '大哥这演的也太拼了';//标题
+		title[1] = '看美女半天 一开口懵了';
+		title[2] = '大姐这言语太犀利 笑趴了';
 		title[3] = '街上遇高手 耍的太厉害';
 		title[4] = '开门遇到女神问这样的问题';
 		title[5] = '女友呆萌的可爱 笑喷了';
@@ -29,9 +29,9 @@ $(document).ready(function(){
 		title[14] = '这一刻简直了 迷之尴尬啊';
 		title[15] = '小小年纪这么能耐 看服了';
 		title[16] = '就这样做个快乐的吃货多好';
-		poster[0] = 'http://shp.qpic.cn/qqvideo_ori/0/i03159hurqx_496_280/0';//背景图片地址
-		poster[1] = 'http://shp.qpic.cn/qqvideo_ori/0/z0315w9gmc5_496_280/0';
-		poster[2] = 'http://shp.qpic.cn/qqvideo_ori/0/x0316u3gby5_496_280/0';
+		poster[0] = 'http://shp.qpic.cn/qqvideo_ori/0/u03015zr6wv_496_280/0';//背景图片地址
+		poster[1] = 'http://shp.qpic.cn/qqvideo_ori/0/l0301f317td_496_280/0';
+		poster[2] = 'http://shp.qpic.cn/qqvideo_ori/0/c0300pkv8q2_496_280/0';
 		poster[3] = 'http://shp.qpic.cn/qqvideo_ori/0/u03168oi7vl_496_280/0';
 		poster[4] = 'http://shp.qpic.cn/qqvideo_ori/0/i03172u2tsu_496_280/0';
 		poster[5] = 'http://shp.qpic.cn/qqvideo_ori/0/l0317mebf4n_496_280/0';
@@ -48,9 +48,9 @@ $(document).ready(function(){
 		poster[16] = 'http://shp.qpic.cn/qqvideo_ori/0/o0145n4jksc_496_280/0';
 		poster[17] = '';
 		//视频地址
-		src[0] = 'http://123.125.110.142/vhot2.qqvideo.tc.qq.com/i03159hurqx.m701.mp4?vkey=EC887348E4F8E45664914654D6D70F687563B56787F4DE928D8AAE7B54CC1D3189A39DFCD03FD8A56ADD15A8D21FBFAA6345136A3AFE5D557AA995A1C472755DA48A30E2F051C842E564D6549B5740B73F8247F505CDEC34&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
-		src[1] = 'http://123.125.110.142/vhot2.qqvideo.tc.qq.com/z0315w9gmc5.m701.mp4?vkey=5F0520FCA34B51C19188D9B16FDC74E801EBA87CB050E34D26FC1AAE6FF181F78728F07D40A0899032B994F2160AEBF58E1105EB5B1B29F0214BC85BE3D795E24499FDC643AE5A6584A5C120A91C33429E6D1A8D2EA39516&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
-		src[2] = 'http://123.125.86.30/vhot2.qqvideo.tc.qq.com/x0316u3gby5.m701.mp4?vkey=1110F1BB4B900A90881C995103A80145281B5E14CF1134CF1253BE1C8E951E4C7653256738EB0F51FF8A8246F5F84774FC6ABA269A7C883925B4F9D374EAA47EA751D626375AFA2F56BB445891CE4F0B2E20DD9C885AEA22&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
+		src[0] = 'http://111.202.98.153/vhot2.qqvideo.tc.qq.com/u03015zr6wv.m701.mp4?vkey=B8D53C37E678C393DF67BF671AA1E202776E9FA5A304A7CF8D570D8B4E4A92DEAB28923387DA7AA08594EB595BE5D58FC578DD82F9397FC2D034C5C6F62DACD7AC81FD00E4CC88770BDEDE6599CB8B09166A1CEBEF24D2F1&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
+		src[1] = 'http://111.202.85.150/vhot2.qqvideo.tc.qq.com/l0301f317td.m701.mp4?vkey=2DDEFD55B8BD507C0E52F87C9EA9B9A93FC993599AC9C8C4AD03694243607D1A0818DB87BB73951BBFDAFEF48E84C5EFA3DCF1FC0A0C913692A837215890102E3554E198B26922188AAD4351E0D6DAE59EC0747E4ABA9510&br=28&platform=2&fmt=auto&level=0&sdtfrom=v3010';
+		src[2] = 'http://111.202.85.153/vhot2.qqvideo.tc.qq.com/c0300pkv8q2.m701.mp4?vkey=D9EC6B1A5F523C3639FBB1EF56007AD46AE9825E94E77D4807BDE9248D9613287D96E2BEB8419871830A660C280AAEF5CA2850572719606BCF404A69C668FBDBB79D7D42FF108143557A0557ADB9ED40E6B1FA0F7CB02FA3&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[3] = 'http://111.202.98.150/vhot2.qqvideo.tc.qq.com/u03168oi7vl.m701.mp4?vkey=86F5C1393AE064EBDDDA2DA39C9FA8AE90EDC0F6319C08F9F1B7C673499FE34BCA6D9ABF402CD101C1BCECF7DADA136298E48E763DE662479184D80221774F78FC1FE9A98CB947A99596BAB05841735BD541D2198717B24B&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[4] = 'http://111.202.85.143/vhot2.qqvideo.tc.qq.com/i03172u2tsu.m701.mp4?vkey=A45372B7C1968A37DF8E5F5A2ED81691F2C6D53DBC00428AD595818BD918FE9CA17E2E69F2A4E655EB7CD20540765ED1FE5E58299929E441E54877D79668F74A6F0E3C913FA38F807B0995F4DB8B7895CADCB77869FABEAD&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
 		src[5] = 'http://111.202.85.147/vhot2.qqvideo.tc.qq.com/l0317mebf4n.m701.mp4?vkey=8889F3CA0FD0C92EBA6AAC6535AF7E56AE2D669E982C08D18C7F339C919625F891403287A10C157B5049157972347BE398F1561FF84A35A524156374DDCC27F836AC3935E336A29CE7B98BE1A224B381F76EDC4A9ED1A7D6&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010';
