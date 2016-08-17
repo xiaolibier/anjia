@@ -58,6 +58,7 @@ $(function(){
 	function sendGetImgCodeHttp(){
 		//URL:  http://www.partywo.com/imageValidate/getImageValidate
 		//参数: {image_key:string}
+		g.guid = Utils.getGuid();
 		var url = Base.serverUrl + "imageValidate/getImageValidate";
 		url = url + "?image_key=" + g.guid + "&t=" + (new Date() - 0);
 		g.codeImg.src = url;
