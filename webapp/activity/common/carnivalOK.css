@@ -4,12 +4,12 @@ a,a:active{cursor:pointer;outline:none;text-decoration:none;}
 
 html,body{margin:0;padding:0;}
 *{}
-html,body{height:100%;position:relative;font-size:16px;font-family:microsoft yahei;background-color:#f3efec;color:#363636;}
+html,body{height:100%;position:relative;font-size:16px;font-family:microsoft yahei;background-color:#7f34de;color:#363636;}
 /* top */
-.main_bg{padding-top:15%;height:92%;background:url('img/car_bg.jpg') no-repeat top center;background-size:100% 100%;}
+.main_bg{padding-top:15%;height:92%;background:url('img/car_bg.png') no-repeat top center;background-size:100% auto;}
 .body_div{margin:0 3%;}
-.header{text-align:center;font-size:26px;color:#ff2634;}
-.body_div p.text2{display:block;width:50%;margin:0 auto 0;line-height:30px;min-width:212px;}
+.header{text-align:center;font-size:18px;color:#ffde27;}
+.body_div p.text2{color:#fff;text-align:center;display:block;width:50%;margin:0 auto 0;line-height:30px;min-width:212px;}
 .body_div p.text1{width:80%;display:block;margin:0 auto 7%;line-height:30px;min-width:212px;}
 .body_div p.text input{appearance:none;-webkit-appearance: none;display:inline-block;font-size:16px;color:#9b2f53;background:none;border:none;width:80px;}
 .body_div p.text input:active,.body_div p.text input:focus{border:none;}
