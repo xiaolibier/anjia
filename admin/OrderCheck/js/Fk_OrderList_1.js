@@ -115,6 +115,7 @@ $(function(){
 			html.push('<td>' + d.statusDes  + '</td>');
 			//根据订单状态 判断 初审
 			var credit = '&nbsp&nbsp<a href="javascript:void(0)" onclick="OpenCredit(' + d.orderId + ',this)">91征信</a>';
+				credit += '&nbsp&nbsp<a href="javascript:void(0)" onclick="OpenCredit2(' + d.orderId + ',this)">宜信征信</a>';
 			/* if(d.status == "10050301"){ */
 				html.push('<td><a href="javascript:Hmgx.openWin(\'ModifyOrder.html?orderid=' + d.orderId + '\')">编辑</a>&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'FK_Seller_1.html?orderid=' + d.orderId + '\')">初审</a>' + credit + '&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'matching.html?orderid=' + d.orderId + '\')">匹配</a></td>');
 
@@ -279,7 +280,10 @@ $(function(){
 		Hmgx.openWin("CreditReport.html?orderid=" + OrderId );
 		//$(e).attr("onclick","alert('征信报告不能重复获取！')");
 	};
-
+	window.OpenCredit2 = function(OrderId,e){
+		Hmgx.openWin("CreditReport2.html?orderid=" + OrderId );
+		//$(e).attr("onclick","alert('征信报告不能重复获取！')");
+	};
 	//显示审核窗口
 	//window.ShowWin = function (OrderID){
 	//	var RowData = null;

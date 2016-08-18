@@ -120,6 +120,7 @@ $(function(){
 			html.push('<td>' + (d.firstFkApproveTime || "")  + '</td>');
 			html.push('<td>' + d.statusDes   + '</td>');
 			var credit = '&nbsp&nbsp<a href="javascript:void(0)" onclick="OpenCredit(' + d.orderId + ',this)">91征信</a>';
+			credit += '&nbsp&nbsp<a href="javascript:void(0)" onclick="OpenCredit2(' + d.orderId + ',this)">宜信征信</a>';
 			//根据订单状态 判断 复审
 			/* if(d.status == "10050302" ){ */
 				html.push('<td><a href="javascript:Hmgx.openWin(\'ModifyOrder_only.html?orderid=' + d.orderId + '\')">查看订单</a>&nbsp&nbsp<a href="javascript:Hmgx.openWin(\'FK_Seller_2.html?orderid=' + d.orderId + '\')">复审</a>' + credit + '</td>');
@@ -280,6 +281,10 @@ $(function(){
 
 	window.OpenCredit = function(OrderId,e){
 		Hmgx.openWin("CreditReport.html?orderid=" + OrderId );
+		//$(e).attr("onclick","alert('征信报告不能重复获取！')");
+	};
+	window.OpenCredit2 = function(OrderId,e){
+		Hmgx.openWin("CreditReport2.html?orderid=" + OrderId );
 		//$(e).attr("onclick","alert('征信报告不能重复获取！')");
 	};
 });
