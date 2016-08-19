@@ -21,7 +21,7 @@ $(function () {
         ReadOrderInfo();
     }
 
-    $("*").bind('keydown.Ctrl_q',function (evt){SaveData(); return false});
+    /* $("*").bind('keydown.Ctrl_q',function (evt){SaveData(); return false}); */
 
     //自动行高
     $('textarea').bind('keyup', function () {
@@ -296,106 +296,127 @@ $(function () {
 
     //========================保存数据 ============================
     function SaveData(e) {
-        if ($("#packageType").val() == "" || $("#packageType").val() == null) {
+       g.httpTip.show();
+	   var ids = $(this).attr('id') || "";
+	   var id = ids.split('but_edit')[1] || "";
+		if (id == '1' && $("#packageType").val() == "" || $("#packageType").val() == null) {
             Utils.alert("请选择产品类型！");
             $("#packageType").focus();
             return false;
         }
-        if ($("#subsidiaryId").val() == "" || $("#subsidiaryId").val() == null) {
+        if (id == '1' && $("#subsidiaryId").val() == "" || $("#subsidiaryId").val() == null) {
             Utils.alert("请选择分公司！");
             $("#subsidiaryId").focus();
             return false;
         }
-        g.httpTip.show();
-        var url = Base.serverUrl + "pc/order/firstApproveOrderEdit";//order/updateOrderByFK
+        
+        var url = '';
          var condi = {};
 		 condi.customerInfo = [];
 		 condi.customerContactInfo = {};
 		 condi.customerWorkInfo = {};
 		 condi.customerIncomeInfo = {};
 		 condi.customerCreditInfo = {};
-        condi.login_token = g.login_token;
-        condi.companyId = g.companyId;
-        condi.designer = $("#designer").val() || "";
-        condi.packageName = $("#packageType").find("option:selected").text();
-        condi.orderId = $('#orderId').val() || "";
-		condi.poundageRepaymentType = $('#poundageRepaymentType').val() || "";
-		condi.contractMoney = $('#contractMoney').val() || "";
-		condi.applyPackageMoney = $('#applyPackageMoney').val() || "";
-		condi.subsidiaryId = $('#subsidiaryId').val() || "";
-		condi.packageType = $('#packageType').val() || "";
-		condi.contractNo = $('#contractNo').val() || "";
-		condi.designerPhone = $('#designerPhone').val() || "";
-		condi.applyFenQiTimes = $('#applyFenQiTimes').val() || "";
-		condi.packageMoney = $('#packageMoney').val() || "";
-		condi.fenQiTimes = $('#fenQiTimes').val() || "";
-		condi.repaymentType = $('#repaymentType').val() || "";
-		condi.decorateMoney = $('#decorateMoney').val() || "";
-		condi.applicantName = $('#applicantName').val() || "";
-		condi.applicantPhone = $('#applicantPhone').val() || "";
-		condi['customerInfo.applicantIdentity'] = $('#applicantIdentity').val() || "";
-		condi['customerInfo.applicantSex'] = $('#applicantSex').val() || "";
-		condi['customerInfo.applicantAge'] = $('#applicantAge').val() || "";
-		condi['customerInfo.applicantMarital'] = $('#applicantMarital').val() || "";
-		condi['customerInfo.applicantAsset'] = $('#applicantAsset').val() || "";
-		condi['customerInfo.applicantStudyStatus'] = $('#applicantStudyStatus').val() || "";
-		condi['customerInfo.nation'] = $('#nation').val() || "";
-		condi['customerInfo.weChat'] = $('#weChat').val() || "";
-		condi['customerInfo.email'] = $('#email').val() || "";
-		condi['customerInfo.decorateAddress'] = $('#decorateAddress').val() || "";
-		condi['customerInfo.decorateTime'] = $('#decorateTime').val() || "";
-		condi['customerInfo.applicantAddress'] = $('#applicantAddress').val() || "";
-		condi['customerInfo.houseNature'] = $('#houseNature').val() || "";
-		condi['customerInfo.houseRent'] = $('#houseRent').val() || "";
-		condi['customerInfo.cityYear'] = $('#cityYear').val() || "";
-		condi['customerInfo.personalInfoSituation'] = $('#personalInfoSituation').val() || "";
-		condi['customerInfo.otherInfo'] = $('#otherInfo').val() || "";
-		condi['customerContactInfo.familyName'] = $('#familyName').val() || "";
-		condi['customerContactInfo.familyPhone'] = $('#familyPhone').val() || "";
-		condi['customerContactInfo.mateSituation'] = $('#mateSituation').val() || "";
-		condi['customerContactInfo.familyTwoName'] = $('#familyTwoName').val() || "";
-		condi['customerContactInfo.familyTwoPhone'] = $('#familyTwoPhone').val() || "";
-		condi['customerContactInfo.familyTwoRelation'] = $('#familyTwoRelation').val() || "";
-		condi['customerContactInfo.relationSituation'] = $('#relationSituation').val() || "";
-		condi['customerContactInfo.workmateName'] = $('#workmateName').val() || "";
-		condi['customerContactInfo.workmatePhone'] = $('#workmatePhone').val() || "";
-		condi['customerContactInfo.workmateSituation'] = $('#workmateSituation').val() || "";
-		condi['customerContactInfo.friendName'] = $('#friendName').val() || "";
-		condi['customerContactInfo.friendPhone'] = $('#friendPhone').val() || "";
-		condi['customerContactInfo.friendSituation'] = $('#friendSituation').val() || "";
-		condi['customerWorkInfo.applicantJobNature'] = $('#applicantJobNature').val() || "";
-		condi['customerWorkInfo.applicantCompany'] = $('#applicantCompany').val() || "";
-		condi['customerWorkInfo.applicantCompanyNature'] = $('#applicantCompanyNature').val() || "";
-		condi['customerWorkInfo.applicantCompanyIndustry'] = $('#applicantCompanyIndustry').val() || "";
-		condi['customerWorkInfo.department'] = $('#department').val() || "";
-		condi['customerWorkInfo.applicantDuties'] = $('#applicantDuties').val() || "";
-		condi['customerWorkInfo.applicantWorkYears'] = $('#applicantWorkYears').val() || "";
-		condi['customerWorkInfo.applicantCompanyAddress'] = $('#applicantCompanyAddress').val() || "";
-		condi['customerWorkInfo.applicantCompanyPhone'] = $('#applicantCompanyPhone').val() || "";
-		condi['customerWorkInfo.applicantWages'] = $('#applicantWages').val() || "";
-		condi['customerWorkInfo.wageDeliverWay'] = $('#wageDeliverWay').val() || "";
-		condi['customerWorkInfo.workInfoSituation'] = $('#workInfoSituation').val() || "";
-		condi['customerIncomeInfo.customerId'] = $('#customerId').val() || "";
-		condi['customerIncomeInfo.statementCount'] = $('#statementCount').val() || "";
-		condi['customerIncomeInfo.incomeInfoRemark'] = $('#incomeInfoRemark').val() || "";
-		condi['customerCreditInfo.bankLoanCount'] = $('#bankLoanCount').val() || "";
-		condi['customerCreditInfo.bankCreditApplyCount'] = $('#bankCreditApplyCount').val() || "";
-		condi['customerCreditInfo.bankPersonalCount'] = $('#bankPersonalCount').val() || "";
-		condi['customerCreditInfo.creditInfoRemark'] = $('#creditInfoRemark').val() || "";
-		
-		/* var condi = {};
-        condi.login_token = g.login_token;
-        condi.companyId = g.companyId;
-        condi.designer = g.designer || "";
-        condi.packageName = $("#packageType").find("option:selected").text();
-        var parm = function getQueryParameters1(Obj, FormId) {
-            $.each($("#" + FormId).serializeArray(), function (index, param) {
-                Obj[param.name] = param.value;
-            });
-            return Obj;
-        };
-        condi = parm(condi, "editform"); */
-        //console.log(condi);
+		 
+		 switch(id){
+			case '1':url = Base.serverUrl + "pc/order/updateOrderPackage";
+					 condi.login_token = g.login_token;
+					 condi.orderId = $('#orderId').val() || "";
+					 condi.companyId = g.companyId;
+					 condi.designer = $("#designer").val() || "";
+					 condi.packageName = $("#packageType").find("option:selected").text();
+					 condi.packageType = $('#packageType').val() || "";
+					 condi.poundageRepaymentType = $('#poundageRepaymentType').val() || "";
+					 condi.contractMoney = $('#contractMoney').val() || "";
+					 condi.applyPackageMoney = $('#applyPackageMoney').val() || "";
+					condi.subsidiaryId = $('#subsidiaryId').val() || "";
+					condi.contractNo = $('#contractNo').val() || "";
+					condi.designerPhone = $('#designerPhone').val() || "";
+					condi.applyFenQiTimes = $('#applyFenQiTimes').val() || "";
+					condi.packageMoney = $('#packageMoney').val() || "";
+					condi.fenQiTimes = $('#fenQiTimes').val() || "";
+					condi.repaymentType = $('#repaymentType').val() || "";
+					condi.decorateMoney = $('#decorateMoney').val() || "";
+					break;
+			case '2':url = Base.serverUrl + "pc/order/updateCustomerInfo";
+					 condi.login_token = g.login_token;
+					 condi.orderId = $('#orderId').val() || "";	
+					 condi.applicantName = $('#applicantName').val() || "";
+					condi.applicantPhone = $('#applicantPhone').val() || "";
+					condi['customerInfo.applicantIdentity'] = $('#applicantIdentity').val() || "";
+					condi['customerInfo.applicantSex'] = $('#applicantSex').val() || "";
+					condi['customerInfo.applicantAge'] = $('#applicantAge').val() || "";
+					condi['customerInfo.applicantMarital'] = $('#applicantMarital').val() || "";
+					condi['customerInfo.applicantAsset'] = $('#applicantAsset').val() || "";
+					condi['customerInfo.applicantStudyStatus'] = $('#applicantStudyStatus').val() || "";
+					condi['customerInfo.nation'] = $('#nation').val() || "";
+					condi['customerInfo.weChat'] = $('#weChat').val() || "";
+					condi['customerInfo.email'] = $('#email').val() || "";
+					condi['customerInfo.decorateAddress'] = $('#decorateAddress').val() || "";
+					condi['customerInfo.decorateTime'] = $('#decorateTime').val() || "";
+					condi['customerInfo.applicantAddress'] = $('#applicantAddress').val() || "";
+					condi['customerInfo.houseNature'] = $('#houseNature').val() || "";
+					condi['customerInfo.houseRent'] = $('#houseRent').val() || "";
+					condi['customerInfo.cityYear'] = $('#cityYear').val() || "";
+					condi['customerInfo.personalInfoSituation'] = $('#personalInfoSituation').val() || "";
+					break;
+			case '3':url = Base.serverUrl + "pc/order/updateCustomerContactInfo";
+					 condi.login_token = g.login_token;
+					 condi.orderId = $('#orderId').val() || "";			
+					condi['customerContactInfo.familyName'] = $('#familyName').val() || "";
+					condi['customerContactInfo.familyPhone'] = $('#familyPhone').val() || "";
+					condi['customerContactInfo.mateSituation'] = $('#mateSituation').val() || "";
+					condi['customerContactInfo.familyTwoName'] = $('#familyTwoName').val() || "";
+					condi['customerContactInfo.familyTwoPhone'] = $('#familyTwoPhone').val() || "";
+					condi['customerContactInfo.familyTwoRelation'] = $('#familyTwoRelation').val() || "";
+					condi['customerContactInfo.relationSituation'] = $('#relationSituation').val() || "";
+					condi['customerContactInfo.workmateName'] = $('#workmateName').val() || "";
+					condi['customerContactInfo.workmatePhone'] = $('#workmatePhone').val() || "";
+					condi['customerContactInfo.workmateSituation'] = $('#workmateSituation').val() || "";
+					condi['customerContactInfo.friendName'] = $('#friendName').val() || "";
+					condi['customerContactInfo.friendPhone'] = $('#friendPhone').val() || "";
+					condi['customerContactInfo.friendSituation'] = $('#friendSituation').val() || "";
+					break;
+			case '4':url = Base.serverUrl + "pc/order/updateCustomerWorkInfo";
+					 condi.login_token = g.login_token;
+					 condi.orderId = $('#orderId').val() || "";				
+					condi['customerWorkInfo.applicantJobNature'] = $('#applicantJobNature').val() || "";
+					condi['customerWorkInfo.applicantCompany'] = $('#applicantCompany').val() || "";
+					condi['customerWorkInfo.applicantCompanyNature'] = $('#applicantCompanyNature').val() || "";
+					condi['customerWorkInfo.applicantCompanyIndustry'] = $('#applicantCompanyIndustry').val() || "";
+					condi['customerWorkInfo.department'] = $('#department').val() || "";
+					condi['customerWorkInfo.applicantDuties'] = $('#applicantDuties').val() || "";
+					condi['customerWorkInfo.applicantWorkYears'] = $('#applicantWorkYears').val() || "";
+					condi['customerWorkInfo.applicantCompanyAddress'] = $('#applicantCompanyAddress').val() || "";
+					condi['customerWorkInfo.applicantCompanyPhone'] = $('#applicantCompanyPhone').val() || "";
+					condi['customerWorkInfo.applicantWages'] = $('#applicantWages').val() || "";
+					condi['customerWorkInfo.wageDeliverWay'] = $('#wageDeliverWay').val() || "";
+					condi['customerWorkInfo.workInfoSituation'] = $('#workInfoSituation').val() || "";
+					break;
+			case '5':url = Base.serverUrl + "pc/order/updateCustomerIncomeInfo";
+					 condi.login_token = g.login_token;
+					 condi.orderId = $('#orderId').val() || "";
+					 condi['customerIncomeInfo.statementCount'] = $('#statementCount').val() || "";
+					 condi['customerIncomeInfo.incomeInfoRemark'] = $('#incomeInfoRemark').val() || "";
+					 
+					break; 
+			case '6':url = Base.serverUrl + "pc/order/updateCustomerCreditInfo";
+					 condi.login_token = g.login_token;
+					 condi.orderId = $('#orderId').val() || "";
+					 condi['customerCreditInfo.bankLoanCount'] = $('#bankLoanCount').val() || "";
+					 condi['customerCreditInfo.bankCreditApplyCount'] = $('#bankCreditApplyCount').val() || "";
+					condi['customerCreditInfo.bankPersonalCount'] = $('#bankPersonalCount').val() || "";
+					condi['customerCreditInfo.creditInfoRemark'] = $('#creditInfoRemark').val() || "";
+					break; 
+			case '7':url = Base.serverUrl + "pc/order/updateCustomerOtherInfo";
+					 condi.login_token = g.login_token;
+					 condi.orderId = $('#orderId').val() || "";
+					 condi['customerInfo.otherInfo'] = $('#otherInfo').val() || "";
+					break;
+			default:break;				
+					
+		}
+
         $.ajax({
             url: url, data: condi, type: "POST", dataType: "json", context: this,
             success: function (data) {
@@ -498,7 +519,7 @@ $(function () {
     $("#applyFenQiTimes").bind("change", countFee);
     $("#applyPackageMoney").bind("change", countFee);
     $("#applicantIdentity").bind("change", discriCard);
-    $("#but_edit").bind("click", SaveData);
+    $("#but_edit1,#but_edit2,#but_edit3,#but_edit4,#but_edit5,#but_edit6,#but_edit7").bind("click", SaveData);
     $('#backid').click(function () {
         window.close()
     });
