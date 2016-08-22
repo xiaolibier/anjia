@@ -285,7 +285,7 @@ $(function(){
 				var status = data.success || false;
 				if(status){
 					alert('恭喜你！提交成功,请等候审核');
-					location.href = "../html/login.html";
+					location.href = "http://mp.weixin.qq.com/s?__biz=MzIxNzA1MjkyMg==&mid=2247483653&idx=1&sn=a7a5e7b1a00bd4b9ec1f54e860005365&scene=0#wechat_redirect";
 					/* var userInfo = data.obj || "";
 					if(userInfo !== ""){
 						g.customerId = userInfo.customerId || "";
