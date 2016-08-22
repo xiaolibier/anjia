@@ -43,7 +43,7 @@ $(function(){
 
 	//g.httpTip.show();
 
-	$("#editbtn").bind("click",editBtnUp);
+	$("#editbtn").bind("click",validForm);
 
 
 
@@ -52,13 +52,13 @@ $(function(){
 	});
 
 	function validForm(){
-		if(!validNoEmpty("bmTitle")){
-			layer.msg('轮播图片标题不能为空');
+		if(!validNoEmpty("articleTitle")){
+			layer.msg('标题不能为空');
 			return false;
 		}
 
-
-		var url = Base.serverUrl + "bannerImage/updateBannerImage";
+		$("#articleContent").val($('#editor').html());
+		var url = Base.serverUrl + "common/article/updateArticle";
 		$("#addform").attr("action",url);
 		return true;
 	}
@@ -147,16 +147,29 @@ $(function(){
 
 	function changeArticleHtml(data){
 		var obj = data.obj || "";
+		var uploadImage = obj.uploadImage || "";
+		var articleType = obj.articleType || "";
+		var articleDescr = obj.articleDescr || "";
 		var articleTitle = obj.articleTitle || "";
 		var articleKey = obj.articleKey || "";
 		var articleContent = obj.articleContent || "";
-
+		var articleId = obj.articleId || "";
+		var picUrl = obj.picUrl || "";
+		$("#uploadImage").val(uploadImage);
+		$("#articleType").val(articleType);
+		$("#articleDescr").val(articleDescr);
 		$("#articleTitle").val(articleTitle);
 		$("#articleKey").val(articleKey);
 		$("#editor").html(articleContent);
+		$("#articleContent").val(articleContent);
+		$("#articleId").val(articleId);
+		$("#bmUrl").attr('src',picUrl);
 	}
 
 	function editBtnUp(){
+		var uploadImage = $("#uploadImage").val() || "";
+		var articleType = $("#articleType").val() || "";
+		var articleDescr = $("#articleDescr").val() || "";
 		var articleTitle = $("#articleTitle").val() || "";
 		var articleContent = $("#editor").html() || "";
 		var articleKey = $("#articleKey").val() || "";
@@ -165,7 +178,10 @@ $(function(){
 
 		if(articleTitle !== ""){
 			var condi = {};
+			condi.uploadImage = uploadImage;
 			condi.articleId = g.articleId;
+			condi.articleType = articleType;
+			condi.articleDescr = articleDescr;
 			condi.articleTitle = articleTitle;
 			condi.articleContent = articleContent;
 			condi.articleKey = articleKey;

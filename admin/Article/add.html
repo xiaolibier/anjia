@@ -39,7 +39,7 @@
                 padding-right: 5px;
             }
         }
-	input{
+	input,textarea,select{
 		width:400px;
 	}
 
@@ -54,8 +54,16 @@
 			<td><input id="articleTitle" type="text" name="articleTitle"/></td>
 		</tr>
 		<tr>
-			<td class="tableleft">文章标记</td>
-			<td><input id="articleKey" type="text" name="articleKey"/></td>
+			<td class="tableleft">文章类型</td>
+			<td><select id="articleType" type="text" name="articleType"><option value="103801">分期知识</option><option value="103802">装修知识</option></select></td>
+		</tr>
+		<tr>
+			<td class="tableleft">缩略图</td>
+			<td><input type="file" name="uploadImage" id="uploadImage"></td>
+		</tr>
+		<tr>
+			<td class="tableleft">文章简述</td>
+			<td><textarea id="articleDescr" type="text" name="articleDescr"></textarea></td>
 		</tr>
 		<tr>
 			<td class="tableleft">创建人ID</td>
@@ -122,13 +130,13 @@
 				<div id="editor">
 					输入内容&hellip;
 				</div>
-
+				<input name="articleContent" id="articleContent" type="hidden" />
 			</td>
 		</tr>
 		<tr>
 			<td class="tableleft"></td>
 			<td>
-				<button id="addbtn" class="btn btn-primary" type="button">添加</button> &nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+				<button id="addbtn" class="btn btn-primary" type="submit">添加</button> &nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
 			</td>
 		</tr>
 	</table>

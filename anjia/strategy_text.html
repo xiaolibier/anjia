@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<title>小燕子攻略</title>
+	<meta name="keywords"    content="燕子安家，家装分期，装修，装修怎么申请，家庭消费">
+	<meta name="description"   content="燕子安家—致力于打造“家消费”领域的互联网金融服务平台，向3亿中国家庭提供低利率、高额度、长期限、纯信用的的家装分期等金融服务">
+	<link href="../res/css/common.css" rel="stylesheet">
+	<link href="../res/css/strategy.css" rel="stylesheet"/>
+	<link href="../res/css/carouFredSel.css" rel="stylesheet">
+	<link href="borderRadius.css" rel="stylesheet">
+</head>
+<body>
+	<div class="ui-short-head">
+		<div class="ui-wrap">
+			<div id="loginstatus" class="head-box">
+				<a style="margin-right:30px;">咨询热线：4006-616-896</a>
+				<a href="/anjia/login.html">登录</a>
+				<s class="header-line"></s>
+				<a href="/anjia/reg.html">注册</a>
+				<s class="header-line"></s>
+				<a href="/anjia/login.html">个人中心</a>
+				<s class="header-line"></s>
+				<a href="/anjia/login.html">我要还款</a>
+				<s class="header-line"></s>
+				<a href="/anjia/guide.html">新手引导</a>
+				<s class="header-line"></s>
+				<a href="http://www.yanzianjia.com:8888/anjia/pdf/userGuide.pdf" target="_blank" >用户指南</a>
+			</div>
+		</div>
+	</div>
+
+	<!--加载通用头部-->
+	<script type="text/javascript" src="../anjia/js/head.js"></script>
+	<div id="sta_text_content" class="sta_body_div">
+		<!-- <div class="sta_title">分期知识</div> -->
+		<!-- <div class="sta_list">
+			<div class="img_div"><img class="img" src="../res/images/sta_img_21.png" /></div>
+			<div class="content_t">
+				<h4 class="t">银行VS消费金融公司，装修分期哪家强?<span class="date">2016/8/18</span></h4>
+				<p class="text">
+					<img class="img_common" src="../res/images/sta_img_21.png" />
+					<span class="font"></span>银行的装修分期主要有费率低，门槛高，审批时间长的特点。一年期分期的利率平均在4.5%。门槛高体现在银行对申请人的信用卡还款记录，收入水平，单位性质，房子产权性质都要求严格。审批时长是在半个月左右。银行大多都有指定的合作商家，不给在指定合作商家之外的装修公司做装修的客户分期。另外，有的银行规定在水电铺设完毕以后才能发放分期，不符合很多客户的分期时间节点需求。<br>
+					<span class="font"></span>消费金融公司的装修分期可以概括为费率高，门槛低，审批时间短。一年期分期的利率平均在7%。门槛低体现在对客户的工作性质，工资水平，房子产权性质都不做硬性要求，主要考察客户的还贷能力和意愿。所需的材料也只有身份证，房产证，和近6个月公司流水。审批时长通常为2-5天。<br>
+					<span class="font"></span>燕子安家一年期分期费率为7%，两年期分期费率为13%，三年期分期为16%。费率相较同类型消费金融公司并不高，审批通过率达到87%，审批时效平均为2天，服务到位，合作商家为生活家家居。选择燕子安家，让我们在您构筑美好小家时伴您左右，为您助力。
+				</p>
+			</div>
+		</div> -->
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    <div class="ui-bottom">
+    </div>
+	<script type="text/javascript" src="../res/js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="../res/js/ui.js"></script>
+	<script src="libs/json.js"></script>
+	<script src="libs/base.js"></script>
+	<script src="libs/utils.js"></script>
+	<script src="libs/layer.js"></script>
+	<script src="libs/calendar.js"></script>
+	<script src="libs/ajaxfileupload.js"></script>
+	
+	<script type="text/javascript" src="../res/js/star.js"></script>
+	<script type="text/javascript" src="../res/js/mzp-packed.js"></script>
+	<script type="text/javascript" src="../res/js/lrtk.js"></script>
+	<script type="text/javascript" src="js/strategy.js"></script>
+	<script type="text/javascript" src="js/strategy.js"></script>
+    <!--BAIDU定位JS 开始-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=9Z4yvIoj9jnpKfPA4igxxbLP"></script>
+    <script type="text/javascript">
+	$(function(){
+		// 百度地图API功能
+        function myFun(result){
+            var cityName = result.name;
+            $("#curCity").html(cityName);
+			Utils.offLineStore.set("curCity",cityName,false);
+        }
+        var myCity = new BMap.LocalCity();
+        myCity.get(myFun);
+		//createSnow('', 30);
+	})
+    </script>
+</body>
+</html>

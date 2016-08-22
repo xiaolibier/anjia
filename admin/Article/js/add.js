@@ -42,25 +42,23 @@ $(function(){
 
 	//g.httpTip.show();
 
-	$("#addbtn").bind("click",addArticle);
+	$("#addbtn").bind("click",validForm);
 
+	function validForm(){
+		if(!validNoEmpty("articleTitle")){
+			layer.msg('标题不能为空');
+			return false;
+		}
 
+		$("#articleContent").val($('#editor').html());
+		var url = Base.serverUrl + "common/article/addArticle";
+		$("#addform").attr("action",url);
+		return true;
+	}
 
 	$('#backid').click(function(){
 		window.location.href="index.html";
 	});
-
-	function validForm(){
-		if(!validNoEmpty("bmTitle")){
-			layer.msg('轮播图片标题不能为空');
-			return false;
-		}
-
-
-		var url = Base.serverUrl + "bannerImage/addBannerImage";
-		$("#addform").attr("action",url);
-		return true;
-	}
 
 	function validNoEmpty(id){
 		var b = false;
@@ -83,7 +81,7 @@ $(function(){
 			dataType:"json",
 			context:this,
 			success: function(data){
-				console.log("sendGetNavigationKeyHttp",data);
+				//console.log("sendGetNavigationKeyHttp",data);
 				var status = data.success || false;
 				if(status){
 					changeSelectHtml(data);
@@ -112,7 +110,10 @@ $(function(){
 
 
 	function addArticle(){
+		var uploadImage = $("#uploadImage").val() || "";
 		var articleTitle = $("#articleTitle").val() || "";
+		var articleType = $("#articleType").val() || "";
+		var articleDescr = $("#articleDescr").val() || "";
 		var articleContent = $("#editor").html() || "";
 		var articleKey = $("#articleKey").val() || "";
 		var createBy = $("#createBy").val() || "";
@@ -120,7 +121,10 @@ $(function(){
 
 		if(articleTitle !== ""){
 			var condi = {};
+			condi.uploadImage = uploadImage;
 			condi.articleTitle = articleTitle;
+			condi.articleType = articleType;
+			condi.articleDescr = articleDescr;
 			condi.articleContent = articleContent;
 			condi.articleKey = articleKey;
 			condi.createBy = createBy;
@@ -143,7 +147,7 @@ $(function(){
 			dataType:"json",
 			context:this,
 			success: function(data){
-				console.log("sendAddArticleHttp",data);
+				//console.log("sendAddArticleHttp",data);
 				var status = data.success || false;
 				if(status){
 					Utils.alert("文章添加成功");
