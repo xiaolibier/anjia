@@ -31,6 +31,7 @@ var _phone = "";
 					var code = d.code || "";
 					_phone = d.phone || "";
 					var html = [];
+					Utils.offLineStore.set("userName",d.name,false);
 					$("#name").html(d.name || "");
 					$("#phone").html(d.phone || "");
 					$("#canDrawMoney").html("￥"+(d.canDrawMoney || 0));

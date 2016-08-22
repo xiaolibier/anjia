@@ -73,7 +73,7 @@ $(function(){
 	/* 活动分享点击 */
 	function share_btn_f(){
 		var a = $(this).attr('idx') || "";
-		var name = $('#name').val() || "燕子安家成员";
+		var name = Utils.offLineStore.get("userName",false) || "燕子安家成员";
 		if(a == '1'){
 			var aTitle = '我是'+name+'，我用燕子安家展业系统推广业务，你也快来吧，注册还有10元现金拿';
 			var aUrl = 'http://m.yanzianjia.com/designerWap/html/login.html?de='+g.code || "";
