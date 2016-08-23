@@ -41,22 +41,24 @@ html,body{overflow:auto;overflow-x:hidden;}
 .ui_main .top{position:relative;background-color:#fff6e5;}
 .ui_main .top .top_img{max-width:100%;}
 .ui_main .top .top_row{position:absolute;top:5%;left:30%;width:10%;}
-.ui_main .middle{height:425px;padding-top:20px;position:relative;background:url('../images/guide_middle_bg.png') no-repeat center top;background-size:310px auto;background-color:#fff6e5;}
+.ui_main .middle{height:482px;padding-top:20px;position:relative;background:url('../images/guide_middle_bg.png') no-repeat center top;background-size:310px auto;background-color:#fff6e5;}
 .ui_main .middle .p1{text-align:center;left:0;right:0;font-size:15px;position:absolute;top:80px
 ;line-height:25px;}
 .ui_main .middle .p2{text-align:center;margin:0 auto;left:0;right:0;font-size:14px;position:absolute;top:170px;line-height:19px;}
-.ui_main .middle .p2 .p_text{text-align:left;width:266px;margin:0 auto;max-width:85%;}
-.ui_main .middle .p2 .title{font-size:17px;font-weight:600;line-height:40px;text-align:center;}
+.ui_main .middle .p2 .p_text{text-align:left;width:231px;margin:0 auto;max-width:85%;}
+.ui_main .middle .p2 .title{font-size:17px;font-weight:600;line-height:55px;text-align:center;}
 .ui_main .middle .color{color:#ef1a41;}
 .ui_main .bottom{padding-top:50px;background:url('../images/row3.png') no-repeat -50% 24px;background-color:#fdf0d7;background-size:30% auto;position:relative;}
-.ui_main .bottom .bottom_img{max-width:100%;}
+.ui_main .bottom .bottom_img{max-width:100%;vertical-align:bottom;}
 .ui_main .bottom .row2{width:15%;position:absolute;top:0px;left:-20%;}
 /* .ui_main .bottom .row3{width:30%;position:absolute;top:25px;left:-20%;} */
-.ui_main .file_div{}
+.ui_main .file_div2{padding-top:15px;}
 .ui_main .file_div .hill{max-width:100%;vertical-align: bottom;}
 .ui_main .file_div .messge_text{height:195px;background:url('../images/file_div_bg.png') no-repeat center top;background-size:300px auto;background-color:#fdf0d7;color:#5c2e0d;font-size:15px;line-height:22px;}
+.ui_main .file_div2 .messge_text{text-align:center;height:174px;background:url('../images/file_div_bg2.png') no-repeat center top;background-size:300px auto;background-color:#fff6e5;color:#000;font-size:14px;line-height:22px;}
 .ui_main .file_div .messge_text h4{margin:9px 0 16px;display:inline-block;width:100%;font-size:14px;color:#fff;text-align:center;}
 .ui_main .file_div .messge_text p{width:282px;max-width:100%;margin:0 auto;}
+.ui_main .file_div2 .messge_text p{width:216px;max-width:100%;margin:0 auto;}
 .ui_main .file_div .messge_text .p2{font-size:14px;margin-top:3px;}
 .ui_main .file_div span.color{color:#e94e01;}
 
