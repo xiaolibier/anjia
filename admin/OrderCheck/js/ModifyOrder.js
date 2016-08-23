@@ -21,7 +21,18 @@ $(function () {
         ReadOrderInfo();
     }
 
-    /* $("*").bind('keydown.Ctrl_q',function (evt){SaveData(); return false}); */
+     $("*").bind('keydown.Ctrl_q',function (evt){
+		 $('#but_edit1').click();
+		 setTimeout(function(){$('#but_edit2').click();},100);
+		 setTimeout(function(){$('#but_edit3').click();},200);
+		 setTimeout(function(){$('#but_edit4').click();},300);
+		 setTimeout(function(){$('#but_edit5').click();},400);
+		 setTimeout(function(){$('#but_edit6').click();},500);
+		 setTimeout(function(){$('#but_edit7').click();},600);
+		 
+		return false;
+	 
+	 });
 
     //自动行高
     $('textarea').bind('keyup', function () {
