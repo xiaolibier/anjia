@@ -6,6 +6,7 @@
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
 	<meta name="format-detection" content="telephone=no"/>
+	<link href="../res/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="../res/css/common.css?234" />
     <link rel="stylesheet" href="../res/css/core.css?88034434430565" />
 	<title>我的订单</title>
@@ -85,6 +86,28 @@
 		</div>
 	</div>
 
+	<style>
+		div.modal{width:90%;left:0;right:0;margin:0 auto;}
+		.zzz_h4{font-size:14px;text-align:left;display:block;width:62%;margin:0 auto;font-weight:500;color:#522002;line-height:25px;}
+		.modal-header.div{position:relative;background-color:#fecc17;border-top-left-radius:5px;border-top-right-radius:5px;}
+		.modal-header button.close{background:('../res/images/zzz_img2.png') no-repeat center center;background-size:contain;}
+		img.po_left{position:absolute;width:20%;max-width:75px;top:-10%;left:-1%;}
+		.btn-warning.btn{width:153px;border-radius:20px;}
+		.tips_zzz{padding:0 1%;color:#555555;font-size:12px;line-height:20px;margin-top:10px;}
+	</style>
+	<!--用户接受调查 -->
+	<div id="zzhtDiv" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align: center;">
+		<div class="modal-header div">
+			<img class="po_left" src='../res/images/zzz_img1.png'/>
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h4 class="zzz_h4">您已接受了风控审核的额度和分期金额，接下来请及时缴纳服务费哦~</h4>
+		</div>
+		<div class="tips_zzz">审批环节中您跟我们风控人员有所接触，请对他们的服务做出评价吧</div>
+		<textarea id="reason" name="reason" style="border:1px solid #898989;width: 85%;height: 100px; margin-top:10px;" OrderId=""></textarea>
+		<div class="modal-footer" style="text-align: center">
+			<button class="btn btn-warning" onclick="confrim_func()">确认</button>
+		</div>
+	</div>
 	<script type="text/javascript" src="../res/js/jquery.min.js"></script>
 	<script type="text/javascript" src="../res/js/common.js"></script>
 
@@ -92,6 +115,7 @@
 	<script type="text/javascript" src="../libs/json.js"></script>
 	<script type="text/javascript" src="../libs/base.js"></script>
 	<script type="text/javascript" src="../libs/utils.js"></script>
+	<script type="text/javascript" src="../res/js/bootstrap.js"></script>
 	<script type="text/javascript" src="../js/myorder.js"></script>
     <script type="text/javascript">
     	$('.other-item').on('click',function(){

@@ -4,10 +4,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
 	<title>燕子安家</title>
+	<link href="../res/css/bootstrap.css" rel="stylesheet">
 	<link href="../res/css/common.css" rel="stylesheet">
 	<link href="../res/css/carouFredSel.css" rel="stylesheet">
 	<link href="../res/css/personal.css" rel="stylesheet">
 	<script type="text/javascript" src="../res/js/jquery-1.11.2.min.js"></script>
+	<script language="javascript" type="text/javascript" src="../res/js/bootstrap.js"></script>
 </head>
 
 <body>
@@ -475,6 +477,27 @@
 		<p class="text_message">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于已逾期分期，燕子安家收取管理费和罚息。每月的管理费在每笔分期的应还日期的后一天时收取，数额为逾期本金的百分之五。每天收取罚息，数额为逾期本金的千分之三。举例说明：客户有一笔数额为1万元的分期逾期40天。该笔逾期本金所产生的罚息为10000*0.003*40 = 1200。 该笔分期本金所产生的管理费为10000*0.05*2=1000。 
 			<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若出现多笔逾期或联系不上的情况，燕子安家可选择终止合同，该订单为已违约订单。在终止合同后，数额为待还分期之和的款项在终止合同日期的后一天时为已逾期，开始收取管理费和罚息。由于公司要把已违约订单交给催收公司进行催收，已违约订单会产生催收费用。
 		</p>
+	</div>
+	<style>
+		.zzz_h4{text-align:left;display:block;width:62%;margin:0 auto;font-weight:500;color:#522002;line-height:35px;}
+		.modal-header.div{position:relative;background-color:#fecc17;border-top-left-radius:5px;border-top-right-radius:5px;}
+		.modal-header button.close{background:('../res/images/zzz_img2.png') no-repeat center center;background-size:contain;}
+		img.po_left{position:absolute;top:-89px;left:-28px;}
+		.btn-warning.btn{width:153px;border-radius:20px;}
+		.tips_zzz{color:#555555;font-size:16px;line-height:30px;margin-top:20px;}
+	</style>
+	<!--用户接受调查 -->
+	<div id="zzhtDiv" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align: center;">
+		<div class="modal-header div">
+			<img width=140 class="po_left" src='../res/images/zzz_img1.png'/>
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h4 class="zzz_h4">您已接受了风控审核的额度和分期金额，<br>接下来请及时缴纳服务费哦~</h4>
+		</div>
+		<div class="tips_zzz">审批环节中您跟我们风控人员有所接触，请对他们的服务做出评价吧</div>
+		<textarea id="reason" name="reason" style="border:1px solid #898989;width: 85%;height: 100px; margin-top:10px;" OrderId=""></textarea>
+		<div class="modal-footer" style="text-align: center">
+			<button class="btn btn-warning" onclick="confrim_func()">确认</button>
+		</div>
 	</div>
 	<script src="js/c_usercommon.js"></script>
 	<script type="text/javascript" src="../res/js/jquery.carouFredSel-6.1.0-packed.js"></script>

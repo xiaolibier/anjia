@@ -722,12 +722,27 @@ $(function(){
 		var tip = '审批金额：'+ packageMoney +'元；审批期数：'+ fenQiTimes +'期;';
 		alert(tip);
 	}
-	function confirmOrder_fun(orderId){
-		if(confirm("确认接受订单审批款项")){
+	window.confirmOrder_fun = function (OrderId) {
+        $("#reason").attr("OrderId", OrderId);
+        $('#zzhtDiv').modal('show');
+    };
+	window.confrim_func = function () {
+        var OrderId = $("#reason").attr("OrderId");
+        var Reason = $("#reason");
+        if (OrderId == "" || typeof(OrderId) == "undefined") {
+            alert("订单号非法！");
+            return false;
+        }
+        if (Reason.val() == "") {
+            alert("请填写评价！");
+            Reason.focus();
+            return false;
+        }
 		var condi = {};
 		condi.login_token = g.login_token;
 		condi.customerId = g.customerId;
-		condi.orderId = orderId;
+		condi.approveRemarks = Reason.val() || "";
+		condi.orderId = OrderId;
 		g.httpTip.show();
 		var url = Base.serverUrl + "order/takeInOrder";//修改之前queryOrdersController
 		$.ajax({
@@ -740,6 +755,7 @@ $(function(){
 				//console.log("sendGetUserOrderListHttp",data);
 				var status = data.success || false;
 				if(status){
+					$('#zzhtDiv').modal('hide');
 					location.href = "/webapp/order/index.html";
 				}
 				else{
@@ -752,7 +768,6 @@ $(function(){
 				g.httpTip.hide();
 			}
 		});
-		}
 	}
 
 	function countListPage(data){

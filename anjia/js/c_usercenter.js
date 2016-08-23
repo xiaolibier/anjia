@@ -638,13 +638,27 @@ $(function(){
 
 		$("#orderlistpage a").bind("click",pageClick);
 	}
-	function confirmOrder_fun(orderId){
-		if(confirm("确认接受订单审批款项")){
+	window.confirmOrder_fun = function (OrderId) {
+        $("#reason").attr("OrderId", OrderId);
+        $('#zzhtDiv').modal('show');
+    };
+	window.confrim_func = function () {
+        var OrderId = $("#reason").attr("OrderId");
+        var Reason = $("#reason");
+        if (OrderId == "" || typeof(OrderId) == "undefined") {
+            alert("订单号非法！");
+            return false;
+        }
+        if (Reason.val() == "") {
+            alert("请填写评价！");
+            Reason.focus();
+            return false;
+        }
 		var condi = {};
 		condi.login_token = g.login_token;
 		condi.customerId = g.customerId;
-		condi.orderId = orderId;
-		g.httpTip.show();
+		condi.approveRemarks = Reason.val() || "";
+		condi.orderId = OrderId;
 		var url = Base.serverUrl + "order/takeInOrder";//修改之前queryOrdersController
 		$.ajax({
 			url:url,
@@ -656,19 +670,17 @@ $(function(){
 				//console.log("sendGetUserOrderListHttp",data);
 				var status = data.success || false;
 				if(status){
+					$('#zzhtDiv').modal('hide');
 					location.href = "/anjia/usercenter.html?item=1";
 				}
 				else{
 					var msg = data.message || "确认失败";
 					Utils.alert(msg);
 				}
-				g.httpTip.hide();
 			},
 			error:function(data){
-				g.httpTip.hide();
 			}
 		});
-		}
 	}
 		//待缴费
 function sendGetPayOrderListHttp(condi){
