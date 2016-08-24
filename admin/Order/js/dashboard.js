@@ -238,15 +238,15 @@ $(function(){
 					/* var applyPackageCount = d.applyPackageCount || 0;//申请量 */
 					var data2 = [];
 					for(var i=0,len=d2.length;i<len;i++){
-						data2[i]= [d2[i].education,d2[i].eduCount];
+						data2[i]= [d2[i].education+'('+d2[i].proportion+'%)',d2[i].eduCount];
 					}
 					var data4 = [];
 					for(var i=0,len=d4.length;i<len;i++){
-						data4[i]= [d4[i].job,d4[i].jobCount];
+						data4[i]= [d4[i].job+'('+d4[i].proportion+'%)',d4[i].jobCount];
 					}
 					var data5 = [];
 					for(var i=0,len=d5.length;i<len;i++){
-						data5[i]= [d5[i].marital,d5[i].maritalCount];
+						data5[i]= [d5[i].marital+'('+d5[i].proportion+'%)',d5[i].maritalCount];
 					}
 					/* 用户数据5 */
 					$('.pie_row5').highcharts({
@@ -262,8 +262,8 @@ $(function(){
 						},
 						plotOptions:{
 							pie:{
-								size:'40%',
-								innerSize:'90%',//饼状图内径大小，也可以配置为20%的百分比形式
+								size:'25%',
+								innerSize:'70%',//饼状图内径大小，也可以配置为20%的百分比形式
 								colors:[
 									'#570bc8',
 									'#7637e9',
@@ -313,8 +313,8 @@ $(function(){
 						},
 						plotOptions:{
 							pie:{
-								size:'40%',
-								innerSize:'90%',//饼状图内径大小，也可以配置为20%的百分比形式
+								size:'25%',
+								innerSize:'70%',//饼状图内径大小，也可以配置为20%的百分比形式
 								colors:[
 									'#20ade4',
 									'#51c7f5',
@@ -336,10 +336,10 @@ $(function(){
 						},
 						series: [{//可以为多个品种
 							data:[
-								['20-30岁',d1.c1],
-								['30-40岁',d1.c2],
-								['40-50岁',d1.c3],
-								['50岁以上',d1.c4]
+								['20-30岁('+d1.c1+'%)',d1.c1],
+								['30-40岁('+d1.c2+'%)',d1.c2],
+								['40-50岁('+d1.c3+'%)',d1.c3],
+								['50岁以上('+d1.c4+'%)',d1.c4]
 							]
 						}],
 						subtitle: {//走势图来源
@@ -368,8 +368,8 @@ $(function(){
 				},
 				plotOptions:{
 					pie:{
-						size:'40%',
-						innerSize:'90%',//饼状图内径大小，也可以配置为20%的百分比形式
+						size:'25%',
+						innerSize:'70%',//饼状图内径大小，也可以配置为20%的百分比形式
 						colors:[
 							'#e51600',
 							'#ff240a',
@@ -421,8 +421,8 @@ $(function(){
 				},
 				plotOptions:{
 					pie:{
-						size:'40%',
-						innerSize:'90%',//饼状图内径大小，也可以配置为20%的百分比形式
+						size:'25%',
+						innerSize:'70%',//饼状图内径大小，也可以配置为20%的百分比形式
 						colors:[
 							'#f4c700',
 							'#f8d746',
@@ -444,9 +444,9 @@ $(function(){
 				},
 				series: [{//可以为多个品种
 					data:[
-						['5000以下',d3.c1],
-						['5000-15000',d3.c2],
-						['15000以上',d3.c3],
+						['5000以下('+d3.c1+'%)',d3.c1],
+						['5000-15000('+d3.c2+'%)',d3.c2],
+						['15000以上('+d3.c3+'%)',d3.c3],
 					]
 				}],
 				subtitle: {//走势图来源
@@ -475,8 +475,8 @@ $(function(){
 				},
 				plotOptions:{
 					pie:{
-						size:'40%',
-						innerSize:'90%',//饼状图内径大小，也可以配置为20%的百分比形式
+						size:'25%',
+						innerSize:'70%',//饼状图内径大小，也可以配置为20%的百分比形式
 						colors:[
 							'#66b500',
 							'#7edd00',
