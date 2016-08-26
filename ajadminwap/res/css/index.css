@@ -21,6 +21,7 @@ html.cheng .list_body1 ul.ul li span.color{color:#f7931e;}
 .list_body1 ul.ul li.li10{background:url('../img/index_ico_10.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
 .list_body1 ul.ul li.li11{background:url('../img/index_ico_11.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
 .list_body1 ul.ul li.li12{background:url('../img/index_ico_12.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
+.list_body1 ul.ul li.li13{background:url('../img/index_ico_3.png') no-repeat 70% center;background-size:auto 50%;background-color:#00abdf;}
 /* rca */
 .list_body3 .common_list_div{transition:background-color .1.5s ease-out;line-height:50px;height:50px;border-bottom:1px solid #e5e5e5;}
 .list_body3 .common_list_div:active{background-color:#dfdfdf;}
