@@ -82,7 +82,7 @@ $(function(){
 
 	function sendQueryListHttp(condi){
 		g.httpTip.show();
-		var url = Base.serverUrl + "coupon/getAllCoupons";
+		var url = Base.serverUrl + "pc/coupon/findCouponByQuery";//coupon/getAllCoupons
 		condi.login_token = g.login_token;
 		condi.pageSize = g.pageSize;
 		condi.currentPageNum = g.currentPage;
@@ -181,7 +181,7 @@ $(function(){
 	}
 	
 	function up_down_state(id,status){
-		var url = Base.serverUrl + "coupon/shelveOrUnShelveCoupon";
+		var url = Base.serverUrl + "pc/coupon/stopOrOpenCoupon";
 		var condi = {};
 		condi.login_token = g.login_token;
 		condi.pageSize = g.pageSize;
@@ -197,7 +197,7 @@ $(function(){
 			success: function(data){
 				var status = data.success || false;
 				if(status){
-					sendQueryListHttp(1);
+					search_func();
 					Utils.alert("操作成功");					
 				}
 				else{

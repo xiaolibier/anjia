@@ -97,7 +97,7 @@ $(function(){
 			}
 	}
 	function sendRegHttp(condi){
-		var url = Base.serverUrl + "coupon/addCoupon";
+		var url = Base.serverUrl + "pc/coupon/addcoupon";//coupon/addCoupon
 		g.httpTip.show();
 		$.ajax({
 			url:url,

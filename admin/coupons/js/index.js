@@ -65,7 +65,7 @@ $(function(){
 		g.createTimeBegin = $("#createTimeBegin").val() || '';
 		g.createTimeEnd = $("#createTimeEnd").val() || '';
 		var condi={};
-		condi.customerPhone = g.user_phone;
+		condi.phoneNumber = g.user_phone;
 		condi.beginDate = g.createTimeBegin;
 		condi.endDate = g.createTimeEnd;
 		g.currentPage = 1;
@@ -84,7 +84,7 @@ $(function(){
 
 	function sendGetCouponsInfoHttp(){
 		g.httpTip.show();
-		var url = Base.serverUrl + "coupon/getAllCoupons";
+		var url = Base.serverUrl + "pc/coupon/getAllCoupons";
 		var condi = {};
 		condi.login_token = g.login_token;
 		$.ajax({
@@ -114,7 +114,7 @@ $(function(){
 
 	function sendQueryListHttp(condi){
 		g.httpTip.show();
-		var url = Base.serverUrl + "coupon/getCustomerCoupons";
+		var url = Base.serverUrl + "pc/coupon/findCustomerCouponByQuery";//coupon/getCustomerCoupons
 		condi.login_token = g.login_token;
 		condi.pageSize = g.pageSize;
 		condi.currentPageNum = g.currentPage;
@@ -176,9 +176,9 @@ $(function(){
 				//continue;
 			}
 			var usersId = d.usersId || "";
-			var id = d.id || "";
+			var id = d.couponId || "";
 			var title = d.title || "";
-			var money = d.money || "";
+			var money = d.money || 0;
 			var phoneNumber=d.phoneNumber || "";
 			var beginDate = d.beginDate || "";
 			var endDate = d.endDate || "";
@@ -186,16 +186,13 @@ $(function(){
 			var now = new Date().format("yyyy-MM-dd");
 			var expiry = getDays(now,expiryDate)>0 || false;
 			var status = d.status || "";
-			var useStatus = d.useStatus || "";
+			var statusDesc = d.statusDesc || "";
 			html.push('<tr>');
 			html.push('<td>' + id + '</td>');
 			html.push('<td>' + title + '</td>');
 			html.push('<td>' + money + '元</td>');
 			html.push('<td>' + phoneNumber + '</td>');
-			if(useStatus=="102601"){html.push('<td>未使用</td>');}
-			else if(useStatus=="102602"){html.push('<td>已使用</td>');}
-			else if(expiry){html.push('<td>已过期</td>')}
-			else{html.push('<td></td>')}
+			html.push('<td>' + statusDesc + '</td>');
 			html.push('<td>' + beginDate + '</td>');
 			html.push('<td>' + endDate + '</td>');
 			html.push('<td>' + expiryDate + '</td>');			
