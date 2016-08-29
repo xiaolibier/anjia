@@ -37,7 +37,7 @@ $(function () {
     if (!loginStatus) {
 
     } else {
-        sendGetUserInfoDicHttp();
+        //sendGetUserInfoDicHttp();
         queryOrderList();
     }
 
@@ -83,7 +83,7 @@ $(function () {
     //获取用户信息字典信息
     function sendGetUserInfoDicHttp() {
         g.httpTip.show();
-        var url = Base.serverUrl + "baseCodeController/getBaseCodeByParents";
+        var url = Base.serverUrl + "common/dic/findByParents";//baseCodeController/getBaseCodeByParents
         var condi = {};
         condi.parents = "1005";
         $.ajax({
