@@ -899,7 +899,7 @@ div.ui-nav .ui-nav-ul li a:active p{color:#ff5f00;}
 
 .yellow_bg  .yb_div1 .ul2 li{margin:0 1%;width:18%;background:url('../images/radio_bg2_1.jpg') no-repeat center center;background-size:contain;}
 .yellow_bg  .yb_div1 .ul2 li.active{background:url('../images/radio_bg2_2.jpg') no-repeat center center;background-size:contain;}
-.result_list{margin:30px 0;overflow:hidden;line-height:30px;font-size:14px;}
+.result_list{margin:30px 0;overflow:hidden;line-height:40px;font-size:18px;}
 .result_list span.left,.result_list span.right{display:inline-block;padding-left:9%;}
 .show_hidden_choise .one_pay_div, .other_pay_div{display:block;}
 .one_pay_div,.show_hidden_choise  .other_pay_div{display:none;}
