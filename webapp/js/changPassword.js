@@ -155,6 +155,7 @@ $(function(){
 	//验证短信验证码
 	function validPhoneCode(evt){
 		var code = $("#inputcode").val() || "";
+		var pass0 = $("#oldPassword").val() || "";	
 		var pass1 = $("#newPassword").val() || "";	
 		var pass2 = $("#c_newPassword").val() || "";
 		var p = $("#inputphone").val() || "";
@@ -165,7 +166,9 @@ $(function(){
 					var condi = {};
 					condi.phone_number = p;
 					condi.validate_code = code;
-					condi.password = pass1;
+					condi.oldPassword = $.md5(pass0);
+					condi.password = $.md5(pass1);
+					condi.login_token = g.login_token;
 					sendValidCodeHttp(condi);
 				}
 				else{
@@ -195,7 +198,7 @@ $(function(){
 			success: function(data){
 				var status = data.success || false;
 				if(status){
-					alert("修改成功");	
+					alert("修改成功，介于安全考虑最好重新登录一下！");	
 					location.replace("../personal-center/index.html");
 				}
 				else{

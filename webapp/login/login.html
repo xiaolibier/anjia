@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="login_body">
+<html class="login_body regist_body">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../res/css/core.css?12537" />
 	<title>用户登录</title>
 </head>
+<style type="text/css">
+	.static_con{display:none;}
+	</style>
 <body>
 	<div class="ui-main login_html">
     	<div class="ui-header">
@@ -28,6 +31,22 @@
                 </div>
                 <div class="input_item">
                 	<input class="input_password" id="inputpwd" type="password" onfocus='this.placeholder=""' onblur='this.placeholder="请输入密码"' placeholder="请输入密码" />
+                </div>
+				<div class="input_item regist_sms static_con static_con1">
+                	<div class="img-ver-item-left  input_item input_item2">
+                		<input id="inputimgcode" type="text" class="input_user common-input-text input-type type-imgVer" placeholder="请输入图形验证码" />
+					</div>
+					<div class="img-ver-img float_right">
+						<img id="imgcodebtn" src="" />
+					</div>
+				</div>
+				<div class="regist_sms static_con">
+					<div class="float_right">
+						<input id="getcodebtn" type="button" class="send_code" value="发送验证码" />
+					</div>
+					<div class="input_item input_item2">
+                		<input id="inputcode" type="text" class="input_code" onfocus='this.placeholder=""' onblur='this.placeholder="请输短信验证码"'  placeholder="请输短信验证码" />
+					</div>
                 </div>
             </div>
 		</div>
@@ -62,6 +81,7 @@
 	<script type="text/javascript" src="../libs/json.js"></script>
 	<script type="text/javascript" src="../libs/base.js"></script>
 	<script type="text/javascript" src="../libs/utils.js"></script>
+	<script type="text/javascript" src="../res/js/jquery.md5.js"></script>
 	<script type="text/javascript" src="../js/login.js"></script>
 		<!-- 数据统计代码 -->
 	<script type="text/javascript" src="http://tajs.qq.com/stats?sId=52268329" charset="UTF-8"></script>

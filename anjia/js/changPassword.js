@@ -155,28 +155,36 @@ $(function(){
 	//验证短信验证码
 	function validPhoneCode(evt){
 		var code = $("#inputcode").val() || "";
+		var pass0 = $("#oldPassword").val() || "";	
 		var pass1 = $("#newPassword").val() || "";	
 		var pass2 = $("#c_newPassword").val() || "";
 		var p = $("#inputphone").val() || "";
 		if(code !== ""){
-			
-			if(pass1 !== ""){
-				if(pass2 == pass1){
-					var condi = {};
-					condi.phone_number = p;
-					condi.validate_code = code;
-					condi.password = pass1;
-					sendValidCodeHttp(condi);
+			if(pass0 !== ""){
+				if(pass1 !== ""){
+					if(pass2 == pass1){
+						var condi = {};
+						condi.phone_number = p;
+						condi.validate_code = code;
+						condi.oldPassword = $.md5(pass0);
+						condi.password = $.md5(pass1);
+						condi.login_token = g.login_token;
+						sendValidCodeHttp(condi);
+					}
+					else{
+						alert("再次输入密码与新密码不一致");
+						$("#newPassword").focus();
+					}		
 				}
 				else{
-					alert("再次输入密码与新密码不一致");
+					alert("请输入新密码");
 					$("#newPassword").focus();
 				}		
 			}
 			else{
-				alert("请输入密码");
+				alert("请输入原密码");
 				$("#newPassword").focus();
-			}					
+			}		
 		}
 		else{
 			alert("请输入验证码");
@@ -195,7 +203,8 @@ $(function(){
 			success: function(data){
 				var status = data.success || false;
 				if(status){
-					alert("修改成功");	
+					alert("修改成功，介于安全考虑最好重新登录一下！");
+					location.href="/anjia/usercenter.html?item=1";
 				}
 				else{
 					var msg = data.message || "修改密码失败";

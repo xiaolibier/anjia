@@ -8,7 +8,20 @@
 	<link href="../res/css/login.css" rel="stylesheet">
     <link href="../res/css/carouFredSel.css" rel="stylesheet">
 </head>
-
+<style type="text/css">
+	.codebtn{
+		float: right;
+		margin-right:10px;
+		width: 110px;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		height: 40px;
+		font-size: 16px;
+		background:#dff0d8;
+		color:#5e7e0c;
+	}
+	.static_con{display:none;}
+	</style>
 <body>
 		<div class="ui-short-head">
 			<div class="ui-wrap">
@@ -62,6 +75,20 @@
 							<input id="inputpwd" type="password" class="common-input-text" style="width:260px;" placeholder="请输入6-16位字符" />
 						</div>
 					</div>
+					<div class="login-item clearfix static_con static_con1">
+						<label>图形验证码</label>
+						<div class="login-item-right">
+							<input id="inputimgcode" class="common-input-text" style="width:138px;" type="text" placeholder="请输入图形验证码" />
+							<img id="imgcodebtn" src=""  class="codebtn" />
+						</div>
+					</div>
+					<div class="login-item clearfix static_con">
+						<label>短信验证码</label>
+						<div class="login-item-right">
+							<input id="inputcode" type="text" class="common-input-text" style="width:138px;" placeholder="请输入短信验证码" />
+							<input id="getcodebtn" type="button" class="common-btn btn-green" value="发送验证码" style="width:114px;margin-left:6px;">
+						</div>
+					</div>
 					<div class="login-item clearfix" style="margin-bottom:0px;">
 						<label>&nbsp;</label>
 						<div class="login-item-right">
@@ -105,6 +132,7 @@
 	<script src="libs/base.js"></script>
 	<script src="libs/layer.js"></script>
 	<script src="libs/utils.js"></script>
+	<script type="text/javascript" src="../res/js/jquery.md5.js"></script>
 	<script src="js/login.js"></script>
 	<script type="text/javascript">
 		$(function(){

@@ -214,7 +214,7 @@ $(function () {
                 html.push('<td></td>');
             }
             else {
-                html.push('<td><a href="javascript:rePass(\'' + customerId + '\')">重置</a>&nbsp;&nbsp;<a href="javascript:deleteItem(\'' + customerId + '\')">删除</a></td>');
+                html.push('<td><a href="javascript:rePass(\'' + customerId + '\')">重置</a>&nbsp;&nbsp;<a href="javascript:deleteItem(\'' + customerId + '\')">删除</a>&nbsp;&nbsp;<a href="javascript:unLockUser(\'' + customerId + '\')">解锁</a></td>');
             }
 
             html.push('</tr>');
@@ -437,6 +437,38 @@ $(function () {
             });
         }
     }
+    function unLockUser(customerId) {
+        if (confirm("你确认解锁用户吗?")) {
+            g.httpTip.show();
+            var condi = {};
+            condi.customerId = customerId;
+            condi.login_token = g.login_token;
+
+            var url = Base.serverUrl + "pc/customer/unlockCustomer";//user/deleteCustomerByCustomerIdController
+            $.ajax({
+                url: url,
+                data: condi,
+                type: "POST",
+                dataType: "json",
+                context: this,
+                success: function (data) {
+                    //console.log("deleteItem", data);
+                    var status = data.success || false;
+                    if (status) {
+                        sendQueryListHttp();
+                    }
+                    else {
+                        var msg = data.message || "删除用户数据失败";
+                        Utils.alert(msg);
+                    }
+                    g.httpTip.hide();
+                },
+                error: function (data) {
+                    g.httpTip.hide();
+                }
+            });
+        }
+    }
 
     window.rePass = function(customerId) {
         if (confirm("你确认要重置该用户的密码吗?")) {
@@ -463,5 +495,6 @@ $(function () {
     window.changeBannerUsedFlag = changeBannerUsedFlag;
     window.editItem = editItem;
     window.deleteItem = deleteItem;
+	window.unLockUser = unLockUser;
 
 });

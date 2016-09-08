@@ -79,8 +79,8 @@ input[type="search"],input[type="number"],input[type="text"],input[type="button"
 .common_head ul.ul li.li1{cursor:pointer;width:15%;background:url('../img/back_ico.png') no-repeat center center;background-size:auto 50%;}
 html.cheng .common_head ul.ul li.li1{background:url('../img/Cback_ico.png') no-repeat center center;background-size:auto 50%;}
 .common_head ul.ul li.li1.none{background:none;}
-.common_head ul.ul li.li2{width:65%;color:#000000;}
-.common_head ul.ul li.li3{cursor:pointer;width:20%;color:#33bce5;}
+.common_head ul.ul li.li2{width:42%;color:#000000;}
+.common_head ul.ul li.li3{text-align:right;width:40%;color:#33bce5;padding-right:3%;}
 body{}
 .common_head .content{position:relative;}
 .demo_position{position:absolute;right:0;top:41px;display:inline-block;display:none;}

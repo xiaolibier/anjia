@@ -9,7 +9,8 @@ $(function(){
 	g.codeId = "";
 	g.tout = null;
 	g.httpTip = new Utils.httpTip({});
-
+	g.codeImg = $("#imgcodebtn")[0];
+	g.code = "";
 	var userPhone = Utils.offLineStore.get("userphone_login",true) || "";
 	$("#inputphone").val(userPhone);
 
@@ -22,6 +23,115 @@ $(function(){
 			loginBtnUp();
 		}
 	});	
+	//获取图形验证码
+	sendGetImgCodeHttp();
+	$("#imgcodebtn").bind("click",sendGetImgCodeHttp);
+	$("#getcodebtn").bind("click",getValidCode);
+ 	function sendGetImgCodeHttp(){
+		//URL:  http://www.partywo.com/imageValidate/getImageValidate
+		//参数: {image_key:string}
+		g.guid = Utils.getGuid();
+		var url = Base.serverUrl + "imageValidate/getImageValidate";
+		url = url + "?image_key=" + g.guid + "&t=" + (new Date() - 0);
+		g.codeImg.src = url;
+
+		$("#inputimgcode").val("");
+	}
+	//获取验证码
+	function getValidCode(evt){
+		//var ele = evt.currentTarget;
+		//$(ele).removeClass("curr");
+		//if(!this.moved){}
+
+		var p = $("#inputphone").val() || "";
+		var imgCode = $("#inputimgcode").val() || "";
+		if(p !== ""){
+			var reg = /^1[3,4,5,7,8]\d{9}$/g;
+			if(reg.test(p)){
+				g.phone = p;
+				if(imgCode !== ""){
+					if(!g.sendCode){
+						sendGetCodeHttp(imgCode);
+					}
+				 }
+				else{
+					Utils.alert("请输入图形验证码");
+					$("#inputimgcode").focus();
+				}
+			}
+			else{
+				Utils.alert("手机号输入错误");
+				$("#inputphone").focus();
+			}
+		}
+		else{
+			$("#inputphone").focus();
+		}
+	}
+	//请求验证码
+	function sendGetCodeHttp(imgCode){
+		//{'phone_number':string,'validate_key':string,'validate_code':string}
+		var url = Base.serverUrl + "message/sendRegisterValidateMessage";//message/sendPhoneValidateMessage
+		var condi = {};
+		condi.phone_num = g.phone;
+		condi.validate_key = g.guid;
+		condi.validate_code = imgCode;
+
+		g.httpTip.show();
+		$.ajax({
+			url:url,
+			data:condi,
+			type:"POST",
+			dataType:"json",
+			context:this,
+			//要求为Boolean类型的参数，默认为true。表示是否触发全局ajax事件。设置为false将不会触发全局ajax事件，ajaxStart或ajaxStop可用于控制各种ajax事件。
+			//global:false,
+			success: function(data){
+				//console.log("sendGetCodeHttp",data);
+				var status = data.success || false;
+				if(status){
+					//alert("验证码:" + data.obj);
+					Utils.alert("验证码已发送,请注意查收");
+					g.sendCode = true;
+					$("#getcodebtn").val("60秒后重新发送");
+					setTimeout(function(){
+						resetGetValidCode();
+					},1000);
+				}
+				else{
+					var msg = data.message || "验证码获取失败";
+					Utils.alert(msg);
+
+					//重新请求图形验证码
+					sendGetImgCodeHttp();
+				}
+				g.httpTip.hide();
+			},
+			error:function(data){
+				g.httpTip.hide();
+			}
+		});
+	}
+
+	//重新获取验证码
+	function resetGetValidCode(){
+		g.sendTime = g.sendTime - 1;
+		if(g.sendTime > 0){
+			$("#getcodebtn").val(g.sendTime + "秒后重新发送");
+			setTimeout(function(){
+				resetGetValidCode();
+			},1000);
+		}
+		else{
+			$("#getcodebtn").val("重新发送");
+			g.sendTime = 60;
+			g.sendCode = false;
+
+			//重新获取图形验证码,1分钟有效
+			//重新获取图形验证码,1分钟有效
+			sendGetImgCodeHttp();
+		}
+	}
 	//找回密码
 	//$("#findpwd").bind("click",findPwdPage);
 	/* 接收页面参数 */
@@ -62,7 +172,9 @@ $(function(){
 	function loginBtnUp(evt){
 		var phone = $("#inputphone").val() || "";
 		var pwd = $("#inputpwd").val() || "";
-		//var code = $("#inputCode3").val() || "";
+		var image_validate_key = g.guid || "";
+		var image_validate_code = $("#inputimgcode").val() || "";
+		var inputcode = $("#inputcode").val() || "";
 		if(phone !== ""){
 			if(pwd !== ""){
 				var savePhone = $("#chkphone")[0].checked;
@@ -71,7 +183,13 @@ $(function(){
 				}
 				var condi = {};
 				condi.phone_number = phone;
-				condi.password = pwd;				
+				condi.password = $.md5(pwd);
+				if(g.code == '106'){
+					condi.image_validate_key = image_validate_key;
+					condi.image_validate_code = image_validate_code;
+				}else if(g.code == '107'){
+					condi.validate_code = inputcode;
+				}
 				sendLoginHttp(condi);				
 			}
 			else{
@@ -95,7 +213,8 @@ $(function(){
 			dataType:"json",
 			context:this,
 			success: function(data){
-				console.log("sendLoginHttp",data);
+				//console.log("sendLoginHttp",data);
+				$('.static_con').fadeOut(0);//默认隐藏图形验证码和短信验证码
 				var status = data.success || false;
 				if(status){
 					var userInfo = data.obj || "";
@@ -119,7 +238,18 @@ $(function(){
 				}
 				else{
 					//var msg = data.error || "";
+					//判断 code 106表示需要图形验证码 107表示需要图形验证码和短信验证码
+					var code = data.code || '';
 					var msg = data.message || "登录失败";
+					if(code != ''){
+						g.code = code;
+						$('.static_con').fadeOut(0);
+						if(code == '106') $('.static_con1').fadeIn(0);
+						if(code == '107') $('.static_con').fadeIn(0);
+					}
+					//重新请求图形验证码
+					sendGetImgCodeHttp();
+					$("#inputcode").val("");
 					Utils.alert(msg);
 					//getImgCode();
 				}
