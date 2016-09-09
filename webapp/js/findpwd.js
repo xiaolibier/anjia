@@ -104,9 +104,9 @@ $(function(){
 	//请求验证码
 	function sendGetCodeHttp(imgCode){
 		//{'phone_number':string,'validate_key':string,'validate_code':string}
-		var url = Base.serverUrl + "message/sendPhoneValidateMessage";
+		var url = Base.serverUrl + "message/sendRegisterValidateMessage";//message/sendPhoneValidateMessage
 		var condi = {};
-		condi.phone_number = g.phone;
+		condi.phone_num = g.phone;
 		condi.validate_key = g.guid;
 		condi.validate_code = imgCode;
 		condi.login_token = g.login_token;

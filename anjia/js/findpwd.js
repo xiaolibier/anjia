@@ -15,7 +15,7 @@ $(function(){
 	g.guid = Utils.getGuid();
 
 	//获取图形验证码
-	/* sendGetImgCodeHttp(); 11-16*/
+	sendGetImgCodeHttp();
 
 
 	$("#inputphone").bind("blur",validPhone);
@@ -26,7 +26,7 @@ $(function(){
 	$("#inputcpwd").bind("blur",validCPwd);
 	$("#changepwdbtn").bind("click",changePwd);
 
-	/* $("#imgcodebtn").bind("click",sendGetImgCodeHttp); 11-16*/
+	$("#imgcodebtn").bind("click",sendGetImgCodeHttp);
 
 	function sendGetImgCodeHttp(){
 		//URL:  http://www.partywo.com/imageValidate/getImageValidate
@@ -63,15 +63,15 @@ $(function(){
 			var reg = /^1[3,5,7,8]\d{9}$/g;
 			if(reg.test(p)){
 				g.phone = p;
-				/* if(imgCode !== ""){ 11-16*/
+				if(imgCode !== ""){ 
 					if(!g.sendCode){
 						sendGetCodeHttp(imgCode);
 					}
-				/* }
+				 }
 				else{
 					Utils.alert("请输入图形验证码");
 					$("#inputimgcode").focus();
-				} 11-16*/
+				}
 			}
 			else{
 				Utils.alert("手机号输入错误");
@@ -97,16 +97,16 @@ $(function(){
 			g.sendCode = false;
 
 			//重新获取图形验证码,1分钟有效
-			/* sendGetImgCodeHttp(); 11-16*/
+			sendGetImgCodeHttp();
 			//$("#inputImgCode3").focus();
 		}
 	}
 	//请求验证码
 	function sendGetCodeHttp(imgCode){
 		//{'phone_number':string,'validate_key':string,'validate_code':string}
-		var url = Base.serverUrl + "message/sendPhoneValidateMessage";
+		var url = Base.serverUrl + "message/sendRegisterValidateMessage";
 		var condi = {};
-		condi.phone_number = g.phone;
+		condi.phone_num = g.phone;
 		condi.validate_key = g.guid;
 		condi.validate_code = imgCode;
 		condi.login_token = g.login_token;
@@ -136,7 +136,7 @@ $(function(){
 					Utils.alert(msg);
 
 					//重新请求图形验证码
-					/* sendGetImgCodeHttp(); 11-16*/
+					 sendGetImgCodeHttp();
 				}
 				g.httpTip.hide();
 			},
