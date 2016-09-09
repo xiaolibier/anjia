@@ -33,7 +33,7 @@ $(function(){
 		
 	}
 
-	$("#getcodebtn").bind("click",getValidCode);
+	/* $("#getcodebtn").bind("click",getValidCode); */
 	$("#bindcardbtn").bind("click",bindUserCardBtnUp);
 	$("#change_bank,.messa .text.noCard").bind("click",change_bank_func);
 	$(".a_content .common_abtn.cancel").bind("click",function(){$(".sbox_show").fadeOut();});
@@ -67,11 +67,11 @@ $(function(){
 						html+= '<span class="size3">（'+(d.username || "" )+'）</span>';
 						$("#change_bank").html('修改信息');
 						$("#addBindCard").html(html).removeClass('noCard');
-						$("#inputphone").val(d.phone || "");
+						/* $("#inputphone").val(d.phone || ""); */
 						$("#bankName").val(d.bankName || "");
 						$("#bankCode").val(d.bankType || "");
 						$("#username").val(d.username || "");
-						$("#idcardno").val(d.idcard || "");
+						/* $("#idcardno").val(d.idcard || ""); */
 						$("#cardno").val(d.bankCard || "");
 						$("#bindcardbtn").attr('info','addBtn');
 						g.bbcId = d.bbcId || "";
@@ -163,9 +163,9 @@ $(function(){
 		var p = $("#inputphone").val() || "";
 		var bankCode = $("#bankCode").val() || "";
 		var username = $("#username").val() || "";
-		var idcardno = $("#idcardno").val() || "";
+		/* var idcardno = $("#idcardno").val() || ""; */
 		var cardno = $("#cardno").val() || "";
-		var phone = $("#inputphone").val() || "";
+		/* var phone = $("#inputphone").val() || ""; */
 		var bankName = $("#bankName").val() || "";
 		if(bankCode == ""){
 			alert("请选择发卡银行");
@@ -178,15 +178,15 @@ $(function(){
 		if(!sendValidNoEmpty(username,$("#username"))){
 			alert("请输入客户姓名");return;
 		}
-		if(!sendValidNoEmpty(idcardno,$("#idcardno"))){
+		/* if(!sendValidNoEmpty(idcardno,$("#idcardno"))){
 			alert("请输入身份证号");return;
-		}
+		} */
 		if(!sendValidNoEmpty(cardno,$("#cardno"))){
 			alert("请输入银行卡号");return;
 		}
-		if(!sendValidNoEmpty(phone,$("#phone"))){
+		/* if(!sendValidNoEmpty(phone,$("#phone"))){
 			alert("请输入手机号码");return;
-		}
+		} */
 		if(g.sendCode){
 			return;
 		}
@@ -196,8 +196,8 @@ $(function(){
 		condi.bankType = bankCode
 		condi.username = username;
 		condi.bankCard = cardno;
-		condi.idcard = idcardno;
-		condi.phone = phone;
+		/* condi.idcard = idcardno; */
+		/* condi.phone = phone; */
 		condi.bankName = bankName;
 		g.bindCondi = condi;
 		sendInvokeBindBanCardHttp(condi);
@@ -261,11 +261,11 @@ $(function(){
 
 
 	function bindUserCardBtnUp(){
-		var validate_code = $("#validcode").val() || "";
+		/* var validate_code = $("#validcode").val() || "";
 		if(validate_code == ""){
 			alert("请输入短信验证码");
 			return false;
-		}
+		} */
 		var condi = g.bindCondi;
 		
 		sendConfirmBindBankHttp(condi);
@@ -276,17 +276,17 @@ $(function(){
 		var condi = condi || {};
 		var bankCode = $("#bankCode").val() || "";
 		var username = $("#username").val() || "";
-		var idcardno = $("#idcardno").val() || "";
+		/* var idcardno = $("#idcardno").val() || ""; */
 		var cardno = $("#cardno").val() || "";
-		var phone = $("#inputphone").val() || "";
+		/* var phone = $("#inputphone").val() || ""; */
 		var bankName = $("#bankName").val() || "";
-		condi.validateCode = $("#validcode").val() || "";
+		/* condi.validateCode = $("#validcode").val() || ""; */
 		condi.login_token = g.login_token;
 		condi.bankType = bankCode
 		condi.username = username;
 		condi.bankCard = cardno;
-		condi.idcard = idcardno;
-		condi.phone = phone;
+		/* condi.idcard = idcardno; */
+		/* condi.phone = phone; */
 		condi.bankName = bankName;
 		var url = Base.serverUrl + "bankCard/addBankCard";
 		if($("#bindcardbtn").attr('info') == 'addBtn'){

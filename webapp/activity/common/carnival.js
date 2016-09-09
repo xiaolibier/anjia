@@ -1,9 +1,21 @@
 ﻿
-$(document).ready(function(){
+$(function(){
 	/*  */	
 	/* var myCity = new BMap.LocalCity();
 		myCity.get(myFun); */
 		
+		
+	/* 弹窗关闭 */
+	$('.sbox .close_btn').bind('click',function(){
+		$(this).parents('.sbox').fadeOut(100);
+		$('.sbox_bg').fadeOut(100);
+	});
+	/* 显示弹窗 */
+	$('.playbtn').bind('click',function(){
+		$('.sbox').fadeIn(100);
+		$('.sbox_bg').fadeIn(100);
+	});
+
 	var g = {};
 	g.userCity = Utils.offLineStore.get("userCity",false) || "请选择";
 	g.operate = Utils.getQueryString("O") || "";//获取运营人员
@@ -13,27 +25,16 @@ $(document).ready(function(){
 	g.customerCollectId = Utils.getQueryString("cus") || "";//获取用户识别id
 	
 	$("#submit_a_btn").bind("click",submit_form);
-	/* $("#chakan_inf").bind("click",chakan_inf_func); */
-	/* $("#telphone").bind("click",telphone_func); */
-	/* $("#common_a_btn_regist").bind("click",config_weixin); */
-	$("#slideTo").bind("click",slideTo_func);
-	slideTo_func();
-	sendGetUserTequan();
-	sendGetUserVisitTime();
-	function slideTo_func(){
-		$(".a_bottom .a_content").slideToggle(300);
-		$(".a_bottom .a_text .ico").toggleClass('up');
-		setTimeout(function(){$(".bg").height($(".a_bottom").height());},300);
-	}
-	
+
 	function submit_form(){
 		var index = $(this).attr('index') || "";
+		var conf = $(this).attr('conf') || "";
 		if(index == 1){
 			//g.channel = '01';
-			g.activity = '818';
+			g.activity = '915';
 		}else if(index == 2){
 			//g.channel = '02';
-			g.activity = '818';
+			g.activity = '915';
 		}
 		var condi = {};
 		/* condi.userCity = $("#userCity").val() || ""; */
@@ -41,8 +42,6 @@ $(document).ready(function(){
 		condi.userPhone = $("#userPhone").val() || "";
 		condi.designName = $("#designName").val() || "";
 		condi.designPhone = $("#designPhone").val() || "";
-		condi.designerPrivilegeId = $("#designerPrivilegeId").val() || "";
-		condi.visitTime = $("#visitTime").val() || "";
 		if(condi.userName == ""){alert("客户姓名不能为空","提示");return;}
 		if(!validPhone($("#userPhone"),'客户')){return;}
 		if(condi.designName == ""){alert("设计师姓名不能为空","提示");return;}
@@ -61,13 +60,17 @@ $(document).ready(function(){
 				success: function(data){
 					var success = data.success || "";
 					if(success){
-						/* alert('恭喜，预约成功！');
+						var d = data.obj || [];
+						var s = d.award || []; 
+						var num = s.id || '0';
+						if(conf == 1){$('.sbox').fadeOut(0);$('.sbox_bg').fadeOut(0);chouJang(num);return false;}//区分两个接口
+						alert('恭喜，预约成功！');
 						$("#userName").val('');
-						$("#userPhone").val(''); */
+						$("#userPhone").val('');
 						/* var d = data.obj || {};
 						var c = d.customerCollect || {};
 						var customerCollectId = c.id || ""; */
-						location.href="carnivalOK.html";
+						/* location.href="carnivalOK.html"; */
 					}
 					else{
 						var msg = data.message || "预约失败";
@@ -78,6 +81,91 @@ $(document).ready(function(){
 				}
 			})
 	}
+	var $btn = $('.playbtn');
+		/* 抽奖js */
+	function chouJang(num){
+		var num = num || '0';
+		
+		var playnum = 1; //初始次数，由后台传入
+		//$('.playnum').html(playnum);
+		var isture = 0;
+		var clickfunc = function() {
+			var data = [1, 2, 3, 4, 5, 6, 7, 8];
+			//data为随机出来的结果，根据概率后的结果
+			data = data[Math.floor(Math.random() * data.length)];
+			switch(num) {
+				case '0':
+					alert('没有次数了');
+					break;
+				case '18':
+					rotateFunc(1, 0, '恭喜您获得100元免息特权');
+					break;
+				case '6':
+					rotateFunc(2, 60, '恭喜您获得工具箱一个');
+					break;
+				case '21':
+					rotateFunc(3, 120, '恭喜您获得500元免息特权');
+					break;
+				case '7':
+					rotateFunc(4, 180, '恭喜您获得多功能按摩器一个');
+					break;
+				case '20':
+					rotateFunc(5, 240, '恭喜您获得300元免息特权');
+					break;
+				case '4':
+					rotateFunc(6, 300, '恭喜您获得小米48英寸彩电-台');
+					break;
+				case '19':
+					rotateFunc(7, 360, '恭喜您获得200元免息特权');
+					break;
+				case '5':
+					rotateFunc(8, 420, '恭喜您获得床上用品一套');
+					break;
+			}
+		}
+		//$btn.click(function() {
+		$(function() {	
+			if(isture) return; // 如果在执行就退出
+			isture = true; // 标志为 在执行
+			//先判断是否登录,未登录则执行下面的函数
+			if(1 == 2) {
+				$('.playnum').html('0');
+				alert("请先登录");
+				isture = false;
+			} else { //登录了就执行下面
+				if(playnum <= 0) { //当抽奖次数为0的时候执行
+					alert("没有次数了");
+					//$('.playnum').html(0);
+					isture = false;
+				} else { //还有次数就执行
+					playnum = playnum - 1; //执行转盘了则次数减1
+					if(playnum <= 0) {
+						playnum = 0;
+					}
+					//$('.playnum').html(playnum);
+					clickfunc();
+				}
+			}
+		});
+		
+		
+	}	
+		
+	function rotateFunc(awards, angle, text){
+			isture = true;
+			$btn.stopRotate();
+			$btn.rotate({
+				angle: 0,
+				duration: 4000, //旋转时间
+				animateTo: angle + 1440, //让它根据得出来的结果加上1440度旋转
+				callback: function() {
+					isture = false; // 标志为 执行完毕
+					$('#tips').html(text);
+					alert(text);
+				}
+			});
+		};
+	
 	//验证手机号
 	function validPhone(phone,name){
 		var phone = phone.val() || "";
@@ -93,140 +181,7 @@ $(document).ready(function(){
 			alert("请输入"+name+"电话");
 		}
 	}
-	/* 获取特权 */
-	function sendGetUserTequan(){
-		var url = Base.serverUrl + "user/getDesignerPrivileges";
-		var condi = {};
-		$.ajax({
-			url:url,
-			data:condi,
-			type:"POST",
-			dataType:"json",
-			context:this,
-			success: function(data){
-				var status = data.success || false;
-				if(status){
-					var data = data.obj || {};
-					var option = [];
-					option.push('<option value="">请选择</option>');
-					for(var i=0;i<data.length;i++){
-						var money = data[i].money || 0;
-						var useLeastMoney = data[i].useLeastMoney || 0;
-						var id = data[i].id || "";
-						option.push('<option value="' + id + '">' + money+'元（分期满'+useLeastMoney+'元可用）</option>');
-					}
-					$("#designerPrivilegeId").html(option.join(''));
-				}
-				else{
-					var msg = data.message || "获取失败";
-					alert(msg);
-				}				
-			},
-			error:function(data){
-			}
-		});
-	}
-	/* 获取回访时间 */
-		function sendGetUserVisitTime(){
-		var url = Base.serverUrl + "baseCodeController/getBaseCodeByParents";
-		var condi = {};
-		condi.parents = "1035";
-		$.ajax({
-			url:url,
-			data:condi,
-			type:"POST",
-			dataType:"json",
-			context:this,
-			success: function(data){
-				//console.log("sendGetUserInfoDicHttp",data);
-				var status = data.success || false;
-				if(status){
-					var obj = data.obj || {};
-					changeSelectHtmlVisitTime(obj);
-				}
-				else{
-					var msg = data.message || "获取失败";
-					Utils.alert(msg);
-				}
-			},
-			error:function(data){
-			}
-		});
-	}
 
-	function changeSelectHtmlVisitTime(obj){
-		var parents = ["1035"];
-		var ids = ["visitTime"];
-		for(var i = 0,len = parents.length; i < len; i++){
-			var data = obj[parents[i]] || {};
-			var option = [];
-			option.push('<option value="">全部订单</option>');
-			for(var k in data){
-				var id = k || "";
-				var name = data[k] || "";
-				option.push('<option value="' + id + '">' + name + '</option>');
-			}
-			$("#" + ids[i]).html(option.join(''));
-		}
-	}
-
-
-	//百度定位
-	function myFun(result){
-		var cityName = result.name;
-		g.userCity = cityName;
-		Utils.offLineStore.set("userCity",cityName,false);
-		sendGetUserInfoDicHttp();
-	}
-	//获取城市列表
-	function sendGetUserInfoDicHttp(){
-		var url = Base.serverUrl + "city/getCitys";
-		var condi = {};
-		$.ajax({
-			url:url,
-			data:condi,
-			type:"POST",
-			dataType:"json",
-			context:this,
-			success: function(data){
-				var status = data.success || false;
-				if(status){
-					changeSelectHtml(data);
-				}
-				else{
-					var msg = data.message || "获取城市列表失败";
-					alert(msg);
-				}				
-			},
-			error:function(data){
-			}
-		});
-	}
-
-	function changeSelectHtml(obj){
-			var data = obj.list || {};
-			var option = [];
-			option.push('<option value="">请选择</option>');
-			var city = g.userCity.split("市")[0] || "";
-			for(var i=0;i<data.length;i++){
-				var name = data[i].name;
-				var id = data[i].id || "";
-					if(city == name){
-						option.push('<option selected="selected" value="' + id + '">' + name + '</option>');
-					}else{
-						option.push('<option value="' + id + '">' + name + '</option>');
-					}	
-			}
-			$("#userCity").html(option.join(''));
-	}
-	/* 查看详情 */
-	function telphone_func(){
-		location.href = "tel://4006616896";
-	}
-	/* 查看详情 */
-	function chakan_inf_func(){
-		alert('活动期间，预约报名参加活动，并支付1元订金，最终签约生活家装饰任意家装产品并选择燕子安家分期支付，每满5万元，即可享受5千元免息。如：申请分期10万元，36期，其中1万元为免息金额。最终只需支付(10万-1万)*16%=14400的服务费。相比起原先10万*16%=16000的服务费，直接优惠了1600元！');
-	}
 	
 	/* 配置微信参数 */
 	function config_weixin(){
@@ -316,11 +271,10 @@ $(document).ready(function(){
 		});
 	}
 	
-
-	window.sendGetUserInfoDicHttp = sendGetUserInfoDicHttp;
+	window.chouJang = chouJang;
 	window.validPhone = validPhone;
 	window.onBridgeReady = onBridgeReady;
 /*  */
-})
+});
 
 
