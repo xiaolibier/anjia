@@ -44,8 +44,8 @@ $(function(){
 		condi.designPhone = $("#designPhone").val() || "";
 		if(condi.userName == ""){alert("客户姓名不能为空","提示");return;}
 		if(!validPhone($("#userPhone"),'客户')){return;}
-		if(condi.designName == ""){alert("设计师姓名不能为空","提示");return;}
-		if(!validPhone($("#designPhone"),'设计师')){return;}
+		//if(condi.designName == ""){alert("设计师姓名不能为空","提示");return;}
+		//if(!validPhone($("#designPhone"),'设计师')){return;}
 		condi.operate = escape(g.operate) || "";
 		condi.channel = escape(g.channel) || "";
 		condi.activity = escape(g.activity) || "";
@@ -98,25 +98,25 @@ $(function(){
 					alert('没有次数了');
 					break;
 				case '18':
-					rotateFunc(1, 0, '恭喜您获得100元免息特权');
+					rotateFunc(1, 0, '恭喜您获得100元现金抵用券,凭手机号可直接减免分期服务费');
 					break;
 				case '6':
 					rotateFunc(2, 60, '恭喜您获得工具箱一个');
 					break;
 				case '21':
-					rotateFunc(3, 120, '恭喜您获得500元免息特权');
+					rotateFunc(3, 120, '恭喜您获得500元现金抵用券,凭手机号可直接减免分期服务费');
 					break;
 				case '7':
 					rotateFunc(4, 180, '恭喜您获得多功能按摩器一个');
 					break;
 				case '20':
-					rotateFunc(5, 240, '恭喜您获得300元免息特权');
+					rotateFunc(5, 240, '恭喜您获得300元现金抵用券,凭手机号可直接减免分期服务费');
 					break;
 				case '4':
 					rotateFunc(6, 300, '恭喜您获得小米48英寸彩电-台');
 					break;
 				case '19':
-					rotateFunc(7, 360, '恭喜您获得200元免息特权');
+					rotateFunc(7, 360, '恭喜您获得200元现金抵用券,凭手机号可直接减免分期服务费');
 					break;
 				case '5':
 					rotateFunc(8, 420, '恭喜您获得床上用品一套');
