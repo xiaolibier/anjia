@@ -48,6 +48,7 @@ $(function(){
 						var remark = d.remark || "";
 						var expireDate = d.expireDate || 0;
 						var statusDesc = d.statusDesc || "";
+						var useLeastMoney = d.useLeastMoney || 0;
 						var id = d.id || "";
 						if(status == "102602" || status == "102603"){
 							html += '<table class="list used">';
@@ -60,6 +61,9 @@ $(function(){
 						html += '<tr>';
 						html += '<td>'+createTime+'<br>'+recvTypeDesc+'：'+remark+'</td>';
 						html += '<td>'+statusDesc+'<br>免息特权'+money+'元</td>';
+						html += '</tr>';
+						html += '<tr>';
+						html += '<td>满'+useLeastMoney+'元可用</td>';
 						html += '</tr>';
 						html += '</table>';
 					}

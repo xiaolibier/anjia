@@ -12,6 +12,6 @@ html,body{background-color:#fff;font-size:16px;color:#222222;margin;0;padding:0;
 .poo{margin-bottom:30px;}
 .poo .radio{background-color:#3ec4f0;border:none;}
 .poo .right_btn{float:right;color:#fff;display:inline-block;width:30%;background-color:#3ec4f0;text-align:center;height:30px;line-height:30px;font-size:14px;}
-.list{width:100%;margin-bottom:10px;background-color:#887af5;color:#fff;font-size:14px;line-height:30px;}
+.list{width:100%;margin-bottom:10px;background-color:#887af5;color:#fff;font-size:14px;line-height:23px;}
 .list.used{background-color:#b4b4b4;}
-.list td{padding:5px 0 5px 5px;}
+.list td{padding:1px 0 0 5px;}
