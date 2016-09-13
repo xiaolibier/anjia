@@ -63,6 +63,7 @@ $(function(){
 						html += '<td>'+statusDesc+'<br>免息特权'+money+'元</td>';
 						html += '</tr>';
 						html += '<tr>';
+						html += '<td></td>';
 						html += '<td>满'+useLeastMoney+'元可用</td>';
 						html += '</tr>';
 						html += '</table>';
