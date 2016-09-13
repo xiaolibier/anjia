@@ -16,7 +16,7 @@ background: -o-linear-gradient(top, #48c6f4, #a952f5);  /*Opera 11.10+*/
 .body_message .text{font-size:14px;}
 .body_message .div{text-align:center;}
 .body_message .a_btn{font-size:14px;background-color:#3ec4f0;display:inline-block;margin:20px auto 80px;width:50%;height:40px;line-height:40px;text-align:center;}
-.body_message .a_btn1{font-size:12px;color:black; display:inline-block;margin:20px auto 80px;width:30%;height:30px;line-height:30px;}
+.body_message .a_btn1{font-size:12px;color:black; display:inline-block;margin:20px auto 40px;width:30%;height:30px;line-height:30px;}
 .a_bottom{padding:0 3%;z-index:2;position:fixed;bottom:0;left:0;right:0;}
 .a_bottom .a_text{font-size:14px;color:#fff;line-height:40px;margin:11px auto 14px;}
 .a_bottom .a_text .ico{margin-top:8px;cursor:pointer;float:right;vertical-align:middle;display:inline-block;width:7%;height:25px;background:url('../img/activity_img.png') no-repeat center center;background-size:contain;}
