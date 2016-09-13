@@ -61,7 +61,7 @@ $(function(){
 						option.push('<div class="body_message">');
 						option.push('<h4 class="title">'+bmTitle+'：</h4>');
 						option.push('<p class="text">'+bmTextDesc+'</p>');
-						option.push('<div class="div"><a onclick="share_btn_f(\''+bUrl+'\',\''+bmTitle+'\',\''+bmUrl+'\')" class="a_btn show_tip">分享活动</a><a href="'+ bUrl +'" target="_blank">查看活动详情</a></div>');
+						option.push('<div class="div"><a onclick="share_btn_f(\''+bUrl+'\',\''+bmTitle+'\',\''+bmUrl+'\')" class="a_btn show_tip">分享活动</a><a class="a_btn1" href="'+ bUrl +'" target="_blank">查看活动详情</a></div>');
 						option.push('</div>');
 					}
 					$("#activity_list").html(option.join(''));
