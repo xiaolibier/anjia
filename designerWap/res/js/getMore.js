@@ -75,7 +75,7 @@ $(function(){
 		var a = $(this).attr('idx') || "";
 		var name = Utils.offLineStore.get("userName",false) || "燕子安家成员";
 		if(a == '1'){
-			var aTitle = '我是'+name+'注册了燕子安家推广”拎包装”，注册就有10元钱！邀请也得10元';
+			var aTitle = '我是'+name+',我用燕子安家为客户解决装修资金问题，现在注册即得10元';
 			var aUrl = 'http://m.yanzianjia.com/designerWap/html/login.html?de='+g.code || "";
 			var imgUrl = "";
 		}else{
